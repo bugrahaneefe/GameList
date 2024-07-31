@@ -6,3 +6,6 @@ public let homeModule = TargetDependency.project(
 public let networkKit = TargetDependency.project(
   target: "NetworkKit",
   path: .relativeToRoot("Kit/NetworkKit"))
+public let common = TargetDependency.project(
+  target: "Common",
+  path: .relativeToRoot("Common/"))

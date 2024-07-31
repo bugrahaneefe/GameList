@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:GameList.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Common/Common.xcodeproj">
+   </FileRef>
+   <Group
+      location = "group:Kit"
+      name = "Kit">
+      <FileRef
+         location = "group:NetworkKit/NetworkKit.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:Module"
+      name = "Module">
+      <FileRef
+         location = "group:HomeModule/HomeModule.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
+      location = "container:"
+      name = "Dependencies">
+      <FileRef
+         location = "group:Tuist/.build/tuist-derived/Alamofire/Alamofire.xcodeproj">
+      </FileRef>
+   </Group>
+</Workspace>

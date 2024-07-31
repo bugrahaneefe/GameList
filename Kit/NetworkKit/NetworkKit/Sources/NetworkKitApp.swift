@@ -1,10 +1,9 @@
-import SwiftUI
+import Common
 
-@main
-struct NetworkKitApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
-    }
+public protocol NetworkKitInterface {
+    func gameListDetails(request: HomeModuleGameListRequest, completion: @escaping () -> Void)
+}
+
+public final class NetworkKit {
+    public static let shared: MLFavoriteHandlerInterface = MLFavoriteHandler()
 }

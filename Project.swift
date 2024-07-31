@@ -15,7 +15,8 @@ let appTarget = Target.target(
     dependencies: [
         homeModule,
         networkKit,
-        alamofire
+        alamofire,
+        common
     ]
 )
 

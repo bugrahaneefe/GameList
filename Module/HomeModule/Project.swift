@@ -14,7 +14,8 @@ let frameworkTarget = Target.target(
     resources: ["HomeModule/Resources/**"],
     dependencies: [
         networkKit,
-        alamofire
+        alamofire,
+        common
     ]
 )
 
