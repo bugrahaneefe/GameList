@@ -13,7 +13,7 @@ protocol HomeViewInterface {
 
 final class HomeModuleViewController: UIViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
-    @IBOutlet private weak var emptyShowableView: UIView!
+//    @IBOutlet private weak var emptyShowableView: UIView!
     
     var presenter: HomeModulePresenterInterface!
 }

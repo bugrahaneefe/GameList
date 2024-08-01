@@ -28,10 +28,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "87EA802785C2DA6B58134CC2"
-               BuildableName = "Alamofire_Alamofire.bundle"
-               BlueprintName = "Alamofire_Alamofire"
-               ReferencedContainer = "container:Tuist/.build/tuist-derived/Alamofire/Alamofire.xcodeproj">
+               BlueprintIdentifier = "77A705E112BA78834D2901D0"
+               BuildableName = "CommonKit.framework"
+               BlueprintName = "CommonKit"
+               ReferencedContainer = "container:Common/CommonKit/CommonKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -42,9 +42,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "77A705E112BA78834D2901D0"
-               BuildableName = "CommonKit.framework"
-               BlueprintName = "CommonKit"
+               BlueprintIdentifier = "7836701222F8228003B63214"
+               BuildableName = "CommonKit_CommonKit.bundle"
+               BlueprintName = "CommonKit_CommonKit"
                ReferencedContainer = "container:Common/CommonKit/CommonKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -101,6 +101,20 @@
                BlueprintIdentifier = "DC93B437E5CFD867C043748F"
                BuildableName = "NetworkKit.framework"
                BlueprintName = "NetworkKit"
+               ReferencedContainer = "container:Kit/NetworkKit/NetworkKit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "91EA9DD690450B766678FF41"
+               BuildableName = "NetworkKit_NetworkKit.bundle"
+               BlueprintName = "NetworkKit_NetworkKit"
                ReferencedContainer = "container:Kit/NetworkKit/NetworkKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

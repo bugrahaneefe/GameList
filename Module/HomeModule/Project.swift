@@ -10,8 +10,16 @@ let frameworkTarget = Target.target(
     infoPlist: .extendingDefault(with: [
         "UILaunchStoryboardName" : "LaunchScreen"
     ]),
-    sources: ["HomeModule/Sources/**"],
-    resources: ["HomeModule/Resources/**"],
+    sources: ["HomeModule/**/*.swift"],
+    resources: [
+        "HomeModule/**/*.xib",
+        "HomeModule/**/*.storyboard",
+        "HomeModule/**/*.xcassets",
+        "HomeModule/**/*.strings",
+        "HomeModule/**/*.ttf",
+        "HomeModule/**/*.json",
+        "HomeModule/**/*.gif"
+    ],
     dependencies: [
         networkKit,
         alamofire,

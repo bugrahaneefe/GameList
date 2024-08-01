@@ -3,8 +3,7 @@ import ProjectDescription
 public extension Project {
   static func module(
     name: String,
-    dependencies: [TargetDependency] = [],
-    hasResources: Bool = false
+    dependencies: [TargetDependency] = []
   ) -> Self {
     let frameworkTarget = Target.target(
       name: name,
@@ -13,8 +12,16 @@ public extension Project {
       bundleId: "com.gamelist.\(name)",
       deploymentTargets: .iOS("15.0"),
       infoPlist: .default,
-      sources: ["\(name)/Sources/**"],
-      resources: hasResources ? ["\(name)/Resources/**"] : nil,
+      sources: ["\(name)/**/*.swift"],
+      resources: [
+        "\(name)/**/*.xib",
+        "\(name)/**/*.storyboard",
+        "\(name)/**/*.xcassets",
+        "\(name)/**/*.strings",
+        "\(name)/**/*.ttf",
+        "\(name)/**/*.json",
+        "\(name)/**/*.gif"
+    ],
       dependencies: dependencies
     )
     return Project(
