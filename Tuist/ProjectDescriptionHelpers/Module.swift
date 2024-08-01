@@ -14,7 +14,7 @@ public extension Project {
       deploymentTargets: .iOS("15.0"),
       infoPlist: .default,
       sources: ["\(name)/Sources/**"],
-      resources: hasResources ? ["HomeModule/Resources/**"] : nil,
+      resources: hasResources ? ["\(name)/Resources/**"] : nil,
       dependencies: dependencies
     )
     return Project(

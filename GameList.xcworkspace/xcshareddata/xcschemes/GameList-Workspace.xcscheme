@@ -42,10 +42,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E08ABD263855627D83D37766"
-               BuildableName = "Common.framework"
-               BlueprintName = "Common"
-               ReferencedContainer = "container:Common/Common.xcodeproj">
+               BlueprintIdentifier = "77A705E112BA78834D2901D0"
+               BuildableName = "CommonKit.framework"
+               BlueprintName = "CommonKit"
+               ReferencedContainer = "container:Common/CommonKit/CommonKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry

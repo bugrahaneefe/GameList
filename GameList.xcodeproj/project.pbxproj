@@ -14,7 +14,6 @@
 		1FC707EB9A5711AA9665494F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 495053C4F07482F9C03C61F4 /* CFNetwork.framework */; };
 		280D2280ADCEE12A9390CC4D /* HomeModule_HomeModule.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 19F933BA9D8E11BFAD2E426B /* HomeModule_HomeModule.bundle */; };
 		3A4EFFEFA378E09164AE5DB3 /* HomeModule_HomeModule.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 19F933BA9D8E11BFAD2E426B /* HomeModule_HomeModule.bundle */; };
-		58515D6C44EFCD9501730CC8 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 632F67284DA446327809A533 /* Common.framework */; };
 		658314D74C2F1E37E7249B8C /* Alamofire_Alamofire.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 264193A23F72ECAAF1EA683A /* Alamofire_Alamofire.bundle */; };
 		7C76BA36603B74A7555EAC63 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D428D25D2E487304C0F2CF /* ContentView.swift */; };
 		8B641705E2D9FF6A4C06AA53 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC6358795D7C95AC732BEE55 /* Preview Assets.xcassets */; };
@@ -23,6 +22,7 @@
 		AA3C7997E3D3D27CEBE667BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3779E23C4AAEC87FE8D114C /* Assets.xcassets */; };
 		AD68399CDAE987540658D173 /* GameListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACAC9E77F5A5C5EE8D7FAA2 /* GameListApp.swift */; };
 		B167561C2AD5915B1F78B0C2 /* NetworkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B30BE4E257F543F1AE68E9F2 /* NetworkKit.framework */; };
+		C444C03ED173FDA07D442AEB /* CommonKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E7DA70947A9A5C9709632D2 /* CommonKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -52,10 +52,10 @@
 /* Begin PBXFileReference section */
 		07ED719A8490454F5625E3B6 /* GameList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19F933BA9D8E11BFAD2E426B /* HomeModule_HomeModule.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeModule_HomeModule.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E7DA70947A9A5C9709632D2 /* CommonKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		264193A23F72ECAAF1EA683A /* Alamofire_Alamofire.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Alamofire_Alamofire.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F638E31D660C4007F34733B /* GameList-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GameList-Info.plist"; sourceTree = "<group>"; };
 		495053C4F07482F9C03C61F4 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
-		632F67284DA446327809A533 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C9E19290237400A7C5A7575 /* HomeModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HomeModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ACAC9E77F5A5C5EE8D7FAA2 /* GameListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListApp.swift; sourceTree = "<group>"; };
 		9FCA5BFEABE001814939A9E7 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,7 +75,7 @@
 			files = (
 				1FC707EB9A5711AA9665494F /* CFNetwork.framework in Frameworks */,
 				0AE1C63D4CC700107F7119DC /* Alamofire.framework in Frameworks */,
-				58515D6C44EFCD9501730CC8 /* Common.framework in Frameworks */,
+				C444C03ED173FDA07D442AEB /* CommonKit.framework in Frameworks */,
 				16CCE604DBC580FD3CAB8ACE /* HomeModule.framework in Frameworks */,
 				B167561C2AD5915B1F78B0C2 /* NetworkKit.framework in Frameworks */,
 			);
@@ -98,7 +98,7 @@
 			children = (
 				264193A23F72ECAAF1EA683A /* Alamofire_Alamofire.bundle */,
 				9FCA5BFEABE001814939A9E7 /* Alamofire.framework */,
-				632F67284DA446327809A533 /* Common.framework */,
+				1E7DA70947A9A5C9709632D2 /* CommonKit.framework */,
 				07ED719A8490454F5625E3B6 /* GameList.app */,
 				19F933BA9D8E11BFAD2E426B /* HomeModule_HomeModule.bundle */,
 				7C9E19290237400A7C5A7575 /* HomeModule.framework */,

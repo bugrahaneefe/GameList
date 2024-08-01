@@ -7,5 +7,5 @@ public let networkKit = TargetDependency.project(
   target: "NetworkKit",
   path: .relativeToRoot("Kit/NetworkKit"))
 public let common = TargetDependency.project(
-  target: "Common",
-  path: .relativeToRoot("Common/"))
+  target: "CommonKit",
+  path: .relativeToRoot("Common/CommonKit"))

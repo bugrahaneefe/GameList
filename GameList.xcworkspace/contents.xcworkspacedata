@@ -4,9 +4,13 @@
    <FileRef
       location = "group:GameList.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:Common/Common.xcodeproj">
-   </FileRef>
+   <Group
+      location = "group:Common"
+      name = "Common">
+      <FileRef
+         location = "group:CommonKit/CommonKit.xcodeproj">
+      </FileRef>
+   </Group>
    <Group
       location = "group:Kit"
       name = "Kit">

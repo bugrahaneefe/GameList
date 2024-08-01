@@ -1,9 +1,15 @@
-import Common
+import CommonKit
 
 public protocol NetworkKitInterface {
     func gameListDetails(request: HomeModuleGameListRequest, completion: @escaping () -> Void)
 }
 
-public final class NetworkKit {
-    public static let shared: MLFavoriteHandlerInterface = MLFavoriteHandler()
+public final class NetworkKit: NetworkKitInterface {
+    public static let shared: NetworkKitInterface = NetworkKit()
+}
+
+extension NetworkKit {
+    public func gameListDetails(request: CommonKit.HomeModuleGameListRequest, completion: @escaping () -> Void) {
+        
+    }
 }
