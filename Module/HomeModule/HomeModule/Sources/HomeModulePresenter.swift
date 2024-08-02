@@ -6,10 +6,11 @@
 //
 
 import Foundation
-import Common
+import CommonKit
 
 protocol HomeModulePresenterInterface: PresenterInterface {
-//  todo
+    func viewDidLoad()
+    func viewWillAppear()
 }
 
 final class HomeModulePresenter {
@@ -24,10 +25,12 @@ final class HomeModulePresenter {
     }
     
     private func fetchGameList() {
-//        todo: showloading
-        let request = MLFavoriteRestaurantsDetailsRequest(latitude: location.lat.stringValue,
-                                                          longitude: location.lon.stringValue,
-                                                          restaurantStatus: selectedStatus)
+        //        todo: showloading
+        let request = HomeModuleGameListRequest(
+            count: 10,
+            next: "",
+            previous: "",
+            results: [])
         
         interactor.fetchGameList(request: request)
     }

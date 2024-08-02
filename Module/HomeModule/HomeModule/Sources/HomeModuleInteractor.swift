@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Common
+import CommonKit
 import NetworkKit
 
 protocol HomeModuleInteractorInterface: AnyObject {
@@ -24,22 +24,8 @@ final class HomeModuleInteractor {
 //MARK: - MLFavoriteListInteractorInterface
 extension HomeModuleInteractor: HomeModuleInteractorInterface {
     func fetchGameList(request: HomeModuleGameListRequest) {
-        NetworkKit.shared.favoriteRestaurantDetails(request: request) { [weak output] result in
-            output?.handleFavoriteListResult(result)
+        NetworkKit.shared.gameListDetails(request: request) { [weak output] result in
+            output?.handleGameListResult(result)
         }
-    }
-}
-
-
-public func favoriteRestaurantDetails(request: MLFavoriteRestaurantsDetailsRequest, completion: @escaping (FavoriteRestaurantDetailsResult) -> Void) {
-    interactor.favoriteRestaurantDetails(request: request) { [weak self] result in
-        guard let self = self else { return }
-        if case .success(let response) = result {
-            response.restaurants?
-                .compactMap(\.id)
-                .forEach { self.insertRestaurantIdToRestaurantIdArray(restaurantId: $0) }
-        }
-        self.notificationCenter.post(name: .mealFavoriteStateChanged, object: self, userInfo: nil)
-        completion(result)
     }
 }
