@@ -40,5 +40,6 @@ extension HomeModuleViewController: HomeViewInterface {
         }
         collectionView.backgroundColor = .clear
         listDataSource.prepare(for: collectionView)
+        print("listDataSource.prepare(for: collectionView)")
     }
 }

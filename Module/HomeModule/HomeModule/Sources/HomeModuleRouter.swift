@@ -8,11 +8,10 @@
 import UIKit
 import CommonKit
 
-protocol HomeModuleRouterInterface {
-    //  todo
-}
+public protocol HomeModuleRouterInterface {}
 
-final class HomeModuleRouter: HomeModuleRouterInterface {
+public final class HomeModuleRouter: HomeModuleRouterInterface {
+    public init() {}
     
     weak var navigationController: UINavigationController?
     
@@ -20,7 +19,7 @@ final class HomeModuleRouter: HomeModuleRouterInterface {
         self.navigationController = navigationController
     }
     
-    static func create(navigationController: UINavigationController?) -> UIViewController {
+    public func create(navigationController: UINavigationController?) -> UIViewController {
         let storyboard = StoryboardHelper<Storyboards>.create(storyboard: .home)
         let view = storyboard.instantiateViewController(
             viewClass: HomeModuleViewController.self)

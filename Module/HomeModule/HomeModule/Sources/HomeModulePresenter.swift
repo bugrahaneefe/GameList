@@ -33,6 +33,7 @@ final class HomeModulePresenter {
             results: [])
         
         interactor.fetchGameList(request: request)
+        print("gamelist is fetched.")
     }
 }
 
