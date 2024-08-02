@@ -25,6 +25,7 @@ final class HomeModuleViewController: UIViewController {
 //    @IBOutlet private weak var emptyShowableView: UIView!
     
     var presenter: HomeModulePresenterInterface!
+    private lazy var listDataSource = ListDataSource(alwaysUseReloadDataSource: true, viewController: self)
 }
 
 extension HomeModuleViewController: HomeViewInterface {

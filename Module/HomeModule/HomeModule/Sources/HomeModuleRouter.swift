@@ -33,7 +33,7 @@ final class HomeModuleRouter: HomeModuleRouterInterface {
             view: view)
         
         view.presenter = presenter
-        interactor.output = presenter
+        interactor.output = presenter as? any HomeModuleInteractorOutput
         
         return view
     }

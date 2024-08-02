@@ -1,4 +1,5 @@
 import SwiftUI
+import HomeModule
 
 public struct ContentView: View {
     public init() {}

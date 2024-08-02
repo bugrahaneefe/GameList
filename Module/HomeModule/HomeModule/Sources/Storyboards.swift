@@ -5,6 +5,7 @@
 //  Created by Buğrahan Efe on 2.08.2024.
 //
 
+import Foundation
 import CommonKit
 
 enum Storyboards: StoryboardProtocol {

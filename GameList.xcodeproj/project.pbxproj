@@ -23,8 +23,6 @@
 		C444C03ED173FDA07D442AEB /* CommonKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E7DA70947A9A5C9709632D2 /* CommonKit.framework */; };
 		D9F772E5CDA83F7B97EAF3C8 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9FCA5BFEABE001814939A9E7 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E5A8FD49B1F78CD4C11A0E77 /* CommonKit_CommonKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 80AFD3B3B830580C320320B4 /* CommonKit_CommonKit.bundle */; };
-		EBAA9E6D77BAF765FF759BA1 /* NetworkKit_NetworkKit.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 3B62F40FCF1C3B1918064EFF /* NetworkKit_NetworkKit.bundle */; };
-		F14C962148E9CD9493B74B36 /* NetworkKit_NetworkKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3B62F40FCF1C3B1918064EFF /* NetworkKit_NetworkKit.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -46,7 +44,6 @@
 			files = (
 				0D4D2C8A9F48C365AA26BD77 /* CommonKit_CommonKit.bundle in Dependencies */,
 				280D2280ADCEE12A9390CC4D /* HomeModule_HomeModule.bundle in Dependencies */,
-				EBAA9E6D77BAF765FF759BA1 /* NetworkKit_NetworkKit.bundle in Dependencies */,
 			);
 			name = Dependencies;
 			runOnlyForDeploymentPostprocessing = 1;
@@ -58,7 +55,6 @@
 		19F933BA9D8E11BFAD2E426B /* HomeModule_HomeModule.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeModule_HomeModule.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E7DA70947A9A5C9709632D2 /* CommonKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F638E31D660C4007F34733B /* GameList-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GameList-Info.plist"; sourceTree = "<group>"; };
-		3B62F40FCF1C3B1918064EFF /* NetworkKit_NetworkKit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkKit_NetworkKit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C9E19290237400A7C5A7575 /* HomeModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HomeModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80AFD3B3B830580C320320B4 /* CommonKit_CommonKit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommonKit_CommonKit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ACAC9E77F5A5C5EE8D7FAA2 /* GameListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListApp.swift; sourceTree = "<group>"; };
@@ -105,7 +101,6 @@
 				07ED719A8490454F5625E3B6 /* GameList.app */,
 				19F933BA9D8E11BFAD2E426B /* HomeModule_HomeModule.bundle */,
 				7C9E19290237400A7C5A7575 /* HomeModule.framework */,
-				3B62F40FCF1C3B1918064EFF /* NetworkKit_NetworkKit.bundle */,
 				B30BE4E257F543F1AE68E9F2 /* NetworkKit.framework */,
 			);
 			name = Products;
@@ -241,7 +236,6 @@
 				8B641705E2D9FF6A4C06AA53 /* Preview Assets.xcassets in Resources */,
 				E5A8FD49B1F78CD4C11A0E77 /* CommonKit_CommonKit.bundle in Resources */,
 				3A4EFFEFA378E09164AE5DB3 /* HomeModule_HomeModule.bundle in Resources */,
-				F14C962148E9CD9493B74B36 /* NetworkKit_NetworkKit.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

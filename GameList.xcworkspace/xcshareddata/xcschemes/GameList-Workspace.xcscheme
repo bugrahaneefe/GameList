@@ -104,20 +104,6 @@
                ReferencedContainer = "container:Kit/NetworkKit/NetworkKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "91EA9DD690450B766678FF41"
-               BuildableName = "NetworkKit_NetworkKit.bundle"
-               BlueprintName = "NetworkKit_NetworkKit"
-               ReferencedContainer = "container:Kit/NetworkKit/NetworkKit.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
