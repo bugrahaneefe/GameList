@@ -10,6 +10,9 @@
       <FileRef
          location = "group:CommonKit/CommonKit.xcodeproj">
       </FileRef>
+      <FileRef
+         location = "group:CommonViewsKit/CommonViewsKit.xcodeproj">
+      </FileRef>
    </Group>
    <Group
       location = "group:Kit"
@@ -30,6 +33,9 @@
       name = "Dependencies">
       <FileRef
          location = "group:Tuist/.build/tuist-derived/Alamofire/Alamofire.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Tuist/.build/tuist-derived/trendyol-platform-utilities/trendyol-platform-utilities.xcodeproj">
       </FileRef>
    </Group>
 </Workspace>

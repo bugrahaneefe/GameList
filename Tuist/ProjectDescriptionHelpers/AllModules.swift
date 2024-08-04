@@ -9,3 +9,6 @@ public let networkKit = TargetDependency.project(
 public let common = TargetDependency.project(
   target: "CommonKit",
   path: .relativeToRoot("Common/CommonKit"))
+public let commonViews = TargetDependency.project(
+  target: "CommonViewsKit",
+  path: .relativeToRoot("Common/CommonViewsKit"))

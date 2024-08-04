@@ -23,7 +23,11 @@ let frameworkTarget = Target.target(
     dependencies: [
         networkKit,
         alamofire,
-        common
+        listingKit,
+        dependencyEngine,
+        coreUtils,
+        common,
+        commonViews
     ]
 )
 

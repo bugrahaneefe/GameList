@@ -9,6 +9,7 @@
 //  HomeModule
 
 import Foundation
+import ListingKit
 
 public struct HomeModuleGameListRequest: Encodable {
     public let count: Int
@@ -24,7 +25,9 @@ public struct HomeModuleGameListRequest: Encodable {
     }
 }
 
-public struct Game: Codable {
+public struct Game: Codable, ListIdentifiable {
+    public var listIdentifier: String
+    
     public struct ESRBRating: Codable {
         public let id: Int
         public let slug: String
@@ -85,7 +88,7 @@ public struct Game: Codable {
     public let name: String
     public let released: String
     public let tba: Bool
-    public let backgroundImage: String
+    public let backgroundImage: String?
     public let rating: Double
     public let ratingTop: Int
     public let ratings: [String: Rating]
@@ -100,7 +103,8 @@ public struct Game: Codable {
     public let esrbRating: ESRBRating
     public let platforms: [PlatformInfo]
     
-    public init(id: Int, slug: String, name: String, released: String, tba: Bool, backgroundImage: String, rating: Double, ratingTop: Int, ratings: [String: Rating], ratingsCount: Int, reviewsTextCount: String, added: Int, addedByStatus: [String: AddedByStatus], metacritic: Int, playtime: Int, suggestionsCount: Int, updated: String, esrbRating: ESRBRating, platforms: [PlatformInfo]) {
+    init(listIdentifier: String, id: Int, slug: String, name: String, released: String, tba: Bool, backgroundImage: String, rating: Double, ratingTop: Int, ratings: [String : Rating], ratingsCount: Int, reviewsTextCount: String, added: Int, addedByStatus: [String : AddedByStatus], metacritic: Int, playtime: Int, suggestionsCount: Int, updated: String, esrbRating: ESRBRating, platforms: [PlatformInfo]) {
+        self.listIdentifier = listIdentifier
         self.id = id
         self.slug = slug
         self.name = name

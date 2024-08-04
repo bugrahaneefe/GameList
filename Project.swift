@@ -37,7 +37,11 @@ let appTarget = Target.target(
         homeModule,
         networkKit,
         alamofire,
-        common
+        listingKit,
+        dependencyEngine,
+        coreUtils,
+        common,
+        commonViews
     ]
 )
 

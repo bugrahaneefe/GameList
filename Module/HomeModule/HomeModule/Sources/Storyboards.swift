@@ -7,6 +7,7 @@
 
 import Foundation
 import CommonKit
+import CoreUtils
 
 enum Storyboards: StoryboardProtocol {
     case home

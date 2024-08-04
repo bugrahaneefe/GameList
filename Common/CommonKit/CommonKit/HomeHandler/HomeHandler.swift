@@ -7,6 +7,9 @@
 
 public final class HomeHandler {}
 
+public protocol HomeModuleGameDelegate: AnyObject {
+}
+
 private extension HomeHandler {
     public enum Constant {
         public static let gameListURL = "https://api.rawg.io/api/games?key=2728bd542342447cbf3dccb350fb91da"

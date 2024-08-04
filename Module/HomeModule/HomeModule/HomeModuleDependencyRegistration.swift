@@ -7,6 +7,8 @@
 
 import CommonKit
 import UIKit
+import DependencyEngine
+import CoreUtils
 
 public enum HomeModuleDependencyRegistration: DependencyRegistration {
     public static func register(to engine: DependencyEngine) {
@@ -29,7 +31,7 @@ public final class HomeModule: HomeModuleInterface {
             view: view)
 
         view.presenter = presenter
-        interactor.output = presenter as? any HomeModuleInteractorOutput
+        interactor.output = presenter
 
         return view
     }

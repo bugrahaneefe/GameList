@@ -8,17 +8,19 @@
 import Foundation
 import CommonKit
 
-protocol HomeModulePresenterInterface: PresenterInterface {
-    func viewDidLoad()
-    func viewWillAppear()
+protocol HomeModulePresenterInterface: PresenterInterface, HomeModuleHeaderCollectionReusablePresenterDelegate, HomeModuleGameDelegate {
+//    todo
 }
 
 final class HomeModulePresenter {
     private let interactor: HomeModuleInteractorInterface
     private let router: HomeModuleRouterInterface
     private var view: HomeViewInterface?
+    private var games: [Game]?
     
-    init(interactor: HomeModuleInteractorInterface, router: HomeModuleRouterInterface, view: HomeViewInterface? = nil) {
+    init(interactor: HomeModuleInteractorInterface,
+         router: HomeModuleRouterInterface,
+         view: HomeViewInterface? = nil) {
         self.interactor = interactor
         self.router = router
         self.view = view
@@ -35,15 +37,56 @@ final class HomeModulePresenter {
         interactor.fetchGameList(request: request)
         print("gamelist is fetched.")
     }
+    
+    private func handleEmptyGameStatus() {
+//        todo
+    }
+    
+    private func handleGameSection() {
+        let bannerSections = HomeModuleSection.bannerSection(
+            items: games ?? [],
+            delegate: self,
+            headerDelegate: self,
+            gameDelegate: self)
+        
+        view?.reloadCollectionView(listSections: [bannerSections])
+    }
 }
 
 //MARK: - HomeModulePresenterInterface
 extension HomeModulePresenter: HomeModulePresenterInterface {
+    func changeAppearanceTapped() {}
+    
     func viewDidLoad() {
         view?.prepareUI()
     }
     
     func viewWillAppear() {
         fetchGameList()
+    }
+}
+
+//MARK: - HomeModuleInteractorOutput
+extension HomeModulePresenter: HomeModuleInteractorOutput {
+    func handleGameListResult(_ result: CommonKit.GameListDetailsResult) {
+        switch result {
+        case .success(let response):
+            guard response.games.isNotNilOrEmpty else {
+                handleEmptyGameStatus()
+                return
+            }
+            games = response.games
+            handleGameSection()
+        case .failure(let error):
+//            todo error extensions
+            print(error)
+        }
+    }
+}
+
+
+//MARK: - HomeModuleSectionDelegate
+extension HomeModulePresenter: HomeModuleSectionDelegate {
+    func gameSelected(_ game: CommonKit.Game) {
     }
 }

@@ -7,6 +7,7 @@
 
 import UIKit
 import CommonKit
+import CoreUtils
 
 public protocol HomeModuleRouterInterface {}
 
@@ -32,7 +33,7 @@ public final class HomeModuleRouter: HomeModuleRouterInterface {
             view: view)
         
         view.presenter = presenter
-        interactor.output = presenter as? any HomeModuleInteractorOutput
+        interactor.output = presenter
         
         return view
     }

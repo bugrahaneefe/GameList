@@ -7,9 +7,11 @@
 
 import UIKit
 import CommonKit
+import ListingKit
 
 protocol HomeViewInterface {
     func prepareUI()
+    func reloadCollectionView(listSections: [ListSection])
 }
 
 private enum Constant {
@@ -41,5 +43,9 @@ extension HomeModuleViewController: HomeViewInterface {
         collectionView.backgroundColor = .clear
         listDataSource.prepare(for: collectionView)
         print("listDataSource.prepare(for: collectionView)")
+    }
+    
+    func reloadCollectionView(listSections: [ListSection]) {
+        listDataSource.reload(newSections: listSections, completion: nil)
     }
 }

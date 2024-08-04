@@ -4,18 +4,21 @@ import UIKit
 import HomeModule
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+    
     var window: UIWindow?
-
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         print("SceneDelegate started")
         guard let windowScene = (scene as? UIWindowScene) else { return }
-
-        let window = UIWindow(windowScene: windowScene)
-        let tabBarController = GameListTabBarController()
-        window.rootViewController = tabBarController
-        window.makeKeyAndVisible()
         
-        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let tabBarController = storyboard.instantiateViewController(withIdentifier: "GameListTabBarController") as? GameListTabBarController {
+            let window = UIWindow(windowScene: windowScene)
+            window.rootViewController = tabBarController
+            self.window = window
+            window.makeKeyAndVisible()
+        } else {
+            print("Could not instantiate GameListTabBarController")
+        }
     }
 }

@@ -1,6 +1,7 @@
 import SwiftUI
 import CommonKit
 import HomeModule
+import DependencyEngine
 
 public final class GameListTabBarController: UITabBarController {
     @ModuleDependency var homeModule: HomeModuleInterface
@@ -11,6 +12,7 @@ public final class GameListTabBarController: UITabBarController {
     }
     
     private func setupTabBar() {
+//        todo
         let navigationController = UINavigationController()
         let homeVC = homeModule.gameList(navigationController: navigationController)
         
