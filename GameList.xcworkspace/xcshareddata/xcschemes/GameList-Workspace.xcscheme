@@ -140,6 +140,34 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "61C23C1F923AEF8DBA0DE784"
+               BuildableName = "HomeHandlerKit.framework"
+               BlueprintName = "HomeHandlerKit"
+               ReferencedContainer = "container:Kit/HomeHandlerKit/HomeHandlerKit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4373EACB3DCEBC28112E418D"
+               BuildableName = "HomeHandlerKit_HomeHandlerKit.bundle"
+               BlueprintName = "HomeHandlerKit_HomeHandlerKit"
+               ReferencedContainer = "container:Kit/HomeHandlerKit/HomeHandlerKit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "1B6EC0DE2402FD2233BD2360"
                BuildableName = "HomeModule.framework"
                BlueprintName = "HomeModule"
@@ -186,6 +214,34 @@
                BuildableName = "NetworkKit.framework"
                BlueprintName = "NetworkKit"
                ReferencedContainer = "container:Kit/NetworkKit/NetworkKit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4522BA1E69969A14ADA602B2"
+               BuildableName = "SDWebImage.framework"
+               BlueprintName = "SDWebImage"
+               ReferencedContainer = "container:Tuist/.build/tuist-derived/SDWebImage/SDWebImage.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7AC7961179CFF2AFE9AE6B22"
+               BuildableName = "SDWebImage_SDWebImage.bundle"
+               BlueprintName = "SDWebImage_SDWebImage"
+               ReferencedContainer = "container:Tuist/.build/tuist-derived/SDWebImage/SDWebImage.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

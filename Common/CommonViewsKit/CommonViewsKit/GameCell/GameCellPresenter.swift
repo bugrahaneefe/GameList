@@ -42,7 +42,7 @@ extension GameCellPresenter: GameCellPresenterInterface {
     }
     
 //    todo
-    public func bannerImageLoaded() {}
+    public func bannerImageLoaded() {    }
 //    todo
     public func prepareForReuse() {}
 }

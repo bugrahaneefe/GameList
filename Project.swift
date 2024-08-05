@@ -41,7 +41,9 @@ let appTarget = Target.target(
         dependencyEngine,
         coreUtils,
         common,
-        commonViews
+        commonViews,
+        sdWebImage,
+        homeHandlerKit
     ]
 )
 

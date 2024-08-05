@@ -4,5 +4,8 @@ import ProjectDescriptionHelpers
 let project = Project.module(
     name: "CommonViewsKit",
     dependencies: [
+        sdWebImage,
+        coreUtils,
+        common
     ]
 )

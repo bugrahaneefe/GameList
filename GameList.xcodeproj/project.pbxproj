@@ -8,15 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		0AE1C63D4CC700107F7119DC /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FCA5BFEABE001814939A9E7 /* Alamofire.framework */; };
+		0D1A95F0F1618A68B0963AC4 /* SDWebImage_SDWebImage.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 9153235CD3F138CE3029EDEE /* SDWebImage_SDWebImage.bundle */; };
 		0D4D2C8A9F48C365AA26BD77 /* CommonKit_CommonKit.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 80AFD3B3B830580C320320B4 /* CommonKit_CommonKit.bundle */; };
 		0DEBE6FC34005B5DD81FEC52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA39658D261FC68C90377F7B /* Main.storyboard */; };
 		13080F6CFA483AFCCED5367D /* CommonViewsKit_CommonViewsKit.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 8654BF1297C30D137D1B42C4 /* CommonViewsKit_CommonViewsKit.bundle */; };
 		1517FCE67B88E2E713738B9B /* TuistAssets+GameList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D4FC01B17591E2C54E40C9 /* TuistAssets+GameList.swift */; };
 		16CCE604DBC580FD3CAB8ACE /* HomeModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C9E19290237400A7C5A7575 /* HomeModule.framework */; };
 		1B615F05976FD951DC57A598 /* ListingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCBD109874D2CCCC3591D8C4 /* ListingKit.framework */; };
+		248AD556F2DB9F0333C1D269 /* HomeHandlerKit_HomeHandlerKit.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 1345DE38D24C53B24EA04901 /* HomeHandlerKit_HomeHandlerKit.bundle */; };
 		280D2280ADCEE12A9390CC4D /* HomeModule_HomeModule.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 19F933BA9D8E11BFAD2E426B /* HomeModule_HomeModule.bundle */; };
 		35CEB1F087D795DD74F61FE8 /* DependencyEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4A69A6840BB78C4735337D3 /* DependencyEngine.framework */; };
 		3A4EFFEFA378E09164AE5DB3 /* HomeModule_HomeModule.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 19F933BA9D8E11BFAD2E426B /* HomeModule_HomeModule.bundle */; };
+		60CAB46252E53E1EAE7927DD /* HomeHandlerKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05B13CBC5EEFCEAEE2480251 /* HomeHandlerKit.framework */; };
 		6ADE10FFD91CA418ABC190E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0522A217D73C2267A9543A0E /* SceneDelegate.swift */; };
 		836DB6D940F6F232433F8F1A /* CommonViewsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F02AD6206973AF6C1C925800 /* CommonViewsKit.framework */; };
 		8B641705E2D9FF6A4C06AA53 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC6358795D7C95AC732BEE55 /* Preview Assets.xcassets */; };
@@ -27,11 +30,14 @@
 		AE5A21534873BAD5CBCADF18 /* GlobalWindow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077F783FD6AB491E0BB06213 /* GlobalWindow.framework */; };
 		B167561C2AD5915B1F78B0C2 /* NetworkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B30BE4E257F543F1AE68E9F2 /* NetworkKit.framework */; };
 		B19BB6D56E2DD75053A1B87F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D712EF17253F1C5CC5E52DB9 /* AppDelegate.swift */; };
+		B999D91F8A07DDB514A73CF7 /* HomeHandlerKit_HomeHandlerKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1345DE38D24C53B24EA04901 /* HomeHandlerKit_HomeHandlerKit.bundle */; };
+		BD7D83B89467397EF4500402 /* SDWebImage_SDWebImage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9153235CD3F138CE3029EDEE /* SDWebImage_SDWebImage.bundle */; };
 		C444C03ED173FDA07D442AEB /* CommonKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E7DA70947A9A5C9709632D2 /* CommonKit.framework */; };
 		D9F772E5CDA83F7B97EAF3C8 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9FCA5BFEABE001814939A9E7 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E5A8FD49B1F78CD4C11A0E77 /* CommonKit_CommonKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 80AFD3B3B830580C320320B4 /* CommonKit_CommonKit.bundle */; };
 		E654D9B9E2D4AA06B547E76E /* GameListTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1447EAF6DE983D5AA87462 /* GameListTabBarController.swift */; };
 		E70812B4B9AFB19BBFACFDDE /* CommonViewsKit_CommonViewsKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8654BF1297C30D137D1B42C4 /* CommonViewsKit_CommonViewsKit.bundle */; };
+		F82421F2FC08C49012DCF386 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCD8F4F237428AAAF15636D4 /* SDWebImage.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -53,7 +59,9 @@
 			files = (
 				0D4D2C8A9F48C365AA26BD77 /* CommonKit_CommonKit.bundle in Dependencies */,
 				13080F6CFA483AFCCED5367D /* CommonViewsKit_CommonViewsKit.bundle in Dependencies */,
+				248AD556F2DB9F0333C1D269 /* HomeHandlerKit_HomeHandlerKit.bundle in Dependencies */,
 				280D2280ADCEE12A9390CC4D /* HomeModule_HomeModule.bundle in Dependencies */,
+				0D1A95F0F1618A68B0963AC4 /* SDWebImage_SDWebImage.bundle in Dependencies */,
 			);
 			name = Dependencies;
 			runOnlyForDeploymentPostprocessing = 1;
@@ -62,8 +70,10 @@
 
 /* Begin PBXFileReference section */
 		0522A217D73C2267A9543A0E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		05B13CBC5EEFCEAEE2480251 /* HomeHandlerKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HomeHandlerKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		077F783FD6AB491E0BB06213 /* GlobalWindow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GlobalWindow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		07ED719A8490454F5625E3B6 /* GameList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameList.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1345DE38D24C53B24EA04901 /* HomeHandlerKit_HomeHandlerKit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeHandlerKit_HomeHandlerKit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		19F933BA9D8E11BFAD2E426B /* HomeModule_HomeModule.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeModule_HomeModule.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E7DA70947A9A5C9709632D2 /* CommonKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F638E31D660C4007F34733B /* GameList-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GameList-Info.plist"; sourceTree = "<group>"; };
@@ -71,11 +81,13 @@
 		7C9E19290237400A7C5A7575 /* HomeModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HomeModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80AFD3B3B830580C320320B4 /* CommonKit_CommonKit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommonKit_CommonKit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		8654BF1297C30D137D1B42C4 /* CommonViewsKit_CommonViewsKit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommonViewsKit_CommonViewsKit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		9153235CD3F138CE3029EDEE /* SDWebImage_SDWebImage.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SDWebImage_SDWebImage.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FCA5BFEABE001814939A9E7 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6698463C7099764EC9A4098 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC6358795D7C95AC732BEE55 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B30BE4E257F543F1AE68E9F2 /* NetworkKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NetworkKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4A69A6840BB78C4735337D3 /* DependencyEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DependencyEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCD8F4F237428AAAF15636D4 /* SDWebImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SDWebImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3779E23C4AAEC87FE8D114C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D712EF17253F1C5CC5E52DB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9239F864430B3B57E2D9877 /* TuistBundle+GameList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistBundle+GameList.swift"; sourceTree = "<group>"; };
@@ -97,9 +109,11 @@
 				9C825AF55DB1B3E60883328A /* CoreUtils.framework in Frameworks */,
 				35CEB1F087D795DD74F61FE8 /* DependencyEngine.framework in Frameworks */,
 				AE5A21534873BAD5CBCADF18 /* GlobalWindow.framework in Frameworks */,
+				60CAB46252E53E1EAE7927DD /* HomeHandlerKit.framework in Frameworks */,
 				16CCE604DBC580FD3CAB8ACE /* HomeModule.framework in Frameworks */,
 				1B615F05976FD951DC57A598 /* ListingKit.framework in Frameworks */,
 				B167561C2AD5915B1F78B0C2 /* NetworkKit.framework in Frameworks */,
+				F82421F2FC08C49012DCF386 /* SDWebImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,10 +144,14 @@
 				B4A69A6840BB78C4735337D3 /* DependencyEngine.framework */,
 				07ED719A8490454F5625E3B6 /* GameList.app */,
 				077F783FD6AB491E0BB06213 /* GlobalWindow.framework */,
+				1345DE38D24C53B24EA04901 /* HomeHandlerKit_HomeHandlerKit.bundle */,
+				05B13CBC5EEFCEAEE2480251 /* HomeHandlerKit.framework */,
 				19F933BA9D8E11BFAD2E426B /* HomeModule_HomeModule.bundle */,
 				7C9E19290237400A7C5A7575 /* HomeModule.framework */,
 				DCBD109874D2CCCC3591D8C4 /* ListingKit.framework */,
 				B30BE4E257F543F1AE68E9F2 /* NetworkKit.framework */,
+				9153235CD3F138CE3029EDEE /* SDWebImage_SDWebImage.bundle */,
+				CCD8F4F237428AAAF15636D4 /* SDWebImage.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -268,7 +286,9 @@
 				8B641705E2D9FF6A4C06AA53 /* Preview Assets.xcassets in Resources */,
 				E5A8FD49B1F78CD4C11A0E77 /* CommonKit_CommonKit.bundle in Resources */,
 				E70812B4B9AFB19BBFACFDDE /* CommonViewsKit_CommonViewsKit.bundle in Resources */,
+				B999D91F8A07DDB514A73CF7 /* HomeHandlerKit_HomeHandlerKit.bundle in Resources */,
 				3A4EFFEFA378E09164AE5DB3 /* HomeModule_HomeModule.bundle in Resources */,
+				BD7D83B89467397EF4500402 /* SDWebImage_SDWebImage.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,11 +316,27 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_PREVIEWS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(inherited)",
+					"$(SRCROOT)/Tuist/.build/checkouts/SDWebImage/SDWebImage/Core",
+					"$(SRCROOT)/Tuist/.build/checkouts/SDWebImage/SDWebImage/Private",
+					"$(SRCROOT)/Tuist/.build/checkouts/SDWebImage/SDWebImage/include",
+				);
 				INFOPLIST_FILE = "Derived/InfoPlists/GameList-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/SDWebImage/SDWebImage.modulemap",
+				);
+				OTHER_SWIFT_FLAGS = (
+					"$(inherited)",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/SDWebImage/SDWebImage.modulemap",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gamelist;
 				PRODUCT_NAME = GameList;
@@ -325,11 +361,27 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_PREVIEWS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(inherited)",
+					"$(SRCROOT)/Tuist/.build/checkouts/SDWebImage/SDWebImage/Core",
+					"$(SRCROOT)/Tuist/.build/checkouts/SDWebImage/SDWebImage/Private",
+					"$(SRCROOT)/Tuist/.build/checkouts/SDWebImage/SDWebImage/include",
+				);
 				INFOPLIST_FILE = "Derived/InfoPlists/GameList-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/SDWebImage/SDWebImage.modulemap",
+				);
+				OTHER_SWIFT_FLAGS = (
+					"$(inherited)",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/SDWebImage/SDWebImage.modulemap",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gamelist;
 				PRODUCT_NAME = GameList;

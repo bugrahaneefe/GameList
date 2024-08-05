@@ -8,8 +8,9 @@
 import UIKit
 import CommonKit
 import ListingKit
+import CoreUtils
 
-protocol HomeViewInterface {
+protocol HomeViewInterface: ViewInterface {
     func prepareUI()
     func reloadCollectionView(listSections: [ListSection])
 }
@@ -22,12 +23,21 @@ private enum Constant {
     }
 }
 
-final class HomeModuleViewController: UIViewController {
+final class HomeModuleViewController: BaseViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
-//    @IBOutlet private weak var emptyShowableView: UIView!
     
     var presenter: HomeModulePresenterInterface!
     private lazy var listDataSource = ListDataSource(alwaysUseReloadDataSource: true, viewController: self)
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        presenter.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.viewWillAppear()
+    }
 }
 
 extension HomeModuleViewController: HomeViewInterface {
@@ -48,4 +58,8 @@ extension HomeModuleViewController: HomeViewInterface {
     func reloadCollectionView(listSections: [ListSection]) {
         listDataSource.reload(newSections: listSections, completion: nil)
     }
+    
+    func prepareBackButton(tintColor: UIColor) {}
+    
+    func prepareBackButton(tintColor: UIColor, target: Any?, action: Selector?) {}
 }

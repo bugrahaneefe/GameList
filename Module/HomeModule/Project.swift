@@ -27,7 +27,9 @@ let frameworkTarget = Target.target(
         dependencyEngine,
         coreUtils,
         common,
-        commonViews
+        commonViews,
+        sdWebImage,
+        homeHandlerKit
     ]
 )
 

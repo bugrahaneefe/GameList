@@ -22,6 +22,10 @@ let package = Package(
         .package(
             url: "https://gitlab.trendyol.com/mobile/base/ios/trendyol-platform-utilities",
             exact: "0.5.5"
+        ),
+        .package(
+            url: "https://github.com/SDWebImage/SDWebImage.git",
+            exact: "5.19.5"
         )
     ]
 )

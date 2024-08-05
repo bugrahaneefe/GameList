@@ -12,3 +12,6 @@ public let common = TargetDependency.project(
 public let commonViews = TargetDependency.project(
   target: "CommonViewsKit",
   path: .relativeToRoot("Common/CommonViewsKit"))
+public let homeHandlerKit = TargetDependency.project(
+  target: "HomeHandlerKit",
+  path: .relativeToRoot("Kit/HomeHandlerKit"))

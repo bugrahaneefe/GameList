@@ -2,10 +2,9 @@ import ProjectDescription
 import ProjectDescriptionHelpers
 
 let project = Project.module(
-    name: "NetworkKit",
+    name: "HomeHandlerKit",
     dependencies: [
-        alamofire,
-        common,
+        coreUtils,
         sdWebImage
     ]
 )

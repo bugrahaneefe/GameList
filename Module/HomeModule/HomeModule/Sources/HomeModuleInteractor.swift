@@ -8,6 +8,7 @@
 import Foundation
 import CommonKit
 import NetworkKit
+import HomeHandlerKit
 
 protocol HomeModuleInteractorInterface: AnyObject {
     func fetchGameList(request: HomeModuleGameListRequest)
@@ -24,7 +25,7 @@ final class HomeModuleInteractor {
 //MARK: - MLFavoriteListInteractorInterface
 extension HomeModuleInteractor: HomeModuleInteractorInterface {
     func fetchGameList(request: HomeModuleGameListRequest) {
-        NetworkKit.shared.gameListDetails(request: request) { [weak output] result in
+        HomeHandler.shared.gameListDetails(request: request) { [weak output] result in
             output?.handleGameListResult(result)
         }
     }

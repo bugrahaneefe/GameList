@@ -1,9 +1,7 @@
 import CommonKit
 import Alamofire
 
-public protocol NetworkKitInterface {
-    func gameListDetails(request: HomeModuleGameListRequest, completion: @escaping (GameListDetailsResult) -> Void)
-}
+public protocol NetworkKitInterface {}
 
 public final class NetworkKit {
     public static let shared: NetworkKitInterface = NetworkKit()
@@ -76,14 +74,6 @@ extension NetworkKit: NetworkKitInterface {
             case .failure(let error):
                 completion(.failure(error))
             }
-        }
-        
-        interactor.gameListDetails(request: request) { [weak self] result in
-            guard let self = self else { return }
-            if case .success(let response) = result {
-                print(result)
-            }
-            completion(result)
         }
     }
 }

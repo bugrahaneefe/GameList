@@ -39,20 +39,20 @@ enum HomeModuleSection {
         return GenericSection(
             listIdentifier: Constant.bannerSectionIdentifier,
             items: items)
-            .onCellSize { _, size in
-                    .init(width: screenWidth - Constant.cellHorizontalMargins, height: Constant.BannerCell.height)
-            }
-            .onCellConfigure(for: GameCell.self, bundle: Bundle(for: GameCell.self)) { game, cell, indexPath in
-                cell.presenter = GameCellPresenter(view: cell,
-                                                               argument: .init(game: game),
-                                                   homeModuleGameDelegate: gameDelegate)
-            }
-            .onHeaderSize { _, size in
-                    .init(width: screenWidth, height: Constant.headerReusableViewHeight)
-            }
-            .onDidSelect { [weak delegate] game, _ in
-                delegate?.gameSelected(game)
-            }
-            .minimumLineSpacing(Constant.lineSpacing)
+        .onCellSize { _, size in
+                .init(width: screenWidth - Constant.cellHorizontalMargins, height: Constant.BannerCell.height)
+        }
+        .onCellConfigure(for: GameCell.self, bundle: Bundle(for: GameCell.self)) { game, cell, indexPath in
+            cell.presenter = GameCellPresenter(view: cell,
+                                               argument: .init(game: game),
+                                               homeModuleGameDelegate: gameDelegate)
+        }
+        .onHeaderSize { _, size in
+                .init(width: screenWidth, height: Constant.headerReusableViewHeight)
+        }
+        .onDidSelect { [weak delegate] game, _ in
+            delegate?.gameSelected(game)
+        }
+        .minimumLineSpacing(Constant.lineSpacing)
     }
 }

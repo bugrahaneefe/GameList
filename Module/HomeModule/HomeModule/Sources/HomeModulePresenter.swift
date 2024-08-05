@@ -7,6 +7,7 @@
 
 import Foundation
 import CommonKit
+import CoreUtils
 
 protocol HomeModulePresenterInterface: PresenterInterface, HomeModuleHeaderCollectionReusablePresenterDelegate, HomeModuleGameDelegate {
 //    todo
@@ -68,7 +69,7 @@ extension HomeModulePresenter: HomeModulePresenterInterface {
 
 //MARK: - HomeModuleInteractorOutput
 extension HomeModulePresenter: HomeModuleInteractorOutput {
-    func handleGameListResult(_ result: CommonKit.GameListDetailsResult) {
+    func handleGameListResult(_ result: GameListDetailsResult) {
         switch result {
         case .success(let response):
             guard response.games.isNotNilOrEmpty else {
@@ -76,6 +77,7 @@ extension HomeModulePresenter: HomeModuleInteractorOutput {
                 return
             }
             games = response.games
+            print(games ?? "none")
             handleGameSection()
         case .failure(let error):
 //            todo error extensions
