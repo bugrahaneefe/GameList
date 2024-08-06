@@ -28,23 +28,13 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="test" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zaU-k5-j9w">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="117"/>
-                                <color key="textColor" systemColor="systemPinkColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="m7P-bh-ZKs" secondAttribute="bottom" id="Dwi-gc-p44"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="zaU-k5-j9w" secondAttribute="trailing" id="GXN-M0-aqE"/>
                             <constraint firstItem="m7P-bh-ZKs" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="YSh-VN-7Ek"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="zaU-k5-j9w" secondAttribute="bottom" id="br0-pn-VVu"/>
-                            <constraint firstItem="zaU-k5-j9w" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="gtE-pH-tyV"/>
                             <constraint firstItem="m7P-bh-ZKs" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="igP-IH-VxT"/>
-                            <constraint firstItem="zaU-k5-j9w" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="uBq-fF-UDX"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="m7P-bh-ZKs" secondAttribute="trailing" id="uia-RA-rSH"/>
                         </constraints>
                     </view>
@@ -60,9 +50,6 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemPinkColor">
-            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

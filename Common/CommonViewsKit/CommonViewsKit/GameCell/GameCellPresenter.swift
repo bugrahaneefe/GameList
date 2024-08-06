@@ -11,10 +11,9 @@ import CommonKit
 public protocol GameCellPresenterInterface {
     func load()
     func bannerImageLoaded()
-    func prepareForReuse()
 }
 
-public final class GameCellPresenter { 
+public final class GameCellPresenter {
     private var view: GameCellViewInterface?
     private let game: Game
     private weak var homeModuleGameDelegate: HomeModuleGameDelegate?
@@ -23,13 +22,14 @@ public final class GameCellPresenter {
         view: GameCellViewInterface?,
         argument: GameCellArgument,
         homeModuleGameDelegate: HomeModuleGameDelegate? = nil) {
-        self.view = view
+            self.view = view
             game = argument.game
-        self.homeModuleGameDelegate = homeModuleGameDelegate
-    }
+            self.homeModuleGameDelegate = homeModuleGameDelegate
+        }
     
     private func handleBannerImage() {
         if let path = game.backgroundImage {
+            print(path)
             view?.setBannerImage(path: path)
         }
     }
@@ -41,9 +41,9 @@ extension GameCellPresenter: GameCellPresenterInterface {
         handleBannerImage()
     }
     
-//    todo
+    //    todo
     public func bannerImageLoaded() {    }
-//    todo
+    //    todo
     public func prepareForReuse() {}
 }
 

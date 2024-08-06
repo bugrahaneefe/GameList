@@ -20,6 +20,5 @@ public final class GameListTabBarController: UITabBarController {
         navigationController.viewControllers = [homeVC]
         
         viewControllers = [navigationController]
-        print("homeModule is added into tab bar.")
     }
 }

@@ -20,10 +20,8 @@ extension HomeHandlerInteractor: HomeHandlerInteractorInterface {
         request(endpoint: .gameListDetails) { (result: Result<GameListDetailsResponse, Error>) in
             switch result {
             case .success(let response):
-                print("success(\(response))")
                 completion(.success(response))
             case .failure(let error):
-                print("failure(\(error))")
                 completion(.failure(error))
             }
         }

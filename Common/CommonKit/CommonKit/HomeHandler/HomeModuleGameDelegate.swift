@@ -7,6 +7,4 @@
 
 import Foundation
 
-public protocol HomeModuleGameDelegate: AnyObject {
-    
-}
+public protocol HomeModuleGameDelegate: AnyObject {}

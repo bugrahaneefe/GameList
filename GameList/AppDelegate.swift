@@ -12,7 +12,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Register dependencies
         HomeModuleDependencyRegistration.register(to: DependencyEngine.shared)
         
-        print("AppDelegate started")
         return true
     }
 

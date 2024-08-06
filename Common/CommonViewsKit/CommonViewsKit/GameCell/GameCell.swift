@@ -15,7 +15,7 @@ public protocol GameCellViewInterface {
 
 public final class GameCell: UICollectionViewCell {
     @IBOutlet private weak var bannerImageView: UIImageView!
-
+    
     public var presenter: GameCellPresenterInterface! {
         didSet {
             presenter.load()
@@ -27,9 +27,10 @@ public final class GameCell: UICollectionViewCell {
     }
 }
 
-// MARK: - MLRestaurantListCellViewInterface
+// MARK: - GameCellViewInterface
 extension GameCell: GameCellViewInterface {
     public func setBannerImage(path: String?) {
+        print("Loading image from path: \(String(describing: path))")  // Debugging statement
         bannerImageView.setImageWith(path: path) { [weak self] _, _, _ in
             self?.presenter.bannerImageLoaded()
         }

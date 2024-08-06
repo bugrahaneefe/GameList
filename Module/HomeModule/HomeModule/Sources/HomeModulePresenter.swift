@@ -36,7 +36,6 @@ final class HomeModulePresenter {
             results: [])
         
         interactor.fetchGameList(request: request)
-        print("gamelist is fetched.")
     }
     
     private func handleEmptyGameStatus() {
@@ -44,13 +43,8 @@ final class HomeModulePresenter {
     }
     
     private func handleGameSection() {
-        let bannerSections = HomeModuleSection.bannerSection(
-            items: games ?? [],
-            delegate: self,
-            headerDelegate: self,
-            gameDelegate: self)
-        
-        view?.reloadCollectionView(listSections: [bannerSections])
+        let gameSection = GameSection(games: games ?? [])
+        view?.reloadCollectionView(listSections: [gameSection])
     }
 }
 
@@ -72,7 +66,7 @@ extension HomeModulePresenter: HomeModuleInteractorOutput {
     func handleGameListResult(_ result: GameListDetailsResult) {
         switch result {
         case .success(let response):
-            guard response.results.isNotNilOrEmpty else {
+            guard !response.results.isEmpty else {
                 handleEmptyGameStatus()
                 return
             }

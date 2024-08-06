@@ -10,15 +10,16 @@ import ListingKit
 import CommonKit
 import CommonViewsKit
 import CoreUtils
+import UIKit
 
 private enum Constant {
-    static let bannerSectionIdentifier = "GameBannerSection"
+    static let gameSectionIdentifier = "GameCell"
     static let cellHorizontalMargins = 30.0
     static let headerReusableViewHeight = 48.0
     static let lineSpacing = 10.0
-    enum BannerCell {
+    enum GameCell {
         static let height = 187.0
-        static let appereanceIcon = "GameBannerAppereance"
+        static let appereanceIcon = "GameAppearance"
     }
 }
 
@@ -30,29 +31,40 @@ protocol HomeModuleHeaderCollectionReusablePresenterDelegate: AnyObject {
     func changeAppearanceTapped()
 }
 
-enum HomeModuleSection {
-    static func bannerSection(items: [Game],
-                              screenWidth: Double = Device.ScreenSize.screenWidth,
-                              delegate: HomeModuleSectionDelegate?,
-                              headerDelegate: HomeModuleHeaderCollectionReusablePresenterDelegate?,
-                              gameDelegate: HomeModuleGameDelegate?) -> GenericSection<Game> {
-        return GenericSection(
-            listIdentifier: Constant.bannerSectionIdentifier,
-            items: items)
-        .onCellSize { _, size in
-                .init(width: screenWidth - Constant.cellHorizontalMargins, height: Constant.BannerCell.height)
-        }
-        .onCellConfigure(for: GameCell.self, bundle: Bundle(for: GameCell.self)) { game, cell, indexPath in
-            cell.presenter = GameCellPresenter(view: cell,
-                                               argument: .init(game: game),
-                                               homeModuleGameDelegate: gameDelegate)
-        }
-        .onHeaderSize { _, size in
-                .init(width: screenWidth, height: Constant.headerReusableViewHeight)
-        }
-        .onDidSelect { [weak delegate] game, _ in
-            delegate?.gameSelected(game)
-        }
-        .minimumLineSpacing(Constant.lineSpacing)
+class GameSection: ListSection {
+    var context: ListContext?
+    var items: [ListIdentifiable] {
+        games
+    }
+    let listIdentifier: String = Constant.gameSectionIdentifier
+
+    private var games: [Game] = []
+
+    init(games: [Game]) {
+        self.games = games
+    }
+
+    func cell(for itemIdentifier: String, at indexPath: IndexPath) -> UICollectionViewCell? {
+        guard
+            let item = games.first(where: { $0.listIdentifier == itemIdentifier }),
+            let cell: GameCell = dequeueCell(at: indexPath)
+        else { return nil }
+
+        cell.presenter = GameCellPresenter(
+            view: cell,
+            argument: .init(game: item))
+
+        return cell
+    }
+
+    func size(at indexPath: IndexPath) -> CGSize {
+        guard let identifier = context?.itemIdentifier(at: indexPath),
+              let gameItem = games.first(where: { $0.listIdentifier == identifier })
+        else { return .zero }
+
+        return CGSize(
+            width: listSize.width - Constant.cellHorizontalMargins,
+            height: Constant.GameCell.height
+        )
     }
 }
