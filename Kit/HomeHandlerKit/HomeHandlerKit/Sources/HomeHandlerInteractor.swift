@@ -12,7 +12,7 @@ protocol HomeHandlerInteractorInterface: AnyObject {
     func gameListDetails(request: HomeModuleGameListRequest, completion: @escaping (GameListDetailsResult) -> Void)
 }
 
-final class HomeHandlerInteractor: MLNetworker<MLFavoriteEndpointItem> { }
+final class HomeHandlerInteractor: MLNetworker<HomeEndpointItem> { }
 
 // MARK: - MLFavoriteRestaurantHandlerInteractorInterface
 extension HomeHandlerInteractor: HomeHandlerInteractorInterface {
