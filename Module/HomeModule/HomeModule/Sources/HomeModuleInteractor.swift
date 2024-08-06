@@ -26,7 +26,10 @@ final class HomeModuleInteractor {
 extension HomeModuleInteractor: HomeModuleInteractorInterface {
     func fetchGameList(request: HomeModuleGameListRequest) {
         HomeHandler.shared.gameListDetails(request: request) { [weak output] result in
+            print("heheheyyy")
             output?.handleGameListResult(result)
+            print(result)
+            print("heheheyyy")
         }
     }
 }

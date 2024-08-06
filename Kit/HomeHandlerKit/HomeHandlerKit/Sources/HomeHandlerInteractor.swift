@@ -9,15 +9,23 @@ import Foundation
 import CommonKit
 
 protocol HomeHandlerInteractorInterface: AnyObject {
-    func gameListDetails(request: HomeModuleGameListRequest, completion: @escaping (GameListDetailsResult) -> Void)
+    func gameListDetails(completion: @escaping (GameListDetailsResult) -> Void)
 }
 
-final class HomeHandlerInteractor: MLNetworker<HomeEndpointItem> { }
+final class HomeHandlerInteractor: Networker<HomeEndpointItem> { }
 
-// MARK: - MLFavoriteRestaurantHandlerInteractorInterface
+// MARK: - HomeHandlerInteractorInterface
 extension HomeHandlerInteractor: HomeHandlerInteractorInterface {
-    func gameListDetails(request: HomeModuleGameListRequest, completion: @escaping (GameListDetailsResult) -> Void) {
-        networkManager.request(endpoint: .favoriteRestaurantDetails(request: request), type: MLFavoriteRestaurantDetailsResponse.self, completion: completion)
+    func gameListDetails(completion: @escaping (GameListDetailsResult) -> Void) {
+        request(endpoint: .gameListDetails) { (result: Result<GameListDetailsResponse, Error>) in
+            switch result {
+            case .success(let response):
+                print("success(\(response))")
+                completion(.success(response))
+            case .failure(let error):
+                print("failure(\(error))")
+                completion(.failure(error))
+            }
+        }
     }
 }
-

@@ -72,11 +72,11 @@ extension HomeModulePresenter: HomeModuleInteractorOutput {
     func handleGameListResult(_ result: GameListDetailsResult) {
         switch result {
         case .success(let response):
-            guard response.games.isNotNilOrEmpty else {
+            guard response.results.isNotNilOrEmpty else {
                 handleEmptyGameStatus()
                 return
             }
-            games = response.games
+            games = response.results
             print(games ?? "none")
             handleGameSection()
         case .failure(let error):

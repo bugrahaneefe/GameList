@@ -11,13 +11,13 @@
 import Foundation
 import ListingKit
 
-public struct HomeModuleGameListRequest: Encodable {
+public struct HomeModuleGameListRequest: Decodable {
     public let count: Int
-    public let next: String
-    public let previous: String
+    public let next: String?
+    public let previous: String?
     public let results: [Game]
     
-    public init(count: Int, next: String, previous: String, results: [Game]) {
+    public init(count: Int, next: String?, previous: String?, results: [Game]) {
         self.count = count
         self.next = next
         self.previous = previous
@@ -26,63 +26,10 @@ public struct HomeModuleGameListRequest: Encodable {
 }
 
 public struct Game: Codable, ListIdentifiable {
-    public var listIdentifier: String
-    
-    public struct ESRBRating: Codable {
-        public let id: Int
-        public let slug: String
-        public let name: String
-        
-        public init(id: Int, slug: String, name: String) {
-            self.id = id
-            self.slug = slug
-            self.name = name
-        }
+    public var listIdentifier: String {
+        return String(id)
     }
-    
-    public struct PlatformInfo: Codable {
-        public struct Platform: Codable {
-            public let id: Int
-            public let slug: String
-            public let name: String
-            
-            public init(id: Int, slug: String, name: String) {
-                self.id = id
-                self.slug = slug
-                self.name = name
-            }
-        }
-        public let platform: Platform
-        public let releasedAt: String
-        public let requirements: Requirements
-        
-        public init(platform: Platform, releasedAt: String, requirements: Requirements) {
-            self.platform = platform
-            self.releasedAt = releasedAt
-            self.requirements = requirements
-        }
-    }
-    
-    public struct Requirements: Codable {
-        public let minimum: String
-        public let recommended: String
-        
-        public init(minimum: String, recommended: String) {
-            self.minimum = minimum
-            self.recommended = recommended
-        }
-    }
-    
-    public struct Rating: Codable {
-        // Define the properties for the Rating struct if needed
-        // Add public initializer if properties are defined
-    }
-    
-    public struct AddedByStatus: Codable {
-        // Define the properties for the AddedByStatus struct if needed
-        // Add public initializer if properties are defined
-    }
-    
+
     public let id: Int
     public let slug: String
     public let name: String
@@ -91,48 +38,70 @@ public struct Game: Codable, ListIdentifiable {
     public let backgroundImage: String?
     public let rating: Double
     public let ratingTop: Int
-    public let ratings: [String: Rating]
+    public let ratings: [Rating]
     public let ratingsCount: Int
-    public let reviewsTextCount: String
+    public let reviewsTextCount: Int
     public let added: Int
-    public let addedByStatus: [String: AddedByStatus]
-    public let metacritic: Int
+    public let addedByStatus: AddedByStatus
+    public let metacritic: Int?
     public let playtime: Int
     public let suggestionsCount: Int
     public let updated: String
     public let esrbRating: ESRBRating
     public let platforms: [PlatformInfo]
     
-    init(listIdentifier: String, id: Int, slug: String, name: String, released: String, tba: Bool, backgroundImage: String, rating: Double, ratingTop: Int, ratings: [String : Rating], ratingsCount: Int, reviewsTextCount: String, added: Int, addedByStatus: [String : AddedByStatus], metacritic: Int, playtime: Int, suggestionsCount: Int, updated: String, esrbRating: ESRBRating, platforms: [PlatformInfo]) {
-        self.listIdentifier = listIdentifier
-        self.id = id
-        self.slug = slug
-        self.name = name
-        self.released = released
-        self.tba = tba
-        self.backgroundImage = backgroundImage
-        self.rating = rating
-        self.ratingTop = ratingTop
-        self.ratings = ratings
-        self.ratingsCount = ratingsCount
-        self.reviewsTextCount = reviewsTextCount
-        self.added = added
-        self.addedByStatus = addedByStatus
-        self.metacritic = metacritic
-        self.playtime = playtime
-        self.suggestionsCount = suggestionsCount
-        self.updated = updated
-        self.esrbRating = esrbRating
-        self.platforms = platforms
+    public struct ESRBRating: Codable {
+        public let id: Int
+        public let slug: String
+        public let name: String
+    }
+
+    public struct PlatformInfo: Codable {
+        public struct Platform: Codable {
+            public let id: Int
+            public let slug: String
+            public let name: String
+        }
+        public let platform: Platform
+        public let releasedAt: String?
+        public let requirementsEn: Requirements?
+        public let requirementsRu: Requirements?
+    }
+
+    public struct Requirements: Codable {
+        public let minimum: String?
+        public let recommended: String?
+    }
+
+    public struct Rating: Codable {
+        public let id: Int
+        public let title: String
+        public let count: Int
+        public let percent: Double
+    }
+
+    public struct AddedByStatus: Codable {
+        public let yet: Int?
+        public let owned: Int?
+        public let beaten: Int?
+        public let toplay: Int?
+        public let dropped: Int?
+        public let playing: Int?
     }
 }
 
 public typealias GameListDetailsResult = Result<GameListDetailsResponse, Error>
 
 public struct GameListDetailsResponse: Decodable {
-    public let games: [Game]?
+    public let count: Int
+    public let next: String?
+    public let previous: String?
+    public let results: [Game]?
     
-    public init(games: [Game]?) {
-        self.games = games
+    public init(count: Int, next: String?, previous: String?, results: [Game]) {
+        self.count = count
+        self.next = next
+        self.previous = previous
+        self.results = results
     }
 }

@@ -1,77 +1,32 @@
 import CommonKit
+import Foundation
 import Alamofire
 
-public protocol NetworkKitInterface {}
+public typealias Completion<T> = (Result<T, Error>) -> Void where T: Decodable
+public typealias AsyncResult<T> = Result<T, Error> where T: Decodable
 
-public final class NetworkKit {
-    public static let shared: NetworkKitInterface = NetworkKit()
-    private let interactor: NetworkKitInterface
-    
-    init(interactor: NetworkKitInterface = NetworkKit()) {
-        self.interactor = interactor
-    }
+public protocol NetworkKitInterface {
+    func request<T: Decodable>(from url: URL, completion: @escaping (Result<T, Error>) -> Void)
+}
+
+public class EmptyResponse: Codable {
+    public init() {}
+}
+
+public final class NetworkKit<EndpointItem: Endpoint> {
+    public init() {}
 }
 
 extension NetworkKit: NetworkKitInterface {
-    
-    public func gameListDetails(request: HomeModuleGameListRequest, completion: @escaping (GameListDetailsResult) -> Void) {
-        
-        let parameters: [String: Any] = [
-            "count": request.count,
-            "next": request.next,
-            "previous": request.previous,
-            "results": request.results.map { game in
-                return [
-                    "id": game.id,
-                    "slug": game.slug,
-                    "name": game.name,
-                    "released": game.released,
-                    "tba": game.tba,
-                    "background_image": game.backgroundImage,
-                    "rating": game.rating,
-                    "rating_top": game.ratingTop,
-                    "ratings": game.ratings, // Assuming ratings is [String: Any]
-                    "ratings_count": game.ratingsCount,
-                    "reviews_text_count": game.reviewsTextCount,
-                    "added": game.added,
-                    "added_by_status": game.addedByStatus, // Assuming addedByStatus is [String: Any]
-                    "metacritic": game.metacritic,
-                    "playtime": game.playtime,
-                    "suggestions_count": game.suggestionsCount,
-                    "updated": game.updated,
-                    "esrb_rating": [
-                        "id": game.esrbRating.id,
-                        "slug": game.esrbRating.slug,
-                        "name": game.esrbRating.name
-                    ],
-                    "platforms": game.platforms.map { platformInfo in
-                        return [
-                            "platform": [
-                                "id": platformInfo.platform.id,
-                                "slug": platformInfo.platform.slug,
-                                "name": platformInfo.platform.name
-                            ],
-                            "released_at": platformInfo.releasedAt,
-                            "requirements": [
-                                "minimum": platformInfo.requirements.minimum,
-                                "recommended": platformInfo.requirements.recommended
-                            ]
-                        ]
-                    }
-                ]
-            }
-        ]
-        
-        AF.request(HomeHandler.Constant.gameListURL,
-                   method: .get,
-                   parameters: parameters,
-                   encoding: URLEncoding.default)
-        .validate()
-        .responseDecodable(of: GameListDetailsResponse.self) { response in
+    public func request<T: Decodable>(from url: URL, completion: @escaping (Result<T, Error>) -> Void) {
+        AF.request(url).validate().responseDecodable(of: T.self) { response in
             switch response.result {
-            case .success(let gameListResponse):
-                completion(.success(gameListResponse))
+            case .success(let value):
+                completion(.success(value))
             case .failure(let error):
+                if let data = response.data {
+                    print("Failed to decode response, raw data: \(String(data: data, encoding: .utf8) ?? "nil")")
+                }
                 completion(.failure(error))
             }
         }
