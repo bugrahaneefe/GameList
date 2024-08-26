@@ -10,34 +10,34 @@ import CoreUtils
 
 public protocol GameCellViewInterface {
     func setBannerImage(path: String?)
+    func setGameNameLabel(name: String?)
     func prepareUI()
 }
 
 public final class GameCell: UICollectionViewCell {
     @IBOutlet private weak var bannerImageView: UIImageView!
+    @IBOutlet private weak var gameNameLabel: UILabel!
     
     public var presenter: GameCellPresenterInterface! {
         didSet {
-            presenter.load()
+            presenter?.load()
         }
-    }
-    
-    public override func awakeFromNib() {
-        super.awakeFromNib()
     }
 }
 
 // MARK: - GameCellViewInterface
 extension GameCell: GameCellViewInterface {
     public func setBannerImage(path: String?) {
-        print("Loading image from path: \(String(describing: path))")  // Debugging statement
         bannerImageView.setImageWith(path: path) { [weak self] _, _, _ in
             self?.presenter.bannerImageLoaded()
         }
     }
     
+    public func setGameNameLabel(name: String?) {
+        self.gameNameLabel.text = name
+    }
+ 
 //    todo
     public func prepareUI() {
     }
 }
-

@@ -42,20 +42,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7836701222F8228003B63214"
-               BuildableName = "CommonKit_CommonKit.bundle"
-               BlueprintName = "CommonKit_CommonKit"
-               ReferencedContainer = "container:Common/CommonKit/CommonKit.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "D2826A0F7AFF26D6B07A1AEB"
                BuildableName = "CommonViewsKit.framework"
                BlueprintName = "CommonViewsKit"

@@ -29,8 +29,13 @@ public final class GameCellPresenter {
     
     private func handleBannerImage() {
         if let path = game.backgroundImage {
-            print(path)
             view?.setBannerImage(path: path)
+        }
+    }
+    
+    private func handleGameName() {
+        if let name = game.name {
+            view?.setGameNameLabel(name: name)
         }
     }
 }
@@ -39,6 +44,7 @@ extension GameCellPresenter: GameCellPresenterInterface {
     public func load() {
         view?.prepareUI()
         handleBannerImage()
+        handleGameName()
     }
     
     //    todo

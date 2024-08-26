@@ -12,13 +12,24 @@ public final class GameListTabBarController: UITabBarController {
     }
     
     private func setupTabBar() {
-//        todo
         let navigationController = UINavigationController()
-        let homeVC = homeModule.gameList(navigationController: navigationController)
+        tabBar.tintColor = UIColor(named: "TabBarTint")
         
-        homeVC.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house.fill"))
+        let homeVC = homeModule.gameList(navigationController: navigationController)
         navigationController.viewControllers = [homeVC]
+        navigationController.tabBarItem = .init(
+            title: "Games",
+            image: UIImage(systemName: "gamecontroller"),
+            selectedImage: UIImage(systemName: "gamecontroller.fill")
+        )
         
         viewControllers = [navigationController]
+        
+        navigationController.navigationBar
+            .configureNavigationBar(isTranslucent: true,
+                                    backgroundImage: nil,
+                                    shadowColor: nil,
+                                    backgroundColor: UIColor(named: "NavigationBarBackground") ?? .clear)
+        tabBar.setCustomAppearance(backgroundColor: UIColor(named: "TabBarBackground"))
     }
 }

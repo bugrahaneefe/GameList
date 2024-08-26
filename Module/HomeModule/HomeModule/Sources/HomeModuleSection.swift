@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import ListingKit
 import CommonKit
 import CommonViewsKit
 import CoreUtils
@@ -14,7 +13,7 @@ import UIKit
 
 private enum Constant {
     static let gameSectionIdentifier = "GameCell"
-    static let cellHorizontalMargins = 30.0
+    static let cellCornerRadius = 10.0
     static let headerReusableViewHeight = 48.0
     static let lineSpacing = 10.0
     enum GameCell {
@@ -31,40 +30,30 @@ protocol HomeModuleHeaderCollectionReusablePresenterDelegate: AnyObject {
     func changeAppearanceTapped()
 }
 
-class GameSection: ListSection {
-    var context: ListContext?
-    var items: [ListIdentifiable] {
-        games
-    }
-    let listIdentifier: String = Constant.gameSectionIdentifier
-
-    private var games: [Game] = []
-
-    init(games: [Game]) {
+class GameSection {
+    private var games: [Game]
+    private weak var delegate: HomeModuleSectionDelegate?
+    
+    init(games: [Game], delegate: HomeModuleSectionDelegate?) {
         self.games = games
+        self.delegate = delegate
     }
-
-    func cell(for itemIdentifier: String, at indexPath: IndexPath) -> UICollectionViewCell? {
-        guard
-            let item = games.first(where: { $0.listIdentifier == itemIdentifier }),
-            let cell: GameCell = dequeueCell(at: indexPath)
-        else { return nil }
-
-        cell.presenter = GameCellPresenter(
-            view: cell,
-            argument: .init(game: item))
-
+    
+    func numberOfItems() -> Int {
+        return games.count
+    }
+    
+    func configureCell(_ collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(with: GameCell.self, for: indexPath)
+        let game = games[indexPath.row]
+        let argument = GameCellArgument(game: game)
+        let presenter = GameCellPresenter(view: cell, argument: argument)
+        cell.layer.cornerRadius = Constant.cellCornerRadius
+        cell.presenter = presenter
         return cell
     }
-
-    func size(at indexPath: IndexPath) -> CGSize {
-        guard let identifier = context?.itemIdentifier(at: indexPath),
-              let gameItem = games.first(where: { $0.listIdentifier == identifier })
-        else { return .zero }
-
-        return CGSize(
-            width: listSize.width - Constant.cellHorizontalMargins,
-            height: Constant.GameCell.height
-        )
+    
+    func didSelectItem(at indexPath: IndexPath) {
+        delegate?.gameSelected(games[indexPath.row])
     }
 }

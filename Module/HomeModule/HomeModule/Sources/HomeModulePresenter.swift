@@ -8,16 +8,20 @@
 import Foundation
 import CommonKit
 import CoreUtils
+import UIKit
+import CommonViewsKit
 
-protocol HomeModulePresenterInterface: PresenterInterface, HomeModuleHeaderCollectionReusablePresenterDelegate, HomeModuleGameDelegate {
-//    todo
+protocol HomeModulePresenterInterface: PresenterInterface, HomeModuleHeaderCollectionReusablePresenterDelegate, HomeModuleGameDelegate, HomeModuleSectionDelegate {
+    func numberOfItemsInGameSection() -> Int
+    func cellForGame(at indexPath: IndexPath, in collectionView: UICollectionView) -> UICollectionViewCell
+    func didSelectGame(at indexPath: IndexPath)
 }
 
 final class HomeModulePresenter {
     private let interactor: HomeModuleInteractorInterface
     private let router: HomeModuleRouterInterface
     private var view: HomeViewInterface?
-    private var games: [Game]?
+    private var gameSection: GameSection?
     
     init(interactor: HomeModuleInteractorInterface,
          router: HomeModuleRouterInterface,
@@ -28,9 +32,10 @@ final class HomeModulePresenter {
     }
     
     private func fetchGameList() {
-        //        todo: showloading
+        view?.showLoading()
+        
         let request = HomeModuleGameListRequest(
-            count: 10,
+            count: 100,
             next: "",
             previous: "",
             results: [])
@@ -39,12 +44,14 @@ final class HomeModulePresenter {
     }
     
     private func handleEmptyGameStatus() {
+        view?.hideLoading()
 //        todo
     }
     
-    private func handleGameSection() {
-        let gameSection = GameSection(games: games ?? [])
-        view?.reloadCollectionView(listSections: [gameSection])
+    private func handleGameSection(with games: [Game]) {
+        self.gameSection = GameSection(games: games, delegate: self)
+        view?.reloadCollectionView()
+        view?.hideLoading()
     }
 }
 
@@ -59,30 +66,41 @@ extension HomeModulePresenter: HomeModulePresenterInterface {
     func viewWillAppear() {
         fetchGameList()
     }
+    
+    // MARK: - HomeModuleSectionDelegate
+    func gameSelected(_ game: Game) {
+//        router.navigateToGameDetails(game)
+    }
 }
 
 //MARK: - HomeModuleInteractorOutput
 extension HomeModulePresenter: HomeModuleInteractorOutput {
     func handleGameListResult(_ result: GameListDetailsResult) {
+        view?.hideLoading()
         switch result {
         case .success(let response):
             guard !response.results.isEmpty else {
                 handleEmptyGameStatus()
                 return
             }
-            games = response.results
-            print(games ?? "none")
-            handleGameSection()
+            handleGameSection(with: response.results)
         case .failure(let error):
-//            todo error extensions
+            // todo: handle error
             print(error)
         }
     }
 }
 
-
-//MARK: - HomeModuleSectionDelegate
-extension HomeModulePresenter: HomeModuleSectionDelegate {
-    func gameSelected(_ game: CommonKit.Game) {
+extension HomeModulePresenter {
+    func numberOfItemsInGameSection() -> Int {
+        return gameSection?.numberOfItems() ?? 0
+    }
+    
+    func cellForGame(at indexPath: IndexPath, in collectionView: UICollectionView) -> UICollectionViewCell {
+        return gameSection?.configureCell(collectionView, indexPath: indexPath) ?? UICollectionViewCell()
+    }
+    
+    func didSelectGame(at indexPath: IndexPath) {
+        gameSection?.didSelectItem(at: indexPath)
     }
 }

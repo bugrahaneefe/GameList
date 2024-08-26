@@ -9,7 +9,6 @@
 //  HomeModule
 
 import Foundation
-import ListingKit
 
 public struct HomeModuleGameListRequest: Decodable {
     public let count: Int
@@ -25,12 +24,7 @@ public struct HomeModuleGameListRequest: Decodable {
     }
 }
 
-public struct Game: Codable, ListIdentifiable {
-    public var listIdentifier: String {
-        guard let id = self.id else { return .empty }
-        return id.stringValue
-    }
-    
+public struct Game: Codable {
     public struct ESRBRating: Codable {
         public let id: Int
         public let slug: String
@@ -110,7 +104,7 @@ public struct Game: Codable, ListIdentifiable {
     
     public let id: Int?
     public let slug: String
-    public let name: String
+    public let name: String?
     public let released: String?
     public let tba: Bool
     public let backgroundImage: String?
@@ -128,7 +122,7 @@ public struct Game: Codable, ListIdentifiable {
     public let esrbRating: ESRBRating?
     public let platforms: [PlatformInfo]?
     
-    public init(listIdentifier: String, id: Int?, slug: String, name: String, released: String?, tba: Bool, backgroundImage: String?, rating: Double, ratingTop: Int?, ratings: [Rating]?, ratingsCount: Int?, reviewsTextCount: String?, added: Int?, addedByStatus: AddedByStatus?, metacritic: Int?, playtime: Int?, suggestionsCount: Int?, updated: String?, esrbRating: ESRBRating?, platforms: [PlatformInfo]?) {
+    public init(id: Int?, slug: String, name: String, released: String?, tba: Bool, backgroundImage: String?, rating: Double, ratingTop: Int?, ratings: [Rating]?, ratingsCount: Int?, reviewsTextCount: String?, added: Int?, addedByStatus: AddedByStatus?, metacritic: Int?, playtime: Int?, suggestionsCount: Int?, updated: String?, esrbRating: ESRBRating?, platforms: [PlatformInfo]?) {
         self.id = id
         self.slug = slug
         self.name = name
