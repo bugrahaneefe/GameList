@@ -8,6 +8,10 @@
 import Foundation
 import CommonKit
 
+public protocol HomeHandlerInterface {
+    func gameListDetails(request: HomeModuleGameListRequest, completion: @escaping (GameListDetailsResult) -> Void)
+}
+
 public final class HomeHandler {
     public static let shared: HomeHandlerInterface = HomeHandler()
     private let interactor: HomeHandlerInteractorInterface

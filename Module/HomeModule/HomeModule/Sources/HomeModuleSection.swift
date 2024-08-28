@@ -14,10 +14,7 @@ import UIKit
 private enum Constant {
     static let gameSectionIdentifier = "GameCell"
     static let cellCornerRadius = 10.0
-    static let headerReusableViewHeight = 48.0
-    static let lineSpacing = 10.0
     enum GameCell {
-        static let height = 187.0
         static let appereanceIcon = "GameAppearance"
     }
 }

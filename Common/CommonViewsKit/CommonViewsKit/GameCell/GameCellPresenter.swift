@@ -27,9 +27,8 @@ public final class GameCellPresenter {
         }
     
     private func handleBannerImage() {
-        view?.setBannerImage(path: "https://media.rawg.io/media/games/20a/20aa03a10cda45239fe22d035c0ebe64.jpg")
-
-        if let path = game.backgroundImage {
+        if let path = game.background_image {
+            view?.setBannerImage(path: path)
         }
     }
     

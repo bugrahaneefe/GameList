@@ -22,7 +22,7 @@ final class HomeModuleInteractor {
     weak var output: HomeModuleInteractorOutput?
 }
 
-//MARK: - MLFavoriteListInteractorInterface
+//MARK: - HomeModuleInteractorInterface
 extension HomeModuleInteractor: HomeModuleInteractorInterface {
     func fetchGameList(request: HomeModuleGameListRequest) {
         HomeHandler.shared.gameListDetails(request: request) { [weak output] result in

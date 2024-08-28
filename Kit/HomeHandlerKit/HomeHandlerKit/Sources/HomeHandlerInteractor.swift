@@ -7,6 +7,7 @@
 
 import Foundation
 import CommonKit
+import NetworkKit
 
 protocol HomeHandlerInteractorInterface: AnyObject {
     func gameListDetails(completion: @escaping (GameListDetailsResult) -> Void)

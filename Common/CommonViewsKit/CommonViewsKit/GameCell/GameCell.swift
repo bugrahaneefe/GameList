@@ -20,7 +20,7 @@ public final class GameCell: UICollectionViewCell {
     @IBOutlet private weak var gameNameLabel: UILabel!
     @IBOutlet private weak var ratingView: UIView!
     @IBOutlet private weak var ratingLabel: UILabel!
-    
+
     public var presenter: GameCellPresenterInterface! {
         didSet {
             presenter?.load()

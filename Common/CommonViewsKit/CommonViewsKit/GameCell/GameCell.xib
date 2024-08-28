@@ -72,6 +72,14 @@
                             <constraint firstAttribute="trailing" secondItem="6hl-X2-lv3" secondAttribute="trailing" id="z4D-w4-RyQ"/>
                         </constraints>
                     </stackView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zi3-aA-qif" customClass="FavoriteButton" customModule="CommonViewsKit">
+                        <rect key="frame" x="125" y="100" width="30" height="30"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="dkx-iu-19X"/>
+                            <constraint firstAttribute="width" constant="30" id="fas-LI-2Y2"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
@@ -81,6 +89,8 @@
                 <constraint firstItem="woa-Sh-hI2" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="8g3-jv-hhQ"/>
                 <constraint firstAttribute="bottom" secondItem="SwB-ev-Fdz" secondAttribute="bottom" constant="15" id="EIj-iu-efi"/>
                 <constraint firstAttribute="trailing" secondItem="SwB-ev-Fdz" secondAttribute="trailing" constant="15" id="GEc-XT-FOS"/>
+                <constraint firstItem="SwB-ev-Fdz" firstAttribute="top" secondItem="zi3-aA-qif" secondAttribute="bottom" constant="5" id="GhH-02-Ev5"/>
+                <constraint firstAttribute="trailing" secondItem="zi3-aA-qif" secondAttribute="trailing" constant="10" id="H3r-x5-6kj"/>
                 <constraint firstItem="woa-Sh-hI2" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="NJg-uE-skq"/>
                 <constraint firstAttribute="trailing" secondItem="woa-Sh-hI2" secondAttribute="trailing" id="Yxk-4h-WMf"/>
                 <constraint firstItem="SwB-ev-Fdz" firstAttribute="top" secondItem="woa-Sh-hI2" secondAttribute="bottom" constant="15" id="ZeV-NN-n6E"/>

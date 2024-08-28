@@ -50,12 +50,12 @@ public struct Game: Codable {
             }
         }
         public let platform: Platform
-        public let releasedAt: String?
+        public let released_at: String?
         public let requirements: Requirements?
         
-        public init(platform: Platform, releasedAt: String?, requirements: Requirements?) {
+        public init(platform: Platform, released_at: String?, requirements: Requirements?) {
             self.platform = platform
-            self.releasedAt = releasedAt
+            self.released_at = released_at
             self.requirements = requirements
         }
     }
@@ -107,40 +107,40 @@ public struct Game: Codable {
     public let name: String?
     public let released: String?
     public let tba: Bool
-    public let backgroundImage: String?
+    public let background_image: String?
     public let rating: Double
-    public let ratingTop: Int?
+    public let rating_top: Int?
     public let ratings: [Rating]?
-    public let ratingsCount: Int?
-    public let reviewsTextCount: String?
+    public let ratings_count: Int?
+    public let reviews_text_count: Int?
     public let added: Int?
-    public let addedByStatus: AddedByStatus?
+    public let added_by_status: AddedByStatus?
     public let metacritic: Int?
     public let playtime: Int?
-    public let suggestionsCount: Int?
+    public let suggestions_count: Int?
     public let updated: String?
-    public let esrbRating: ESRBRating?
+    public let esrb_rating: ESRBRating?
     public let platforms: [PlatformInfo]?
     
-    public init(id: Int?, slug: String, name: String, released: String?, tba: Bool, backgroundImage: String?, rating: Double, ratingTop: Int?, ratings: [Rating]?, ratingsCount: Int?, reviewsTextCount: String?, added: Int?, addedByStatus: AddedByStatus?, metacritic: Int?, playtime: Int?, suggestionsCount: Int?, updated: String?, esrbRating: ESRBRating?, platforms: [PlatformInfo]?) {
+    public init(id: Int?, slug: String, name: String, released: String?, tba: Bool, background_image: String?, rating: Double, rating_top: Int?, ratings: [Rating]?, ratings_count: Int?, reviews_text_count: Int?, added: Int?, added_by_status: AddedByStatus?, metacritic: Int?, playtime: Int?, suggestions_count: Int?, updated: String?, esrb_rating: ESRBRating?, platforms: [PlatformInfo]?) {
         self.id = id
         self.slug = slug
         self.name = name
         self.released = released
         self.tba = tba
-        self.backgroundImage = backgroundImage
+        self.background_image = background_image
         self.rating = rating
-        self.ratingTop = ratingTop
+        self.rating_top = rating_top
         self.ratings = ratings
-        self.ratingsCount = ratingsCount
-        self.reviewsTextCount = reviewsTextCount
+        self.ratings_count = ratings_count
+        self.reviews_text_count = reviews_text_count
         self.added = added
-        self.addedByStatus = addedByStatus
+        self.added_by_status = added_by_status
         self.metacritic = metacritic
         self.playtime = playtime
-        self.suggestionsCount = suggestionsCount
+        self.suggestions_count = suggestions_count
         self.updated = updated
-        self.esrbRating = esrbRating
+        self.esrb_rating = esrb_rating
         self.platforms = platforms
     }
 }
