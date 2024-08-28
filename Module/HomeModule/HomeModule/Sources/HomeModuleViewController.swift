@@ -17,16 +17,7 @@ protocol HomeViewInterface {
     func reloadCollectionView()
 }
 
-private enum Constant {
-    enum CollectionView {
-        static let leftInset: CGFloat = 15
-        static let rightInset: CGFloat = 15
-        static let bottomInset: CGFloat = 15
-        static let topInset: CGFloat = 0
-        static let cellWidth: CGFloat = 165
-        static let cellHeight: CGFloat = 184
-    }
-    
+private enum Constant {    
     enum NavigationBar {
         static let title: String = "Games"
         static let titleFont: CGFloat = 16.0
@@ -83,8 +74,7 @@ final class HomeModuleViewController: BaseViewController {
     }
     
     @objc private func rightBarButtonItemTapped() {
-//        todo
-        print("Right bar button tapped")
+        presenter.changeAppearanceTapped()
     }
 }
 
@@ -102,19 +92,7 @@ extension HomeModuleViewController: HomeViewInterface {
     }
     
     func prepareUI() {
-        collectionView.register(cellType: GameCell.self, bundle: CommonViewsKitResources.bundle)
-        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.sectionInset = UIEdgeInsets(
-                top: Constant.CollectionView.topInset,
-                left: Constant.CollectionView.leftInset,
-                bottom: Constant.CollectionView.bottomInset,
-                right: Constant.CollectionView.rightInset
-            )
-        }
-        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.estimatedItemSize = .zero
-        }
-        collectionView.backgroundColor = .black
+        presenter.prepareUI(for: collectionView)
     }
     
     func reloadCollectionView() {
@@ -141,12 +119,5 @@ extension HomeModuleViewController: UICollectionViewDataSource {
 extension HomeModuleViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         presenter.didSelectGame(at: indexPath)
-    }
-}
-
-// MARK: - UICollectionViewDelegateFlowLayout
-extension HomeModuleViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: Constant.CollectionView.cellWidth, height: Constant.CollectionView.cellHeight)
     }
 }

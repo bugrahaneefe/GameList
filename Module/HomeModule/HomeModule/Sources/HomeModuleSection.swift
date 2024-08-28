@@ -14,6 +14,17 @@ private enum Constant {
     enum GameCell {
         static let cellCornerRadius = 10.0
     }
+    
+    enum CollectionView {
+        static let leftInset: CGFloat = 15
+        static let rightInset: CGFloat = 15
+        static let bottomInset: CGFloat = 15
+        static let topInset: CGFloat = 0
+        static let logoCellWidth: CGFloat = 165
+        static let logoCellHeight: CGFloat = 184
+        static let bannerCellWidth: CGFloat = 345
+        static let bannerCellHeight: CGFloat = 257
+    }
 }
 
 protocol HomeModuleSectionDelegate: AnyObject {}

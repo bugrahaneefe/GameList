@@ -12,9 +12,14 @@ import Foundation
 import UIKit
 
 protocol HomeModulePresenterInterface: PresenterInterface, HomeModuleHeaderCollectionReusablePresenterDelegate, HomeModuleGameDelegate, HomeModuleSectionDelegate {
+//    todo
+//    var appearanceType: AppereanceType { get }
+    
+    func prepareUI(for collectionView: UICollectionView)
     func numberOfItemsInGameSection() -> Int
     func cellForGame(at indexPath: IndexPath, in collectionView: UICollectionView) -> UICollectionViewCell
     func didSelectGame(at indexPath: IndexPath)
+    func changeAppearanceTapped()
 }
 
 private enum Constant {
@@ -25,6 +30,21 @@ private enum Constant {
             previous: "",
             results: [])
     }
+    
+    enum CollectionView {
+        static let leftInset: CGFloat = 15
+        static let rightInset: CGFloat = 15
+        static let bottomInset: CGFloat = 15
+        static let topInset: CGFloat = 0
+        static let logoCellWidth: CGFloat = 165
+        static let logoCellHeight: CGFloat = 184
+        static let bannerCellWidth: CGFloat = 345
+        static let bannerCellHeight: CGFloat = 257
+    }
+}
+
+enum AppereanceType {
+    case logo, banner
 }
 
 final class HomeModulePresenter {
@@ -32,6 +52,8 @@ final class HomeModulePresenter {
     private let router: HomeModuleRouterInterface
     private var view: HomeViewInterface?
     private var gameSection: GameSection?
+    
+    private var appearanceType: AppereanceType = .logo
     
     init(interactor: HomeModuleInteractorInterface,
          router: HomeModuleRouterInterface,
@@ -60,7 +82,45 @@ final class HomeModulePresenter {
 
 //MARK: - HomeModulePresenterInterface
 extension HomeModulePresenter: HomeModulePresenterInterface {
-    func changeAppearanceTapped() {}
+    func prepareUI(for collectionView: UICollectionView) {
+        switch appearanceType {
+        case .logo:
+            collectionView.register(cellType: GameCell.self, bundle: CommonViewsKitResources.bundle)
+            if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+                layout.sectionInset = UIEdgeInsets(
+                    top: Constant.CollectionView.topInset,
+                    left: Constant.CollectionView.leftInset,
+                    bottom: Constant.CollectionView.bottomInset,
+                    right: Constant.CollectionView.rightInset
+                )
+                
+                layout.itemSize = CGSize(
+                    width: Constant.CollectionView.logoCellWidth,
+                    height: Constant.CollectionView.logoCellHeight)
+                
+                layout.estimatedItemSize = .zero
+            }
+            collectionView.backgroundColor = .black
+        case .banner:
+            //            implement gamecellbanner
+            collectionView.register(cellType: GameCell.self, bundle: CommonViewsKitResources.bundle)
+            if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+                layout.sectionInset = UIEdgeInsets(
+                    top: Constant.CollectionView.topInset,
+                    left: Constant.CollectionView.leftInset,
+                    bottom: Constant.CollectionView.bottomInset,
+                    right: Constant.CollectionView.rightInset
+                )
+                
+                layout.itemSize = CGSize(
+                    width: Constant.CollectionView.bannerCellWidth,
+                    height: Constant.CollectionView.bannerCellHeight)
+                
+                layout.estimatedItemSize = .zero
+            }
+            collectionView.backgroundColor = .black
+        }
+    }
     
     func viewDidLoad() {
         view?.prepareUI()
@@ -81,6 +141,11 @@ extension HomeModulePresenter: HomeModulePresenterInterface {
     func didSelectGame(at indexPath: IndexPath) {
 //        todo
 //        router.navigateToGameDetails(game)
+    }
+    
+    func changeAppearanceTapped() {
+        appearanceType = (appearanceType == .logo) ? .banner : .logo
+        view?.prepareUI()
     }
 }
 
