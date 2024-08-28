@@ -28,7 +28,7 @@ let frameworkTarget = Target.target(
         coreUtils,
         common,
         commonViews,
-        sdWebImage,
+        alamofireImage,
         homeHandlerKit
     ]
 )

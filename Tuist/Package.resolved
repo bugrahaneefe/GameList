@@ -10,21 +10,21 @@
       }
     },
     {
+      "identity" : "alamofireimage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/AlamofireImage.git",
+      "state" : {
+        "revision" : "1eaf3b6c6882bed10f6e7b119665599dd2329aa1",
+        "version" : "4.3.0"
+      }
+    },
+    {
       "identity" : "mockingstar-ios",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Trendyol/mockingstar-ios",
       "state" : {
         "revision" : "3a3609a492c76c30d3fc46ab42af09c5fada7ca7",
         "version" : "1.0.2"
-      }
-    },
-    {
-      "identity" : "sdwebimage",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/SDWebImage/SDWebImage.git",
-      "state" : {
-        "revision" : "86e9185ef41c4238a93ad8efe61ddeb701e80bbf",
-        "version" : "5.19.5"
       }
     },
     {

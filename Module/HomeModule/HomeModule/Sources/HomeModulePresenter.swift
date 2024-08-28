@@ -35,7 +35,7 @@ final class HomeModulePresenter {
         view?.showLoading()
         
         let request = HomeModuleGameListRequest(
-            count: 100,
+            count: 0,
             next: "",
             previous: "",
             results: [])

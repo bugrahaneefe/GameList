@@ -24,8 +24,8 @@ let package = Package(
             exact: "0.5.5"
         ),
         .package(
-            url: "https://github.com/SDWebImage/SDWebImage.git",
-            exact: "5.19.5"
+            url: "https://github.com/Alamofire/AlamofireImage.git",
+            exact: "4.3.0"
         )
     ]
 )

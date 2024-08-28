@@ -18,7 +18,6 @@ public extension UINavigationBar {
     
     func configureNavigationBar(isTranslucent: Bool, backgroundImage: UIImage?, shadowColor: UIColor?, backgroundColor: UIColor) {
         self.isTranslucent = isTranslucent
-        standardAppearance.shadowImage = shadowColor?.as1ptImage()
         standardAppearance.backgroundImage = backgroundImage
         standardAppearance.backgroundColor = backgroundColor
         standardAppearance.backgroundEffect = .none

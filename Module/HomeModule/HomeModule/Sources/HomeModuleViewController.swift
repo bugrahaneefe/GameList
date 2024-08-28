@@ -19,10 +19,12 @@ protocol HomeViewInterface {
 
 private enum Constant {
     enum CollectionView {
-        static let leftInset: CGFloat = 10
-        static let rightInset: CGFloat = 10
-        static let bottomInset: CGFloat = 10
-        static let topInset: CGFloat = -15
+        static let leftInset: CGFloat = 15
+        static let rightInset: CGFloat = 15
+        static let bottomInset: CGFloat = 15
+        static let topInset: CGFloat = 0
+        static let cellWidth: CGFloat = 165
+        static let cellHeight: CGFloat = 184
     }
 }
 
@@ -94,14 +96,18 @@ extension HomeModuleViewController: HomeViewInterface {
     
     func prepareUI() {
         collectionView.register(cellType: GameCell.self, bundle: CommonViewsKitResources.bundle)
-        collectionView.contentInset = .init(top: Constant.CollectionView.topInset,
-                                            left: Constant.CollectionView.leftInset,
-                                            bottom: Constant.CollectionView.bottomInset,
-                                            right: Constant.CollectionView.rightInset)
+        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.sectionInset = UIEdgeInsets(
+                top: Constant.CollectionView.topInset,
+                left: Constant.CollectionView.leftInset,
+                bottom: Constant.CollectionView.bottomInset,
+                right: Constant.CollectionView.rightInset
+            )
+        }
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.estimatedItemSize = .zero
         }
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .black
     }
     
     func reloadCollectionView() {
@@ -128,5 +134,11 @@ extension HomeModuleViewController: UICollectionViewDataSource {
 extension HomeModuleViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         presenter.didSelectGame(at: indexPath)
+    }
+}
+
+extension HomeModuleViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: Constant.CollectionView.cellWidth, height: Constant.CollectionView.cellHeight)
     }
 }

@@ -10,7 +10,6 @@ import CommonKit
 
 public protocol GameCellPresenterInterface {
     func load()
-    func bannerImageLoaded()
 }
 
 public final class GameCellPresenter {
@@ -28,8 +27,9 @@ public final class GameCellPresenter {
         }
     
     private func handleBannerImage() {
+        view?.setBannerImage(path: "https://media.rawg.io/media/games/20a/20aa03a10cda45239fe22d035c0ebe64.jpg")
+
         if let path = game.backgroundImage {
-            view?.setBannerImage(path: path)
         }
     }
     
@@ -38,17 +38,22 @@ public final class GameCellPresenter {
             view?.setGameNameLabel(name: name)
         }
     }
+    
+    private func handleRating() {
+        let rating = Int(game.rating*20)
+        view?.setRating(rating: rating)
+    }
 }
 
+// MARK: - GameCellPresenterInterface
 extension GameCellPresenter: GameCellPresenterInterface {
     public func load() {
         view?.prepareUI()
         handleBannerImage()
         handleGameName()
+        handleRating()
     }
-    
-    //    todo
-    public func bannerImageLoaded() {    }
+
     //    todo
     public func prepareForReuse() {}
 }

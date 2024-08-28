@@ -6,7 +6,7 @@ let project = Project.module(
     dependencies: [
         common,
         coreUtils,
-        sdWebImage,
-        networkKit
+        networkKit,
+        alamofireImage
     ]
 )

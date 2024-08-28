@@ -21,6 +21,7 @@
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 public enum GameListAsset {
   public static let accentColor = GameListColors(name: "AccentColor")
+  public static let navigationBarBackground = GameListColors(name: "NavigationBarBackground")
   public static let tabBarBackground = GameListColors(name: "TabBarBackground")
   public static let tabBarTint = GameListColors(name: "TabBarTint")
 }

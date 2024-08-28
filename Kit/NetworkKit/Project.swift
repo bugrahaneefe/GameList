@@ -6,6 +6,6 @@ let project = Project.module(
     dependencies: [
         alamofire,
         common,
-        sdWebImage
+        alamofireImage
     ]
 )

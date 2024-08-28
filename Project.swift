@@ -16,12 +16,13 @@ let appTarget = Target.target(
                     [
                         "UISceneConfigurationName": "Default Configuration",
                         "UISceneDelegateClassName": "$(PRODUCT_MODULE_NAME).SceneDelegate",
-                        "StoryboardName": "Main"
+                        "StoryboardName": "Main",
                     ]
                 ]
             ]
         ],
-        "UIApplicationDelegateClassName": "$(PRODUCT_MODULE_NAME).AppDelegate"
+        "UIApplicationDelegateClassName": "$(PRODUCT_MODULE_NAME).AppDelegate",
+        "UIAppFonts": "Lato-Regular.ttf"
     ]),
     sources: ["GameList/**/*.swift"],
     resources: [
@@ -42,7 +43,7 @@ let appTarget = Target.target(
         coreUtils,
         common,
         commonViews,
-        sdWebImage,
+        alamofireImage,
         homeHandlerKit
     ]
 )

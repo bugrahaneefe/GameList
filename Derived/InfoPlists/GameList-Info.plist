@@ -20,6 +20,8 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIAppFonts</key>
+	<string>Lato-Regular.ttf</string>
 	<key>UIApplicationDelegateClassName</key>
 	<string>$(PRODUCT_MODULE_NAME).AppDelegate</string>
 	<key>UIApplicationSceneManifest</key>

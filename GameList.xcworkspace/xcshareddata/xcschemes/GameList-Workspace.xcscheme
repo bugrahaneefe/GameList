@@ -28,6 +28,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C3BA862877E313694144FDA3"
+               BuildableName = "AlamofireImage.framework"
+               BlueprintName = "AlamofireImage"
+               ReferencedContainer = "container:Tuist/.build/tuist-derived/AlamofireImage/AlamofireImage.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "77A705E112BA78834D2901D0"
                BuildableName = "CommonKit.framework"
                BlueprintName = "CommonKit"
@@ -200,34 +214,6 @@
                BuildableName = "NetworkKit.framework"
                BlueprintName = "NetworkKit"
                ReferencedContainer = "container:Kit/NetworkKit/NetworkKit.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4522BA1E69969A14ADA602B2"
-               BuildableName = "SDWebImage.framework"
-               BlueprintName = "SDWebImage"
-               ReferencedContainer = "container:Tuist/.build/tuist-derived/SDWebImage/SDWebImage.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7AC7961179CFF2AFE9AE6B22"
-               BuildableName = "SDWebImage_SDWebImage.bundle"
-               BlueprintName = "SDWebImage_SDWebImage"
-               ReferencedContainer = "container:Tuist/.build/tuist-derived/SDWebImage/SDWebImage.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
