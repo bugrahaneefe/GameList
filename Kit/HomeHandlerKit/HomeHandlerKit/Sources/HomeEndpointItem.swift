@@ -5,9 +5,9 @@
 //  Created by Buğrahan Efe on 6.08.2024.
 //
 
-import Foundation
-import CoreUtils
 import CommonKit
+import CoreUtils
+import Foundation
 
 enum HomeEndpointItem: Endpoint {
     case gameListDetails

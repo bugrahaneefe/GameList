@@ -5,8 +5,8 @@
 //  Created by Buğrahan Efe on 4.08.2024.
 //
 
-import Foundation
 import CommonKit
+import Foundation
 
 public protocol GameCellPresenterInterface {
     func load()

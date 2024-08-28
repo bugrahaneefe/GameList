@@ -5,10 +5,10 @@
 //  Created by Buğrahan Efe on 31.07.2024.
 //
 
-import Foundation
 import CommonKit
-import NetworkKit
+import Foundation
 import HomeHandlerKit
+import NetworkKit
 
 protocol HomeModuleInteractorInterface: AnyObject {
     func fetchGameList(request: HomeModuleGameListRequest)

@@ -5,9 +5,9 @@
 //  Created by Buğrahan Efe on 31.07.2024.
 //
 
-import UIKit
 import CommonKit
 import CoreUtils
+import UIKit
 
 public protocol HomeModuleRouterInterface {}
 

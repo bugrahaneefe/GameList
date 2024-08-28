@@ -5,23 +5,18 @@
 //  Created by Buğrahan Efe on 4.08.2024.
 //
 
-import Foundation
 import CommonKit
 import CommonViewsKit
 import CoreUtils
 import UIKit
 
 private enum Constant {
-    static let gameSectionIdentifier = "GameCell"
-    static let cellCornerRadius = 10.0
     enum GameCell {
-        static let appereanceIcon = "GameAppearance"
+        static let cellCornerRadius = 10.0
     }
 }
 
-protocol HomeModuleSectionDelegate: AnyObject {
-    func gameSelected(_ game: Game)
-}
+protocol HomeModuleSectionDelegate: AnyObject {}
 
 protocol HomeModuleHeaderCollectionReusablePresenterDelegate: AnyObject {
     func changeAppearanceTapped()
@@ -45,12 +40,8 @@ class GameSection {
         let game = games[indexPath.row]
         let argument = GameCellArgument(game: game)
         let presenter = GameCellPresenter(view: cell, argument: argument)
-        cell.layer.cornerRadius = Constant.cellCornerRadius
+        cell.layer.cornerRadius = Constant.GameCell.cellCornerRadius
         cell.presenter = presenter
         return cell
-    }
-    
-    func didSelectItem(at indexPath: IndexPath) {
-        delegate?.gameSelected(games[indexPath.row])
     }
 }

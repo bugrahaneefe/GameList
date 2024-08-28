@@ -6,9 +6,13 @@
 //
 
 import CommonKit
-import UIKit
-import DependencyEngine
 import CoreUtils
+import DependencyEngine
+import UIKit
+
+public protocol HomeModuleInterface {
+    func gameList(navigationController: UINavigationController?) -> UIViewController
+}
 
 public enum HomeModuleDependencyRegistration: DependencyRegistration {
     public static func register(to engine: DependencyEngine) {

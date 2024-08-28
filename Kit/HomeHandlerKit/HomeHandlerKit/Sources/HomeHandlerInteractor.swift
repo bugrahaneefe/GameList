@@ -5,8 +5,8 @@
 //  Created by Buğrahan Efe on 5.08.2024.
 //
 
-import Foundation
 import CommonKit
+import Foundation
 import NetworkKit
 
 protocol HomeHandlerInteractorInterface: AnyObject {

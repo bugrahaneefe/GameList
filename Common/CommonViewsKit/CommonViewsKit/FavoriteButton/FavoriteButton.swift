@@ -14,7 +14,12 @@ protocol FavoriteButtonInterface {
 @IBDesignable
 open class FavoriteButton: NibView {
     @IBOutlet weak var favoriteButton: UIButton!
-    private var presenter: FavoriteButtonPresenterInterface!
+    
+    var presenter: FavoriteButtonPresenterInterface! {
+        didSet {
+            presenter?.load()
+        }
+    }
     
     open override func layoutSubviews() {
         super.layoutSubviews()
@@ -22,7 +27,7 @@ open class FavoriteButton: NibView {
     
     // MARK: IBActions
     @IBAction public func favoriteButtonPressed(_ sender: Any) {
-        print("assaddsadas")
+        print("sssssssss")
         presenter?.favoriteButtonPressed()
     }
 }
@@ -99,9 +104,6 @@ private extension NibView {
         fatalError("unable to find bundle named \(bundleName)")
     }
 }
-
-
-
 
 @IBDesignable
 open class BorderArrangeableView: UIView {

@@ -1,6 +1,6 @@
+import Alamofire
 import CommonKit
 import Foundation
-import Alamofire
 
 public typealias Completion<T> = (Result<T, Error>) -> Void where T: Decodable
 public typealias AsyncResult<T> = Result<T, Error> where T: Decodable
@@ -24,9 +24,10 @@ extension NetworkKit: NetworkKitInterface {
             case .success(let value):
                 completion(.success(value))
             case .failure(let error):
-                if let data = response.data {
-                    print("Failed to decode response, raw data: \(String(data: data, encoding: .utf8) ?? "nil")")
-                }
+//                debug
+//                if let data = response.data {
+//                    print("Failed to decode response, raw data: \(String(data: data, encoding: .utf8) ?? "nil")")
+//                }
                 completion(.failure(error))
             }
         }

@@ -5,10 +5,10 @@
 //  Created by Buğrahan Efe on 31.07.2024.
 //
 
-import UIKit
 import CommonKit
 import CommonViewsKit
 import CoreUtils
+import UIKit
 
 protocol HomeViewInterface {
     func showLoading()
@@ -25,6 +25,12 @@ private enum Constant {
         static let topInset: CGFloat = 0
         static let cellWidth: CGFloat = 165
         static let cellHeight: CGFloat = 184
+    }
+    
+    enum NavigationBar {
+        static let title: String = "Games"
+        static let titleFont: CGFloat = 16.0
+        static let rightBarIconName: String = "line.3.horizontal"
     }
 }
 
@@ -58,16 +64,16 @@ final class HomeModuleViewController: BaseViewController {
     }
     
     private func setupNavigationBar() {
-        self.title = "Games"
+        self.title = Constant.NavigationBar.title
         self.navigationController?.navigationBar.tintColor = .white
 
         navigationController?.navigationBar.setTitleTextAttributes(attributes: [
             .foregroundColor: UIColor.white,
-            .font: UIFont.systemFont(ofSize: 16.0, weight: .semibold)
+            .font: UIFont.systemFont(ofSize: Constant.NavigationBar.titleFont, weight: .semibold)
         ])
         
         let rightBarButtonItem = UIBarButtonItem(
-            image: UIImage(systemName: "line.3.horizontal"),
+            image: UIImage(systemName: Constant.NavigationBar.rightBarIconName),
             style: .plain,
             target: self,
             action: #selector(rightBarButtonItemTapped)
@@ -77,6 +83,7 @@ final class HomeModuleViewController: BaseViewController {
     }
     
     @objc private func rightBarButtonItemTapped() {
+//        todo
         print("Right bar button tapped")
     }
 }
@@ -137,6 +144,7 @@ extension HomeModuleViewController: UICollectionViewDelegate {
     }
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
 extension HomeModuleViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: Constant.CollectionView.cellWidth, height: Constant.CollectionView.cellHeight)

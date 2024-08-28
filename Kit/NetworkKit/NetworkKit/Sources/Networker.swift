@@ -1,5 +1,5 @@
-import Foundation
 import CommonKit
+import Foundation
 
 open class Networker<T: Endpoint> {
     private let networkKit: NetworkKitInterface

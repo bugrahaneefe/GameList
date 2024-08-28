@@ -31,7 +31,7 @@ public final class GameCell: UICollectionViewCell {
 // MARK: - GameCellViewInterface
 extension GameCell: GameCellViewInterface {
     public func setBannerImage(path: String?) {
-        bannerImageView.setImageWith(url: path)
+        self.bannerImageView.setImageWith(url: path)
     }
     
     public func setGameNameLabel(name: String?) {

@@ -3,6 +3,24 @@ import CommonKit
 import HomeModule
 import DependencyEngine
 
+private enum Constant {
+    enum TabBar {
+        static let title: String = "Games"
+    }
+    
+    enum Image {
+        static let gameController: String = "gamecontroller"
+        static let gameControllerFill: String = "gamecontroller.fill"
+    }
+    
+    enum Color {
+        static let navigationBarBackground: String = "NavigationBarBackground"
+        static let tabBarBackground: String = "TabBarBackground"
+        static let tabBarTint: String = "TabBarTint"
+
+    }
+}
+
 public final class GameListTabBarController: UITabBarController {
     @ModuleDependency var homeModule: HomeModuleInterface
     
@@ -13,14 +31,14 @@ public final class GameListTabBarController: UITabBarController {
     
     private func setupTabBar() {
         let navigationController = UINavigationController()
-        tabBar.tintColor = UIColor(named: "TabBarTint")
+        tabBar.tintColor = UIColor(named: Constant.Color.tabBarTint)
         
         let homeVC = homeModule.gameList(navigationController: navigationController)
         navigationController.viewControllers = [homeVC]
         navigationController.tabBarItem = .init(
-            title: "Games",
-            image: UIImage(systemName: "gamecontroller"),
-            selectedImage: UIImage(systemName: "gamecontroller.fill")
+            title: Constant.TabBar.title,
+            image: UIImage(systemName: Constant.Image.gameController),
+            selectedImage: UIImage(systemName: Constant.Image.gameControllerFill)
         )
         
         viewControllers = [navigationController]
@@ -29,7 +47,7 @@ public final class GameListTabBarController: UITabBarController {
             .configureNavigationBar(isTranslucent: true,
                                     backgroundImage: nil,
                                     shadowColor: nil,
-                                    backgroundColor: UIColor(named: "NavigationBarBackground") ?? .clear)
-        tabBar.setCustomAppearance(backgroundColor: UIColor(named: "TabBarBackground"))
+                                    backgroundColor: UIColor(named: Constant.Color.navigationBarBackground) ?? .clear)
+        tabBar.setCustomAppearance(backgroundColor: UIColor(named: Constant.Color.tabBarBackground))
     }
 }
