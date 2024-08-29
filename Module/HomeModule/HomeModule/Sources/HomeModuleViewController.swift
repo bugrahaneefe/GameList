@@ -11,10 +11,11 @@ import CoreUtils
 import UIKit
 
 protocol HomeViewInterface {
+    func prepareUI()
+    func prepareCollectionView()
+    func reloadCollectionView()
     func showLoading()
     func hideLoading()
-    func prepareUI()
-    func reloadCollectionView()
 }
 
 private enum Constant {    
@@ -36,7 +37,6 @@ final class HomeModuleViewController: BaseViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         presenter.viewDidLoad()
-        setupNavigationBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,6 +80,19 @@ final class HomeModuleViewController: BaseViewController {
 
 // MARK: - HomeViewInterface
 extension HomeModuleViewController: HomeViewInterface {
+    func prepareUI() {
+        setupNavigationBar()
+    }
+    
+    func prepareCollectionView() {
+        collectionView.register(cellType: GameCell.self, bundle: CommonViewsKitResources.bundle)
+        collectionView.register(cellType: GameCellBanner.self, bundle: CommonViewsKitResources.bundle)
+    }
+    
+    func reloadCollectionView() {
+        collectionView.reloadData()
+    }
+    
     func showLoading() {
         if loadingIndicator == nil {
             setupLoadingIndicator()
@@ -89,14 +102,6 @@ extension HomeModuleViewController: HomeViewInterface {
     
     func hideLoading() {
         loadingIndicator?.stopAnimating()
-    }
-    
-    func prepareUI() {
-        presenter.prepareUI(for: collectionView)
-    }
-    
-    func reloadCollectionView() {
-        collectionView.reloadData()
     }
 }
     

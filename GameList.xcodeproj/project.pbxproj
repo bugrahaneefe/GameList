@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,6 +22,7 @@
 		6D7FD635E561C5D8F292CA87 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 52F504249F230A7C2AFA0640 /* Lato-Regular.ttf */; };
 		836DB6D940F6F232433F8F1A /* CommonViewsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F02AD6206973AF6C1C925800 /* CommonViewsKit.framework */; };
 		8B76386D478DEF10403040EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6698463C7099764EC9A4098 /* LaunchScreen.storyboard */; };
+		9258C561C87E51D1A660236E /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E00C63E4E93058B81CBB386 /* AppRouter.swift */; };
 		93AD998C642FA03AD40AA5D4 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB5E536EE15A02AEF88C1A2 /* AlamofireImage.framework */; };
 		9789EEBB7B9CBF9763A9C5FF /* TuistBundle+GameList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9239F864430B3B57E2D9877 /* TuistBundle+GameList.swift */; };
 		9C825AF55DB1B3E60883328A /* CoreUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52FDEA92904093E6F59BBFCB /* CoreUtils.framework */; };
@@ -35,7 +36,6 @@
 		D9F772E5CDA83F7B97EAF3C8 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9FCA5BFEABE001814939A9E7 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E654D9B9E2D4AA06B547E76E /* GameListTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1447EAF6DE983D5AA87462 /* GameListTabBarController.swift */; };
 		E70812B4B9AFB19BBFACFDDE /* CommonViewsKit_CommonViewsKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8654BF1297C30D137D1B42C4 /* CommonViewsKit_CommonViewsKit.bundle */; };
-		FCAC09E02C80638F0040D4A1 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAC09DF2C80638F0040D4A1 /* AppRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -71,6 +71,7 @@
 		07ED719A8490454F5625E3B6 /* GameList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1345DE38D24C53B24EA04901 /* HomeHandlerKit_HomeHandlerKit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeHandlerKit_HomeHandlerKit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		19F933BA9D8E11BFAD2E426B /* HomeModule_HomeModule.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeModule_HomeModule.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E00C63E4E93058B81CBB386 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		1E7DA70947A9A5C9709632D2 /* CommonKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F638E31D660C4007F34733B /* GameList-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GameList-Info.plist"; sourceTree = "<group>"; };
 		52F504249F230A7C2AFA0640 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
@@ -91,7 +92,6 @@
 		F877D26EAC655708269FD3DC /* TuistFonts+GameList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistFonts+GameList.swift"; sourceTree = "<group>"; };
 		FA39658D261FC68C90377F7B /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		FB1447EAF6DE983D5AA87462 /* GameListTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListTabBarController.swift; sourceTree = "<group>"; };
-		FCAC09DF2C80638F0040D4A1 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,8 +121,8 @@
 			children = (
 				66FCD64B56B8AC8423CF023F /* Resources */,
 				D684800EDD2DC14E083B7664 /* Sources */,
-				FCAC09DF2C80638F0040D4A1 /* AppRouter.swift */,
 				D712EF17253F1C5CC5E52DB9 /* AppDelegate.swift */,
+				1E00C63E4E93058B81CBB386 /* AppRouter.swift */,
 				FA39658D261FC68C90377F7B /* Main.storyboard */,
 				0522A217D73C2267A9543A0E /* SceneDelegate.swift */,
 			);
@@ -250,6 +250,8 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = 88F8CDEE20D4BC3BC93F7A98 /* Build configuration list for PBXProject "GameList" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -295,7 +297,7 @@
 				9789EEBB7B9CBF9763A9C5FF /* TuistBundle+GameList.swift in Sources */,
 				9FCD19D9C05755EE20903788 /* TuistFonts+GameList.swift in Sources */,
 				B19BB6D56E2DD75053A1B87F /* AppDelegate.swift in Sources */,
-				FCAC09E02C80638F0040D4A1 /* AppRouter.swift in Sources */,
+				9258C561C87E51D1A660236E /* AppRouter.swift in Sources */,
 				6ADE10FFD91CA418ABC190E3 /* SceneDelegate.swift in Sources */,
 				E654D9B9E2D4AA06B547E76E /* GameListTabBarController.swift in Sources */,
 			);
@@ -322,7 +324,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

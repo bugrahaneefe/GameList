@@ -29,10 +29,6 @@ private enum Constant {
 
 protocol HomeModuleSectionDelegate: AnyObject {}
 
-protocol HomeModuleHeaderCollectionReusablePresenterDelegate: AnyObject {
-    func changeAppearanceTapped()
-}
-
 class GameSection {
     private var games: [Game]
     private weak var delegate: HomeModuleSectionDelegate?
@@ -45,12 +41,44 @@ class GameSection {
     func numberOfItems() -> Int {
         return games.count
     }
+
+    func configureCell(for collectionView: UICollectionView, at indexPath: IndexPath, with appearanceType: AppereanceType) -> UICollectionViewCell {
+        guard let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return UICollectionViewCell() }
+        layout.sectionInset = UIEdgeInsets(
+            top: Constant.CollectionView.topInset,
+            left: Constant.CollectionView.leftInset,
+            bottom: Constant.CollectionView.bottomInset,
+            right: Constant.CollectionView.rightInset
+        )
+        layout.estimatedItemSize = .zero
+        collectionView.backgroundColor = .black
+        switch appearanceType {
+        case .logo:
+            layout.itemSize = CGSize(
+                width: Constant.CollectionView.logoCellWidth,
+                height: Constant.CollectionView.logoCellHeight)
+            return sections.logoSection(games: games, collectionView, indexPath: indexPath)
+        case .banner:
+            layout.itemSize = CGSize(
+                width: Constant.CollectionView.bannerCellWidth,
+                height: Constant.CollectionView.bannerCellHeight)
+            return sections.bannerSection(games: games, collectionView, indexPath: indexPath)
+        }
+    }
+}
+
+private enum sections {
+    static func bannerSection(games: [Game], _ collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(with: GameCellBanner.self, for: indexPath)
+        let presenter = GameCellBannerPresenter(view: cell, argument: GameCellArgument(game: games[indexPath.row]))
+        cell.layer.cornerRadius = Constant.GameCell.cellCornerRadius
+        cell.presenter = presenter
+        return cell
+    }
     
-    func configureCell(_ collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+    static func logoSection(games: [Game], _ collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(with: GameCell.self, for: indexPath)
-        let game = games[indexPath.row]
-        let argument = GameCellArgument(game: game)
-        let presenter = GameCellPresenter(view: cell, argument: argument)
+        let presenter = GameCellPresenter(view: cell, argument: GameCellArgument(game: games[indexPath.row]))
         cell.layer.cornerRadius = Constant.GameCell.cellCornerRadius
         cell.presenter = presenter
         return cell
