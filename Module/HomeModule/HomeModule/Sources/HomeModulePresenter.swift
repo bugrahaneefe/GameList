@@ -9,6 +9,7 @@ import CommonKit
 import CommonViewsKit
 import CoreUtils
 import Foundation
+import HomeHandlerKit
 import UIKit
 
 protocol HomeModulePresenterInterface: PresenterInterface, HomeModuleHeaderCollectionReusablePresenterDelegate, HomeModuleGameDelegate, HomeModuleSectionDelegate {

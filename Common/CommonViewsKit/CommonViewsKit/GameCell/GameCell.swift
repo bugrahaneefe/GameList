@@ -41,7 +41,9 @@ extension GameCell: GameCellViewInterface {
     public func setRating(rating: Int) {
         self.ratingLabel.text = "\(rating)"
         if rating > 80 {
-            self.ratingView.backgroundColor = #colorLiteral(red: 0.1698472798, green: 0.3133658767, blue: 0.2018784285, alpha: 1)
+//            tuist .module
+//            color palette hex
+            self.ratingView.backgroundColor = UIColor(named: "RatingViewGreen", in: .module, compatibleWith: nil)
             self.ratingLabel.textColor = #colorLiteral(red: 0.2944766879, green: 0.778819263, blue: 0.3979456425, alpha: 1)
         } else if rating > 60 {
             self.ratingView.backgroundColor = #colorLiteral(red: 0.2888736725, green: 0.1919786334, blue: 0.1317017376, alpha: 1)

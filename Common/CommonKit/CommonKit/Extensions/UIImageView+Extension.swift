@@ -13,6 +13,7 @@ class ImageCache {
     static let shared = NSCache<NSString, UIImage>()
 }
 
+// todo sdwebimage
 extension UIImageView {
     public func setImageWith(url: String?) {
         guard let url = url, let imageUrl = URL(string: url) else { return }

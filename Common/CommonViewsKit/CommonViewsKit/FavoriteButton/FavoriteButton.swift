@@ -11,7 +11,6 @@ protocol FavoriteButtonInterface {
     func setFavoriteButton()
 }
 
-@IBDesignable
 open class FavoriteButton: NibView {
     @IBOutlet weak var favoriteButton: UIButton!
     
@@ -105,7 +104,6 @@ private extension NibView {
     }
 }
 
-@IBDesignable
 open class BorderArrangeableView: UIView {
     open var borderWidth: CGFloat {
         get { layer.borderWidth }

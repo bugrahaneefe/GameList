@@ -20,7 +20,7 @@ public final class HomeModuleRouter: HomeModuleRouterInterface {
         self.navigationController = navigationController
     }
     
-    public func create(navigationController: UINavigationController?) -> UIViewController {
+    static func create(navigationController: UINavigationController?) -> UIViewController {
         let storyboard = StoryboardHelper<Storyboards>.create(storyboard: .home)
         let view = storyboard.instantiateViewController(
             viewClass: HomeModuleViewController.self)

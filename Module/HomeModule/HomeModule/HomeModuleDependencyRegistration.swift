@@ -24,19 +24,6 @@ public final class HomeModule: HomeModuleInterface {
     public init() {}
 
     public func gameList(navigationController: UINavigationController?) -> UIViewController {
-        let storyboard = StoryboardHelper<Storyboards>.create(storyboard: .home)
-        let view = storyboard.instantiateViewController(viewClass: HomeModuleViewController.self)
-        let interactor = HomeModuleInteractor()
-        let router = HomeModuleRouter(
-            navigationController: navigationController)
-        let presenter = HomeModulePresenter(
-            interactor: interactor,
-            router: router,
-            view: view)
-
-        view.presenter = presenter
-        interactor.output = presenter
-
-        return view
+        HomeModuleRouter.create(navigationController: navigationController)
     }
 }

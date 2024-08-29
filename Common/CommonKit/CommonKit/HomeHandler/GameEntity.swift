@@ -10,20 +10,6 @@
 
 import Foundation
 
-public struct HomeModuleGameListRequest: Decodable {
-    public let count: Int
-    public let next: String?
-    public let previous: String?
-    public let results: [Game]
-    
-    public init(count: Int, next: String?, previous: String?, results: [Game]) {
-        self.count = count
-        self.next = next
-        self.previous = previous
-        self.results = results
-    }
-}
-
 public struct Game: Codable {
     public struct ESRBRating: Codable {
         public let id: Int
