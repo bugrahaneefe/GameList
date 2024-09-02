@@ -19,6 +19,7 @@ protocol HomeModulePresenterInterface: PresenterInterface, HomeModuleGameDelegat
     func cellForGame(at indexPath: IndexPath, in collectionView: UICollectionView) -> UICollectionViewCell
     func didSelectGame(at indexPath: IndexPath)
     func changeAppearanceTapped()
+    func pullToRefresh()
 }
 
 private enum Constant {
@@ -63,15 +64,20 @@ final class HomeModulePresenter {
     }
     
     private func handleEmptyGameStatus() {
-        self.gameSection = GameSection(games: [], delegate: self)
         view?.hideLoading()
         view?.showResponseNilLabel()
     }
     
     private func handleGameSection(with games: [Game]) {
+        view?.hideResponseNilLabel()
         self.gameSection = GameSection(games: games, delegate: self)
         view?.reloadCollectionView()
         view?.hideLoading()
+    }
+    
+    private func handleNetworkErrorStatus(of error: String) {
+        view?.hideLoading()
+        view?.showResponseNilLabel(with: error)
     }
 }
 
@@ -107,6 +113,10 @@ extension HomeModulePresenter: HomeModulePresenterInterface {
         defaults.save(data: !defaults.bool(key: Constant.Defaults.isBannerStateActive), key: Constant.Defaults.isBannerStateActive)
         view?.reloadCollectionView()
     }
+    
+    func pullToRefresh() {
+        fetchGameList()
+    }
 }
 
 //MARK: - HomeModuleInteractorOutput
@@ -120,9 +130,8 @@ extension HomeModulePresenter: HomeModuleInteractorOutput {
                 return
             }
             handleGameSection(with: response.results)
-        case .failure(let error):
-            // todo: handle error
-            print(error)
+        case .failure(_):
+            handleNetworkErrorStatus(of: "Network error")
         }
     }
 }

@@ -17,6 +17,7 @@ protocol HomeViewInterface {
     func showLoading()
     func hideLoading()
     func showResponseNilLabel()
+    func showResponseNilLabel(with: String)
     func hideResponseNilLabel()
 }
 
@@ -33,11 +34,10 @@ final class HomeModuleViewController: BaseViewController {
     
     var presenter: HomeModulePresenterInterface!
     private var loadingIndicator: UIActivityIndicatorView?
+    private let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.delegate = self
-        collectionView.dataSource = self
         presenter.viewDidLoad()
     }
     
@@ -75,14 +75,29 @@ final class HomeModuleViewController: BaseViewController {
         navigationItem.rightBarButtonItem = rightBarButtonItem
     }
     
+    private func setupCollectionView() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        refreshControl.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
+        collectionView.alwaysBounceVertical = true
+        collectionView.refreshControl = refreshControl
+    }
+    
     @objc private func rightBarButtonItemTapped() {
         presenter.changeAppearanceTapped()
+    }
+    
+    @objc
+    private func didPullToRefresh(_ sender: Any) {
+        presenter.pullToRefresh()
+        refreshControl.endRefreshing()
     }
 }
 
 // MARK: - HomeViewInterface
 extension HomeModuleViewController: HomeViewInterface {
     func prepareUI() {
+        setupCollectionView()
         setupNavigationBar()
     }
     
@@ -107,6 +122,11 @@ extension HomeModuleViewController: HomeViewInterface {
     }
     
     func showResponseNilLabel() {
+        responseNilLabel.isHidden = false
+    }
+    
+    func showResponseNilLabel(with text: String) {
+        responseNilLabel.text = text
         responseNilLabel.isHidden = false
     }
     
