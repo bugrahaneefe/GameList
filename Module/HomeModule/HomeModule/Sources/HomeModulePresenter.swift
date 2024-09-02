@@ -20,14 +20,15 @@ protocol HomeModulePresenterInterface: PresenterInterface, HomeModuleGameDelegat
     func didSelectGame(at indexPath: IndexPath)
     func changeAppearanceTapped()
     func pullToRefresh()
+    func willDisplayItemAt(_ indexPath: IndexPath)
 }
 
 private enum Constant {
     enum GameListRequest {
         static let request = HomeModuleGameListRequest(
             count: 0,
-            next: "",
-            previous: "",
+            next: nil,
+            previous: nil,
             results: [])
     }
     
@@ -45,7 +46,10 @@ final class HomeModulePresenter {
     private let router: HomeModuleRouterInterface
     private let defaults: DefaultsProtocol.Type
     private var view: HomeViewInterface?
+    private var games: [Game] = []
     private var gameSection: GameSection?
+    private var gameResponse: GameListDetailsResponse?
+    private var isFetchingAvailable: Bool = true
     
     init(interactor: HomeModuleInteractorInterface,
          router: HomeModuleRouterInterface,
@@ -58,9 +62,24 @@ final class HomeModulePresenter {
     }
     
     // MARK: Private Methods
-    private func fetchGameList() {
+    private func fetchGameList(next: String? = nil) {
+        guard isFetchingAvailable else { return }
+        isFetchingAvailable = false
+        
         view?.showLoading()
-        interactor.fetchGameList(request: Constant.GameListRequest.request)
+        
+        let request: HomeModuleGameListRequest
+        if let next = next, !next.isEmpty {
+            request = HomeModuleGameListRequest(
+                count: games.count,
+                next: next,
+                previous: nil,
+                results: [])
+        } else {
+            request = Constant.GameListRequest.request
+        }
+        
+        interactor.fetchGameList(request: request)
     }
     
     private func handleEmptyGameStatus() {
@@ -68,16 +87,23 @@ final class HomeModulePresenter {
         view?.showResponseNilLabel()
     }
     
-    private func handleGameSection(with games: [Game]) {
-        view?.hideResponseNilLabel()
+    private func handleGameSection(with response: GameListDetailsResponse) {
+        gameResponse = response
+        
+        games.append(contentsOf: response.results)
         self.gameSection = GameSection(games: games, delegate: self)
-        view?.reloadCollectionView()
-        view?.hideLoading()
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.view?.reloadCollectionView()
+            self?.view?.hideLoading()
+            self?.isFetchingAvailable = true
+        }
     }
     
     private func handleNetworkErrorStatus(of error: String) {
         view?.hideLoading()
         view?.showResponseNilLabel(with: error)
+        self.isFetchingAvailable = true
     }
 }
 
@@ -90,14 +116,16 @@ extension HomeModulePresenter: HomeModulePresenterInterface {
     func viewDidLoad() {
         view?.prepareUI()
         view?.prepareCollectionView()
-    }
-    
-    func viewWillAppear() {
         fetchGameList()
     }
     
+//    func viewWillAppear() {
+//        fetchGameList()
+//    }
+    
     func numberOfItemsInGameSection() -> Int {
-        return gameSection?.numberOfItems() ?? 0
+        return games.count
+//        return gameSection?.numberOfItems() ?? 0
     }
     
     func cellForGame(at indexPath: IndexPath, in collectionView: UICollectionView) -> UICollectionViewCell {
@@ -115,6 +143,8 @@ extension HomeModulePresenter: HomeModulePresenterInterface {
     }
     
     func pullToRefresh() {
+        games.removeAll()
+        gameSection = nil
         fetchGameList()
     }
 }
@@ -129,9 +159,26 @@ extension HomeModulePresenter: HomeModuleInteractorOutput {
                 handleEmptyGameStatus()
                 return
             }
-            handleGameSection(with: response.results)
+            handleGameSection(with: response)
         case .failure(_):
             handleNetworkErrorStatus(of: "Network error")
+        }
+    }
+}
+
+//MARK: Pagination
+extension HomeModulePresenter {
+    func willDisplayItemAt(_ indexPath: IndexPath) {
+        guard indexPath.item == games.count - 1,
+              let next = gameResponse?.next,
+              let urlComponents = URLComponents(string: next) else { return }
+
+        var nextRequestComponents = URLComponents()
+        nextRequestComponents.path.append(urlComponents.path)
+        nextRequestComponents.query = urlComponents.query
+
+        if let nextUrl = nextRequestComponents.url {
+            fetchGameList(next: nextUrl.absoluteString)
         }
     }
 }

@@ -38,10 +38,10 @@ class GameSection {
         self.delegate = delegate
     }
     
-    func numberOfItems() -> Int {
-        return games.count
+    func appendGames(_ newGames: [Game]) {
+        games.append(contentsOf: newGames)
     }
-
+    
     func configureCell(for collectionView: UICollectionView, at indexPath: IndexPath, with appearanceType: AppereanceType) -> UICollectionViewCell {
         guard let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return UICollectionViewCell() }
         layout.sectionInset = UIEdgeInsets(
