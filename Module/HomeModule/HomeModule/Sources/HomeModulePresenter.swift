@@ -13,8 +13,7 @@ import HomeHandlerKit
 import UIKit
 
 protocol HomeModulePresenterInterface: PresenterInterface, HomeModuleGameDelegate, HomeModuleSectionDelegate {
-//    todo
-//    var appearanceType: AppereanceType { get }
+    var appearanceType: AppereanceType { get }
     
     func numberOfItemsInGameSection() -> Int
     func cellForGame(at indexPath: IndexPath, in collectionView: UICollectionView) -> UICollectionViewCell
@@ -30,6 +29,10 @@ private enum Constant {
             previous: "",
             results: [])
     }
+    
+    enum Defaults {
+        static let isBannerStateActive = "isBannerStateActive"
+    }
 }
 
 enum AppereanceType {
@@ -39,17 +42,18 @@ enum AppereanceType {
 final class HomeModulePresenter {
     private let interactor: HomeModuleInteractorInterface
     private let router: HomeModuleRouterInterface
+    private let defaults: DefaultsProtocol.Type
     private var view: HomeViewInterface?
     private var gameSection: GameSection?
     
-    private var appearanceType: AppereanceType = .logo
-    
     init(interactor: HomeModuleInteractorInterface,
          router: HomeModuleRouterInterface,
-         view: HomeViewInterface? = nil) {
+         view: HomeViewInterface? = nil,
+         defaults: DefaultsProtocol.Type = Defaults.self) {
         self.interactor = interactor
         self.router = router
         self.view = view
+        self.defaults = defaults
     }
     
     // MARK: Private Methods
@@ -72,6 +76,10 @@ final class HomeModulePresenter {
 
 //MARK: - HomeModulePresenterInterface
 extension HomeModulePresenter: HomeModulePresenterInterface {
+    var appearanceType: AppereanceType {
+        defaults.bool(key: Constant.Defaults.isBannerStateActive) ? .banner : .logo
+    }
+    
     func viewDidLoad() {
         view?.prepareUI()
         view?.prepareCollectionView()
@@ -95,7 +103,7 @@ extension HomeModulePresenter: HomeModulePresenterInterface {
     }
     
     func changeAppearanceTapped() {
-        appearanceType = (appearanceType == .logo) ? .banner : .logo
+        defaults.save(data: !defaults.bool(key: Constant.Defaults.isBannerStateActive), key: Constant.Defaults.isBannerStateActive)
         view?.reloadCollectionView()
     }
 }
