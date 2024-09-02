@@ -16,6 +16,8 @@ protocol HomeViewInterface {
     func reloadCollectionView()
     func showLoading()
     func hideLoading()
+    func showResponseNilLabel()
+    func hideResponseNilLabel()
 }
 
 private enum Constant {    
@@ -27,6 +29,7 @@ private enum Constant {
 
 final class HomeModuleViewController: BaseViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet weak var responseNilLabel: UILabel!
     
     var presenter: HomeModulePresenterInterface!
     private var loadingIndicator: UIActivityIndicatorView?
@@ -101,6 +104,14 @@ extension HomeModuleViewController: HomeViewInterface {
     
     func hideLoading() {
         loadingIndicator?.stopAnimating()
+    }
+    
+    func showResponseNilLabel() {
+        responseNilLabel.isHidden = false
+    }
+    
+    func hideResponseNilLabel() {
+        responseNilLabel.isHidden = true
     }
 }
     

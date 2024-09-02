@@ -63,8 +63,9 @@ final class HomeModulePresenter {
     }
     
     private func handleEmptyGameStatus() {
+        self.gameSection = GameSection(games: [], delegate: self)
         view?.hideLoading()
-//        todo
+        view?.showResponseNilLabel()
     }
     
     private func handleGameSection(with games: [Game]) {
