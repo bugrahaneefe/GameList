@@ -154,20 +154,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4373EACB3DCEBC28112E418D"
-               BuildableName = "HomeHandlerKit_HomeHandlerKit.bundle"
-               BlueprintName = "HomeHandlerKit_HomeHandlerKit"
-               ReferencedContainer = "container:Kit/HomeHandlerKit/HomeHandlerKit.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "1B6EC0DE2402FD2233BD2360"
                BuildableName = "HomeModule.framework"
                BlueprintName = "HomeModule"

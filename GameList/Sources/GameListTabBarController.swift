@@ -12,13 +12,6 @@ private enum Constant {
         static let gameController: String = "gamecontroller"
         static let gameControllerFill: String = "gamecontroller.fill"
     }
-    
-    enum Color {
-        static let navigationBarBackground: String = "NavigationBarBackground"
-        static let tabBarBackground: String = "TabBarBackground"
-        static let tabBarTint: String = "TabBarTint"
-
-    }
 }
 
 public final class GameListTabBarController: UITabBarController {
@@ -31,7 +24,7 @@ public final class GameListTabBarController: UITabBarController {
     
     private func setupTabBar() {
         let navigationController = UINavigationController()
-        tabBar.tintColor = UIColor(named: Constant.Color.tabBarTint)
+        tabBar.tintColor = UIColor.TabBarColor.TabBarTint
         
         let homeVC = homeModule.gameList(navigationController: navigationController)
         navigationController.viewControllers = [homeVC]
@@ -47,7 +40,7 @@ public final class GameListTabBarController: UITabBarController {
             .configureNavigationBar(isTranslucent: true,
                                     backgroundImage: nil,
                                     shadowColor: nil,
-                                    backgroundColor: UIColor(named: Constant.Color.navigationBarBackground) ?? .clear)
-        tabBar.setCustomAppearance(backgroundColor: UIColor(named: Constant.Color.tabBarBackground))
+                                    backgroundColor: UIColor.NavigationBarColor.Background)
+        tabBar.setCustomAppearance(backgroundColor: UIColor.TabBarColor.TabBarBackground)
     }
 }
