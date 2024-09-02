@@ -24,14 +24,6 @@ protocol HomeModulePresenterInterface: PresenterInterface, HomeModuleGameDelegat
 }
 
 private enum Constant {
-    enum GameListRequest {
-        static let request = HomeModuleGameListRequest(
-            count: 0,
-            next: nil,
-            previous: nil,
-            results: [])
-    }
-    
     enum Defaults {
         static let isBannerStateActive = "isBannerStateActive"
     }
@@ -49,6 +41,7 @@ final class HomeModulePresenter {
     private var games: [Game] = []
     private var gameSection: GameSection?
     private var gameResponse: GameListDetailsResponse?
+    private var currentPage = 1
     private var isFetchingAvailable: Bool = true
     
     init(interactor: HomeModuleInteractorInterface,
@@ -62,29 +55,26 @@ final class HomeModulePresenter {
     }
     
     // MARK: Private Methods
-    private func fetchGameList(next: String? = nil) {
+    private func fetchGameList(at page: Int) {
         guard isFetchingAvailable else { return }
         isFetchingAvailable = false
         
         view?.showLoading()
         
-        let request: HomeModuleGameListRequest
-        if let next = next, !next.isEmpty {
-            request = HomeModuleGameListRequest(
-                count: games.count,
-                next: next,
-                previous: nil,
-                results: [])
-        } else {
-            request = Constant.GameListRequest.request
+        let endpoint = HomeEndpointItem.gameListDetails(at: page)
+        
+        guard let url = endpoint.url else {
+            view?.hideLoading()
+            return
         }
         
-        interactor.fetchGameList(request: request)
+        interactor.fetchGameList(with: url, at: page)
     }
     
     private func handleEmptyGameStatus() {
         view?.hideLoading()
         view?.showResponseNilLabel()
+        isFetchingAvailable = false
     }
     
     private func handleGameSection(with response: GameListDetailsResponse) {
@@ -93,17 +83,15 @@ final class HomeModulePresenter {
         games.append(contentsOf: response.results)
         self.gameSection = GameSection(games: games, delegate: self)
         
-        DispatchQueue.main.async { [weak self] in
-            self?.view?.reloadCollectionView()
-            self?.view?.hideLoading()
-            self?.isFetchingAvailable = true
-        }
+        view?.reloadCollectionView()
+        view?.hideLoading()
+        isFetchingAvailable = true
     }
     
     private func handleNetworkErrorStatus(of error: String) {
         view?.hideLoading()
         view?.showResponseNilLabel(with: error)
-        self.isFetchingAvailable = true
+        isFetchingAvailable = true
     }
 }
 
@@ -116,16 +104,14 @@ extension HomeModulePresenter: HomeModulePresenterInterface {
     func viewDidLoad() {
         view?.prepareUI()
         view?.prepareCollectionView()
-        fetchGameList()
     }
     
-//    func viewWillAppear() {
-//        fetchGameList()
-//    }
+    func viewWillAppear() {
+        fetchGameList(at: currentPage)
+    }
     
     func numberOfItemsInGameSection() -> Int {
         return games.count
-//        return gameSection?.numberOfItems() ?? 0
     }
     
     func cellForGame(at indexPath: IndexPath, in collectionView: UICollectionView) -> UICollectionViewCell {
@@ -144,8 +130,8 @@ extension HomeModulePresenter: HomeModulePresenterInterface {
     
     func pullToRefresh() {
         games.removeAll()
-        gameSection = nil
-        fetchGameList()
+        isFetchingAvailable = true
+        fetchGameList(at: currentPage)
     }
 }
 
@@ -157,8 +143,10 @@ extension HomeModulePresenter: HomeModuleInteractorOutput {
         case .success(let response):
             guard !response.results.isEmpty else {
                 handleEmptyGameStatus()
+                isFetchingAvailable = false
                 return
             }
+            currentPage += 1
             handleGameSection(with: response)
         case .failure(_):
             handleNetworkErrorStatus(of: "Network error")
@@ -169,16 +157,7 @@ extension HomeModulePresenter: HomeModuleInteractorOutput {
 //MARK: Pagination
 extension HomeModulePresenter {
     func willDisplayItemAt(_ indexPath: IndexPath) {
-        guard indexPath.item == games.count - 1,
-              let next = gameResponse?.next,
-              let urlComponents = URLComponents(string: next) else { return }
-
-        var nextRequestComponents = URLComponents()
-        nextRequestComponents.path.append(urlComponents.path)
-        nextRequestComponents.query = urlComponents.query
-
-        if let nextUrl = nextRequestComponents.url {
-            fetchGameList(next: nextUrl.absoluteString)
-        }
+        guard indexPath.item == games.count - 1 else { return }
+        fetchGameList(at: currentPage)
     }
 }

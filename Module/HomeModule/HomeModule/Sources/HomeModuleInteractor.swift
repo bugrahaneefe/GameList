@@ -11,7 +11,7 @@ import HomeHandlerKit
 import NetworkKit
 
 protocol HomeModuleInteractorInterface: AnyObject {
-    func fetchGameList(request: HomeModuleGameListRequest)
+    func fetchGameList(with: URL?, at page: Int)
 }
 
 protocol HomeModuleInteractorOutput: AnyObject {
@@ -24,8 +24,8 @@ final class HomeModuleInteractor {
 
 //MARK: - HomeModuleInteractorInterface
 extension HomeModuleInteractor: HomeModuleInteractorInterface {
-    func fetchGameList(request: HomeModuleGameListRequest) {
-        HomeHandler.shared.gameListDetails(request: request) { [weak output] result in
+    func fetchGameList(with: URL?, at page: Int) {
+        HomeHandler.shared.gameListDetails(at: page) { [weak output] result in
             output?.handleGameListResult(result)
         }
     }

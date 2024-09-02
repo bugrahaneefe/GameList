@@ -6,16 +6,26 @@
 //
 
 import CommonKit
-import CoreUtils
 import Foundation
 
-enum HomeEndpointItem: Endpoint {
-    case gameListDetails
+public enum HomeEndpointItem: Endpoint {
+    case gameListDetails(at: Int)
 
-    var url: URL {
+    public var url: URL? {
         switch self {
-        case .gameListDetails:
-            return URL(string: "https://api.rawg.io/api/games?key=2728bd542342447cbf3dccb350fb91da")!
+        case .gameListDetails(let page):
+            return buildGameListURL(at: page)
         }
+    }
+
+    private func buildGameListURL(at page: Int?) -> URL? {
+        var components = URLComponents(string: "https://api.rawg.io/api/games")
+        components?.queryItems = [
+            URLQueryItem(name: "key", value: "2728bd542342447cbf3dccb350fb91da"),
+            URLQueryItem(name: "page", value: page.flatMap { "\($0)" }),
+            URLQueryItem(name: "page_size", value: "\(8)")
+        ]
+        
+        return components?.url
     }
 }
