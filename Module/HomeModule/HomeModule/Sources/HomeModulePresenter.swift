@@ -40,9 +40,8 @@ final class HomeModulePresenter {
     private var view: HomeViewInterface?
     private var games: [Game] = []
     private var gameSection: GameSection?
-    private var gameResponse: GameListDetailsResponse?
     private var currentPage = 1
-    private var isFetchingAvailable: Bool = true
+    private var isFetchingAvailable = true
     
     init(interactor: HomeModuleInteractorInterface,
          router: HomeModuleRouterInterface,
@@ -78,8 +77,6 @@ final class HomeModulePresenter {
     }
     
     private func handleGameSection(with response: GameListDetailsResponse) {
-        gameResponse = response
-        
         games.append(contentsOf: response.results)
         self.gameSection = GameSection(games: games, delegate: self)
         
@@ -143,7 +140,6 @@ extension HomeModulePresenter: HomeModuleInteractorOutput {
         case .success(let response):
             guard !response.results.isEmpty else {
                 handleEmptyGameStatus()
-                isFetchingAvailable = false
                 return
             }
             currentPage += 1
