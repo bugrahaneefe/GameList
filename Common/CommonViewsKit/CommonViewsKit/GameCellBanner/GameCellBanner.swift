@@ -26,6 +26,11 @@ public final class GameCellBanner: UICollectionViewCell {
             presenter?.load()
         }
     }
+    
+    override public func prepareForReuse() {
+        super.prepareForReuse()
+        bannerImageView.image = nil
+    }
 }
 
 // MARK: - GameCellBannerViewInterface

@@ -7,11 +7,6 @@ private enum Constant {
     enum TabBar {
         static let title: String = "Games"
     }
-    
-    enum Image {
-        static let gameController: String = "gamecontroller"
-        static let gameControllerFill: String = "gamecontroller.fill"
-    }
 }
 
 public final class GameListTabBarController: UITabBarController {
@@ -30,8 +25,8 @@ public final class GameListTabBarController: UITabBarController {
         navigationController.viewControllers = [homeVC]
         navigationController.tabBarItem = .init(
             title: Constant.TabBar.title,
-            image: UIImage(systemName: Constant.Image.gameController),
-            selectedImage: UIImage(systemName: Constant.Image.gameControllerFill)
+            image: UIImage.gameController,
+            selectedImage: UIImage.gameControllerFill
         )
         
         viewControllers = [navigationController]

@@ -22,7 +22,6 @@ private enum Constant {
     enum NavigationBar {
         static let title: String = "Games"
         static let titleFont: CGFloat = 16.0
-        static let rightBarIconName: String = "line.3.horizontal"
     }
 }
 
@@ -64,7 +63,7 @@ final class HomeModuleViewController: BaseViewController {
         ])
         
         let rightBarButtonItem = UIBarButtonItem(
-            image: UIImage(systemName: Constant.NavigationBar.rightBarIconName),
+            image: UIImage.rightBarIcon,
             style: .plain,
             target: self,
             action: #selector(rightBarButtonItemTapped)
