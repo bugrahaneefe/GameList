@@ -77,6 +77,7 @@ final class HomeModulePresenter {
     }
     
     private func handleGameSection(with response: GameListDetailsResponse) {
+        view?.hideResponseNilLabel()
         games.append(contentsOf: response.results)
         self.gameSection = GameSection(games: games, delegate: self)
         
