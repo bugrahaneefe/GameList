@@ -77,6 +77,8 @@ final class HomeModulePresenter {
     }
     
     private func handleEmptyGameStatus() {
+        games.removeAll()
+        view?.reloadCollectionView()
         view?.hideLoading()
         view?.showResponseNilLabel()
         isFetchingAvailable = false

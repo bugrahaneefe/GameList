@@ -86,6 +86,12 @@ final class HomeModuleViewController: BaseViewController {
     
     private func setupSearchBar() {
         searchBar.delegate = self
+        searchBar.barTintColor = UIColor.SearchBarColor.Background
+        searchBar.tintColor = UIColor.SearchBarColor.CursorColor
+
+        searchBar.setIconColor(.white)
+        searchBar.setPlaceholderColor(.white)
+        searchBar.setTextFieldColor(.green)
     }
     
     @objc private func rightBarButtonItemTapped() {

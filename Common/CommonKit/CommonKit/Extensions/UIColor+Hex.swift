@@ -42,4 +42,10 @@ extension UIColor {
         public static let RatingViewOrange = UIColor(hex: 0x463124)
         public static let RatingViewRed = UIColor(hex: 0x3B2626)
     }
+    
+    public struct SearchBarColor {
+        public static let Background = UIColor(hex: 0x1D1D1D)
+        public static let CursorColor = UIColor(hex: 0x4BC766)
+        public static let RatingLabelRed = UIColor(hex: 0xB9534F)
+    }
 }
