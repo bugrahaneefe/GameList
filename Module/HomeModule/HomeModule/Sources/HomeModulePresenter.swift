@@ -21,12 +21,15 @@ protocol HomeModulePresenterInterface: PresenterInterface, HomeModuleGameDelegat
     func changeAppearanceTapped()
     func pullToRefresh()
     func willDisplayItemAt(_ indexPath: IndexPath)
+    func filterWith(_ searchBar: UISearchBar)
 }
 
 private enum Constant {
     enum Defaults {
         static let isBannerStateActive = "isBannerStateActive"
     }
+    
+    static let throttleInterval = 0.7
 }
 
 enum AppereanceType {
@@ -34,40 +37,43 @@ enum AppereanceType {
 }
 
 final class HomeModulePresenter {
+    private let defaults: DefaultsProtocol.Type
     private let interactor: HomeModuleInteractorInterface
     private let router: HomeModuleRouterInterface
-    private let defaults: DefaultsProtocol.Type
     private var view: HomeViewInterface?
     private var games: [Game] = []
     private var gameSection: GameSection?
     private var currentPage = 1
     private var isFetchingAvailable = true
+    private let throttler: CommonKit.ThrottlerInterface
     
     init(interactor: HomeModuleInteractorInterface,
          router: HomeModuleRouterInterface,
          view: HomeViewInterface? = nil,
-         defaults: DefaultsProtocol.Type = Defaults.self) {
+         defaults: DefaultsProtocol.Type = Defaults.self,
+         throttler: CommonKit.ThrottlerInterface = Throttler(minimumDelay: Constant.throttleInterval)) {
         self.interactor = interactor
         self.router = router
         self.view = view
         self.defaults = defaults
+        self.throttler = throttler
     }
     
     // MARK: Private Methods
-    private func fetchGameList(at page: Int) {
+    private func fetchGameList(at page: Int = 1, contains name: String = "") {
         guard isFetchingAvailable else { return }
         isFetchingAvailable = false
         
         view?.showLoading()
         
-        let endpoint = HomeEndpointItem.gameListDetails(at: page)
+        let endpoint = HomeEndpointItem.gameListDetails(at: page, contains: name)
         
         guard let url = endpoint.url else {
             view?.hideLoading()
             return
         }
         
-        interactor.fetchGameList(with: url, at: page)
+        interactor.fetchGameList(with: url, at: page, contains: name)
     }
     
     private func handleEmptyGameStatus() {
@@ -117,8 +123,8 @@ extension HomeModulePresenter: HomeModulePresenterInterface {
     }
     
     func didSelectGame(at indexPath: IndexPath) {
-//        todo
-//        router.navigateToGameDetails(game)
+        //        todo
+        //        router.navigateToGameDetails(game)
     }
     
     func changeAppearanceTapped() {
@@ -130,6 +136,15 @@ extension HomeModulePresenter: HomeModulePresenterInterface {
         games.removeAll()
         isFetchingAvailable = true
         fetchGameList(at: currentPage)
+    }
+    
+    func filterWith(_ searchBar: UISearchBar) {
+        guard let name = searchBar.text else { return }
+        throttler.throttle { [weak self] in
+            self?.games.removeAll()
+            self?.isFetchingAvailable = true
+            self?.fetchGameList(contains: name)
+        }
     }
 }
 

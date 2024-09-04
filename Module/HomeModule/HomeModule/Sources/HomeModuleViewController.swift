@@ -31,6 +31,7 @@ private enum Constant {
 final class HomeModuleViewController: BaseViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet weak var responseNilLabel: UILabel!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var presenter: HomeModulePresenterInterface!
     private var loadingIndicator: UIActivityIndicatorView?
@@ -83,6 +84,10 @@ final class HomeModuleViewController: BaseViewController {
         collectionView.refreshControl = refreshControl
     }
     
+    private func setupSearchBar() {
+        searchBar.delegate = self
+    }
+    
     @objc private func rightBarButtonItemTapped() {
         presenter.changeAppearanceTapped()
     }
@@ -99,6 +104,7 @@ extension HomeModuleViewController: HomeViewInterface {
     func prepareUI() {
         setupCollectionView()
         setupNavigationBar()
+        setupSearchBar()
     }
     
     func prepareCollectionView() {
@@ -158,5 +164,12 @@ extension HomeModuleViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         presenter.willDisplayItemAt(indexPath)
+    }
+}
+
+extension HomeModuleViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        presenter.filterWith(searchBar)
     }
 }
