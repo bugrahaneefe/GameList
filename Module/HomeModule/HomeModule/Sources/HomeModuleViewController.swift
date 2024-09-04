@@ -85,16 +85,24 @@ final class HomeModuleViewController: BaseViewController {
     }
     
     private func setupSearchBar() {
+        view.addGestureRecognizer(UITapGestureRecognizer(
+            target: self,
+            action: #selector(UIInputViewController.dismissKeyboard)))
         searchBar.delegate = self
         searchBar.barTintColor = UIColor.SearchBarColor.Background
-        searchBar.tintColor = UIColor.SearchBarColor.CursorColor
-
-        searchBar.setIconColor(.white)
-        searchBar.setPlaceholderColor(.white)
-        searchBar.setTextFieldColor(.green)
+        searchBar.tintColor = UIColor.SearchBarColor.Cursor
+        searchBar.searchTextField.backgroundColor = UIColor.SearchBarColor.TextfieldBackground
+        searchBar.searchTextField.attributedPlaceholder = NSAttributedString(
+            string: "Search",
+            attributes: [
+                .font: UIFont.systemFont(ofSize: 14.0),
+                .foregroundColor: UIColor.SearchBarColor.Text])
+        searchBar.searchTextField.leftView?.tintColor = UIColor.SearchBarColor.Text
+        searchBar.searchTextField.textColor = UIColor.SearchBarColor.Text
     }
     
-    @objc private func rightBarButtonItemTapped() {
+    @objc 
+    private func rightBarButtonItemTapped() {
         presenter.changeAppearanceTapped()
     }
     
@@ -102,6 +110,11 @@ final class HomeModuleViewController: BaseViewController {
     private func didPullToRefresh(_ sender: Any) {
         presenter.pullToRefresh()
         refreshControl.endRefreshing()
+    }
+
+    @objc
+    private func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
 
@@ -173,9 +186,14 @@ extension HomeModuleViewController: UICollectionViewDelegate {
     }
 }
 
+// MARK: - UISearchBarDelegate
 extension HomeModuleViewController: UISearchBarDelegate {
-    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        presenter.filterWith(searchBar)
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
         presenter.filterWith(searchBar)
     }
 }

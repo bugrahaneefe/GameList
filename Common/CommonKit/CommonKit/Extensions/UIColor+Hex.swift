@@ -45,7 +45,8 @@ extension UIColor {
     
     public struct SearchBarColor {
         public static let Background = UIColor(hex: 0x1D1D1D)
-        public static let CursorColor = UIColor(hex: 0x4BC766)
-        public static let RatingLabelRed = UIColor(hex: 0xB9534F)
+        public static let TextfieldBackground = UIColor(hex: 0x323235)
+        public static let Cursor = UIColor(hex: 0x4BC766)
+        public static let Text = UIColor(hex: 0x97979D)
     }
 }
