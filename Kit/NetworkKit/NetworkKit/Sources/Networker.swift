@@ -9,6 +9,8 @@ open class Networker<T: Endpoint> {
     }
 
     public func request<U: Decodable>(endpoint: T, completion: @escaping (Result<U, Error>) -> Void) {
-        networkKit.request(from: endpoint.url!, completion: completion)
+        Task {
+            await networkKit.request(from: endpoint.url!, completion: completion)
+        }
     }
 }

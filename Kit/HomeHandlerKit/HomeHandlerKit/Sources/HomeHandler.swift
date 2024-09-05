@@ -27,6 +27,6 @@ extension HomeHandler: HomeHandlerInterface {
         interactor.gameListDetails(at: page, contains: name) { [weak self] (result: Result<GameListDetailsResponse, Error>) in
             guard self != nil else { return }
             completion(result)
-        }
+        }        
     }
 }
