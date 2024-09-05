@@ -135,7 +135,6 @@ extension HomeModulePresenter: HomeModulePresenterInterface {
     }
     
     func pullToRefresh() {
-        games.removeAll()
         isFetchingAvailable = true
         fetchGameList(at: currentPage)
     }
