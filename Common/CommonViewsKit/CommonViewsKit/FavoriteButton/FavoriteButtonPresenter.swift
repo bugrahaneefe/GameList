@@ -20,16 +20,12 @@ public protocol FavoriteButtonPresenterInterface: PresenterInterface {
 final class FavoriteButtonPresenter {
     private var view: FavoriteButtonInterface?
     private weak var delegate: FavoriteButtonDelegate?
-    private var selected: Bool = false
     
-    init(view: FavoriteButtonInterface? = nil,
-         delegate: FavoriteButtonDelegate? ,
-         selected: Bool = false) {
+    init(view: FavoriteButtonInterface?,
+         delegate: FavoriteButtonDelegate?) {
         self.view = view
         self.delegate = delegate
-        self.selected = selected
     }
-    
 }
 
 extension FavoriteButtonPresenter: FavoriteButtonPresenterInterface {

@@ -100,6 +100,7 @@ public protocol DefaultsProtocol {
     static func int(key: String) -> Int?
     static func url(key: String) -> URL?
     static func array(key: String) -> [Any]?
+    static func set(key: String) -> Set<Int>?
     static func data(key: String) -> Data?
     static func dictionary(key: String) -> [String: Any]?
     static func save<T: Encodable>(value object: T, key: String)
@@ -151,6 +152,10 @@ public extension DefaultsProtocol {
 
     static func url(key: String) -> URL? {
         UserDefaults.standard.object(forKey: key) as? URL
+    }
+    
+    static func set(key: String) -> Set<Int>? {
+        UserDefaults.standard.object(forKey: key) as? Set<Int>
     }
 
     static func array(key: String) -> [Any]? {

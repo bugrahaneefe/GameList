@@ -13,8 +13,6 @@ public protocol GameCellViewInterface {
     func setGameNameLabel(name: String?)
     func setRating(rating: Int)
     func setFavoriteButton()
-    func prepareUI()
-    func favoriteButtonTapped()
 }
 
 public final class GameCell: UICollectionViewCell {
@@ -32,7 +30,8 @@ public final class GameCell: UICollectionViewCell {
     
     override public func prepareForReuse() {
         super.prepareForReuse()
-        bannerImageView.image = nil
+        bannerImageView.image = UIImage(systemName: "gamecontroller.fill")
+        favoriteButtonView.favoriteButton.setImage(nil, for: .normal)
     }
 }
 
@@ -62,21 +61,8 @@ extension GameCell: GameCellViewInterface {
     }
     
     public func setFavoriteButton() {
-        favoriteButtonView.presenter = FavoriteButtonPresenter(delegate: presenter.favoriteButtonDelegate)
-    }
-    
-    //    todo
-    public func prepareUI() {
-        
-    }
-    
-    public func favoriteButtonTapped() {
-        //        selected.toggle()
-        //
-        //        if let buttonView = view as? FavoriteButton {
-        //            buttonView.favoriteButton.backgroundColor = selected ? UIColor.FavoriteButtonColor.Green : UIColor.FavoriteButtonColor.White
-        //        }
-        favoriteButtonView.favoriteButton.backgroundColor = .green
-                print("presenter")
+        favoriteButtonView.presenter = FavoriteButtonPresenter(
+            view: FavoriteButton(),
+            delegate: presenter.favoriteButtonDelegate)
     }
 }

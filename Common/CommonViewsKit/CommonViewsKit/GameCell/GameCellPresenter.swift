@@ -23,7 +23,7 @@ public final class GameCellPresenter {
         argument: GameCellArgument,
         homeModuleGameDelegate: HomeModuleGameDelegate? = nil) {
             self.view = view
-            game = argument.game
+            self.game = argument.game
             self.homeModuleGameDelegate = homeModuleGameDelegate
         }
     
@@ -52,21 +52,18 @@ public final class GameCellPresenter {
 // MARK: - GameCellPresenterInterface
 extension GameCellPresenter: GameCellPresenterInterface {
     public func viewDidLoad() {
-        view?.prepareUI()
         handleBannerImage()
         handleGameName()
         handleRating()
         handleFavoriteButton()
     }
-
-    //    todo
-    public func prepareForReuse() {}
     
     public var favoriteButtonDelegate: FavoriteButtonDelegate? { self }
 }
 
 extension GameCellPresenter: FavoriteButtonDelegate {
-    public func favoriteButtonTapped() {
-        view?.favoriteButtonTapped()
+    public func favoriteButtonTapped() {    
+//        todo favorite button logic should be implemented
+        print("favorite button pressed")
     }
 }

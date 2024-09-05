@@ -17,7 +17,6 @@ extension UIImage {
     public static let gameController = UIImage(systemName: "gamecontroller")
     public static let gameControllerFill = UIImage(systemName: "gamecontroller.fill")
     public static let rightBarIcon = UIImage(systemName: "line.3.horizontal")
-    public static let placeholder = UIImage(named: "placeholder")
 }
 
 extension UIImageView {

@@ -9,7 +9,7 @@ import Foundation
 
 public final class GameCellArgument {
     public let game: Game
-
+    
     public init(game: Game) {
         self.game = game
     }
