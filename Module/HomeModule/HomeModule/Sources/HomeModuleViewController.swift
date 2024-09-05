@@ -104,7 +104,7 @@ final class HomeModuleViewController: BaseViewController {
     
     private func setupPlatformSlider() {
         for _ in 1...10 {
-            let button = FavoriteButton()
+            let button = UIView()
             button.backgroundColor = .white
             button.layer.cornerRadius = 15
             button.translatesAutoresizingMaskIntoConstraints = false

@@ -14,7 +14,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameCell" customModule="CommonViewsKit_CommonViewsKit" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameCell" customModule="CommonViewsKit"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="GameCell" reuseIdentifier="GameCell" id="gTV-IL-0wX" customClass="GameCell" customModule="CommonViewsKit">
             <rect key="frame" x="0.0" y="0.0" width="165" height="185"/>
@@ -72,12 +72,12 @@
                             <constraint firstAttribute="trailing" secondItem="6hl-X2-lv3" secondAttribute="trailing" id="z4D-w4-RyQ"/>
                         </constraints>
                     </stackView>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zi3-aA-qif" customClass="FavoriteButton" customModule="CommonViewsKit">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ku-4m-HeN" customClass="FavoriteButton" customModule="CommonViewsKit">
                         <rect key="frame" x="125" y="100" width="30" height="30"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="dkx-iu-19X"/>
-                            <constraint firstAttribute="width" constant="30" id="fas-LI-2Y2"/>
+                            <constraint firstAttribute="height" constant="30" id="SXA-ga-tmO"/>
+                            <constraint firstAttribute="width" constant="30" id="vaj-bi-Qfp"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -87,18 +87,19 @@
             <constraints>
                 <constraint firstItem="SwB-ev-Fdz" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="3A9-dZ-5Kr"/>
                 <constraint firstItem="woa-Sh-hI2" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="8g3-jv-hhQ"/>
+                <constraint firstItem="SwB-ev-Fdz" firstAttribute="top" secondItem="0ku-4m-HeN" secondAttribute="bottom" constant="5" id="DTY-k5-i2T"/>
                 <constraint firstAttribute="bottom" secondItem="SwB-ev-Fdz" secondAttribute="bottom" constant="15" id="EIj-iu-efi"/>
                 <constraint firstAttribute="trailing" secondItem="SwB-ev-Fdz" secondAttribute="trailing" constant="15" id="GEc-XT-FOS"/>
-                <constraint firstItem="SwB-ev-Fdz" firstAttribute="top" secondItem="zi3-aA-qif" secondAttribute="bottom" constant="5" id="GhH-02-Ev5"/>
-                <constraint firstAttribute="trailing" secondItem="zi3-aA-qif" secondAttribute="trailing" constant="10" id="H3r-x5-6kj"/>
                 <constraint firstItem="woa-Sh-hI2" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="NJg-uE-skq"/>
                 <constraint firstAttribute="trailing" secondItem="woa-Sh-hI2" secondAttribute="trailing" id="Yxk-4h-WMf"/>
                 <constraint firstItem="SwB-ev-Fdz" firstAttribute="top" secondItem="woa-Sh-hI2" secondAttribute="bottom" constant="15" id="ZeV-NN-n6E"/>
+                <constraint firstAttribute="trailing" secondItem="0ku-4m-HeN" secondAttribute="trailing" constant="10" id="eiw-fK-qTQ"/>
                 <constraint firstAttribute="bottom" secondItem="woa-Sh-hI2" secondAttribute="bottom" constant="65" id="mO2-NY-pLk"/>
             </constraints>
             <size key="customSize" width="160" height="185"/>
             <connections>
                 <outlet property="bannerImageView" destination="woa-Sh-hI2" id="xHK-ge-iC2"/>
+                <outlet property="favoriteButtonView" destination="0ku-4m-HeN" id="fVZ-J0-Lpz"/>
                 <outlet property="gameNameLabel" destination="ZEb-gK-bRj" id="ERW-vE-Z3t"/>
                 <outlet property="ratingLabel" destination="2Ph-Y6-0Xf" id="leM-dJ-baQ"/>
                 <outlet property="ratingView" destination="mKE-gz-KA2" id="pkx-Ue-05M"/>

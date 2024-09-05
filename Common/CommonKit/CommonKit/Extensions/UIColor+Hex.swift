@@ -49,4 +49,9 @@ extension UIColor {
         public static let Cursor = UIColor(hex: 0x4BC766)
         public static let Text = UIColor(hex: 0x97979D)
     }
+
+    public struct FavoriteButtonColor {
+        public static let Green = UIColor(hex: 0x4BC766)
+        public static let White = UIColor(hex: 0xFFFFFF)
+    }
 }

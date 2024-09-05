@@ -7,9 +7,10 @@
 
 import CommonKit
 import Foundation
+import CoreUtils
 
-public protocol GameCellPresenterInterface {
-    func load()
+public protocol GameCellPresenterInterface: PresenterInterface {
+    var favoriteButtonDelegate: FavoriteButtonDelegate? { get }
 }
 
 public final class GameCellPresenter {
@@ -42,18 +43,30 @@ public final class GameCellPresenter {
         let rating = Int(game.rating*20)
         view?.setRating(rating: rating)
     }
+    
+    private func handleFavoriteButton() {
+        view?.setFavoriteButton()
+    }
 }
 
 // MARK: - GameCellPresenterInterface
 extension GameCellPresenter: GameCellPresenterInterface {
-    public func load() {
+    public func viewDidLoad() {
         view?.prepareUI()
         handleBannerImage()
         handleGameName()
         handleRating()
+        handleFavoriteButton()
     }
 
     //    todo
     public func prepareForReuse() {}
+    
+    public var favoriteButtonDelegate: FavoriteButtonDelegate? { self }
 }
 
+extension GameCellPresenter: FavoriteButtonDelegate {
+    public func favoriteButtonTapped() {
+        view?.favoriteButtonTapped()
+    }
+}

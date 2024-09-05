@@ -5,26 +5,39 @@
 //  Created by Buğrahan Efe on 28.08.2024.
 //
 
-import Foundation
+import UIKit
+import CoreUtils
 
-public protocol FavoriteButtonPresenterInterface {
+public protocol FavoriteButtonDelegate: AnyObject {
+    func favoriteButtonTapped()
+}
+
+public protocol FavoriteButtonPresenterInterface: PresenterInterface {
     func load()
-    func favoriteButtonPressed()
+    func favoriteButtonTapped()
 }
 
 final class FavoriteButtonPresenter {
-    private var view: FavoriteButtonInterface
+    private var view: FavoriteButtonInterface?
+    private weak var delegate: FavoriteButtonDelegate?
+    private var selected: Bool = false
     
-    init(view: FavoriteButtonInterface) {
+    init(view: FavoriteButtonInterface? = nil,
+         delegate: FavoriteButtonDelegate? ,
+         selected: Bool = false) {
         self.view = view
+        self.delegate = delegate
+        self.selected = selected
     }
+    
 }
 
 extension FavoriteButtonPresenter: FavoriteButtonPresenterInterface {
     func load() {
+        view?.prepareUI()
     }
     
-    func favoriteButtonPressed() {
-        view.setFavoriteButton()
+    func favoriteButtonTapped() {
+        delegate?.favoriteButtonTapped()
     }
 }
