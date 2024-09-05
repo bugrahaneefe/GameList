@@ -22,8 +22,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <searchBar contentMode="left" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="WRc-ip-7yt">
+                                <rect key="frame" x="0.0" y="59" width="393" height="51"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="qwe-zw-O5W"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemGreenColor"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="search" enablesReturnKeyAutomatically="YES" smartDashesType="yes" textContentType="name"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="PJR-NY-kgA"/>
+                                </connections>
+                            </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="m7P-bh-ZKs">
-                                <rect key="frame" x="0.0" y="115" width="393" height="703"/>
+                                <rect key="frame" x="0.0" y="170" width="393" height="648"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Rgb-42-x12">
                                     <size key="itemSize" width="128" height="128"/>
@@ -32,7 +44,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <label key="backgroundView" hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No game has been found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bzh-fj-tEH">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="703"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="648"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -40,31 +52,46 @@
                                 </label>
                                 <cells/>
                             </collectionView>
-                            <searchBar contentMode="left" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="WRc-ip-7yt">
-                                <rect key="frame" x="0.0" y="59" width="393" height="56"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jkk-tf-cNn">
+                                <rect key="frame" x="0.0" y="110" width="393" height="60"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="4Or-yV-vpc">
+                                        <rect key="frame" x="10" y="0.0" width="643" height="60"/>
+                                    </stackView>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" systemColor="systemGreenColor"/>
-                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="search" enablesReturnKeyAutomatically="YES" smartDashesType="yes" textContentType="name"/>
-                                <connections>
-                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="PJR-NY-kgA"/>
-                                </connections>
-                            </searchBar>
+                                <constraints>
+                                    <constraint firstItem="4Or-yV-vpc" firstAttribute="leading" secondItem="jkk-tf-cNn" secondAttribute="leading" constant="10" id="4ep-5s-zSa"/>
+                                    <constraint firstAttribute="height" constant="60" id="7BG-u0-IcL"/>
+                                    <constraint firstAttribute="bottom" secondItem="4Or-yV-vpc" secondAttribute="bottom" id="8uC-4i-zM2"/>
+                                    <constraint firstItem="4Or-yV-vpc" firstAttribute="width" secondItem="Gqy-UQ-myI" secondAttribute="width" constant="250" id="IN4-yv-rpJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="4Or-yV-vpc" secondAttribute="trailing" constant="10" id="kwT-LA-cdO"/>
+                                    <constraint firstItem="4Or-yV-vpc" firstAttribute="height" secondItem="Gqy-UQ-myI" secondAttribute="height" id="siu-Og-E2Q"/>
+                                    <constraint firstItem="4Or-yV-vpc" firstAttribute="top" secondItem="jkk-tf-cNn" secondAttribute="top" id="wKX-Ai-TeJ"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="4j1-Mz-QZN"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="Gqy-UQ-myI"/>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" red="0.11372549830000001" green="0.11372549830000001" blue="0.11372549830000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="m7P-bh-ZKs" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="3Mb-Tg-wSp"/>
-                            <constraint firstItem="WRc-ip-7yt" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="BVa-N2-dwJ"/>
-                            <constraint firstItem="m7P-bh-ZKs" firstAttribute="top" secondItem="WRc-ip-7yt" secondAttribute="bottom" id="KhI-o8-peP"/>
-                            <constraint firstItem="m7P-bh-ZKs" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="PJw-Nj-hwt"/>
-                            <constraint firstItem="WRc-ip-7yt" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="d9G-Rd-Gn0"/>
-                            <constraint firstItem="m7P-bh-ZKs" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="nQV-4B-gnh"/>
-                            <constraint firstItem="WRc-ip-7yt" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="tP2-JN-Lpi"/>
+                            <constraint firstItem="m7P-bh-ZKs" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="4KN-LJ-qrt"/>
+                            <constraint firstItem="WRc-ip-7yt" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="VM1-E9-ngw"/>
+                            <constraint firstItem="m7P-bh-ZKs" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="bA8-TK-7ah"/>
+                            <constraint firstItem="jkk-tf-cNn" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="cQm-RA-hfL"/>
+                            <constraint firstItem="jkk-tf-cNn" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="cub-z1-H13"/>
+                            <constraint firstItem="WRc-ip-7yt" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="lB8-4K-jkB"/>
+                            <constraint firstItem="m7P-bh-ZKs" firstAttribute="top" secondItem="jkk-tf-cNn" secondAttribute="bottom" id="lrc-uw-Kbe"/>
+                            <constraint firstItem="jkk-tf-cNn" firstAttribute="top" secondItem="WRc-ip-7yt" secondAttribute="bottom" id="qyn-r3-331"/>
+                            <constraint firstItem="m7P-bh-ZKs" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="vfj-y1-Xwh"/>
+                            <constraint firstItem="WRc-ip-7yt" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="zOV-hc-BLX"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="m7P-bh-ZKs" id="rEq-sH-vnB"/>
+                        <outlet property="platformSlider" destination="4Or-yV-vpc" id="uae-1M-PBG"/>
                         <outlet property="responseNilLabel" destination="bzh-fj-tEH" id="oGX-eH-ohb"/>
                         <outlet property="searchBar" destination="WRc-ip-7yt" id="Ilz-ZV-hsG"/>
                     </connections>

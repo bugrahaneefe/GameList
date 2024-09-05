@@ -30,8 +30,9 @@ private enum Constant {
 
 final class HomeModuleViewController: BaseViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
-    @IBOutlet weak var responseNilLabel: UILabel!
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet private weak var responseNilLabel: UILabel!
+    @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet weak var platformSlider: UIStackView!
     
     var presenter: HomeModulePresenterInterface!
     private var loadingIndicator: UIActivityIndicatorView?
@@ -101,7 +102,20 @@ final class HomeModuleViewController: BaseViewController {
         searchBar.searchTextField.textColor = UIColor.SearchBarColor.Text
     }
     
-    @objc 
+    private func setupPlatformSlider() {
+        for _ in 1...10 {
+            let button = FavoriteButton()
+            button.backgroundColor = .white
+            button.layer.cornerRadius = 15
+            button.translatesAutoresizingMaskIntoConstraints = false
+            button.widthAnchor.constraint(equalToConstant: 20).isActive = true
+            button.heightAnchor.constraint(equalToConstant: 20).isActive = true   
+            
+            platformSlider.addArrangedSubview(button)
+        }
+    }
+    
+    @objc
     private func rightBarButtonItemTapped() {
         presenter.changeAppearanceTapped()
     }
@@ -124,6 +138,7 @@ extension HomeModuleViewController: HomeViewInterface {
         setupCollectionView()
         setupNavigationBar()
         setupSearchBar()
+        setupPlatformSlider()
     }
     
     func prepareCollectionView() {
