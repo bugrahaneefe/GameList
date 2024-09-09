@@ -110,6 +110,7 @@ extension HomeModulePresenter: HomeModulePresenterInterface {
     func viewDidLoad() {
         view?.prepareUI()
         view?.prepareCollectionView()
+        view?.setPlatformSliderWidget()
     }
     
     func viewWillAppear() {

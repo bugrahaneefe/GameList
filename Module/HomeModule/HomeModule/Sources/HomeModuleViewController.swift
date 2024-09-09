@@ -19,6 +19,7 @@ protocol HomeViewInterface {
     func showResponseNilLabel()
     func showResponseNilLabel(with: String)
     func hideResponseNilLabel()
+    func setPlatformSliderWidget()
 }
 
 private enum Constant {    
@@ -26,14 +27,13 @@ private enum Constant {
         static let title: String = "Games"
         static let titleFont: CGFloat = 16.0
     }
-    
-    static let gamingPlatforms =  ["PC", "PlayStation", "Xbox", "Atari", "iOS", "Android", "PS Vita", "PSP", "macOS", "Linux", "Nintendo", "Wii", "GameCube", "SNES", "NES", "Jaguar", "Commodore / Amiga", "SEGA", "Genesis", "Dreamcast", "Game Gear", "3DO", "Web", "Neo"]
 }
 
 final class HomeModuleViewController: BaseViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var responseNilLabel: UILabel!
     @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet private var platformSliderView: PlatformSliderWidget!
     
     var presenter: HomeModulePresenterInterface!
     private var loadingIndicator: UIActivityIndicatorView?
@@ -126,7 +126,6 @@ extension HomeModuleViewController: HomeViewInterface {
         setupCollectionView()
         setupNavigationBar()
         setupSearchBar()
-        setupPlatformSlider()
     }
     
     func prepareCollectionView() {
@@ -160,6 +159,10 @@ extension HomeModuleViewController: HomeViewInterface {
     
     func hideResponseNilLabel() {
         responseNilLabel.isHidden = true
+    }
+    
+    func setPlatformSliderWidget() {
+        self.platformSliderView.presenter = PlatformSliderWidgetPresenter(view: PlatformSliderWidget())
     }
 }
     

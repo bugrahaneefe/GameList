@@ -52,9 +52,9 @@
                                 </label>
                                 <cells/>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="06M-RO-ZGo">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="utv-sp-1ku" customClass="PlatformSliderWidget" customModule="CommonViewsKit">
                                 <rect key="frame" x="0.0" y="110" width="393" height="60"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -62,20 +62,21 @@
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="m7P-bh-ZKs" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="4KN-LJ-qrt"/>
-                            <constraint firstItem="06M-RO-ZGo" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="6li-ef-Ww6"/>
+                            <constraint firstItem="m7P-bh-ZKs" firstAttribute="top" secondItem="utv-sp-1ku" secondAttribute="bottom" id="C0t-7k-oYa"/>
                             <constraint firstItem="m7P-bh-ZKs" firstAttribute="top" secondItem="WRc-ip-7yt" secondAttribute="bottom" constant="60" id="Nrt-bI-GZP"/>
+                            <constraint firstItem="utv-sp-1ku" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="QtT-nS-JXX"/>
+                            <constraint firstItem="utv-sp-1ku" firstAttribute="top" secondItem="WRc-ip-7yt" secondAttribute="bottom" id="UqG-vP-rqq"/>
                             <constraint firstItem="WRc-ip-7yt" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="VM1-E9-ngw"/>
                             <constraint firstItem="m7P-bh-ZKs" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="bA8-TK-7ah"/>
-                            <constraint firstItem="m7P-bh-ZKs" firstAttribute="top" secondItem="06M-RO-ZGo" secondAttribute="bottom" id="bxT-Uf-2bG"/>
+                            <constraint firstItem="utv-sp-1ku" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="bjQ-bT-8Tr"/>
                             <constraint firstItem="WRc-ip-7yt" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="lB8-4K-jkB"/>
-                            <constraint firstItem="06M-RO-ZGo" firstAttribute="top" secondItem="WRc-ip-7yt" secondAttribute="bottom" id="m1u-9A-GrW"/>
-                            <constraint firstItem="06M-RO-ZGo" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="oNg-9M-U2d"/>
                             <constraint firstItem="m7P-bh-ZKs" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="vfj-y1-Xwh"/>
                             <constraint firstItem="WRc-ip-7yt" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="zOV-hc-BLX"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="m7P-bh-ZKs" id="rEq-sH-vnB"/>
+                        <outlet property="platformSliderView" destination="utv-sp-1ku" id="W2c-cD-zMY"/>
                         <outlet property="responseNilLabel" destination="bzh-fj-tEH" id="oGX-eH-ohb"/>
                         <outlet property="searchBar" destination="WRc-ip-7yt" id="Ilz-ZV-hsG"/>
                     </connections>
@@ -86,9 +87,6 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
