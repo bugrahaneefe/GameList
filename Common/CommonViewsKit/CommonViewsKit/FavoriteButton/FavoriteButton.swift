@@ -12,7 +12,7 @@ protocol FavoriteButtonInterface {
     func prepareUI()
 }
 
-final class FavoriteButton: NibView {
+public final class FavoriteButton: NibView {
     @IBOutlet weak var favoriteButton: UIButton!
         
     var presenter: FavoriteButtonPresenterInterface! {

@@ -26,13 +26,14 @@ private enum Constant {
         static let title: String = "Games"
         static let titleFont: CGFloat = 16.0
     }
+    
+    static let gamingPlatforms =  ["PC", "PlayStation", "Xbox", "Atari", "iOS", "Android", "PS Vita", "PSP", "macOS", "Linux", "Nintendo", "Wii", "GameCube", "SNES", "NES", "Jaguar", "Commodore / Amiga", "SEGA", "Genesis", "Dreamcast", "Game Gear", "3DO", "Web", "Neo"]
 }
 
 final class HomeModuleViewController: BaseViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var responseNilLabel: UILabel!
     @IBOutlet private weak var searchBar: UISearchBar!
-    @IBOutlet weak var platformSlider: UIStackView!
     
     var presenter: HomeModulePresenterInterface!
     private var loadingIndicator: UIActivityIndicatorView?
@@ -100,19 +101,6 @@ final class HomeModuleViewController: BaseViewController {
                 .foregroundColor: UIColor.SearchBarColor.Text])
         searchBar.searchTextField.leftView?.tintColor = UIColor.SearchBarColor.Text
         searchBar.searchTextField.textColor = UIColor.SearchBarColor.Text
-    }
-    
-    private func setupPlatformSlider() {
-        for _ in 1...10 {
-            let button = UIView()
-            button.backgroundColor = .white
-            button.layer.cornerRadius = 15
-            button.translatesAutoresizingMaskIntoConstraints = false
-            button.widthAnchor.constraint(equalToConstant: 20).isActive = true
-            button.heightAnchor.constraint(equalToConstant: 20).isActive = true   
-            
-            platformSlider.addArrangedSubview(button)
-        }
     }
     
     @objc
