@@ -10,15 +10,15 @@ import Foundation
 import NetworkKit
 
 protocol HomeHandlerInteractorInterface: AnyObject {
-    func gameListDetails(at page: Int, contains name: String, completion: @escaping (GameListDetailsResult) -> Void)
+    func gameListDetails(at page: Int, contains name: String, with platforms: String, completion: @escaping (GameListDetailsResult) -> Void)
 }
 
 final class HomeHandlerInteractor: Networker<HomeEndpointItem> { }
 
 // MARK: - HomeHandlerInteractorInterface
 extension HomeHandlerInteractor: HomeHandlerInteractorInterface {
-    func gameListDetails(at page: Int, contains name: String, completion: @escaping (GameListDetailsResult) -> Void) {
-        request(endpoint: .gameListDetails(at: page, contains: name)) { (result: Result<GameListDetailsResponse, Error>) in
+    func gameListDetails(at page: Int, contains name: String, with platforms: String, completion: @escaping (GameListDetailsResult) -> Void) {
+        request(endpoint: .gameListDetails(at: page, contains: name, with: platforms)) { (result: Result<GameListDetailsResponse, Error>) in
             switch result {
             case .success(let response):
                 completion(.success(response))

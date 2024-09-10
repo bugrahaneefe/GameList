@@ -45,6 +45,8 @@ final class HomeModulePresenter {
     private var games: [Game] = []
     private var gameSection: GameSection?
     private var currentPage = 1
+    private var currentName = ""
+    private var currentPlatforms = "1,2,3,4,5,6,7,8,9,10,11,12,13,14"
     private var isFetchingAvailable = true
     private let throttler: CommonKit.ThrottlerInterface
     
@@ -61,20 +63,23 @@ final class HomeModulePresenter {
     }
     
     // MARK: Private Methods
-    private func fetchGameList(at page: Int = 1, contains name: String = "") {
+    private func fetchGameList(
+        at page: Int = 1,
+        contains name: String = "",
+        with platforms: String = "1,2,3,4,5,6,7,8,9,10,11,12,13,14") {
         guard isFetchingAvailable else { return }
         isFetchingAvailable = false
         
         view?.showLoading()
         
-        let endpoint = HomeEndpointItem.gameListDetails(at: page, contains: name)
+        let endpoint = HomeEndpointItem.gameListDetails(at: page, contains: name, with: platforms)
         
         guard let url = endpoint.url else {
             view?.hideLoading()
             return
         }
         
-        interactor.fetchGameList(with: url, at: page, contains: name)
+        interactor.fetchGameList(with: url, at: page, contains: name, with: platforms)
     }
     
     private func handleEmptyGameStatus() {
@@ -137,24 +142,33 @@ extension HomeModulePresenter: HomeModulePresenterInterface {
     
     func pullToRefresh() {
         isFetchingAvailable = true
-        fetchGameList(at: currentPage)
+        fetchGameList(at: currentPage, with: currentPlatforms)
     }
     
     func filterWith(_ searchBar: UISearchBar) {
+        let platforms = currentPlatforms
         guard let name = searchBar.text else { return }
         throttler.throttle { [weak self] in
             self?.games.removeAll()
             self?.isFetchingAvailable = true
-            self?.fetchGameList(contains: name)
+            self?.fetchGameList(contains: name, with: platforms)
         }
+        currentName = name
+        print(currentName)
+        print(currentPlatforms)
     }
     
     func fetchPlatforms(of selectedPlatforms: [Int]) {
-        print(selectedPlatforms)
-//        games.removeAll()
-//        view?.reloadCollectionView()
-//        view?.hideLoading()
-//        fetchGameList(at: platform)
+        games.removeAll()
+        isFetchingAvailable = true
+        if !selectedPlatforms.isEmpty {
+            let platformsQuery = selectedPlatforms.map { String($0) }.joined(separator: ",")
+            currentPlatforms = platformsQuery
+            fetchGameList(contains: currentName, with: platformsQuery)
+        } else {
+            currentPlatforms = "1,2,3,4,5,6,7,8,9,10,11,12,13,14"
+            fetchGameList(at: 1, contains: currentName)
+        }
     }
 }
 
