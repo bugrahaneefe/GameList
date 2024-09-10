@@ -15,15 +15,13 @@ public struct InformationView: View {
                 .padding()
                 .foregroundColor(Color.InformationViewColor.TitleTint)
                 .font(Font.custom("Lato", size: 10))
-                .background(Color.InformationViewColor.Background)
             Spacer()
             Text(self.info)
                 .padding()
                 .foregroundColor(Color.InformationViewColor.InfoTint)
                 .font(Font.custom("Lato", size: 10))
-                .background(Color.InformationViewColor.Background)
         }
-        .frame(height: 12)
+        .frame(height: 18)
         .background(Color.clear)
     }
 }

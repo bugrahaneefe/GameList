@@ -17,12 +17,13 @@ public struct GameCellBannerDetailsView: View {
     }
     
     public var body: some View {
-        HStack {
-            ForEach(infos.keys.sorted(), id: \.self) { title in
-                InformationView(title: title, info: title)
+            VStack {
+                ForEach(infos.keys.sorted(), id: \.self) { title in
+                    InformationView(title: title, info: title)
+                    InformationView(title: title, info: title)
+                    InformationView(title: title, info: title)
+                }
             }
-        }
-        .frame(height: 18)
-        .background(Color.InformationViewColor.Background)
+            .background(Color.InformationViewColor.Background)
     }
 }
