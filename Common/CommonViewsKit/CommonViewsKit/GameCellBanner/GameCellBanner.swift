@@ -14,6 +14,7 @@ public protocol GameCellBannerViewInterface {
     func setGameNameLabel(name: String?)
     func setRating(rating: Int)
     func setPlatforms(with platforms: [String])
+    func setDetails(with infos: [String:String])
     func prepareUI()
 }
 
@@ -23,6 +24,7 @@ public final class GameCellBanner: UICollectionViewCell {
     @IBOutlet private weak var ratingView: UIView!
     @IBOutlet private weak var ratingLabel: UILabel!
     @IBOutlet weak var gamePlatformView: UIView!
+    @IBOutlet weak var gameDetailsView: UIView!
     
     public var presenter: GameCellBannerPresenterInterface! {
         didSet {
@@ -47,6 +49,21 @@ public final class GameCellBanner: UICollectionViewCell {
             swiftuiView.topAnchor.constraint(equalTo: gamePlatformView.topAnchor),
             swiftuiView.bottomAnchor.constraint(equalTo: gamePlatformView.bottomAnchor),
             swiftuiView.widthAnchor.constraint(equalTo: gamePlatformView.widthAnchor)
+        ])
+    }
+    
+    private func setGameDetailsView(with infos: [String:String]) {
+        let child = UIHostingController(rootView: GameCellBannerDetailsView(infos: infos))
+        let swiftuiView = child.view!
+        swiftuiView.translatesAutoresizingMaskIntoConstraints = false
+        gameDetailsView.addSubview(swiftuiView)
+
+        NSLayoutConstraint.activate([
+            swiftuiView.leadingAnchor.constraint(equalTo: gameDetailsView.leadingAnchor),
+            swiftuiView.trailingAnchor.constraint(equalTo: gameDetailsView.trailingAnchor),
+            swiftuiView.topAnchor.constraint(equalTo: gameDetailsView.topAnchor),
+            swiftuiView.bottomAnchor.constraint(equalTo: gameDetailsView.bottomAnchor),
+            swiftuiView.widthAnchor.constraint(equalTo: gameDetailsView.widthAnchor)
         ])
     }
 }
@@ -78,6 +95,10 @@ extension GameCellBanner: GameCellBannerViewInterface {
     
     public func setPlatforms(with platforms: [String]) {
         setGamePlatformView(with: platforms)
+    }
+    
+    public func setDetails(with infos: [String:String]) {
+        setGameDetailsView(with: ["selen":"selen"])
     }
     
     public func prepareUI() {

@@ -126,10 +126,10 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1z5-oN-fJ4">
-                        <rect key="frame" x="15" y="185" width="315" height="57"/>
+                        <rect key="frame" x="15" y="181" width="315" height="61"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="57" id="mSl-L8-uRs"/>
+                            <constraint firstAttribute="height" constant="61" id="mSl-L8-uRs"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -152,6 +152,7 @@
             </constraints>
             <connections>
                 <outlet property="bannerImageView" destination="hDA-cj-f08" id="nAd-Gj-6Rc"/>
+                <outlet property="gameDetailsView" destination="1z5-oN-fJ4" id="zrl-zH-cnx"/>
                 <outlet property="gameNameLabel" destination="MZe-Xc-ORT" id="KJv-Au-UET"/>
                 <outlet property="gamePlatformView" destination="whF-Wa-vf1" id="CLJ-fd-lwh"/>
                 <outlet property="ratingLabel" destination="WPa-hO-1uu" id="MKv-rA-BJh"/>

@@ -39,7 +39,6 @@ public struct PlatformButton: View {
                         isSelected ? Color.PlatformButtonColor.Green : defaultColor
                     )
                     .font(Font.custom("Lato", size: fontSize))
-                    .font(.system(size: fontSize))
                     .frame(height: height)
                     .background(Color.PlatformButtonColor.Background)
                     .overlay(RoundedRectangle(cornerRadius: cellRadius)

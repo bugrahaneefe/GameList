@@ -28,4 +28,10 @@ extension Color {
         public static let Background = Color(hex: "#1D1D1D")
         public static let Tint = Color(hex: "#D6D6D6")
     }
+    
+    public struct InformationViewColor {
+        public static let Background = Color(hex: "#1D1D1D")
+        public static let TitleTint = Color(hex: "#656565")
+        public static let InfoTint = Color(hex: "#9F9F9F")
+    }
 }

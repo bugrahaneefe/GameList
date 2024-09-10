@@ -53,6 +53,10 @@ public final class GameCellBannerPresenter {
         }
         view?.setPlatforms(with: platformNames)
     }
+    
+    private func handleDetails() {
+        view?.setDetails(with: ["sELEN": "SELEN"])
+    }
 }
 
 // MARK: - GameCellBannerPresenterInterface
@@ -63,6 +67,7 @@ extension GameCellBannerPresenter: GameCellBannerPresenterInterface {
         handleGameName()
         handleRating()
         handlePlatforms()
+        handleDetails()
     }
 
     //    todo
