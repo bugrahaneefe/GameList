@@ -7,11 +7,13 @@
 
 import UIKit
 import CoreUtils
+import SwiftUI
 
 public protocol GameCellBannerViewInterface {
     func setBannerImage(path: String?)
     func setGameNameLabel(name: String?)
     func setRating(rating: Int)
+    func setPlatforms(with platforms: [String])
     func prepareUI()
 }
 
@@ -20,7 +22,8 @@ public final class GameCellBanner: UICollectionViewCell {
     @IBOutlet private weak var gameNameLabel: UILabel!
     @IBOutlet private weak var ratingView: UIView!
     @IBOutlet private weak var ratingLabel: UILabel!
-
+    @IBOutlet weak var gamePlatformView: UIView!
+    
     public var presenter: GameCellBannerPresenterInterface! {
         didSet {
             presenter?.load()
@@ -30,6 +33,21 @@ public final class GameCellBanner: UICollectionViewCell {
     override public func prepareForReuse() {
         super.prepareForReuse()
         bannerImageView.image = nil
+    }
+    
+    //MARK: Private Functions
+    private func setGamePlatformView(with platforms: [String]) {
+        let child = UIHostingController(rootView: GameCellBannerPlatformView(buttonNames: platforms))
+        let swiftuiView = child.view!
+        swiftuiView.translatesAutoresizingMaskIntoConstraints = false
+        gamePlatformView.addSubview(swiftuiView)
+
+        NSLayoutConstraint.activate([
+            swiftuiView.leadingAnchor.constraint(equalTo: gamePlatformView.leadingAnchor),
+            swiftuiView.topAnchor.constraint(equalTo: gamePlatformView.topAnchor),
+            swiftuiView.bottomAnchor.constraint(equalTo: gamePlatformView.bottomAnchor),
+            swiftuiView.widthAnchor.constraint(equalTo: gamePlatformView.widthAnchor)
+        ])
     }
 }
 
@@ -58,7 +76,11 @@ extension GameCellBanner: GameCellBannerViewInterface {
         ratingView.layer.cornerRadius = 3
     }
     
-//    todo
+    public func setPlatforms(with platforms: [String]) {
+        setGamePlatformView(with: platforms)
+    }
+    
     public func prepareUI() {
+        
     }
 }

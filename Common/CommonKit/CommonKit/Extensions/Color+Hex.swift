@@ -23,4 +23,9 @@ extension Color {
         public static let Background = Color(hex: "#2D2D2D")
         public static let Green = Color(hex: "#4BC766")
     }
+    
+    public struct GameCellBannerPlatformColor {
+        public static let Background = Color(hex: "#1D1D1D")
+        public static let Tint = Color(hex: "#D6D6D6")
+    }
 }

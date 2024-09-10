@@ -42,6 +42,17 @@ public final class GameCellBannerPresenter {
         let rating = Int(game.rating*20)
         view?.setRating(rating: rating)
     }
+    
+    private func handlePlatforms() {
+        var platformNames: [String] = []
+        if let platforms = game.platforms {
+            for platformInfo in platforms {
+                let name = platformInfo.platform.name
+                platformNames.append(name)
+            }
+        }
+        view?.setPlatforms(with: platformNames)
+    }
 }
 
 // MARK: - GameCellBannerPresenterInterface
@@ -51,6 +62,7 @@ extension GameCellBannerPresenter: GameCellBannerPresenterInterface {
         handleBannerImage()
         handleGameName()
         handleRating()
+        handlePlatforms()
     }
 
     //    todo

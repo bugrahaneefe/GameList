@@ -39,7 +39,7 @@ public struct PlatformButtonView: View {
             HStack(spacing: 10) {
                 ForEach(Constant.gamingPlatforms, id: \.index) { platform in
                     let isSelected = selectedPlatforms.contains(platform.index)
-                    PlatformButton(name: platform.name) {
+                    PlatformButton(name: platform.name, fontSize: 14, height: 30, cellRadius: 15, defaultColor: .white) {
                         if isSelected {
                             selectedPlatforms.removeAll { $0 == platform.index }
                         } else {
