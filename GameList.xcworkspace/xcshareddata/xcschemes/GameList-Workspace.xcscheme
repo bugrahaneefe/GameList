@@ -112,6 +112,34 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BC3B5B6BC1A02F7E447CBECA"
+               BuildableName = "GameDetailModule.framework"
+               BlueprintName = "GameDetailModule"
+               ReferencedContainer = "container:Module/GameDetailModule/GameDetailModule.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7C60647F1CD3C8E6D1A52B98"
+               BuildableName = "GameDetailModule_GameDetailModule.bundle"
+               BlueprintName = "GameDetailModule_GameDetailModule"
+               ReferencedContainer = "container:Module/GameDetailModule/GameDetailModule.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "2B97393E0C8FAB9F000D0B77"
                BuildableName = "GameList.app"
                BlueprintName = "GameList"

@@ -28,6 +28,9 @@
       location = "group:Module"
       name = "Module">
       <FileRef
+         location = "group:GameDetailModule/GameDetailModule.xcodeproj">
+      </FileRef>
+      <FileRef
          location = "group:HomeModule/HomeModule.xcodeproj">
       </FileRef>
    </Group>

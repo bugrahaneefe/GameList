@@ -36,6 +36,7 @@ let appTarget = Target.target(
     ],
     dependencies: [
         homeModule,
+        gameDetailModule,
         networkKit,
         alamofire,
         listingKit,

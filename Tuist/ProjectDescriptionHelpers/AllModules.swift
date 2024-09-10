@@ -3,6 +3,9 @@ import ProjectDescription
 public let homeModule = TargetDependency.project(
   target: "HomeModule",
   path: .relativeToRoot("Module/HomeModule"))
+public let gameDetailModule = TargetDependency.project(
+  target: "GameDetailModule",
+  path: .relativeToRoot("Module/GameDetailModule"))
 public let networkKit = TargetDependency.project(
   target: "NetworkKit",
   path: .relativeToRoot("Kit/NetworkKit"))

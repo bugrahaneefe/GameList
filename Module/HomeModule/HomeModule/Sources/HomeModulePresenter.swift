@@ -22,6 +22,7 @@ protocol HomeModulePresenterInterface: PresenterInterface, HomeModuleGameDelegat
     func pullToRefresh()
     func willDisplayItemAt(_ indexPath: IndexPath)
     func filterWith(_ searchBar: UISearchBar)
+    func fetchPlatforms(of selectedPlatforms: [Int])
 }
 
 private enum Constant {
@@ -110,7 +111,6 @@ extension HomeModulePresenter: HomeModulePresenterInterface {
     func viewDidLoad() {
         view?.prepareUI()
         view?.prepareCollectionView()
-        view?.setPlatformSliderWidget()
     }
     
     func viewWillAppear() {
@@ -147,6 +147,14 @@ extension HomeModulePresenter: HomeModulePresenterInterface {
             self?.isFetchingAvailable = true
             self?.fetchGameList(contains: name)
         }
+    }
+    
+    func fetchPlatforms(of selectedPlatforms: [Int]) {
+        print(selectedPlatforms)
+//        games.removeAll()
+//        view?.reloadCollectionView()
+//        view?.hideLoading()
+//        fetchGameList(at: platform)
     }
 }
 

@@ -9,6 +9,7 @@ import CommonKit
 import CommonViewsKit
 import CoreUtils
 import UIKit
+import SwiftUI
 
 protocol HomeViewInterface {
     func prepareUI()
@@ -19,7 +20,6 @@ protocol HomeViewInterface {
     func showResponseNilLabel()
     func showResponseNilLabel(with: String)
     func hideResponseNilLabel()
-    func setPlatformSliderWidget()
 }
 
 private enum Constant {    
@@ -33,7 +33,7 @@ final class HomeModuleViewController: BaseViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var responseNilLabel: UILabel!
     @IBOutlet private weak var searchBar: UISearchBar!
-    @IBOutlet private var platformSliderView: PlatformSliderWidget!
+    @IBOutlet private var platformSliderView: UIView!
     
     var presenter: HomeModulePresenterInterface!
     private var loadingIndicator: UIActivityIndicatorView?
@@ -103,6 +103,24 @@ final class HomeModuleViewController: BaseViewController {
         searchBar.searchTextField.textColor = UIColor.SearchBarColor.Text
     }
     
+    private func setupPlatformSliderView() {
+        let vc = UIHostingController(rootView: PlatformButtonView(buttonAction: { [weak self] selectedPlatforms in
+            self?.presenter.fetchPlatforms(of: selectedPlatforms)
+        }))
+        let swiftuiView = vc.view!
+        swiftuiView.translatesAutoresizingMaskIntoConstraints = false
+        addChild(vc)
+        platformSliderView.addSubview(swiftuiView)
+        NSLayoutConstraint.activate([
+            swiftuiView.leadingAnchor.constraint(equalTo: platformSliderView.leadingAnchor),
+            swiftuiView.trailingAnchor.constraint(equalTo: platformSliderView.trailingAnchor),
+            swiftuiView.topAnchor.constraint(equalTo: platformSliderView.topAnchor),
+            swiftuiView.bottomAnchor.constraint(equalTo: platformSliderView.bottomAnchor),
+            swiftuiView.heightAnchor.constraint(equalTo: platformSliderView.heightAnchor)
+        ])
+        vc.didMove(toParent: self)
+    }
+    
     @objc
     private func rightBarButtonItemTapped() {
         presenter.changeAppearanceTapped()
@@ -126,6 +144,7 @@ extension HomeModuleViewController: HomeViewInterface {
         setupCollectionView()
         setupNavigationBar()
         setupSearchBar()
+        setupPlatformSliderView()
     }
     
     func prepareCollectionView() {
@@ -159,10 +178,6 @@ extension HomeModuleViewController: HomeViewInterface {
     
     func hideResponseNilLabel() {
         responseNilLabel.isHidden = true
-    }
-    
-    func setPlatformSliderWidget() {
-        self.platformSliderView.presenter = PlatformSliderWidgetPresenter(view: PlatformSliderWidget())
     }
 }
     

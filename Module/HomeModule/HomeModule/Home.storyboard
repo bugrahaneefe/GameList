@@ -52,9 +52,12 @@
                                 </label>
                                 <cells/>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="utv-sp-1ku" customClass="PlatformSliderWidget" customModule="CommonViewsKit">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="utv-sp-1ku">
                                 <rect key="frame" x="0.0" y="110" width="393" height="60"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="V9a-Wu-RGq"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -68,10 +71,10 @@
                             <constraint firstItem="utv-sp-1ku" firstAttribute="top" secondItem="WRc-ip-7yt" secondAttribute="bottom" id="UqG-vP-rqq"/>
                             <constraint firstItem="WRc-ip-7yt" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="VM1-E9-ngw"/>
                             <constraint firstItem="m7P-bh-ZKs" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="bA8-TK-7ah"/>
-                            <constraint firstItem="utv-sp-1ku" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="bjQ-bT-8Tr"/>
                             <constraint firstItem="WRc-ip-7yt" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="lB8-4K-jkB"/>
                             <constraint firstItem="m7P-bh-ZKs" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="vfj-y1-Xwh"/>
                             <constraint firstItem="WRc-ip-7yt" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="zOV-hc-BLX"/>
+                            <constraint firstItem="utv-sp-1ku" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="zRJ-VQ-7xg"/>
                         </constraints>
                     </view>
                     <connections>

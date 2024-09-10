@@ -2,26 +2,23 @@ import ProjectDescription
 import ProjectDescriptionHelpers
 
 let frameworkTarget = Target.target(
-    name: "HomeModule",
+    name: "GameDetailModule",
     destinations: .iOS,
     product: .staticFramework,
-    bundleId: "com.gamelist.HomeModule",
+    bundleId: "com.gamelist.GameDetailModule",
     deploymentTargets: .iOS("15.0"),
-    infoPlist: .extendingDefault(with: [
-        "UILaunchStoryboardName" : "LaunchScreen"
-    ]),
-    sources: ["HomeModule/**/*.swift"],
+    infoPlist: .default,
+    sources: ["GameDetailModule/**/*.swift"],
     resources: [
-        "HomeModule/**/*.xib",
-        "HomeModule/**/*.storyboard",
-        "HomeModule/**/*.xcassets",
-        "HomeModule/**/*.strings",
-        "HomeModule/**/*.ttf",
-        "HomeModule/**/*.json",
-        "HomeModule/**/*.gif"
+        "GameDetailModule/**/*.xib",
+        "GameDetailModule/**/*.storyboard",
+        "GameDetailModule/**/*.xcassets",
+        "GameDetailModule/**/*.strings",
+        "GameDetailModule/**/*.ttf",
+        "GameDetailModule/**/*.json",
+        "GameDetailModule/**/*.gif"
     ],
     dependencies: [
-        gameDetailModule,
         networkKit,
         alamofire,
         listingKit,
@@ -35,7 +32,7 @@ let frameworkTarget = Target.target(
 )
 
 let project = Project(
-    name: "HomeModule",
+    name: "GameDetailModule",
     targets: [
         frameworkTarget
     ]
