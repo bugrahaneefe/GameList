@@ -54,6 +54,7 @@ final class HomeModuleViewController: BaseViewController {
         loadingIndicator = UIActivityIndicatorView(style: .large)
         loadingIndicator?.center = view.center
         loadingIndicator?.hidesWhenStopped = true
+        loadingIndicator?.color = UIColor.LoadingIndicatorColor.Tint
         if let loadingIndicator = loadingIndicator {
             view.addSubview(loadingIndicator)
         }

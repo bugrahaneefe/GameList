@@ -30,6 +30,10 @@ private enum Constant {
         static let isBannerStateActive = "isBannerStateActive"
     }
     
+    enum Platform {
+        static let allPlatformIndexes = "1,2,3,4,5,6,7,8,9,10,11,12,13,14"
+    }
+    
     static let throttleInterval = 0.7
 }
 
@@ -46,7 +50,7 @@ final class HomeModulePresenter {
     private var gameSection: GameSection?
     private var currentPage = 1
     private var currentName = ""
-    private var currentPlatforms = "1,2,3,4,5,6,7,8,9,10,11,12,13,14"
+    private var currentPlatforms = Constant.Platform.allPlatformIndexes
     private var isFetchingAvailable = true
     private let throttler: CommonKit.ThrottlerInterface
     
@@ -66,7 +70,7 @@ final class HomeModulePresenter {
     private func fetchGameList(
         at page: Int = 1,
         contains name: String = "",
-        with platforms: String = "1,2,3,4,5,6,7,8,9,10,11,12,13,14") {
+        with platforms: String = Constant.Platform.allPlatformIndexes) {
         guard isFetchingAvailable else { return }
         isFetchingAvailable = false
         
@@ -166,7 +170,7 @@ extension HomeModulePresenter: HomeModulePresenterInterface {
             currentPlatforms = platformsQuery
             fetchGameList(contains: currentName, with: platformsQuery)
         } else {
-            currentPlatforms = "1,2,3,4,5,6,7,8,9,10,11,12,13,14"
+            currentPlatforms = Constant.Platform.allPlatformIndexes
             fetchGameList(at: 1, contains: currentName)
         }
     }

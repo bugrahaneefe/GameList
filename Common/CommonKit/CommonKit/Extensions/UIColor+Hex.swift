@@ -58,4 +58,8 @@ extension UIColor {
     public struct PlatformButtonColor {
         public static let Background = UIColor(hex: 0x2D2D2D)
     }
+    
+    public struct LoadingIndicatorColor {
+        public static let Tint = UIColor(hex: 0x6EC470)
+    }
 }
