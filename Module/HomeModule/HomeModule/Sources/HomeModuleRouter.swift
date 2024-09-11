@@ -46,6 +46,11 @@ public final class HomeModuleRouter: HomeModuleRouterInterface {
     
     public func navigateToGameDetail() {
         let gameDetailvc = gameDetail.gameDetail(navigationController: navigationController)
+        navigationController?.navigationBar.configureNavigationBar(
+            isTranslucent: true,
+            backgroundImage: nil,
+            shadowColor: .blue,
+            backgroundColor: UIColor.NavigationBarColor.Background)
         navigationController?.pushViewController(gameDetailvc, animated: true)
     }
 }

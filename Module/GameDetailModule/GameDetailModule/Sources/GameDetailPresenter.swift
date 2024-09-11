@@ -33,5 +33,7 @@ final class GameDetailPresenter {
 }
 
 extension GameDetailPresenter: GameDetailPresenterInterface {
-    
+    func viewDidLoad() {
+        view?.prepareUI()
+    }
 }

@@ -64,9 +64,12 @@ final class HomeModuleViewController: BaseViewController {
         self.title = Constant.NavigationBar.title
         self.navigationController?.navigationBar.tintColor = .white
 
+        navigationItem.backButtonTitle = ""
         navigationController?.navigationBar.setTitleTextAttributes(attributes: [
             .foregroundColor: UIColor.white,
-            .font: UIFont.systemFont(ofSize: Constant.NavigationBar.titleFont, weight: .semibold)
+            .font: UIFont.systemFont(
+                ofSize: Constant.NavigationBar.titleFont,
+                weight: .semibold)
         ])
         
         let rightBarButtonItem = UIBarButtonItem(
