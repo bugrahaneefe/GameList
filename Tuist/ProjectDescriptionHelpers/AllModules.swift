@@ -18,3 +18,6 @@ public let commonViews = TargetDependency.project(
 public let homeHandlerKit = TargetDependency.project(
   target: "HomeHandlerKit",
   path: .relativeToRoot("Kit/HomeHandlerKit"))
+public let gameDetailHandlerKit = TargetDependency.project(
+  target: "GameDetailHandlerKit",
+  path: .relativeToRoot("Kit/GameDetailHandlerKit"))

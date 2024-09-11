@@ -45,7 +45,8 @@ let appTarget = Target.target(
         common,
         commonViews,
         alamofireImage,
-        homeHandlerKit
+        homeHandlerKit,
+        gameDetailHandlerKit
     ]
 )
 

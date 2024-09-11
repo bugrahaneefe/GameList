@@ -10,6 +10,7 @@
 		02690281E562A36A0E4DC26F /* NetworkKit.framework in Dependencies */ = {isa = PBXBuildFile; fileRef = 5775AB9D781A9B5A49BAC29D /* NetworkKit.framework */; };
 		0BF497A13CC7C8BE0E70CA8B /* GameDetailModuleDependencyRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9FAA3EA440D79E38376C57 /* GameDetailModuleDependencyRegistration.swift */; };
 		0CEB894049CFC4DCD4CA1032 /* GameDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987BC676332908017B59C8AB /* GameDetailRouter.swift */; };
+		13049DE2857E01D131E2E787 /* GameDetailHandlerKit.framework in Dependencies */ = {isa = PBXBuildFile; fileRef = E15B0197B08EF608C4494107 /* GameDetailHandlerKit.framework */; };
 		19CB85E874B1F43A421E7319 /* CommonViewsKit.framework in Dependencies */ = {isa = PBXBuildFile; fileRef = 04953BCB8AE97B7509B7D69C /* CommonViewsKit.framework */; };
 		31590D0DE1D8DC56F89E4ABF /* GameDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F084638610951C3790B1C0 /* GameDetailInteractor.swift */; };
 		349E2D65ACCC58F001F707C4 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = B982A36CE6A6535D5817FB8D /* Storyboards.swift */; };
@@ -59,6 +60,7 @@
 				19CB85E874B1F43A421E7319 /* CommonViewsKit.framework in Dependencies */,
 				FC7A0567BC1407560E3AA221 /* CoreUtils.framework in Dependencies */,
 				7294EE0825D68F6F7D3A1263 /* DependencyEngine.framework in Dependencies */,
+				13049DE2857E01D131E2E787 /* GameDetailHandlerKit.framework in Dependencies */,
 				B1DD81BEF91BA5A0DE4534E2 /* HomeHandlerKit.framework in Dependencies */,
 				6CB1A937493D435DF63ED535 /* ListingKit.framework in Dependencies */,
 				02690281E562A36A0E4DC26F /* NetworkKit.framework in Dependencies */,
@@ -98,6 +100,7 @@
 		D6E31D265E52C52317FC3074 /* GameDetailModule_GameDetailModule-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GameDetailModule_GameDetailModule-Info.plist"; sourceTree = "<group>"; };
 		D7F084638610951C3790B1C0 /* GameDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailInteractor.swift; sourceTree = "<group>"; };
 		E0845AE233DCBF9B1E81D363 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E15B0197B08EF608C4494107 /* GameDetailHandlerKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GameDetailHandlerKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E30311DDB8C6212440443354 /* HomeHandlerKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HomeHandlerKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8DFE5BEB28A9790F9FBBEC2 /* TuistBundle+GameDetailModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistBundle+GameDetailModule.swift"; sourceTree = "<group>"; };
 		FA0F9AB897B856EDABF2D1D2 /* ListingKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ListingKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -207,6 +210,7 @@
 				04953BCB8AE97B7509B7D69C /* CommonViewsKit.framework */,
 				3903704418FF04574D8A350E /* CoreUtils.framework */,
 				3E76B9A811B41A5A0A9AEDA1 /* DependencyEngine.framework */,
+				E15B0197B08EF608C4494107 /* GameDetailHandlerKit.framework */,
 				D3FAC688679C83BD55CB1545 /* GameDetailModule_GameDetailModule.bundle */,
 				1BA32D15B87503589A47A063 /* GameDetailModule.framework */,
 				E30311DDB8C6212440443354 /* HomeHandlerKit.framework */,

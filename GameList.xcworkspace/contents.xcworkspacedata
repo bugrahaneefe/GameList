@@ -18,6 +18,9 @@
       location = "group:Kit"
       name = "Kit">
       <FileRef
+         location = "group:GameDetailHandlerKit/GameDetailHandlerKit.xcodeproj">
+      </FileRef>
+      <FileRef
          location = "group:HomeHandlerKit/HomeHandlerKit.xcodeproj">
       </FileRef>
       <FileRef

@@ -30,7 +30,8 @@ let frameworkTarget = Target.target(
         common,
         commonViews,
         alamofireImage,
-        homeHandlerKit
+        homeHandlerKit,
+        gameDetailHandlerKit
     ]
 )
 
