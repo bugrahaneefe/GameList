@@ -7,15 +7,21 @@
 
 import CommonKit
 import CoreUtils
+import DependencyEngine
 import UIKit
+import GameDetailModule
 
-public protocol HomeModuleRouterInterface {}
+public protocol HomeModuleRouterInterface {
+    func navigateToGameDetail()
+}
 
 public final class HomeModuleRouter: HomeModuleRouterInterface {
-    public init() {}
-    
     weak var navigationController: UINavigationController?
     
+    @ModuleDependency var gameDetail: GameDetailInterface
+
+    public init() {}
+        
     init(navigationController: UINavigationController?) {
         self.navigationController = navigationController
     }
@@ -36,5 +42,10 @@ public final class HomeModuleRouter: HomeModuleRouterInterface {
         interactor.output = presenter
         
         return view
+    }
+    
+    public func navigateToGameDetail() {
+        let gameDetailvc = gameDetail.gameDetail(navigationController: navigationController)
+        navigationController?.pushViewController(gameDetailvc, animated: true)
     }
 }

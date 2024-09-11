@@ -135,6 +135,7 @@ extension HomeModulePresenter: HomeModulePresenterInterface {
     }
     
     func didSelectGame(at indexPath: IndexPath) {
+        router.navigateToGameDetail()
         //        todo
         //        router.navigateToGameDetails(game)
     }

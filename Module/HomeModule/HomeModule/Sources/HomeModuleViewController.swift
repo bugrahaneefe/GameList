@@ -88,9 +88,11 @@ final class HomeModuleViewController: BaseViewController {
     }
     
     private func setupSearchBar() {
-        view.addGestureRecognizer(UITapGestureRecognizer(
+        let tapGesture = UITapGestureRecognizer(
             target: self,
-            action: #selector(UIInputViewController.dismissKeyboard)))
+            action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
+        tapGesture.cancelsTouchesInView = false
         searchBar.delegate = self
         searchBar.barTintColor = UIColor.SearchBarColor.Background
         searchBar.tintColor = UIColor.SearchBarColor.Cursor
@@ -199,6 +201,7 @@ extension HomeModuleViewController: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegate
 extension HomeModuleViewController: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         presenter.didSelectGame(at: indexPath)
     }

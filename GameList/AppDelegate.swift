@@ -1,5 +1,6 @@
 import UIKit
 import HomeModule
+import GameDetailModule
 import CommonKit
 import DependencyEngine
 
@@ -11,6 +12,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // MARK: Dependency Registration
         HomeModuleDependencyRegistration.register(to: DependencyEngine.shared)
+        GameDetailDependencyRegistration.register(to: DependencyEngine.shared)
         
         return true
     }
