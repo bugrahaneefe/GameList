@@ -55,7 +55,15 @@ public final class GameCellBannerPresenter {
     }
     
     private func handleDetails() {
-        view?.setDetails(with: ["sELEN": "SELEN"])
+//        todo array
+//        todo gameentity genres?
+        if let releasedDate = game.released,
+           let playtime = game.playtime {
+            view?.setDetails(with: [
+                ("Release Date:", releasedDate),
+                ("Playtime:", "\(playtime)")
+            ])
+        }
     }
 }
 

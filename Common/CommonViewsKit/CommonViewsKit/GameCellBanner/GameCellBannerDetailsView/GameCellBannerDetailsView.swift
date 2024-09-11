@@ -10,20 +10,19 @@ import Foundation
 import SwiftUI
 
 public struct GameCellBannerDetailsView: View {
-    public var infos: [String:String]
+    public var infos: [(name: String, value: String)]
     
-    init(infos: [String : String]) {
+    init(infos: [(name: String, value: String)]) {
         self.infos = infos
     }
     
     public var body: some View {
-            VStack {
-                ForEach(infos.keys.sorted(), id: \.self) { title in
-                    InformationView(title: title, info: title)
-                    InformationView(title: title, info: title)
-                    InformationView(title: title, info: title)
-                }
+        VStack {
+            ForEach(infos, id: \.value) { info in
+                InformationView(title: info.name, info: info.value)
+                Divider()
             }
-            .background(Color.InformationViewColor.Background)
+        }
+        .background(Color.InformationViewColor.Background)
     }
 }

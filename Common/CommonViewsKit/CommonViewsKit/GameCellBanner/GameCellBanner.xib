@@ -126,11 +126,8 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1z5-oN-fJ4">
-                        <rect key="frame" x="15" y="184" width="315" height="61"/>
+                        <rect key="frame" x="15" y="184" width="315" height="58"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="61" id="mSl-L8-uRs"/>
-                        </constraints>
                     </view>
                 </subviews>
             </view>
@@ -141,12 +138,13 @@
                 <constraint firstItem="hD9-Um-sKT" firstAttribute="top" secondItem="hDA-cj-f08" secondAttribute="bottom" constant="12" id="55f-KZ-IS6"/>
                 <constraint firstAttribute="trailing" secondItem="1z5-oN-fJ4" secondAttribute="trailing" constant="15" id="6gI-RT-2uS"/>
                 <constraint firstAttribute="trailing" secondItem="OZQ-Me-Us4" secondAttribute="trailing" constant="10" id="7rC-rZ-b5e"/>
-                <constraint firstItem="1z5-oN-fJ4" firstAttribute="top" secondItem="hD9-Um-sKT" secondAttribute="bottom" constant="12" id="HG0-De-rAe"/>
+                <constraint firstAttribute="bottom" secondItem="1z5-oN-fJ4" secondAttribute="bottom" constant="15" id="Cce-Np-r4I"/>
                 <constraint firstItem="hDA-cj-f08" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="UT8-yw-Ozb"/>
                 <constraint firstItem="hDA-cj-f08" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="X7e-Xi-Bxh"/>
                 <constraint firstAttribute="trailing" secondItem="hDA-cj-f08" secondAttribute="trailing" id="af4-QC-gP5"/>
                 <constraint firstAttribute="trailing" secondItem="hD9-Um-sKT" secondAttribute="trailing" constant="15" id="f8k-1p-3R1"/>
                 <constraint firstItem="hD9-Um-sKT" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="hPJ-iP-ejN"/>
+                <constraint firstItem="1z5-oN-fJ4" firstAttribute="top" secondItem="hD9-Um-sKT" secondAttribute="bottom" constant="12" id="hZb-Q4-vsq"/>
                 <constraint firstAttribute="bottom" secondItem="hD9-Um-sKT" secondAttribute="bottom" constant="82" id="nWu-IV-LEC"/>
                 <constraint firstItem="hD9-Um-sKT" firstAttribute="top" secondItem="OZQ-Me-Us4" secondAttribute="bottom" constant="10" id="xaY-rQ-Sp8"/>
             </constraints>

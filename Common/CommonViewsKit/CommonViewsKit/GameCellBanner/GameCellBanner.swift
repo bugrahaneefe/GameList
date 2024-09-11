@@ -14,7 +14,7 @@ public protocol GameCellBannerViewInterface {
     func setGameNameLabel(name: String?)
     func setRating(rating: Int)
     func setPlatforms(with platforms: [String])
-    func setDetails(with infos: [String:String])
+    func setDetails(with infos: [(name: String, value: String)])
     func prepareUI()
 }
 
@@ -52,7 +52,7 @@ public final class GameCellBanner: UICollectionViewCell {
         ])
     }
     
-    private func setGameDetailsView(with infos: [String:String]) {
+    private func setGameDetailsView(with infos: [(name: String, value: String)]) {
         let child = UIHostingController(rootView: GameCellBannerDetailsView(infos: infos))
         let swiftuiView = child.view!
         swiftuiView.translatesAutoresizingMaskIntoConstraints = false
@@ -97,8 +97,8 @@ extension GameCellBanner: GameCellBannerViewInterface {
         setGamePlatformView(with: platforms)
     }
     
-    public func setDetails(with infos: [String:String]) {
-        setGameDetailsView(with: ["selen":"selen"])
+    public func setDetails(with infos: [(name: String, value: String)]) {
+        setGameDetailsView(with: infos)
     }
     
     public func prepareUI() {
