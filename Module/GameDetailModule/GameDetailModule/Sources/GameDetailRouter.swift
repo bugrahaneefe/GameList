@@ -20,7 +20,7 @@ public final class GameDetailRouter: GameDetailRouterInterface {
         self.navigationController = navigationController
     }
     
-    static func create(navigationController: UINavigationController?) -> UIViewController {
+    static func create(navigationController: UINavigationController?, with game: Game) -> UIViewController {
         let storyboard = StoryboardHelper<Storyboards>.create(storyboard: .gameDetail)
         let view = storyboard.instantiateViewController(
             viewClass: GameDetailViewController.self)
@@ -30,7 +30,8 @@ public final class GameDetailRouter: GameDetailRouterInterface {
         let presenter = GameDetailPresenter(
             interactor: interactor,
             router: router,
-            view: view as? GameDetailViewInterface)
+            view: view,
+            game: game)
         
         view.presenter = presenter
         

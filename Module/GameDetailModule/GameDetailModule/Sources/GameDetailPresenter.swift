@@ -22,18 +22,27 @@ final class GameDetailPresenter {
     private let interactor: GameDetailInteractorInterface
     private let router: GameDetailRouterInterface
     private var view: GameDetailViewInterface?
+    private var game: Game?
     
     init(interactor: GameDetailInteractorInterface,
          router: GameDetailRouterInterface,
-         view: GameDetailViewInterface? = nil) {
+         view: GameDetailViewInterface? = nil,
+         game: Game) {
         self.interactor = interactor
         self.router = router
         self.view = view
+        self.game = game
+    }
+    
+    private func handleGameName() {
+        guard let name = game?.name else { return }
+        view?.setGameName(of: name)
     }
 }
 
 extension GameDetailPresenter: GameDetailPresenterInterface {
     func viewDidLoad() {
         view?.prepareUI()
+        handleGameName()
     }
 }

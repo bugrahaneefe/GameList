@@ -11,7 +11,7 @@ import DependencyEngine
 import UIKit
 
 public protocol GameDetailInterface {
-    func gameDetail(navigationController: UINavigationController?) -> UIViewController
+    func gameDetail(navigationController: UINavigationController?, with game: Game) -> UIViewController
 }
 
 public enum GameDetailDependencyRegistration: DependencyRegistration {
@@ -23,7 +23,7 @@ public enum GameDetailDependencyRegistration: DependencyRegistration {
 public final class GameDetail: GameDetailInterface {
     public init() {}
 
-    public func gameDetail(navigationController: UINavigationController?) -> UIViewController {
-        GameDetailRouter.create(navigationController: navigationController)
+    public func gameDetail(navigationController: UINavigationController?, with game: Game) -> UIViewController {
+        GameDetailRouter.create(navigationController: navigationController, with: game)
     }
 }

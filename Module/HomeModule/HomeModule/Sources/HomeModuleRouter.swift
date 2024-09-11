@@ -12,7 +12,7 @@ import UIKit
 import GameDetailModule
 
 public protocol HomeModuleRouterInterface {
-    func navigateToGameDetail()
+    func navigateToGameDetail(with game: Game)
 }
 
 public final class HomeModuleRouter: HomeModuleRouterInterface {
@@ -44,8 +44,8 @@ public final class HomeModuleRouter: HomeModuleRouterInterface {
         return view
     }
     
-    public func navigateToGameDetail() {
-        let gameDetailvc = gameDetail.gameDetail(navigationController: navigationController)
+    public func navigateToGameDetail(with game: Game) {
+        let gameDetailvc = gameDetail.gameDetail(navigationController: navigationController, with: game)
         navigationController?.navigationBar.configureNavigationBar(
             isTranslucent: true,
             backgroundImage: nil,

@@ -13,6 +13,7 @@ import SwiftUI
 
 protocol GameDetailViewInterface {
     func prepareUI()
+    func setGameName(of name: String)
 }
 
 private enum Constant {
@@ -23,6 +24,7 @@ private enum Constant {
 }
 
 final class GameDetailViewController: BaseViewController {
+    @IBOutlet weak var gameName: UILabel!
     
     var presenter: GameDetailPresenterInterface!
     
@@ -57,6 +59,9 @@ final class GameDetailViewController: BaseViewController {
         navigationItem.rightBarButtonItem = rightBarButtonItem
     }
     
+    private func setGameNameLabel(of name: String) {
+        self.gameName.text = name
+    }
     
     @objc
     private func rightBarButtonItemTapped() {
@@ -65,6 +70,10 @@ final class GameDetailViewController: BaseViewController {
 }
 
 extension GameDetailViewController: GameDetailViewInterface {
+    func setGameName(of name: String) {
+        setGameNameLabel(of: name)
+    }
+    
     func prepareUI() {
         setupNavigationBar()
     }
