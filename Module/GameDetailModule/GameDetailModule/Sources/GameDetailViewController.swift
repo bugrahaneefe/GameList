@@ -14,6 +14,8 @@ import SwiftUI
 protocol GameDetailViewInterface {
     func prepareUI()
     func setGameName(of name: String)
+    func setGameImage(path: String?)
+    func setGameRating(rating: Int)
 }
 
 private enum Constant {
@@ -24,7 +26,10 @@ private enum Constant {
 }
 
 final class GameDetailViewController: BaseViewController {
+    @IBOutlet weak var gameImage: UIImageView!
     @IBOutlet weak var gameName: UILabel!
+    @IBOutlet weak var gameRatingView: UIView!
+    @IBOutlet weak var gameRatingLabel: UILabel!
     
     var presenter: GameDetailPresenterInterface!
     
@@ -38,6 +43,7 @@ final class GameDetailViewController: BaseViewController {
         presenter.viewWillAppear()
     }
     
+    //MARK: Private Functions
     private func setupNavigationBar() {
         self.title = Constant.NavigationBar.title
         self.navigationController?.navigationBar.tintColor = .white
@@ -62,7 +68,7 @@ final class GameDetailViewController: BaseViewController {
     private func setGameNameLabel(of name: String) {
         self.gameName.text = name
     }
-    
+        
     @objc
     private func rightBarButtonItemTapped() {
         print("selen")
@@ -70,6 +76,25 @@ final class GameDetailViewController: BaseViewController {
 }
 
 extension GameDetailViewController: GameDetailViewInterface {
+    func setGameImage(path: String?) {
+        self.gameImage.setImageWith(url: path)
+    }
+    
+    func setGameRating(rating: Int) {
+        self.gameRatingLabel.text = "\(rating)"
+        if rating > 80 {
+            self.gameRatingView.backgroundColor = UIColor.RatingViewColor.RatingViewGreen
+            self.gameRatingLabel.textColor = UIColor.RatingViewColor.RatingLabelGreen
+        } else if rating > 60 {
+            self.gameRatingView.backgroundColor = UIColor.RatingViewColor.RatingViewOrange
+            self.gameRatingLabel.textColor = UIColor.RatingViewColor.RatingLabelOrange
+        } else {
+            self.gameRatingView.backgroundColor = UIColor.RatingViewColor.RatingViewRed
+            self.gameRatingLabel.textColor = UIColor.RatingViewColor.RatingLabelRed
+        }
+        gameRatingView.layer.cornerRadius = 3
+    }
+    
     func setGameName(of name: String) {
         setGameNameLabel(of: name)
     }

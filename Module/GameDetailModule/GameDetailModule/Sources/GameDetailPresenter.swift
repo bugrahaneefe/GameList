@@ -38,11 +38,24 @@ final class GameDetailPresenter {
         guard let name = game?.name else { return }
         view?.setGameName(of: name)
     }
+    
+    private func handleGameImage() {
+        if let path = game?.background_image {
+            view?.setGameImage(path: path)
+        }
+    }
+    
+    private func handleGameRating() {
+        guard let rating = game?.rating else { return }
+        view?.setGameRating(rating: Int(rating*20))
+    }
 }
 
 extension GameDetailPresenter: GameDetailPresenterInterface {
     func viewDidLoad() {
         view?.prepareUI()
         handleGameName()
+        handleGameImage()
+        handleGameRating()
     }
 }

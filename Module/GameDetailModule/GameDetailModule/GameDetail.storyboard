@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="666"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample_section.png" translatesAutoresizingMaskIntoConstraints="NO" id="cdR-nQ-6HD">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample_section.png" translatesAutoresizingMaskIntoConstraints="NO" id="cdR-nQ-6HD">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="280"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="280" id="afs-Zw-m0v"/>
@@ -110,7 +110,10 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
+                        <outlet property="gameImage" destination="cdR-nQ-6HD" id="wEs-91-D1e"/>
                         <outlet property="gameName" destination="HXa-pD-F28" id="aWV-vu-I4R"/>
+                        <outlet property="gameRatingLabel" destination="VHD-KD-cvE" id="kDJ-NW-gWm"/>
+                        <outlet property="gameRatingView" destination="GPI-5Q-qiZ" id="gLD-AC-JFn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
