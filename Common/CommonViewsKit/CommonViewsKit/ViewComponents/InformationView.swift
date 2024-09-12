@@ -4,7 +4,7 @@ public struct InformationView: View {
     private let title: String
     private let info: String
 
-    init(title: String, info: String) {
+    public init(title: String, info: String) {
         self.title = title
         self.info = info
     }

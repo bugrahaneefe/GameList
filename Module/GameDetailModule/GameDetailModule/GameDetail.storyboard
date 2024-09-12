@@ -79,7 +79,10 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="689-sY-6Rq">
                                         <rect key="frame" x="0.0" y="0.0" width="363" height="109"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="109" id="IFA-eB-4Bm"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -113,6 +116,7 @@
                     <connections>
                         <outlet property="gameDescriptionView" destination="Hgm-p1-rRu" id="c2a-iF-QxH"/>
                         <outlet property="gameImage" destination="cdR-nQ-6HD" id="wEs-91-D1e"/>
+                        <outlet property="gameInformationView" destination="689-sY-6Rq" id="25e-o8-k3i"/>
                         <outlet property="gameName" destination="HXa-pD-F28" id="aWV-vu-I4R"/>
                         <outlet property="gameRatingLabel" destination="VHD-KD-cvE" id="kDJ-NW-gWm"/>
                         <outlet property="gameRatingView" destination="GPI-5Q-qiZ" id="gLD-AC-JFn"/>

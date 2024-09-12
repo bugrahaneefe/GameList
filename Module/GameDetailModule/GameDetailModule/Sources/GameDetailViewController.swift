@@ -19,6 +19,7 @@ protocol GameDetailViewInterface {
     func showLoading()
     func hideLoading()
     func setGameDescription(with text: String)
+    func setGameInformation(with infos: [(name: String, value: String)])
 }
 
 private enum Constant {
@@ -34,6 +35,7 @@ final class GameDetailViewController: BaseViewController {
     @IBOutlet weak var gameRatingView: UIView!
     @IBOutlet weak var gameRatingLabel: UILabel!
     @IBOutlet weak var gameDescriptionView: UIView!
+    @IBOutlet weak var gameInformationView: UIView!
     
     var presenter: GameDetailPresenterInterface!
     private var loadingIndicator: UIActivityIndicatorView?
@@ -99,6 +101,23 @@ final class GameDetailViewController: BaseViewController {
         ])
         vc.didMove(toParent: self)
     }
+    
+    private func setupGameInformationView(title: String = "Informations", with infos: [(name: String, value: String)]) {
+        let vc = UIHostingController(rootView: GameDetailInformationView(title: title, infos: infos))
+        let swiftuiView = vc.view!
+        swiftuiView.translatesAutoresizingMaskIntoConstraints = false
+        addChild(vc)
+        gameInformationView.addSubview(swiftuiView)
+        gameInformationView.backgroundColor = .black
+        NSLayoutConstraint.activate([
+            swiftuiView.leadingAnchor.constraint(equalTo: gameInformationView.leadingAnchor),
+            swiftuiView.trailingAnchor.constraint(equalTo: gameInformationView.trailingAnchor),
+            swiftuiView.topAnchor.constraint(equalTo: gameInformationView.topAnchor),
+            swiftuiView.bottomAnchor.constraint(equalTo: gameInformationView.bottomAnchor),
+            swiftuiView.widthAnchor.constraint(equalTo: gameDescriptionView.widthAnchor)
+        ])
+        vc.didMove(toParent: self)
+    }
         
     @objc
     private func rightBarButtonItemTapped() {
@@ -110,6 +129,11 @@ extension GameDetailViewController: GameDetailViewInterface {
     func setGameDescription(with text: String) {
         setupGameDescriptionView(title: "Descriptions", description: text)
     }
+    
+    func setGameInformation(with infos: [(name: String, value: String)]) {
+        setupGameInformationView(with: infos)
+    }
+    
     
     func setGameImage(path: String?) {
         self.gameImage.setImageWith(url: path)

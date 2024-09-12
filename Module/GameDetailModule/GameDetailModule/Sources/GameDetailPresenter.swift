@@ -62,6 +62,16 @@ final class GameDetailPresenter {
         view?.setGameDescription(with: description)
     }
     
+    private func handleGameInformation() {
+        if let releasedDate = game?.released,
+           let playtime = game?.playtime {
+            view?.setGameInformation(with: [
+                ("Release Date:", releasedDate),
+                ("Playtime:", "\(playtime)")
+            ])
+        }
+    }
+    
     private func handleGameDetail(with response: GameDetailResponse) {
         gameDetail = response
         view?.hideLoading()
@@ -69,6 +79,7 @@ final class GameDetailPresenter {
         handleGameName()
         handleGameImage()
         handleGameRating()
+        handleGameInformation()
     }
 }
 
