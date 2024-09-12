@@ -136,8 +136,6 @@ extension HomeModulePresenter: HomeModulePresenterInterface {
     
     func didSelectGame(at indexPath: IndexPath) {
         router.navigateToGameDetail(with: games[indexPath.row])
-        //        todo
-        //        router.navigateToGameDetails(game)
     }
     
     func changeAppearanceTapped() {
@@ -159,8 +157,6 @@ extension HomeModulePresenter: HomeModulePresenterInterface {
             self?.fetchGameList(contains: name, with: platforms)
         }
         currentName = name
-        print(currentName)
-        print(currentPlatforms)
     }
     
     func fetchPlatforms(of selectedPlatforms: [Int]) {

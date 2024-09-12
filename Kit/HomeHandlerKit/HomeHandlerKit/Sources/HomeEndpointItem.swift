@@ -21,7 +21,7 @@ public enum HomeEndpointItem: Endpoint {
     private func buildGameListURL(at page: Int?, contains name: String, with platforms: String) -> URL? {
         var components = URLComponents(string: "https://api.rawg.io/api/games")
         components?.queryItems = [
-            URLQueryItem(name: "key", value: "2728bd542342447cbf3dccb350fb91da"),
+            URLQueryItem(name: "key", value: "3fde07e2662c4bde9425cd8d2b901d1b"),
             URLQueryItem(name: "page", value: page.flatMap { "\($0)" }),
             URLQueryItem(name: "page_size", value: "\(8)"),
             URLQueryItem(name: "search", value: name),

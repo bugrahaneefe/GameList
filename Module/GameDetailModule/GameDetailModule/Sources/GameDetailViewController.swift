@@ -16,6 +16,8 @@ protocol GameDetailViewInterface {
     func setGameName(of name: String)
     func setGameImage(path: String?)
     func setGameRating(rating: Int)
+    func showLoading()
+    func hideLoading()
 }
 
 private enum Constant {
@@ -32,6 +34,7 @@ final class GameDetailViewController: BaseViewController {
     @IBOutlet weak var gameRatingLabel: UILabel!
     
     var presenter: GameDetailPresenterInterface!
+    private var loadingIndicator: UIActivityIndicatorView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +47,16 @@ final class GameDetailViewController: BaseViewController {
     }
     
     //MARK: Private Functions
+    private func setupLoadingIndicator() {
+        loadingIndicator = UIActivityIndicatorView(style: .large)
+        loadingIndicator?.center = view.center
+        loadingIndicator?.hidesWhenStopped = true
+        loadingIndicator?.color = UIColor.LoadingIndicatorColor.Tint
+        if let loadingIndicator = loadingIndicator {
+            view.addSubview(loadingIndicator)
+        }
+    }
+    
     private func setupNavigationBar() {
         self.title = Constant.NavigationBar.title
         self.navigationController?.navigationBar.tintColor = .white
@@ -101,5 +114,16 @@ extension GameDetailViewController: GameDetailViewInterface {
     
     func prepareUI() {
         setupNavigationBar()
+    }
+    
+    func showLoading() {
+        if loadingIndicator == nil {
+            setupLoadingIndicator()
+        }
+        loadingIndicator?.startAnimating()
+    }
+    
+    func hideLoading() {
+        loadingIndicator?.stopAnimating()
     }
 }

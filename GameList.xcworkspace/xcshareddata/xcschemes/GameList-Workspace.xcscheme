@@ -126,20 +126,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B0702039A2C7E7826580A963"
-               BuildableName = "GameDetailHandlerKit_GameDetailHandlerKit.bundle"
-               BlueprintName = "GameDetailHandlerKit_GameDetailHandlerKit"
-               ReferencedContainer = "container:Kit/GameDetailHandlerKit/GameDetailHandlerKit.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "BC3B5B6BC1A02F7E447CBECA"
                BuildableName = "GameDetailModule.framework"
                BlueprintName = "GameDetailModule"
