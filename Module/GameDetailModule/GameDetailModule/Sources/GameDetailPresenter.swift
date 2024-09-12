@@ -72,6 +72,26 @@ final class GameDetailPresenter {
         }
     }
     
+    private func handleVisitButtons() {
+        guard var redditAvailable = gameDetail?.reddit_url.isNotNil else { return }
+        guard var websiteAvailable = gameDetail?.website.isNotNil else { return }
+        guard let website = self.gameDetail?.website else { return }
+        guard let reddit = self.gameDetail?.reddit_url else { return }
+        if website == "" {
+            websiteAvailable = false
+        }
+        if reddit == "" {
+            redditAvailable = false
+        }
+        view?.setupGameVisitButtons(by: {
+            guard let websiteUrl = URL(website) else { return }
+            UIApplication.shared.open(websiteUrl)
+        }, by: {
+            guard let redditUrl = URL(reddit) else { return }
+            UIApplication.shared.open(redditUrl)
+        }, websiteAvailable: websiteAvailable, redditAvailable: redditAvailable)
+    }
+    
     private func handleGameDetail(with response: GameDetailResponse) {
         gameDetail = response
         view?.hideLoading()
@@ -80,6 +100,7 @@ final class GameDetailPresenter {
         handleGameImage()
         handleGameRating()
         handleGameInformation()
+        handleVisitButtons()
     }
 }
 

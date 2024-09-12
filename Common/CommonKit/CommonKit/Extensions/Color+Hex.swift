@@ -40,4 +40,9 @@ extension Color {
         public static let DescriptionTint = Color(hex: "#656565")
         public static let TitleTint = Color(hex: "#FFFFFF")
     }
+    
+    public struct VisitButtonViewColor {
+        public static let Background = Color(hex: "#1D1D1D")
+        public static let TitleTint = Color(hex: "#FFFFFF")
+    }
 }

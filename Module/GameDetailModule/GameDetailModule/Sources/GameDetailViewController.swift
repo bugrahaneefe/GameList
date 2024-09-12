@@ -20,6 +20,10 @@ protocol GameDetailViewInterface {
     func hideLoading()
     func setGameDescription(with text: String)
     func setGameInformation(with infos: [(name: String, value: String)])
+    func setupGameVisitButtons(by websiteAction: @escaping () -> Void,
+                               by redditAction: @escaping () -> Void,
+                               websiteAvailable: Bool,
+                               redditAvailable: Bool)
 }
 
 private enum Constant {
@@ -36,6 +40,7 @@ final class GameDetailViewController: BaseViewController {
     @IBOutlet weak var gameRatingLabel: UILabel!
     @IBOutlet weak var gameDescriptionView: UIView!
     @IBOutlet weak var gameInformationView: UIView!
+    @IBOutlet weak var gameVisitButtonsView: UIView!
     
     var presenter: GameDetailPresenterInterface!
     private var loadingIndicator: UIActivityIndicatorView?
@@ -118,6 +123,34 @@ final class GameDetailViewController: BaseViewController {
         ])
         vc.didMove(toParent: self)
     }
+    
+    private func setupGameVisitButtonsView(
+        by websiteAction: @escaping () -> Void,
+        by redditAction: @escaping () -> Void,
+        websiteAvailable: Bool,
+        redditAvailable: Bool) {
+        let vc = UIHostingController(
+            rootView: GameDetailVisitButtonsView(
+                websiteAction: websiteAction,
+                redditAction: redditAction,
+                websiteAvailable: websiteAvailable,
+                redditAvailable: redditAvailable
+            )
+        )
+        let swiftuiView = vc.view!
+        swiftuiView.translatesAutoresizingMaskIntoConstraints = false
+        addChild(vc)
+        gameVisitButtonsView.addSubview(swiftuiView)
+        gameVisitButtonsView.backgroundColor = .black
+        NSLayoutConstraint.activate([
+            swiftuiView.leadingAnchor.constraint(equalTo: gameVisitButtonsView.leadingAnchor),
+            swiftuiView.trailingAnchor.constraint(equalTo: gameVisitButtonsView.trailingAnchor),
+            swiftuiView.topAnchor.constraint(equalTo: gameVisitButtonsView.topAnchor),
+            swiftuiView.bottomAnchor.constraint(equalTo: gameVisitButtonsView.bottomAnchor),
+            swiftuiView.widthAnchor.constraint(equalTo: gameVisitButtonsView.widthAnchor)
+        ])
+        vc.didMove(toParent: self)
+    }
         
     @objc
     private func rightBarButtonItemTapped() {
@@ -126,6 +159,7 @@ final class GameDetailViewController: BaseViewController {
 }
 
 extension GameDetailViewController: GameDetailViewInterface {
+    
     func setGameDescription(with text: String) {
         setupGameDescriptionView(title: "Descriptions", description: text)
     }
@@ -134,6 +168,17 @@ extension GameDetailViewController: GameDetailViewInterface {
         setupGameInformationView(with: infos)
     }
     
+    func setupGameVisitButtons(by websiteAction: @escaping () -> Void,
+                               by redditAction: @escaping () -> Void,
+                               websiteAvailable: Bool,
+                               redditAvailable: Bool) {
+        setupGameVisitButtonsView(
+            by: websiteAction,
+            by: redditAction,
+            websiteAvailable: websiteAvailable,
+            redditAvailable: redditAvailable
+        )
+    }
     
     func setGameImage(path: String?) {
         self.gameImage.setImageWith(url: path)
