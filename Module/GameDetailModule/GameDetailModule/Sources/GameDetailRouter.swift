@@ -34,6 +34,7 @@ public final class GameDetailRouter: GameDetailRouterInterface {
             game: game)
         
         view.presenter = presenter
+        interactor.output = presenter
         
         return view
     }
