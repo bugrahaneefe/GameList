@@ -18,6 +18,7 @@ protocol GameDetailViewInterface {
     func setGameRating(rating: Int)
     func showLoading()
     func hideLoading()
+    func setGameDescription(with text: String)
 }
 
 private enum Constant {
@@ -32,6 +33,7 @@ final class GameDetailViewController: BaseViewController {
     @IBOutlet weak var gameName: UILabel!
     @IBOutlet weak var gameRatingView: UIView!
     @IBOutlet weak var gameRatingLabel: UILabel!
+    @IBOutlet weak var gameDescriptionView: UIView!
     
     var presenter: GameDetailPresenterInterface!
     private var loadingIndicator: UIActivityIndicatorView?
@@ -81,6 +83,22 @@ final class GameDetailViewController: BaseViewController {
     private func setGameNameLabel(of name: String) {
         self.gameName.text = name
     }
+    
+    private func setupGameDescriptionView(title: String, description: String) {
+        let vc = UIHostingController(rootView: GameDetailDescriptionView(title: title, description: description))
+        let swiftuiView = vc.view!
+        swiftuiView.translatesAutoresizingMaskIntoConstraints = false
+        addChild(vc)
+        gameDescriptionView.addSubview(swiftuiView)
+        NSLayoutConstraint.activate([
+            swiftuiView.leadingAnchor.constraint(equalTo: gameDescriptionView.leadingAnchor),
+            swiftuiView.trailingAnchor.constraint(equalTo: gameDescriptionView.trailingAnchor),
+            swiftuiView.topAnchor.constraint(equalTo: gameDescriptionView.topAnchor),
+            swiftuiView.bottomAnchor.constraint(equalTo: gameDescriptionView.bottomAnchor),
+            swiftuiView.widthAnchor.constraint(equalTo: gameDescriptionView.widthAnchor)
+        ])
+        vc.didMove(toParent: self)
+    }
         
     @objc
     private func rightBarButtonItemTapped() {
@@ -89,6 +107,10 @@ final class GameDetailViewController: BaseViewController {
 }
 
 extension GameDetailViewController: GameDetailViewInterface {
+    func setGameDescription(with text: String) {
+        setupGameDescriptionView(title: "Descriptions", description: text)
+    }
+    
     func setGameImage(path: String?) {
         self.gameImage.setImageWith(url: path)
     }

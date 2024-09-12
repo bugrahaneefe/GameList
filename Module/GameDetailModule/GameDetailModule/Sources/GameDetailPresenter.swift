@@ -23,6 +23,7 @@ final class GameDetailPresenter {
     private let router: GameDetailRouterInterface
     private var view: GameDetailViewInterface?
     private var game: Game?
+    private var gameDetail: GameDetailResponse? = nil
     
     init(interactor: GameDetailInteractorInterface,
          router: GameDetailRouterInterface,
@@ -37,16 +38,6 @@ final class GameDetailPresenter {
     //MARK: Private Functions
     private func fetchGameDetail(with id: Int) {
         view?.showLoading()
-        
-        let endpoint = GameDetailEndpointItem.gameDetails(with: id)
-        
-        guard let url = endpoint.url else {
-            view?.hideLoading()
-            return
-        }
-        
-        print(url)
-        
         interactor.fetchDetail(with: id)
     }
     
@@ -66,22 +57,29 @@ final class GameDetailPresenter {
         view?.setGameRating(rating: Int(rating*20))
     }
     
-    private func handleGameDescription(of id: Int) {
-        let id = game?.id
-//        view?.setGameDescription
+    private func handleGameDescription() {
+        guard let description = gameDetail?.description else { return }
+        view?.setGameDescription(with: description)
+    }
+    
+    private func handleGameDetail(with response: GameDetailResponse) {
+        gameDetail = response
+        view?.hideLoading()
+        handleGameDescription()
+        handleGameName()
+        handleGameImage()
+        handleGameRating()
     }
 }
 
 extension GameDetailPresenter: GameDetailPresenterInterface {
     func viewDidLoad() {
         view?.prepareUI()
-        handleGameName()
-        handleGameImage()
-        handleGameRating()
     }
     
     func viewWillAppear() {
-        fetchGameDetail(with: game?.id ?? 348)
+        guard let gameId = game?.id else { return }
+        fetchGameDetail(with: gameId)
     }
 }
 
@@ -91,8 +89,7 @@ extension GameDetailPresenter: GameDetailInteractorOutput {
         view?.hideLoading()
         switch result {
         case .success(let response):
-            print(response)
-//            handleGameSection(with: response)
+            handleGameDetail(with: response)
         case .failure(_):
             print("error")
 //            handleNetworkErrorStatus(of: "Network error")
