@@ -35,6 +35,7 @@ public struct GameDetailInformationView: View {
             .background(Color.DescriptionViewColor.Background)
             .cornerRadius(8)
         }
+        .frame(height: 109)
         .background(.black)
     }
 }
