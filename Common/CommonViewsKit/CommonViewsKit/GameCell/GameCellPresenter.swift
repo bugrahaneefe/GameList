@@ -10,22 +10,33 @@ import Foundation
 import CoreUtils
 
 public protocol GameCellPresenterInterface: PresenterInterface {
-    var favoriteButtonDelegate: FavoriteButtonDelegate? { get }
+    func favoriteButtonTapped(isSelected: Bool)
 }
 
-public final class GameCellPresenter {
-    private var view: GameCellViewInterface?
+public final class GameCellPresenter: Observation {
+    private let view: GameCellViewInterface?
     private let game: Game
+    private let defaults: DefaultsProtocol.Type
     private weak var homeModuleGameDelegate: HomeModuleGameDelegate?
-    
+    @Published private var isFavored: Bool = false
+        
     public init(
         view: GameCellViewInterface?,
         argument: GameCellArgument,
-        homeModuleGameDelegate: HomeModuleGameDelegate? = nil) {
+        homeModuleGameDelegate: HomeModuleGameDelegate? = nil,
+        defaults: DefaultsProtocol.Type = Defaults.self
+        ) {
             self.view = view
             self.game = argument.game
             self.homeModuleGameDelegate = homeModuleGameDelegate
+            self.defaults = defaults
         }
+    
+    override public func setupObservation() {
+        observe($isFavored) { fav in
+            self.view?.setFavoriteButton(selected: self.isFavored)
+        }
+    }
     
     private func handleBannerImage() {
         if let path = game.background_image {
@@ -45,25 +56,24 @@ public final class GameCellPresenter {
     }
     
     private func handleFavoriteButton() {
-        view?.setFavoriteButton()
+        guard let gameId = game.id else { return }
+        self.isFavored = defaults.bool(key: "\(gameId)") ? true : false
     }
 }
 
 // MARK: - GameCellPresenterInterface
 extension GameCellPresenter: GameCellPresenterInterface {
     public func viewDidLoad() {
+        setupObservation()
         handleBannerImage()
         handleGameName()
         handleRating()
         handleFavoriteButton()
     }
     
-    public var favoriteButtonDelegate: FavoriteButtonDelegate? { self }
-}
-
-extension GameCellPresenter: FavoriteButtonDelegate {
-    public func favoriteButtonTapped() {    
-//        todo favorite button logic should be implemented
-        print("favorite button pressed")
+    public func favoriteButtonTapped(isSelected: Bool) {
+        guard let gameId = game.id else { return }
+        defaults.save(data: !defaults.bool(key: "\(gameId)"), key: "\(gameId)")
+        handleFavoriteButton()
     }
 }

@@ -8,27 +8,24 @@
 import UIKit
 import CommonKit
 
-protocol FavoriteButtonInterface {
-    func prepareUI()
-}
-
-public final class FavoriteButton: NibView {
-    @IBOutlet weak var favoriteButton: UIButton!
-        
-    var presenter: FavoriteButtonPresenterInterface! {
-        didSet {
-            presenter.load()
-        }
+public final class FavoriteButton: UIButton {
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        configure()
     }
-    
-    // MARK: IBActions
-    @IBAction public func favoriteButtonPressed(_ sender: Any) {
-        presenter?.favoriteButtonTapped()
-    }
-}
 
-extension FavoriteButton: FavoriteButtonInterface {
-    func prepareUI() {
-        favoriteButton.backgroundColor = UIColor.FavoriteButtonColor.White
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        configure()
+    }
+
+    private func configure() {
+        setImage(UIImage(systemName: "heart.fill"), for: .selected)
+        setImage(UIImage(systemName: "heart"), for: .normal)
+    }
+
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        imageView?.frame.origin.y = 3
     }
 }

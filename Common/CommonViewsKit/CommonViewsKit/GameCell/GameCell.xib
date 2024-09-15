@@ -72,34 +72,40 @@
                             <constraint firstAttribute="trailing" secondItem="6hl-X2-lv3" secondAttribute="trailing" id="z4D-w4-RyQ"/>
                         </constraints>
                     </stackView>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ku-4m-HeN" customClass="FavoriteButton" customModule="CommonViewsKit">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bic-4F-Fnc" customClass="FavoriteButton" customModule="CommonViewsKit">
                         <rect key="frame" x="125" y="100" width="30" height="30"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="SXA-ga-tmO"/>
-                            <constraint firstAttribute="width" constant="30" id="vaj-bi-Qfp"/>
+                            <constraint firstAttribute="width" constant="30" id="Tm6-lm-0gh"/>
+                            <constraint firstAttribute="height" constant="30" id="tYy-vD-epR"/>
                         </constraints>
-                    </view>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system">
+                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </buttonConfiguration>
+                        <connections>
+                            <action selector="favoriteButtonTapped:" destination="-1" eventType="touchUpInside" id="rjp-8W-AxS"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <color key="backgroundColor" red="0.11372549830000001" green="0.11372549830000001" blue="0.11372549830000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
                 <constraint firstItem="SwB-ev-Fdz" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="3A9-dZ-5Kr"/>
+                <constraint firstItem="SwB-ev-Fdz" firstAttribute="top" secondItem="bic-4F-Fnc" secondAttribute="bottom" constant="5" id="4Ca-87-8rv"/>
                 <constraint firstItem="woa-Sh-hI2" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="8g3-jv-hhQ"/>
-                <constraint firstItem="SwB-ev-Fdz" firstAttribute="top" secondItem="0ku-4m-HeN" secondAttribute="bottom" constant="5" id="DTY-k5-i2T"/>
                 <constraint firstAttribute="bottom" secondItem="SwB-ev-Fdz" secondAttribute="bottom" constant="15" id="EIj-iu-efi"/>
                 <constraint firstAttribute="trailing" secondItem="SwB-ev-Fdz" secondAttribute="trailing" constant="15" id="GEc-XT-FOS"/>
                 <constraint firstItem="woa-Sh-hI2" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="NJg-uE-skq"/>
                 <constraint firstAttribute="trailing" secondItem="woa-Sh-hI2" secondAttribute="trailing" id="Yxk-4h-WMf"/>
                 <constraint firstItem="SwB-ev-Fdz" firstAttribute="top" secondItem="woa-Sh-hI2" secondAttribute="bottom" constant="15" id="ZeV-NN-n6E"/>
-                <constraint firstAttribute="trailing" secondItem="0ku-4m-HeN" secondAttribute="trailing" constant="10" id="eiw-fK-qTQ"/>
                 <constraint firstAttribute="bottom" secondItem="woa-Sh-hI2" secondAttribute="bottom" constant="65" id="mO2-NY-pLk"/>
+                <constraint firstAttribute="trailing" secondItem="bic-4F-Fnc" secondAttribute="trailing" constant="10" id="yzs-nm-6TK"/>
             </constraints>
             <size key="customSize" width="160" height="185"/>
             <connections>
                 <outlet property="bannerImageView" destination="woa-Sh-hI2" id="xHK-ge-iC2"/>
-                <outlet property="favoriteButtonView" destination="0ku-4m-HeN" id="fVZ-J0-Lpz"/>
+                <outlet property="favoriteButton" destination="bic-4F-Fnc" id="ikM-bq-vsL"/>
                 <outlet property="gameNameLabel" destination="ZEb-gK-bRj" id="ERW-vE-Z3t"/>
                 <outlet property="ratingLabel" destination="2Ph-Y6-0Xf" id="leM-dJ-baQ"/>
                 <outlet property="ratingView" destination="mKE-gz-KA2" id="pkx-Ue-05M"/>
@@ -108,6 +114,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="heart" catalog="system" width="128" height="107"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -12,16 +12,16 @@ public protocol GameCellViewInterface {
     func setBannerImage(path: String?)
     func setGameNameLabel(name: String?)
     func setRating(rating: Int)
-    func setFavoriteButton()
+    func setFavoriteButton(selected: Bool)
 }
 
 public final class GameCell: UICollectionViewCell {
     @IBOutlet private weak var bannerImageView: UIImageView!
     @IBOutlet private weak var gameNameLabel: UILabel!
-    @IBOutlet private weak var favoriteButtonView: FavoriteButton!
+    @IBOutlet private weak var favoriteButton: FavoriteButton!
     @IBOutlet private weak var ratingView: UIView!
     @IBOutlet private weak var ratingLabel: UILabel!
-    
+
     public var presenter: GameCellPresenterInterface! {
         didSet {
             presenter.viewDidLoad()
@@ -31,7 +31,10 @@ public final class GameCell: UICollectionViewCell {
     override public func prepareForReuse() {
         super.prepareForReuse()
         bannerImageView.image = UIImage(systemName: "gamecontroller.fill")
-        favoriteButtonView.favoriteButton.setImage(nil, for: .normal)
+    }
+    
+    @IBAction func favoriteButtonTapped(_ sender: Any) {
+        presenter.favoriteButtonTapped(isSelected: favoriteButton.isSelected)
     }
 }
 
@@ -60,9 +63,7 @@ extension GameCell: GameCellViewInterface {
         ratingView.layer.cornerRadius = 3
     }
     
-    public func setFavoriteButton() {
-        favoriteButtonView.presenter = FavoriteButtonPresenter(
-            view: FavoriteButton(),
-            delegate: presenter.favoriteButtonDelegate)
+    public func setFavoriteButton(selected: Bool) {
+        favoriteButton.isSelected = selected
     }
 }

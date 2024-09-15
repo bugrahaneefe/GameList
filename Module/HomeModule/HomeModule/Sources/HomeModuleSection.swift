@@ -74,7 +74,9 @@ private enum sections {
     
     static func logoSection(games: [Game], _ collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(with: GameCell.self, for: indexPath)
-        let presenter = GameCellPresenter(view: cell, argument: GameCellArgument(game: games[indexPath.row]))
+        let presenter = GameCellPresenter(
+            view: cell,
+            argument: GameCellArgument(game: games[indexPath.row]))
         cell.layer.cornerRadius = Constant.GameCell.cellCornerRadius
         cell.presenter = presenter
         return cell
