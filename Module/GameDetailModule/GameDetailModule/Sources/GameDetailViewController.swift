@@ -24,6 +24,7 @@ protocol GameDetailViewInterface {
                                by redditAction: @escaping () -> Void,
                                websiteAvailable: Bool,
                                redditAvailable: Bool)
+    func setFavoriteButtonImage(isSelected: Bool)
 }
 
 private enum Constant {
@@ -41,6 +42,7 @@ final class GameDetailViewController: BaseViewController {
     @IBOutlet weak var gameDescriptionView: UIView!
     @IBOutlet weak var gameInformationView: UIView!
     @IBOutlet weak var gameVisitButtonsView: UIView!
+    private var favoriteButtonImage: UIImage!
     
     var presenter: GameDetailPresenterInterface!
     private var loadingIndicator: UIActivityIndicatorView?
@@ -154,12 +156,11 @@ final class GameDetailViewController: BaseViewController {
         
     @objc
     private func rightBarButtonItemTapped() {
-        print("selen")
+        presenter.favoriteButtonTapped()
     }
 }
 
 extension GameDetailViewController: GameDetailViewInterface {
-    
     func setGameDescription(with text: String) {
         setupGameDescriptionView(title: "Descriptions", description: text)
     }
@@ -216,5 +217,10 @@ extension GameDetailViewController: GameDetailViewInterface {
     
     func hideLoading() {
         loadingIndicator?.stopAnimating()
+    }
+    
+    func setFavoriteButtonImage(isSelected: Bool) {
+        favoriteButtonImage = isSelected ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
+        navigationItem.rightBarButtonItem?.image = favoriteButtonImage
     }
 }

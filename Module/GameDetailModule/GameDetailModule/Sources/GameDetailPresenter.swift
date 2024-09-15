@@ -13,26 +13,37 @@ import GameDetailHandlerKit
 import UIKit
 
 protocol GameDetailPresenterInterface: PresenterInterface, GameDetailModuleGameDelegate {
+    func favoriteButtonTapped()
 }
 
 private enum Constant {
 }
 
-final class GameDetailPresenter {
+final class GameDetailPresenter: Observation {
+    private let defaults: DefaultsProtocol.Type
     private let interactor: GameDetailInteractorInterface
     private let router: GameDetailRouterInterface
     private var view: GameDetailViewInterface?
     private var game: Game?
     private var gameDetail: GameDetailResponse? = nil
+    @Published private var isFavored: Bool = false
     
     init(interactor: GameDetailInteractorInterface,
          router: GameDetailRouterInterface,
          view: GameDetailViewInterface? = nil,
-         game: Game) {
+         game: Game,
+         defaults: DefaultsProtocol.Type = Defaults.self) {
         self.interactor = interactor
         self.router = router
         self.view = view
         self.game = game
+        self.defaults = defaults
+    }
+    
+    override public func setupObservation() {
+        observe($isFavored) { fav in
+            self.view?.setFavoriteButtonImage(isSelected: self.isFavored)
+        }
     }
     
     //MARK: Private Functions
@@ -92,6 +103,11 @@ final class GameDetailPresenter {
         }, websiteAvailable: websiteAvailable, redditAvailable: redditAvailable)
     }
     
+    private func handleFavoriteButton() {
+        guard let gameId = game?.id else { return }
+        self.isFavored = defaults.bool(key: "\(gameId)") ? true : false
+    }
+    
     private func handleGameDetail(with response: GameDetailResponse) {
         gameDetail = response
         view?.hideLoading()
@@ -101,17 +117,25 @@ final class GameDetailPresenter {
         handleGameRating()
         handleGameInformation()
         handleVisitButtons()
+        handleFavoriteButton()
     }
 }
 
 extension GameDetailPresenter: GameDetailPresenterInterface {
     func viewDidLoad() {
+        setupObservation()
         view?.prepareUI()
     }
     
     func viewWillAppear() {
         guard let gameId = game?.id else { return }
         fetchGameDetail(with: gameId)
+    }
+    
+    public func favoriteButtonTapped() {
+        guard let gameId = game?.id else { return }
+        defaults.save(data: !defaults.bool(key: "\(gameId)"), key: "\(gameId)")
+        handleFavoriteButton()
     }
 }
 
