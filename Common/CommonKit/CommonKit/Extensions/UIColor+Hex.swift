@@ -53,6 +53,7 @@ extension UIColor {
     public struct FavoriteButtonColor {
         public static let Green = UIColor(hex: 0x4BC766)
         public static let White = UIColor(hex: 0xFFFFFF)
+        public static let Background = UIColor(hex: 0x151515)
     }
     
     public struct PlatformButtonColor {

@@ -72,16 +72,15 @@
                             <constraint firstAttribute="trailing" secondItem="6hl-X2-lv3" secondAttribute="trailing" id="z4D-w4-RyQ"/>
                         </constraints>
                     </stackView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bic-4F-Fnc" customClass="FavoriteButton" customModule="CommonViewsKit">
+                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bic-4F-Fnc" customClass="FavoriteButton" customModule="CommonViewsKit">
                         <rect key="frame" x="125" y="100" width="30" height="30"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="Tm6-lm-0gh"/>
                             <constraint firstAttribute="height" constant="30" id="tYy-vD-epR"/>
                         </constraints>
                         <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system">
-                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </buttonConfiguration>
+                        <buttonConfiguration key="configuration" style="plain"/>
                         <connections>
                             <action selector="favoriteButtonTapped:" destination="-1" eventType="touchUpInside" id="rjp-8W-AxS"/>
                         </connections>
@@ -114,7 +113,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="heart" catalog="system" width="128" height="107"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

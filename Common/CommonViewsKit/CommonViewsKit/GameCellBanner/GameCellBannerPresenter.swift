@@ -9,22 +9,34 @@ import CommonKit
 import Foundation
 
 public protocol GameCellBannerPresenterInterface {
+    func favoriteButtonTapped(isSelected: Bool)
     func load()
 }
 
-public final class GameCellBannerPresenter {
+public final class GameCellBannerPresenter: Observation {
     private var view: GameCellBannerViewInterface?
     private let game: Game
+    private let defaults: DefaultsProtocol.Type
     private weak var homeModuleGameDelegate: HomeModuleGameDelegate?
+    @Published private var isFavored: Bool = false
     
     public init(
         view: GameCellBannerViewInterface?,
         argument: GameCellArgument,
-        homeModuleGameDelegate: HomeModuleGameDelegate? = nil) {
+        homeModuleGameDelegate: HomeModuleGameDelegate? = nil,
+        defaults: DefaultsProtocol.Type = Defaults.self
+    ) {
             self.view = view
             game = argument.game
             self.homeModuleGameDelegate = homeModuleGameDelegate
+        self.defaults = defaults
         }
+    
+    override public func setupObservation() {
+        observe($isFavored) { fav in
+            self.view?.setFavoriteButton(selected: self.isFavored)
+        }
+    }
     
     private func handleBannerImage() {
         if let path = game.background_image {
@@ -54,6 +66,11 @@ public final class GameCellBannerPresenter {
         view?.setPlatforms(with: platformNames)
     }
     
+    private func handleFavoriteButton() {
+        guard let gameId = game.id else { return }
+        self.isFavored = defaults.bool(key: "\(gameId)") ? true : false
+    }
+    
     private func handleDetails() {
 //        todo array
 //        todo gameentity genres?
@@ -70,15 +87,20 @@ public final class GameCellBannerPresenter {
 // MARK: - GameCellBannerPresenterInterface
 extension GameCellBannerPresenter: GameCellBannerPresenterInterface {
     public func load() {
+        setupObservation()
         view?.prepareUI()
         handleBannerImage()
         handleGameName()
         handleRating()
         handlePlatforms()
         handleDetails()
+        handleFavoriteButton()
     }
 
-    //    todo
-    public func prepareForReuse() {}
+    public func favoriteButtonTapped(isSelected: Bool) {
+        guard let gameId = game.id else { return }
+        defaults.save(data: !defaults.bool(key: "\(gameId)"), key: "\(gameId)")
+        handleFavoriteButton()
+    }
 }
 

@@ -146,6 +146,10 @@ final class HomeModuleViewController: BaseViewController {
 
 // MARK: - HomeViewInterface
 extension HomeModuleViewController: HomeViewInterface {
+    var navController: UINavigationController? {
+        return self.navigationController
+    }
+    
     func prepareUI() {
         setupCollectionView()
         setupNavigationBar()

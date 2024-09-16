@@ -112,7 +112,7 @@ final class HomeModulePresenter {
 }
 
 //MARK: - HomeModulePresenterInterface
-extension HomeModulePresenter: HomeModulePresenterInterface {
+extension HomeModulePresenter: HomeModulePresenterInterface {    
     var appearanceType: AppereanceType {
         defaults.bool(key: Constant.Defaults.isBannerStateActive) ? .banner : .logo
     }

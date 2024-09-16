@@ -136,6 +136,9 @@ extension GameDetailPresenter: GameDetailPresenterInterface {
         guard let gameId = game?.id else { return }
         defaults.save(data: !defaults.bool(key: "\(gameId)"), key: "\(gameId)")
         handleFavoriteButton()
+        guard let name = game?.name else { return }
+        let message = isFavored ?  "is added into wishlist!" : "is removed from wishlist!"
+        view?.showAlert(title: name, message: message)
     }
 }
 

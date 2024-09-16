@@ -15,6 +15,7 @@ public protocol GameCellBannerViewInterface {
     func setRating(rating: Int)
     func setPlatforms(with platforms: [String])
     func setDetails(with infos: [(name: String, value: String)])
+    func setFavoriteButton(selected: Bool)
     func prepareUI()
 }
 
@@ -25,6 +26,7 @@ public final class GameCellBanner: UICollectionViewCell {
     @IBOutlet private weak var ratingLabel: UILabel!
     @IBOutlet weak var gamePlatformView: UIView!
     @IBOutlet weak var gameDetailsView: UIView!
+    @IBOutlet weak var favoriteButton: FavoriteButton!
     
     public var presenter: GameCellBannerPresenterInterface! {
         didSet {
@@ -34,7 +36,11 @@ public final class GameCellBanner: UICollectionViewCell {
     
     override public func prepareForReuse() {
         super.prepareForReuse()
-        bannerImageView.image = nil
+        bannerImageView.image = UIImage(systemName: "gamecontroller.fill")
+    }
+    
+    @IBAction func favoriteButtonTapped(_ sender: Any) {
+        presenter.favoriteButtonTapped(isSelected: favoriteButton.isSelected)
     }
     
     //MARK: Private Functions
@@ -99,6 +105,10 @@ extension GameCellBanner: GameCellBannerViewInterface {
     
     public func setDetails(with infos: [(name: String, value: String)]) {
         setGameDetailsView(with: infos)
+    }
+    
+    public func setFavoriteButton(selected: Bool) {
+        favoriteButton.isSelected = selected
     }
     
     public func prepareUI() {

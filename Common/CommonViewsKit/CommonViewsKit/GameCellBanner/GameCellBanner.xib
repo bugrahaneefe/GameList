@@ -117,18 +117,26 @@
                             <constraint firstAttribute="width" constant="315" id="xXl-y1-KDE"/>
                         </constraints>
                     </stackView>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OZQ-Me-Us4" customClass="FavoriteButton" customModule="CommonViewsKit">
-                        <rect key="frame" x="305" y="92" width="30" height="30"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="30" id="gv4-48-wPb"/>
-                            <constraint firstAttribute="width" constant="30" id="iex-Ad-WuJ"/>
-                        </constraints>
-                    </view>
                     <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1z5-oN-fJ4">
                         <rect key="frame" x="15" y="184" width="315" height="58"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
+                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvV-dz-dSV" customClass="FavoriteButton" customModule="CommonViewsKit">
+                        <rect key="frame" x="305" y="97" width="30" height="30"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="Tw8-v1-MwM"/>
+                            <constraint firstAttribute="width" constant="30" id="VFk-yE-8ts"/>
+                        </constraints>
+                        <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain">
+                            <directionalEdgeInsets key="contentInsets" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
+                        </buttonConfiguration>
+                        <connections>
+                            <action selector="favoriteButtonTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="BZf-uE-Co7"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
@@ -137,19 +145,20 @@
                 <constraint firstItem="1z5-oN-fJ4" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="0Qa-x4-9mG"/>
                 <constraint firstItem="hD9-Um-sKT" firstAttribute="top" secondItem="hDA-cj-f08" secondAttribute="bottom" constant="12" id="55f-KZ-IS6"/>
                 <constraint firstAttribute="trailing" secondItem="1z5-oN-fJ4" secondAttribute="trailing" constant="15" id="6gI-RT-2uS"/>
-                <constraint firstAttribute="trailing" secondItem="OZQ-Me-Us4" secondAttribute="trailing" constant="10" id="7rC-rZ-b5e"/>
                 <constraint firstAttribute="bottom" secondItem="1z5-oN-fJ4" secondAttribute="bottom" constant="15" id="Cce-Np-r4I"/>
+                <constraint firstAttribute="trailing" secondItem="jvV-dz-dSV" secondAttribute="trailing" constant="10" id="QHS-1A-hxr"/>
                 <constraint firstItem="hDA-cj-f08" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="UT8-yw-Ozb"/>
                 <constraint firstItem="hDA-cj-f08" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="X7e-Xi-Bxh"/>
                 <constraint firstAttribute="trailing" secondItem="hDA-cj-f08" secondAttribute="trailing" id="af4-QC-gP5"/>
+                <constraint firstItem="hD9-Um-sKT" firstAttribute="top" secondItem="jvV-dz-dSV" secondAttribute="bottom" constant="5" id="eif-8G-dXj"/>
                 <constraint firstAttribute="trailing" secondItem="hD9-Um-sKT" secondAttribute="trailing" constant="15" id="f8k-1p-3R1"/>
                 <constraint firstItem="hD9-Um-sKT" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="hPJ-iP-ejN"/>
                 <constraint firstItem="1z5-oN-fJ4" firstAttribute="top" secondItem="hD9-Um-sKT" secondAttribute="bottom" constant="12" id="hZb-Q4-vsq"/>
                 <constraint firstAttribute="bottom" secondItem="hD9-Um-sKT" secondAttribute="bottom" constant="82" id="nWu-IV-LEC"/>
-                <constraint firstItem="hD9-Um-sKT" firstAttribute="top" secondItem="OZQ-Me-Us4" secondAttribute="bottom" constant="10" id="xaY-rQ-Sp8"/>
             </constraints>
             <connections>
                 <outlet property="bannerImageView" destination="hDA-cj-f08" id="nAd-Gj-6Rc"/>
+                <outlet property="favoriteButton" destination="jvV-dz-dSV" id="Twv-Yr-3e9"/>
                 <outlet property="gameDetailsView" destination="1z5-oN-fJ4" id="zrl-zH-cnx"/>
                 <outlet property="gameNameLabel" destination="MZe-Xc-ORT" id="KJv-Au-UET"/>
                 <outlet property="gamePlatformView" destination="whF-Wa-vf1" id="CLJ-fd-lwh"/>

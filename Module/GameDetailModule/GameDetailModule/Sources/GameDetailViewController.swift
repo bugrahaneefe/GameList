@@ -11,7 +11,7 @@ import CoreUtils
 import UIKit
 import SwiftUI
 
-protocol GameDetailViewInterface {
+protocol GameDetailViewInterface: AlertPresentable {
     func prepareUI()
     func setGameName(of name: String)
     func setGameImage(path: String?)
@@ -161,6 +161,10 @@ final class GameDetailViewController: BaseViewController {
 }
 
 extension GameDetailViewController: GameDetailViewInterface {
+    var navController: UIViewController? {
+        self
+    }
+    
     func setGameDescription(with text: String) {
         setupGameDescriptionView(title: "Descriptions", description: text)
     }

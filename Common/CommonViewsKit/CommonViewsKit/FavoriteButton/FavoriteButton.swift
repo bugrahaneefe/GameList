@@ -20,12 +20,13 @@ public final class FavoriteButton: UIButton {
     }
 
     private func configure() {
-        setImage(UIImage(systemName: "heart.fill"), for: .selected)
-        setImage(UIImage(systemName: "heart"), for: .normal)
+        setImage(UIImage.favoriteTappedIcon, for: .selected)
+        setImage(UIImage.favoriteIcon, for: .normal)
+        backgroundColor = UIColor.FavoriteButtonColor.Background
+        layer.cornerRadius = 15
     }
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-        imageView?.frame.origin.y = 3
     }
 }

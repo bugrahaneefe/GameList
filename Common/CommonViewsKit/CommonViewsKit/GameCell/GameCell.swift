@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreUtils
+import CommonKit
 
 public protocol GameCellViewInterface {
     func setBannerImage(path: String?)
