@@ -6,6 +6,9 @@ public let homeModule = TargetDependency.project(
 public let gameDetailModule = TargetDependency.project(
   target: "GameDetailModule",
   path: .relativeToRoot("Module/GameDetailModule"))
+public let wishlistModule = TargetDependency.project(
+  target: "WishlistModule",
+  path: .relativeToRoot("Module/WishlistModule"))
 public let networkKit = TargetDependency.project(
   target: "NetworkKit",
   path: .relativeToRoot("Kit/NetworkKit"))
@@ -21,3 +24,4 @@ public let homeHandlerKit = TargetDependency.project(
 public let gameDetailHandlerKit = TargetDependency.project(
   target: "GameDetailHandlerKit",
   path: .relativeToRoot("Kit/GameDetailHandlerKit"))
+

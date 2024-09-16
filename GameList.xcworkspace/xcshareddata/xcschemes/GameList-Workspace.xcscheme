@@ -244,6 +244,34 @@
                ReferencedContainer = "container:Kit/NetworkKit/NetworkKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "DCE3F09DC59F4605D85D3701"
+               BuildableName = "WishlistModule.framework"
+               BlueprintName = "WishlistModule"
+               ReferencedContainer = "container:Module/WishlistModule/WishlistModule.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "5F8224F7DF7A75E784442346"
+               BuildableName = "WishlistModule_WishlistModule.bundle"
+               BlueprintName = "WishlistModule_WishlistModule"
+               ReferencedContainer = "container:Module/WishlistModule/WishlistModule.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
