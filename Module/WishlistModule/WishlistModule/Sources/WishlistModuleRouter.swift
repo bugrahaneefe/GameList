@@ -1,8 +1,8 @@
 //
-//  HomeModuleRouter.swift
-//  HomeModule
+//  WishlistModuleRouter.swift
+//  WishlistModule
 //
-//  Created by Buğrahan Efe on 31.07.2024.
+//  Created by Buğrahan Efe on 16.09.2024.
 //
 
 import CommonKit
@@ -11,11 +11,11 @@ import DependencyEngine
 import UIKit
 import GameDetailModule
 
-public protocol HomeModuleRouterInterface {
+public protocol WishlistModuleRouterInterface {
     func navigateToGameDetail(with game: Game)
 }
 
-public final class HomeModuleRouter: HomeModuleRouterInterface {
+public final class WishlistModuleRouter: WishlistModuleRouterInterface {
     weak var navigationController: UINavigationController?
     
     @ModuleDependency var gameDetail: GameDetailInterface
@@ -27,13 +27,13 @@ public final class HomeModuleRouter: HomeModuleRouterInterface {
     }
     
     static func create(navigationController: UINavigationController?) -> UIViewController {
-        let storyboard = StoryboardHelper<Storyboards>.create(storyboard: .home)
+        let storyboard = StoryboardHelper<Storyboards>.create(storyboard: .wishlist)
         let view = storyboard.instantiateViewController(
-            viewClass: HomeModuleViewController.self)
-        let interactor = HomeModuleInteractor()
-        let router = HomeModuleRouter(
+            viewClass: WishlistModuleViewController.self)
+        let interactor = WishlistInteractor()
+        let router = WishlistModuleRouter(
             navigationController: navigationController)
-        let presenter = HomeModulePresenter(
+        let presenter = WishlistModulePresenter(
             interactor: interactor,
             router: router,
             view: view)
@@ -44,7 +44,7 @@ public final class HomeModuleRouter: HomeModuleRouterInterface {
                                     shadowColor: nil,
                                     backgroundColor: UIColor.NavigationBarColor.Background)
         view.presenter = presenter
-        interactor.output = presenter
+        interactor.output = presenter as? any WishlistInteractorOutput
         
         return view
     }

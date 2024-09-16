@@ -1,6 +1,7 @@
 import UIKit
 import HomeModule
 import GameDetailModule
+import WishlistModule
 import CommonKit
 import DependencyEngine
 
@@ -13,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // MARK: Dependency Registration
         HomeModuleDependencyRegistration.register(to: DependencyEngine.shared)
         GameDetailDependencyRegistration.register(to: DependencyEngine.shared)
+        WishlistModuleDependencyRegistration.register(to: DependencyEngine.shared)
         
         return true
     }

@@ -16,6 +16,8 @@ class ImageCache {
 extension UIImage {
     public static let gameController = UIImage(systemName: "gamecontroller")
     public static let gameControllerFill = UIImage(systemName: "gamecontroller.fill")
+    public static let heart = UIImage(systemName: "heart")
+    public static let heartFill = UIImage(systemName: "heart.fill")
     public static let rightBarIcon = UIImage(systemName: "line.3.horizontal")
     public static let favoriteTappedIcon = UIImage(named: "favoriteButtonTapped.png")
     public static let favoriteIcon = UIImage(named: "favoriteButton.png")
