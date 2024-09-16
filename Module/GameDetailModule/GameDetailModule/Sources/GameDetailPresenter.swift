@@ -12,7 +12,7 @@ import Foundation
 import GameDetailHandlerKit
 import UIKit
 
-protocol GameDetailPresenterInterface: PresenterInterface, GameDetailModuleGameDelegate {
+protocol GameDetailPresenterInterface: PresenterInterface {
     func favoriteButtonTapped()
 }
 

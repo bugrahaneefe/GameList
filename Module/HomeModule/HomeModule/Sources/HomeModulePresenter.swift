@@ -12,7 +12,7 @@ import Foundation
 import HomeHandlerKit
 import UIKit
 
-protocol HomeModulePresenterInterface: PresenterInterface, HomeModuleGameDelegate, HomeModuleSectionDelegate {
+protocol HomeModulePresenterInterface: PresenterInterface, HomeModuleSectionDelegate {
     var appearanceType: AppereanceType { get }
     
     func numberOfItemsInGameSection() -> Int

@@ -15,49 +15,45 @@ public protocol GameCellPresenterInterface: PresenterInterface {
 
 public final class GameCellPresenter: Observation {
     private let view: GameCellViewInterface?
-    private let game: Game
+    private let argument: GameCellArgument
     private let defaults: DefaultsProtocol.Type
-    private weak var homeModuleGameDelegate: HomeModuleGameDelegate?
-    @Published private var isFavored: Bool = false
         
     public init(
         view: GameCellViewInterface?,
         argument: GameCellArgument,
-        homeModuleGameDelegate: HomeModuleGameDelegate? = nil,
         defaults: DefaultsProtocol.Type = Defaults.self
         ) {
             self.view = view
-            self.game = argument.game
-            self.homeModuleGameDelegate = homeModuleGameDelegate
+            self.argument = argument
             self.defaults = defaults
         }
     
     override public func setupObservation() {
-        observe($isFavored) { fav in
-            self.view?.setFavoriteButton(selected: self.isFavored)
+        observe(argument.$isFavored) { fav in
+            self.view?.setFavoriteButton(selected: self.argument.isFavored)
         }
     }
     
     private func handleBannerImage() {
-        if let path = game.background_image {
+        if let path = argument.game.background_image {
             view?.setBannerImage(path: path)
         }
     }
     
     private func handleGameName() {
-        if let name = game.name {
+        if let name = argument.game.name {
             view?.setGameNameLabel(name: name)
         }
     }
     
     private func handleRating() {
-        let rating = Int(game.rating*20)
+        let rating = Int(argument.game.rating*20)
         view?.setRating(rating: rating)
     }
     
     private func handleFavoriteButton() {
-        guard let gameId = game.id else { return }
-        self.isFavored = defaults.bool(key: "\(gameId)") ? true : false
+        guard let gameId = argument.game.id else { return }
+        argument.isFavored = defaults.bool(key: "\(gameId)") ? true : false
     }
 }
 
@@ -72,7 +68,7 @@ extension GameCellPresenter: GameCellPresenterInterface {
     }
     
     public func favoriteButtonTapped(isSelected: Bool) {
-        guard let gameId = game.id else { return }
+        guard let gameId = argument.game.id else { return }
         defaults.save(data: !defaults.bool(key: "\(gameId)"), key: "\(gameId)")
         handleFavoriteButton()
     }
