@@ -15,3 +15,11 @@ public final class GameCellArgument {
         self.game = game
     }
 }
+
+public final class GameListArgument {
+    public var games: [Game]
+    
+    public init(games: [Game]) {
+        self.games = games
+    }
+}

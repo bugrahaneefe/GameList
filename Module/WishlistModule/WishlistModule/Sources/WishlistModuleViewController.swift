@@ -30,8 +30,11 @@ private enum Constant {
 }
 
 final class WishlistModuleViewController: BaseViewController {
+    @IBOutlet private weak var collectionView: UICollectionView!
 
     var presenter: WishlistModulePresenterInterface!
+    private var loadingIndicator: UIActivityIndicatorView?
+    private let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +44,17 @@ final class WishlistModuleViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter.viewWillAppear()
+    }
+    
+    // MARK: Private Methods
+    private func setupLoadingIndicator() {
+        loadingIndicator = UIActivityIndicatorView(style: .large)
+        loadingIndicator?.center = view.center
+        loadingIndicator?.hidesWhenStopped = true
+        loadingIndicator?.color = UIColor.LoadingIndicatorColor.Tint
+        if let loadingIndicator = loadingIndicator {
+            view.addSubview(loadingIndicator)
+        }
     }
     
     private func setupNavigationBar() {
@@ -54,27 +68,45 @@ final class WishlistModuleViewController: BaseViewController {
                 weight: .semibold)
         ])
     }
+    
+    private func setupCollectionView() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        refreshControl.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
+        collectionView.alwaysBounceVertical = true
+        collectionView.refreshControl = refreshControl
+    }
+    
+    @objc
+    private func didPullToRefresh(_ sender: Any) {
+        presenter.pullToRefresh()
+        refreshControl.endRefreshing()
+    }
 }
 
 extension WishlistModuleViewController: WishlistViewInterface {
     func prepareUI() {
+        setupCollectionView()
         setupNavigationBar()
     }
     
     func prepareCollectionView() {
-        
+        collectionView.register(cellType: GameCell.self, bundle: CommonViewsKitResources.bundle)
     }
     
     func reloadCollectionView() {
-        
+        collectionView.reloadData()
     }
     
     func showLoading() {
-        
+        if loadingIndicator == nil {
+            setupLoadingIndicator()
+        }
+        loadingIndicator?.startAnimating()
     }
     
     func hideLoading() {
-        
+        loadingIndicator?.stopAnimating()
     }
     
     func showResponseNilLabel() {
@@ -87,5 +119,27 @@ extension WishlistModuleViewController: WishlistViewInterface {
     
     func hideResponseNilLabel() {
         
+    }
+}
+
+// MARK: - UICollectionViewDataSource
+extension WishlistModuleViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return presenter.numberOfItemsInGameSection()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return presenter.cellForGame(at: indexPath, in: collectionView)
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+extension WishlistModuleViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenter.didSelectGame(at: indexPath)
     }
 }

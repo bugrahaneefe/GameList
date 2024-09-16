@@ -46,7 +46,7 @@ final class HomeModulePresenter {
     private let interactor: HomeModuleInteractorInterface
     private let router: HomeModuleRouterInterface
     private var view: HomeViewInterface?
-    private var games: [Game] = []
+    private var argument: GameListArgument
     private var gameSection: GameSection?
     private var currentPage = 1
     private var currentName = ""
@@ -58,12 +58,14 @@ final class HomeModulePresenter {
          router: HomeModuleRouterInterface,
          view: HomeViewInterface? = nil,
          defaults: DefaultsProtocol.Type = Defaults.self,
-         throttler: CommonKit.ThrottlerInterface = Throttler(minimumDelay: Constant.throttleInterval)) {
+         throttler: CommonKit.ThrottlerInterface = Throttler(minimumDelay: Constant.throttleInterval),
+         argument: GameListArgument) {
         self.interactor = interactor
         self.router = router
         self.view = view
         self.defaults = defaults
         self.throttler = throttler
+        self.argument = argument
     }
     
     // MARK: Private Methods
@@ -87,7 +89,7 @@ final class HomeModulePresenter {
     }
     
     private func handleEmptyGameStatus() {
-        games.removeAll()
+        argument.games.removeAll()
         view?.reloadCollectionView()
         view?.hideLoading()
         view?.showResponseNilLabel()
@@ -96,8 +98,8 @@ final class HomeModulePresenter {
     
     private func handleGameSection(with response: GameListDetailsResponse) {
         view?.hideResponseNilLabel()
-        games.append(contentsOf: response.results)
-        self.gameSection = GameSection(games: games, delegate: self)
+        argument.games.append(contentsOf: response.results)
+        self.gameSection = GameSection(games: argument.games, delegate: self)
         
         view?.reloadCollectionView()
         view?.hideLoading()
@@ -127,7 +129,7 @@ extension HomeModulePresenter: HomeModulePresenterInterface {
     }
     
     func numberOfItemsInGameSection() -> Int {
-        return games.count
+        return argument.games.count
     }
     
     func cellForGame(at indexPath: IndexPath, in collectionView: UICollectionView) -> UICollectionViewCell {
@@ -135,7 +137,7 @@ extension HomeModulePresenter: HomeModulePresenterInterface {
     }
     
     func didSelectGame(at indexPath: IndexPath) {
-        router.navigateToGameDetail(with: games[indexPath.row])
+        router.navigateToGameDetail(with: argument.games[indexPath.row])
     }
     
     func changeAppearanceTapped() {
@@ -152,7 +154,7 @@ extension HomeModulePresenter: HomeModulePresenterInterface {
         let platforms = currentPlatforms
         guard let name = searchBar.text else { return }
         throttler.throttle { [weak self] in
-            self?.games.removeAll()
+            self?.argument.games.removeAll()
             self?.isFetchingAvailable = true
             self?.fetchGameList(contains: name, with: platforms)
         }
@@ -160,7 +162,7 @@ extension HomeModulePresenter: HomeModulePresenterInterface {
     }
     
     func fetchPlatforms(of selectedPlatforms: [Int]) {
-        games.removeAll()
+        argument.games.removeAll()
         isFetchingAvailable = true
         if !selectedPlatforms.isEmpty {
             let platformsQuery = selectedPlatforms.map { String($0) }.joined(separator: ",")
@@ -194,7 +196,7 @@ extension HomeModulePresenter: HomeModuleInteractorOutput {
 //MARK: Pagination
 extension HomeModulePresenter {
     func willDisplayItemAt(_ indexPath: IndexPath) {
-        guard indexPath.item == games.count - 1 else { return }
+        guard indexPath.item == argument.games.count - 1 else { return }
         fetchGameList(at: currentPage)
     }
 }

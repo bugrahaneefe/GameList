@@ -9,7 +9,7 @@ import CommonKit
 import Foundation
 
 public protocol HomeHandlerInterface {
-    func gameListDetails(at page: Int, contains name: String, with platforms: String, completion: @escaping (GameListDetailsResult) -> Void)
+    func gameListDetails(at page: Int?, contains name: String, with platforms: String, completion: @escaping (GameListDetailsResult) -> Void)
 }
 
 public final class HomeHandler {
@@ -23,7 +23,7 @@ public final class HomeHandler {
 
 // MARK: - HomeHandlerInterface
 extension HomeHandler: HomeHandlerInterface {
-    public func gameListDetails(at page: Int, contains name: String, with platforms: String, completion: @escaping (GameListDetailsResult) -> Void) {
+    public func gameListDetails(at page: Int?, contains name: String, with platforms: String, completion: @escaping (GameListDetailsResult) -> Void) {
         interactor.gameListDetails(at: page, contains: name, with: platforms) { [weak self] (result: Result<GameListDetailsResponse, Error>) in
             guard self != nil else { return }
             completion(result)

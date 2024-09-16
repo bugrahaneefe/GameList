@@ -19,6 +19,7 @@ let frameworkTarget = Target.target(
         "WishlistModule/**/*.gif"
     ],
     dependencies: [
+        gameDetailModule,
         networkKit,
         alamofire,
         listingKit,

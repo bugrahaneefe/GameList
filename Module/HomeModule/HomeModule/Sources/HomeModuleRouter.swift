@@ -36,7 +36,8 @@ public final class HomeModuleRouter: HomeModuleRouterInterface {
         let presenter = HomeModulePresenter(
             interactor: interactor,
             router: router,
-            view: view)
+            view: view,
+            argument: GameListArgument(games: []))
         
         navigationController?.navigationBar
             .configureNavigationBar(isTranslucent: true,

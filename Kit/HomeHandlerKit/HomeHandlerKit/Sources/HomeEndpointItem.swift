@@ -9,7 +9,7 @@ import CommonKit
 import Foundation
 
 public enum HomeEndpointItem: Endpoint {
-    case gameListDetails(at: Int, contains: String, with: String)
+    case gameListDetails(at: Int?, contains: String, with: String)
 
     public var url: URL? {
         switch self {
