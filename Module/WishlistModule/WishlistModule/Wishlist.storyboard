@@ -8,6 +8,11 @@
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Wishlist Module View Controller-->
         <scene sceneID="s0d-6b-0kx">
@@ -18,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oGD-YM-uvP">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="666"/>
+                                <rect key="frame" x="0.0" y="15" width="393" height="651"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hYO-Wd-IBP">
                                     <size key="itemSize" width="128" height="128"/>
@@ -26,6 +31,13 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
+                                <label key="backgroundView" hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No game has been wished ;)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="u7c-m9-rh7">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="651"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="WVi-p7-YqE">
                                         <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
@@ -40,10 +52,11 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="oGD-YM-uvP" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="2vW-9i-rjx"/>
                             <constraint firstItem="oGD-YM-uvP" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="F6F-dz-Nzn"/>
-                            <constraint firstItem="oGD-YM-uvP" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="MYz-S8-1bL"/>
+                            <constraint firstItem="oGD-YM-uvP" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="15" id="MYz-S8-1bL"/>
                             <constraint firstItem="oGD-YM-uvP" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="x4f-pH-kWt"/>
                         </constraints>
                     </view>
@@ -51,6 +64,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="collectionView" destination="oGD-YM-uvP" id="knV-c4-ysi"/>
+                        <outlet property="responseNilLabel" destination="u7c-m9-rh7" id="CFz-yQ-vcz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -36,7 +36,8 @@ public final class WishlistModuleRouter: WishlistModuleRouterInterface {
         let presenter = WishlistModulePresenter(
             interactor: interactor,
             router: router,
-            view: view)
+            view: view,
+            argument: GameListArgument(games: []))
         
         navigationController?.navigationBar
             .configureNavigationBar(isTranslucent: true,
@@ -44,7 +45,7 @@ public final class WishlistModuleRouter: WishlistModuleRouterInterface {
                                     shadowColor: nil,
                                     backgroundColor: UIColor.NavigationBarColor.Background)
         view.presenter = presenter
-        interactor.output = presenter as? any WishlistInteractorOutput
+        interactor.output = presenter
         
         return view
     }

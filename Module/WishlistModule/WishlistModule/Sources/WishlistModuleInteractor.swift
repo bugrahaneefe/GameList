@@ -12,7 +12,7 @@ import NetworkKit
 import HomeHandlerKit
 
 protocol WishlistInteractorInterface: AnyObject {
-    func fetchWishlist(with: URL?, at page: Int?, contains name: String, with platforms: String)
+    func fetchWishlist(with: URL?, at page: Int?, contains name: String, with platforms: String?)
 }
 
 protocol WishlistInteractorOutput: AnyObject {
@@ -25,7 +25,7 @@ final class WishlistInteractor {
 
 //MARK: - WishlistInteractorInterface
 extension WishlistInteractor: WishlistInteractorInterface {
-    func fetchWishlist(with: URL?, at page: Int?, contains name: String, with platforms: String) {
+    func fetchWishlist(with: URL?, at page: Int?, contains name: String, with platforms: String?) {
         HomeHandler.shared.gameListDetails(at: page, contains: name, with: platforms) { [weak output] result in
             output?.handleWishlistResult(result)
         }

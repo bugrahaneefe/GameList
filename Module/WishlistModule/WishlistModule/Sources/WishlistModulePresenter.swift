@@ -20,10 +20,6 @@ protocol WishlistModulePresenterInterface: PresenterInterface {
 }
 
 private enum Constant {
-    enum Platform {
-        static let allPlatformIndexes = "1,2,3,4,5,6,7,8,9,10,11,12,13,14"
-    }
-    
     enum GameCell {
         static let cellCornerRadius = 10.0
     }
@@ -45,24 +41,26 @@ final class WishlistModulePresenter {
     private let interactor: WishlistInteractorInterface
     private let router: WishlistModuleRouterInterface
     private var view: WishlistViewInterface?
-    private var games: [Game] = []
+    private var argument: GameListArgument
     
     init(interactor: WishlistInteractorInterface,
          router: WishlistModuleRouterInterface,
          view: WishlistViewInterface? = nil,
-         defaults: DefaultsProtocol.Type = Defaults.self
+         defaults: DefaultsProtocol.Type = Defaults.self,
+         argument: GameListArgument
     ) {
         self.interactor = interactor
         self.router = router
         self.view = view
         self.defaults = defaults
+        self.argument = argument
     }
     
     // MARK: Private Methods
     private func fetchGameList(
-        at page: Int? = 1,
+        at page: Int? = nil,
         contains name: String = "",
-        with platforms: String = Constant.Platform.allPlatformIndexes) {
+        with platforms: String? = nil) {
             view?.showLoading()
             
             let endpoint = HomeEndpointItem.gameListDetails(at: page, contains: name, with: platforms)
@@ -76,27 +74,33 @@ final class WishlistModulePresenter {
         }
     
     private func handleEmptyGameStatus() {
+        argument.games.removeAll()
         view?.reloadCollectionView()
+        view?.showResponseNilLabel()
         view?.hideLoading()
     }
     
     private func handleGameSection(with response: GameListDetailsResponse) {
-        view?.hideResponseNilLabel()
-//        games.append(contentsOf: response.results)
+        if argument.games.isEmpty {
+            view?.showResponseNilLabel()
+        } else {
+            view?.hideResponseNilLabel()
+        }
+//        argument.games.append(contentsOf: response.results)
         view?.reloadCollectionView()
         view?.hideLoading()
     }
     
     private func handleNetworkErrorStatus(of error: String) {
         view?.hideLoading()
+        view?.showResponseNilLabel(with: error)
     }
 }
 
 //MARK: - WishlistModulePresenterInterface
 extension WishlistModulePresenter: WishlistModulePresenterInterface {
     func numberOfItemsInGameSection() -> Int {
-        print(games)
-        return games.count
+        return argument.games.count
     }
     
     func cellForGame(at indexPath: IndexPath, in collectionView: UICollectionView) -> UICollectionViewCell {
@@ -115,14 +119,14 @@ extension WishlistModulePresenter: WishlistModulePresenterInterface {
         let cell = collectionView.dequeueReusableCell(with: GameCell.self, for: indexPath)
         let presenter = GameCellPresenter(
             view: cell,
-            argument: GameCellArgument(game: games[indexPath.row]))
+            argument: GameCellArgument(game: argument.games[indexPath.row]))
         cell.layer.cornerRadius = Constant.GameCell.cellCornerRadius
         cell.presenter = presenter
         return cell
     }
     
     func didSelectGame(at indexPath: IndexPath) {
-        router.navigateToGameDetail(with: games[indexPath.row])
+        router.navigateToGameDetail(with: argument.games[indexPath.row])
     }
     
     func pullToRefresh() {

@@ -31,6 +31,7 @@ private enum Constant {
 
 final class WishlistModuleViewController: BaseViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var responseNilLabel: UILabel!
 
     var presenter: WishlistModulePresenterInterface!
     private var loadingIndicator: UIActivityIndicatorView?
@@ -110,15 +111,16 @@ extension WishlistModuleViewController: WishlistViewInterface {
     }
     
     func showResponseNilLabel() {
-        
+        responseNilLabel.isHidden = false
     }
     
-    func showResponseNilLabel(with: String) {
-        
+    func showResponseNilLabel(with text: String) {
+        responseNilLabel.text = text
+        responseNilLabel.isHidden = false
     }
     
     func hideResponseNilLabel() {
-        
+        responseNilLabel.isHidden = true
     }
 }
 

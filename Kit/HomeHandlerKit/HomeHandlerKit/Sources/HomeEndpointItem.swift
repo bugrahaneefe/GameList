@@ -23,10 +23,13 @@ public enum HomeEndpointItem: Endpoint {
         
         var queryItems = [
             URLQueryItem(name: "key", value: "3fde07e2662c4bde9425cd8d2b901d1b"),
-            URLQueryItem(name: "page", value: page.flatMap { "\($0)" }),
             URLQueryItem(name: "page_size", value: "\(8)"),
             URLQueryItem(name: "search", value: name)
         ]
+        
+        if let page {
+            queryItems.append(URLQueryItem(name: "page", value: "\(page)"))
+        }
         
         if let platform {
             queryItems.append(URLQueryItem(name: "parent_platforms", value: platform))
