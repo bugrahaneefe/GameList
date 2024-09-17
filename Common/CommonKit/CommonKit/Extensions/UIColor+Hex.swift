@@ -63,4 +63,8 @@ extension UIColor {
     public struct LoadingIndicatorColor {
         public static let Tint = UIColor(hex: 0x6EC470)
     }
+    
+    public struct GameCellColor {
+        public static let TextGray = UIColor(hex: 0x757575)
+    }
 }

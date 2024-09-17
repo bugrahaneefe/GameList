@@ -11,7 +11,7 @@ import SwiftUI
 
 public protocol GameCellBannerViewInterface {
     func setBannerImage(path: String?)
-    func setGameNameLabel(name: String?)
+    func setGameNameLabel(name: String?, isAlreadyClicked: Bool)
     func setRating(rating: Int)
     func setPlatforms(with platforms: [String])
     func setDetails(with infos: [(name: String, value: String)])
@@ -80,7 +80,10 @@ extension GameCellBanner: GameCellBannerViewInterface {
         self.bannerImageView.setImageWith(url: path)
     }
     
-    public func setGameNameLabel(name: String?) {
+    public func setGameNameLabel(name: String?, isAlreadyClicked: Bool) {
+        if isAlreadyClicked {
+            self.gameNameLabel.textColor = UIColor.GameCellColor.TextGray
+        }
         self.gameNameLabel.text = name
     }
  

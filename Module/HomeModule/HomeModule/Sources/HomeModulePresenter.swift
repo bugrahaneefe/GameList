@@ -129,6 +129,8 @@ extension HomeModulePresenter: HomeModulePresenterInterface {
     }
     
     func didSelectGame(at indexPath: IndexPath) {
+        guard let gameName = argument.games[indexPath.row].name else { return }
+        defaults.save(data: true, key: gameName)
         router.navigateToGameDetail(with: argument.games[indexPath.row])
     }
     

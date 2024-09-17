@@ -11,7 +11,7 @@ import CommonKit
 
 public protocol GameCellViewInterface {
     func setBannerImage(path: String?)
-    func setGameNameLabel(name: String?)
+    func setGameNameLabel(name: String?, isAlreadyClicked: Bool)
     func setRating(rating: Int)
     func setFavoriteButton(selected: Bool)
 }
@@ -45,7 +45,10 @@ extension GameCell: GameCellViewInterface {
         self.bannerImageView.setImageWith(url: path)
     }
     
-    public func setGameNameLabel(name: String?) {
+    public func setGameNameLabel(name: String?, isAlreadyClicked: Bool) {
+        if isAlreadyClicked {
+            self.gameNameLabel.textColor = UIColor.GameCellColor.TextGray
+        }
         self.gameNameLabel.text = name
     }
     

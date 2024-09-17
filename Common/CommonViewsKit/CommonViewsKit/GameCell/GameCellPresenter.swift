@@ -42,7 +42,8 @@ public final class GameCellPresenter: Observation {
     
     private func handleGameName() {
         if let name = argument.game.name {
-            view?.setGameNameLabel(name: name)
+            let isAlreadyClicked = defaults.bool(key: name)
+            view?.setGameNameLabel(name: name, isAlreadyClicked: isAlreadyClicked)
         }
     }
     
