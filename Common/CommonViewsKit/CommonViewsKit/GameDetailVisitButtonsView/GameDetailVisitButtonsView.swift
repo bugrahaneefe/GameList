@@ -30,6 +30,8 @@ public struct GameDetailVisitButtonsView: View {
                 if redditAvailable {
                     VisitButton(name: "Visit Reddit", action: redditAction)
                 }
+            }
+            HStack{
                 if websiteAvailable {
                     VisitButton(name: "Visit Website", action: websiteAction)
                 }
