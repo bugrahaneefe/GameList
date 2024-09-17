@@ -71,7 +71,7 @@ final class GameDetailViewController: BaseViewController {
     private func setupNavigationBar() {
         self.title = Constant.NavigationBar.title
         self.navigationController?.navigationBar.tintColor = .white
-
+        
         navigationController?.navigationBar.setTitleTextAttributes(attributes: [
             .foregroundColor: UIColor.white,
             .font: UIFont.systemFont(
@@ -80,7 +80,7 @@ final class GameDetailViewController: BaseViewController {
         ])
         
         let rightBarButtonItem = UIBarButtonItem(
-            image: UIImage.favoriteIcon,
+            image: CommonViewsImages.bannerCellAppearanceButton.uiImage?.resizedImage(Size: CGSize(width: 24, height: 24)),
             style: .plain,
             target: self,
             action: #selector(rightBarButtonItemTapped)
@@ -131,29 +131,29 @@ final class GameDetailViewController: BaseViewController {
         byReddit redditAction: @escaping () -> Void,
         _ websiteAvailable: Bool,
         _ redditAvailable: Bool) {
-        let vc = UIHostingController(
-            rootView: GameDetailVisitButtonsView(
-                websiteAction: websiteAction,
-                redditAction: redditAction,
-                websiteAvailable: websiteAvailable,
-                redditAvailable: redditAvailable
+            let vc = UIHostingController(
+                rootView: GameDetailVisitButtonsView(
+                    websiteAction: websiteAction,
+                    redditAction: redditAction,
+                    websiteAvailable: websiteAvailable,
+                    redditAvailable: redditAvailable
+                )
             )
-        )
-        let swiftuiView = vc.view!
-        swiftuiView.translatesAutoresizingMaskIntoConstraints = false
-        addChild(vc)
-        gameVisitButtonsView.addSubview(swiftuiView)
-        gameVisitButtonsView.backgroundColor = .black
-        NSLayoutConstraint.activate([
-            swiftuiView.leadingAnchor.constraint(equalTo: gameVisitButtonsView.leadingAnchor),
-            swiftuiView.trailingAnchor.constraint(equalTo: gameVisitButtonsView.trailingAnchor),
-            swiftuiView.topAnchor.constraint(equalTo: gameVisitButtonsView.topAnchor),
-            swiftuiView.bottomAnchor.constraint(equalTo: gameVisitButtonsView.bottomAnchor),
-            swiftuiView.widthAnchor.constraint(equalTo: gameVisitButtonsView.widthAnchor)
-        ])
-        vc.didMove(toParent: self)
-    }
-        
+            let swiftuiView = vc.view!
+            swiftuiView.translatesAutoresizingMaskIntoConstraints = false
+            addChild(vc)
+            gameVisitButtonsView.addSubview(swiftuiView)
+            gameVisitButtonsView.backgroundColor = .black
+            NSLayoutConstraint.activate([
+                swiftuiView.leadingAnchor.constraint(equalTo: gameVisitButtonsView.leadingAnchor),
+                swiftuiView.trailingAnchor.constraint(equalTo: gameVisitButtonsView.trailingAnchor),
+                swiftuiView.topAnchor.constraint(equalTo: gameVisitButtonsView.topAnchor),
+                swiftuiView.bottomAnchor.constraint(equalTo: gameVisitButtonsView.bottomAnchor),
+                swiftuiView.widthAnchor.constraint(equalTo: gameVisitButtonsView.widthAnchor)
+            ])
+            vc.didMove(toParent: self)
+        }
+    
     @objc
     private func rightBarButtonItemTapped() {
         presenter.favoriteButtonTapped()
@@ -224,7 +224,13 @@ extension GameDetailViewController: GameDetailViewInterface {
     }
     
     func setFavoriteButtonImage(isSelected: Bool) {
-        favoriteButtonImage = isSelected ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
+        if isSelected {
+            favoriteButtonImage = CommonViewsImages.favoriteButtonTapped.uiImage?.resizedImage(Size: CGSize(width: 20, height: 17.5))
+            navigationItem.rightBarButtonItem?.tintColor = UIColor.FavoriteButtonColor.Green
+        } else {
+            favoriteButtonImage = CommonViewsImages.favoriteButton.uiImage?.resizedImage(Size: CGSize(width: 20, height: 17.5))
+            navigationItem.rightBarButtonItem?.tintColor = UIColor.FavoriteButtonColor.White
+        }
         navigationItem.rightBarButtonItem?.image = favoriteButtonImage
     }
 }

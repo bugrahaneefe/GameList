@@ -73,7 +73,7 @@ final class HomeModuleViewController: BaseViewController {
         ])
         
         let rightBarButtonItem = UIBarButtonItem(
-            image: UIImage.rightBarIcon,
+            image: CommonViewsImages.bannerCellAppearanceButton.uiImage?.resizedImage(Size: CGSize(width: 24, height: 24)),
             style: .plain,
             target: self,
             action: #selector(rightBarButtonItemTapped)
@@ -129,6 +129,11 @@ final class HomeModuleViewController: BaseViewController {
     
     @objc
     private func rightBarButtonItemTapped() {
+        if presenter.appearanceType == .logo {
+            navigationItem.rightBarButtonItem?.image = CommonViewsImages.logoCellAppearanceButton.uiImage?.resizedImage(Size: CGSize(width: 24, height: 24))
+        } else if presenter.appearanceType == .banner {
+            navigationItem.rightBarButtonItem?.image = CommonViewsImages.bannerCellAppearanceButton.uiImage?.resizedImage(Size: CGSize(width: 24, height: 24))
+        }
         presenter.changeAppearanceTapped()
     }
     

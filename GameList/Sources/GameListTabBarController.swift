@@ -3,6 +3,7 @@ import CommonKit
 import HomeModule
 import DependencyEngine
 import WishlistModule
+import CommonViewsKit
 
 private enum Constant {
     enum TabBar {
@@ -29,8 +30,8 @@ public final class GameListTabBarController: UITabBarController {
         wishlistNavigationController.viewControllers = [wishlistVC]
         wishlistNavigationController.tabBarItem = .init(
             title: Constant.TabBar.WishlistTitle,
-            image: UIImage.heart,
-            selectedImage: UIImage.heartFill
+            image: CommonViewsImages.favoriteButton.uiImage?.resizedImage(Size: CGSize(width: 20, height: 17.5)),
+            selectedImage: CommonViewsImages.favoriteButtonTapped.uiImage?.resizedImage(Size: CGSize(width: 20, height: 17.5))
         )
         
         let homeNavigationController = UINavigationController()
@@ -38,8 +39,8 @@ public final class GameListTabBarController: UITabBarController {
         homeNavigationController.viewControllers = [homeVC]
         homeNavigationController.tabBarItem = .init(
             title: Constant.TabBar.GameTitle,
-            image: UIImage.gameController,
-            selectedImage: UIImage.gameControllerFill
+            image: CommonViewsImages.gamesIcon.uiImage?.resizedImage(Size: CGSize(width: 28.9, height: 15)),
+            selectedImage: CommonViewsImages.gamesIconTapped.uiImage?.resizedImage(Size: CGSize(width: 28.9, height: 15))
         )
         
         viewControllers = [homeNavigationController, wishlistNavigationController]

@@ -19,19 +19,17 @@ extension UIImage {
     public static let heart = UIImage(systemName: "heart")
     public static let heartFill = UIImage(systemName: "heart.fill")
     public static let rightBarIcon = UIImage(systemName: "line.3.horizontal")
-    public static let favoriteTappedIcon = UIImage(named: "favoriteButtonTapped.png")
-    public static let favoriteIcon = UIImage(named: "favoriteButton.png")
     
     public func resizedImage(Size sizeImage: CGSize) -> UIImage?
-        {
-            let frame = CGRect(origin: CGPoint.zero, size: CGSize(width: sizeImage.width, height: sizeImage.height))
-            UIGraphicsBeginImageContextWithOptions(frame.size, false, 0)
-            self.draw(in: frame)
-            let resizedImage: UIImage? = UIGraphicsGetImageFromCurrentImageContext()
-            UIGraphicsEndImageContext()
-            self.withRenderingMode(.alwaysOriginal)
-            return resizedImage
-        }
+    {
+        let frame = CGRect(origin: CGPoint.zero, size: CGSize(width: sizeImage.width, height: sizeImage.height))
+        UIGraphicsBeginImageContextWithOptions(frame.size, false, 0)
+        self.draw(in: frame)
+        let resizedImage: UIImage? = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        self.withRenderingMode(.alwaysOriginal)
+        return resizedImage
+    }
 }
 
 extension UIImageView {

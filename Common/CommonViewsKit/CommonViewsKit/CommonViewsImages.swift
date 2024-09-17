@@ -8,10 +8,13 @@
 import CoreUtils
 import Foundation
 
-enum CommonViewsImages: String, ImageSource, Equatable {
+public enum CommonViewsImages: String, ImageSource, Equatable {
     case favoriteButton = "favoriteButton"
     case favoriteButtonTapped = "favoriteButtonTapped"
+    case bannerCellAppearanceButton = "bannerCellAppearanceButton"
+    case logoCellAppearanceButton = "logoCellAppearanceButton"
+    case gamesIcon = "gamesIcon"
+    case gamesIconTapped = "gamesIconTapped"
 
-    var bundle: Bundle? { .module }
+    public var bundle: Bundle? { .module }
 }
-
