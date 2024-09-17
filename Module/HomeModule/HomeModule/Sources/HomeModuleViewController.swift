@@ -110,8 +110,8 @@ final class HomeModuleViewController: BaseViewController {
     }
     
     private func setupPlatformSliderView() {
-        let vc = UIHostingController(rootView: PlatformButtonView(buttonAction: { [weak self] selectedPlatforms in
-            self?.presenter.fetchPlatforms(of: selectedPlatforms)
+        let vc = UIHostingController(rootView: PlatformButtonView(buttonAction: { [weak self] selectedPlatform in
+            self?.presenter.fetchPlatforms(of: selectedPlatform)
         }))
         let swiftuiView = vc.view!
         swiftuiView.translatesAutoresizingMaskIntoConstraints = false

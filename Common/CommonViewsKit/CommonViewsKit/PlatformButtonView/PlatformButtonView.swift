@@ -27,10 +27,10 @@ private enum Constant {
 }
 
 public struct PlatformButtonView: View {
-    @State private var selectedPlatforms: [Int] = []
-    public var buttonAction: ([Int]) -> Void
+    @State private var selectedPlatform: Int? = nil
+    public var buttonAction: (Int?) -> Void
     
-    public init(buttonAction: @escaping ([Int]) -> Void) {
+    public init(buttonAction: @escaping (Int?) -> Void) {
         self.buttonAction = buttonAction
     }
     
@@ -38,14 +38,26 @@ public struct PlatformButtonView: View {
         ScrollView(.horizontal) {
             HStack(spacing: 10) {
                 ForEach(Constant.gamingPlatforms, id: \.index) { platform in
-                    let isSelected = selectedPlatforms.contains(platform.index)
-                    PlatformButton(name: platform.name, fontSize: 14, height: 30, cellRadius: 15, defaultColor: .white) {
-                        if isSelected {
-                            selectedPlatforms.removeAll { $0 == platform.index }
+                    PlatformButton(
+                        isSelected: Binding<Bool>(
+                            get: { selectedPlatform == platform.index },
+                            set: { isSelected in
+                                selectedPlatform = isSelected ? platform.index : nil
+                                buttonAction(selectedPlatform)
+                            }
+                        ),
+                        name: platform.name,
+                        fontSize: 14,
+                        height: 30,
+                        cellRadius: 15,
+                        defaultColor: .white
+                    ) {
+                        if selectedPlatform == platform.index {
+                            selectedPlatform = nil
                         } else {
-                            selectedPlatforms.append(platform.index)
+                            selectedPlatform = platform.index
                         }
-                        buttonAction(selectedPlatforms)
+                        buttonAction(selectedPlatform)
                     }
                 }
             }

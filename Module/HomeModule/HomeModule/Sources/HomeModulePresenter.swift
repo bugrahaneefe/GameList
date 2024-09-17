@@ -22,16 +22,12 @@ protocol HomeModulePresenterInterface: PresenterInterface, HomeModuleSectionDele
     func pullToRefresh()
     func willDisplayItemAt(_ indexPath: IndexPath)
     func filterWith(_ searchBar: UISearchBar)
-    func fetchPlatforms(of selectedPlatforms: [Int])
+    func fetchPlatforms(of selectedPlatform: Int?)
 }
 
 private enum Constant {
     enum Defaults {
         static let isBannerStateActive = "isBannerStateActive"
-    }
-    
-    enum Platform {
-        static let allPlatformIndexes = "1,2,3,4,5,6,7,8,9,10,11,12,13,14"
     }
     
     static let throttleInterval = 0.7
@@ -50,7 +46,6 @@ final class HomeModulePresenter {
     private var gameSection: GameSection?
     private var currentPage = 1
     private var currentName = ""
-    private var currentPlatforms = Constant.Platform.allPlatformIndexes
     private var isFetchingAvailable = true
     private let throttler: CommonKit.ThrottlerInterface
     
@@ -72,20 +67,17 @@ final class HomeModulePresenter {
     private func fetchGameList(
         at page: Int = 1,
         contains name: String = "",
-        with platforms: String = Constant.Platform.allPlatformIndexes) {
+        with platform: String? = nil) {
         guard isFetchingAvailable else { return }
         isFetchingAvailable = false
         
         view?.showLoading()
-        
-        let endpoint = HomeEndpointItem.gameListDetails(at: page, contains: name, with: platforms)
-        
+        let endpoint = HomeEndpointItem.gameListDetails(at: page, contains: name, with: platform)
         guard let url = endpoint.url else {
             view?.hideLoading()
             return
         }
-        
-        interactor.fetchGameList(with: url, at: page, contains: name, with: platforms)
+        interactor.fetchGameList(with: url, at: page, contains: name, with: platform)
     }
     
     private func handleEmptyGameStatus() {
@@ -147,29 +139,26 @@ extension HomeModulePresenter: HomeModulePresenterInterface {
     
     func pullToRefresh() {
         isFetchingAvailable = true
-        fetchGameList(at: currentPage, with: currentPlatforms)
+        fetchGameList(at: currentPage)
     }
     
     func filterWith(_ searchBar: UISearchBar) {
-        let platforms = currentPlatforms
         guard let name = searchBar.text else { return }
         throttler.throttle { [weak self] in
             self?.argument.games.removeAll()
             self?.isFetchingAvailable = true
-            self?.fetchGameList(contains: name, with: platforms)
+            self?.fetchGameList(contains: name)
         }
         currentName = name
     }
     
-    func fetchPlatforms(of selectedPlatforms: [Int]) {
+    func fetchPlatforms(of selectedPlatform: Int?) {
         argument.games.removeAll()
         isFetchingAvailable = true
-        if !selectedPlatforms.isEmpty {
-            let platformsQuery = selectedPlatforms.map { String($0) }.joined(separator: ",")
-            currentPlatforms = platformsQuery
-            fetchGameList(contains: currentName, with: platformsQuery)
+        if selectedPlatform != nil {
+            guard let selectedPlatform = selectedPlatform else { return }
+            fetchGameList(contains: currentName, with: "\(selectedPlatform)")
         } else {
-            currentPlatforms = Constant.Platform.allPlatformIndexes
             fetchGameList(at: 1, contains: currentName)
         }
     }

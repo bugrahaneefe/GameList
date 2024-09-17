@@ -1,8 +1,8 @@
 import SwiftUI
 
 public struct PlatformButton: View {
+    @Binding private var isSelected: Bool
     @State private var isActive: Bool
-    @State private var isSelected: Bool = false
     private let name: String
     private let fontSize: CGFloat
     private let height: CGFloat
@@ -12,6 +12,7 @@ public struct PlatformButton: View {
         
     init(
         isActive: Bool = true,
+        isSelected: Binding<Bool> = .constant(false),
         name: String,
         fontSize: CGFloat,
         height: CGFloat,
@@ -20,6 +21,7 @@ public struct PlatformButton: View {
         action: @escaping () -> Void
     ) {
         self.isActive = isActive
+        self._isSelected =  isSelected
         self.name = name
         self.fontSize = fontSize
         self.height = height
@@ -31,7 +33,6 @@ public struct PlatformButton: View {
     public var body: some View {
         Button(action: {
             self.action()
-            isSelected.toggle()
         }) {
                 Text(self.name)
                     .padding()
