@@ -16,13 +16,14 @@ let appTarget = Target.target(
                     [
                         "UISceneConfigurationName": "Default Configuration",
                         "UISceneDelegateClassName": "$(PRODUCT_MODULE_NAME).SceneDelegate",
-                        "StoryboardName": "Main",
+                        "StoryboardName": "Main"
                     ]
                 ]
             ]
         ],
         "UIApplicationDelegateClassName": "$(PRODUCT_MODULE_NAME).AppDelegate",
-        "UIAppFonts": "Lato-Regular.ttf"
+        "UIAppFonts": "Lato-Regular.ttf",
+        "UIUserInterfaceStyle": "Dark"
     ]),
     sources: ["GameList/**/*.swift"],
     resources: [
