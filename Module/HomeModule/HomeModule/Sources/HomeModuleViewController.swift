@@ -221,10 +221,6 @@ extension HomeModuleViewController: UICollectionViewDelegate {
 
 // MARK: - UISearchBarDelegate
 extension HomeModuleViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        presenter.filterWith(searchBar)
-    }
-
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         presenter.filterWith(searchBar)

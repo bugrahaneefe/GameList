@@ -29,7 +29,7 @@
                                     <constraint firstAttribute="height" constant="51" id="qwe-zw-O5W"/>
                                 </constraints>
                                 <color key="tintColor" systemColor="systemGreenColor"/>
-                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="search" enablesReturnKeyAutomatically="YES" smartDashesType="yes" textContentType="name"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="search" smartDashesType="yes" textContentType="name"/>
                                 <connections>
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="PJR-NY-kgA"/>
                                 </connections>
