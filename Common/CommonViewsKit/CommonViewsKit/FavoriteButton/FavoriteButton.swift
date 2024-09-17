@@ -13,20 +13,25 @@ public final class FavoriteButton: UIButton {
         super.init(coder: aDecoder)
         configure()
     }
-
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
     }
-
+    
     private func configure() {
-        setImage(UIImage.favoriteTappedIcon, for: .selected)
-        setImage(UIImage.favoriteIcon, for: .normal)
+        var config = UIButton.Configuration.plain()
+        config.baseBackgroundColor = .clear
+        configuration = config
+        setImage(CommonViewsImages.favoriteButton.uiImage?.resizedImage(Size: CGSize(width: 12, height: 10.5)), for: .normal)
+        setImage(CommonViewsImages.favoriteButtonTapped.uiImage?.resizedImage(Size: CGSize(width: 12, height: 10.5)), for: .selected)
         backgroundColor = UIColor.FavoriteButtonColor.Background
         layer.cornerRadius = 15
     }
-
-    public override func layoutSubviews() {
-        super.layoutSubviews()
+    
+    public override func sendAction(_ action: Selector, to target: Any?, for event: UIEvent?) {
+        super.sendAction(action, to: target, for: event)
+        isSelected = !isSelected
+        accessibilityTraits = isSelected ? .selected : .button
     }
 }

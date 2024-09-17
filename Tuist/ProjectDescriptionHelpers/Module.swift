@@ -16,7 +16,7 @@ public extension Project {
       resources: [
         "\(name)/**/*.xib",
         "\(name)/**/*.storyboard",
-        "\(name)/*.xcassets",
+        "\(name)/**/*.xcassets",
         "\(name)/**/*.strings",
         "\(name)/**/*.ttf",
         "\(name)/**/*.json",

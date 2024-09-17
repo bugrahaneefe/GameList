@@ -31,7 +31,7 @@ public final class GameCell: UICollectionViewCell {
     
     override public func prepareForReuse() {
         super.prepareForReuse()
-        bannerImageView.image = UIImage(systemName: "gamecontroller.fill")
+        bannerImageView.image = UIImage.gameControllerFill
     }
     
     @IBAction func favoriteButtonTapped(_ sender: Any) {
