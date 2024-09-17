@@ -86,10 +86,10 @@ extension GameCellBanner: GameCellBannerViewInterface {
  
     public func setRating(rating: Int) {
         self.ratingLabel.text = "\(rating)"
-        if rating > 80 {
+        if rating > 75 {
             self.ratingView.backgroundColor = UIColor.RatingViewColor.RatingViewGreen
             self.ratingLabel.textColor = UIColor.RatingViewColor.RatingLabelGreen
-        } else if rating > 60 {
+        } else if rating > 50 {
             self.ratingView.backgroundColor = UIColor.RatingViewColor.RatingViewOrange
             self.ratingLabel.textColor = UIColor.RatingViewColor.RatingLabelOrange
         } else {
