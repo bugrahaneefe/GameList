@@ -20,10 +20,10 @@ protocol GameDetailViewInterface: AlertPresentable {
     func hideLoading()
     func setGameDescription(with text: String)
     func setGameInformation(with infos: [(name: String, value: String)])
-    func setupGameVisitButtons(by websiteAction: @escaping () -> Void,
-                               by redditAction: @escaping () -> Void,
-                               websiteAvailable: Bool,
-                               redditAvailable: Bool)
+    func setupGameVisitButtons(byWeb websiteAction: @escaping () -> Void,
+                               byReddit redditAction: @escaping () -> Void,
+                               _ websiteAvailable: Bool,
+                               _ redditAvailable: Bool)
     func setFavoriteButtonImage(isSelected: Bool)
 }
 
@@ -127,10 +127,10 @@ final class GameDetailViewController: BaseViewController {
     }
     
     private func setupGameVisitButtonsView(
-        by websiteAction: @escaping () -> Void,
-        by redditAction: @escaping () -> Void,
-        websiteAvailable: Bool,
-        redditAvailable: Bool) {
+        byWeb websiteAction: @escaping () -> Void,
+        byReddit redditAction: @escaping () -> Void,
+        _ websiteAvailable: Bool,
+        _ redditAvailable: Bool) {
         let vc = UIHostingController(
             rootView: GameDetailVisitButtonsView(
                 websiteAction: websiteAction,
@@ -173,15 +173,15 @@ extension GameDetailViewController: GameDetailViewInterface {
         setupGameInformationView(with: infos)
     }
     
-    func setupGameVisitButtons(by websiteAction: @escaping () -> Void,
-                               by redditAction: @escaping () -> Void,
-                               websiteAvailable: Bool,
-                               redditAvailable: Bool) {
+    func setupGameVisitButtons(byWeb websiteAction: @escaping () -> Void,
+                               byReddit redditAction: @escaping () -> Void,
+                               _ websiteAvailable: Bool,
+                               _ redditAvailable: Bool) {
         setupGameVisitButtonsView(
-            by: websiteAction,
-            by: redditAction,
-            websiteAvailable: websiteAvailable,
-            redditAvailable: redditAvailable
+            byWeb: websiteAction,
+            byReddit: redditAction,
+            websiteAvailable,
+            redditAvailable
         )
     }
     

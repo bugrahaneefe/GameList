@@ -84,23 +84,23 @@ final class GameDetailPresenter: Observation {
     }
     
     private func handleVisitButtons() {
-        guard var redditAvailable = gameDetail?.reddit_url.isNotNil else { return }
-        guard var websiteAvailable = gameDetail?.website.isNotNil else { return }
-        guard let website = self.gameDetail?.website else { return }
-        guard let reddit = self.gameDetail?.reddit_url else { return }
-        if website == "" {
-            websiteAvailable = false
-        }
-        if reddit == "" {
-            redditAvailable = false
-        }
-        view?.setupGameVisitButtons(by: {
-            guard let websiteUrl = URL(website) else { return }
-            UIApplication.shared.open(websiteUrl)
-        }, by: {
-            guard let redditUrl = URL(reddit) else { return }
-            UIApplication.shared.open(redditUrl)
-        }, websiteAvailable: websiteAvailable, redditAvailable: redditAvailable)
+        guard let gameDetail = gameDetail else { return }
+        let websiteAvailable = !(gameDetail.website?.isEmpty ?? true)
+        let redditAvailable = !(gameDetail.reddit_url?.isEmpty ?? true)
+        view?.setupGameVisitButtons(
+            byWeb: {
+                if let website = gameDetail.website, let websiteUrl = URL(string: website) {
+                    UIApplication.shared.open(websiteUrl)
+                }
+            },
+            byReddit: {
+                if let reddit = gameDetail.reddit_url, let redditUrl = URL(string: reddit) {
+                    UIApplication.shared.open(redditUrl)
+                }
+            },
+            websiteAvailable,
+            redditAvailable
+        )
     }
     
     private func handleFavoriteButton() {
