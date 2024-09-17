@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="666"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="cdR-nQ-6HD">
-                                <rect key="frame" x="0.0" y="1.3333333333333428" width="393" height="277.66666666666663"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gamesIcon" translatesAutoresizingMaskIntoConstraints="NO" id="cdR-nQ-6HD">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="280"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="280" id="afs-Zw-m0v"/>
@@ -58,8 +58,8 @@
                                     <constraint firstAttribute="height" constant="22" id="kCm-dl-wyQ"/>
                                 </constraints>
                             </stackView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ry4-VU-NH1">
-                                <rect key="frame" x="0.0" y="325" width="393" height="341"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ry4-VU-NH1">
+                                <rect key="frame" x="0.0" y="332" width="393" height="334"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="XSA-3J-eq7">
                                         <rect key="frame" x="15" y="0.0" width="363" height="321"/>
@@ -118,10 +118,11 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="XSA-3J-eq7" secondAttribute="trailing" constant="15" id="5bG-an-wMv"/>
                                     <constraint firstItem="XSA-3J-eq7" firstAttribute="top" secondItem="ry4-VU-NH1" secondAttribute="top" id="D9r-F2-4DQ"/>
-                                    <constraint firstItem="XSA-3J-eq7" firstAttribute="centerX" secondItem="ry4-VU-NH1" secondAttribute="centerX" id="cX4-er-wG9"/>
-                                    <constraint firstAttribute="trailing" secondItem="XSA-3J-eq7" secondAttribute="trailing" constant="15" id="dOI-Vw-zvx"/>
-                                    <constraint firstItem="XSA-3J-eq7" firstAttribute="leading" secondItem="ry4-VU-NH1" secondAttribute="leading" constant="15" id="m8w-R1-g8F"/>
+                                    <constraint firstItem="XSA-3J-eq7" firstAttribute="leading" secondItem="ry4-VU-NH1" secondAttribute="leading" constant="15" id="aQF-At-1wZ"/>
+                                    <constraint firstItem="XSA-3J-eq7" firstAttribute="centerX" secondItem="ry4-VU-NH1" secondAttribute="centerX" id="acD-wV-sem"/>
+                                    <constraint firstAttribute="bottom" secondItem="XSA-3J-eq7" secondAttribute="bottom" id="yjQ-xL-rEy"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -158,7 +159,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.down" catalog="system" width="118" height="128"/>
+        <image name="gamesIcon" width="30" height="16"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
