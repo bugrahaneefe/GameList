@@ -32,6 +32,7 @@ let appTarget = Target.target(
         "GameList/**/*.xcassets",
         "GameList/**/*.strings",
         "GameList/**/*.ttf",
+        "GameList/**/*.xcdatamodeld",
         "GameList/**/*.json",
         "GameList/**/*.gif"
     ],

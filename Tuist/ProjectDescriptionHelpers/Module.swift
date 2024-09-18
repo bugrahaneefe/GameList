@@ -20,7 +20,8 @@ public extension Project {
         "\(name)/**/*.strings",
         "\(name)/**/*.ttf",
         "\(name)/**/*.json",
-        "\(name)/**/*.gif"
+        "\(name)/**/*.gif",
+        "\(name)/**/*.xcdatamodeld"
     ],
       dependencies: dependencies
     )

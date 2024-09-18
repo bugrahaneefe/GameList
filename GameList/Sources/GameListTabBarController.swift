@@ -22,9 +22,7 @@ public final class GameListTabBarController: UITabBarController {
     }
     
     private func setupTabBar() {
-        let navigationController = UINavigationController()
         tabBar.tintColor = UIColor.TabBarColor.TabBarTint
-        
         let wishlistNavigationController = UINavigationController()
         let wishlistVC = wishlistModule.gameList(navigationController: wishlistNavigationController)
         wishlistNavigationController.viewControllers = [wishlistVC]
@@ -33,7 +31,6 @@ public final class GameListTabBarController: UITabBarController {
             image: CommonViewsImages.favoriteButton.uiImage?.resizedImage(Size: CGSize(width: 20, height: 17.5)),
             selectedImage: CommonViewsImages.favoriteButtonTapped.uiImage?.resizedImage(Size: CGSize(width: 20, height: 17.5))
         )
-        
         let homeNavigationController = UINavigationController()
         let homeVC = homeModule.gameList(navigationController: homeNavigationController)
         homeNavigationController.viewControllers = [homeVC]
