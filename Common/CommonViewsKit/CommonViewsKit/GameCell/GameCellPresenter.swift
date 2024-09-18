@@ -32,6 +32,9 @@ public final class GameCellPresenter: Observation {
         observe(argument.$isFavored) { fav in
             self.view?.setFavoriteButton(selected: self.argument.isFavored)
         }
+        observe(argument.$isAlreadyClicked) { isAlreadyClicked in
+            self.view?.setGameNameLabel(name: self.argument.game.name, isAlreadyClicked: self.argument.isAlreadyClicked)
+        }
     }
     
     private func handleBannerImage() {
@@ -42,8 +45,8 @@ public final class GameCellPresenter: Observation {
     
     private func handleGameName() {
         if let name = argument.game.name {
-            let isAlreadyClicked = defaults.bool(key: name)
-            view?.setGameNameLabel(name: name, isAlreadyClicked: isAlreadyClicked)
+            argument.isAlreadyClicked = defaults.bool(key: "\(name)")
+            view?.setGameNameLabel(name: name, isAlreadyClicked: argument.isAlreadyClicked)
         }
     }
     

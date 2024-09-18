@@ -37,6 +37,7 @@ public final class GameCellBanner: UICollectionViewCell {
     override public func prepareForReuse() {
         super.prepareForReuse()
         bannerImageView.image = CommonViewsImages.gamesIcon.uiImage
+        gameNameLabel.textColor = .white
     }
     
     @IBAction func favoriteButtonTapped(_ sender: Any) {

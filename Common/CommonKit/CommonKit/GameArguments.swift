@@ -10,7 +10,8 @@ import Foundation
 public final class GameCellArgument {
     public let game: Game
     @Published public var isFavored: Bool = false
-    
+    @Published public var isAlreadyClicked: Bool = false
+
     public init(game: Game) {
         self.game = game
     }
