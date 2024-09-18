@@ -88,6 +88,72 @@ public struct Game: Codable {
         }
     }
     
+    public struct Genre: Codable {
+        public let id: Int
+        public let name: String
+        public let slug: String
+        
+        public init(id: Int, name: String, slug: String) {
+            self.id = id
+            self.name = name
+            self.slug = slug
+        }
+    }
+    
+    public struct StoreInfo: Codable {
+        public struct Store: Codable {
+            public let id: Int
+            public let name: String
+            public let slug: String
+            public let domain: String?
+            
+            public init(id: Int, name: String, slug: String, domain: String?) {
+                self.id = id
+                self.name = name
+                self.slug = slug
+                self.domain = domain
+            }
+        }
+        public let store: Store
+        
+        public init(store: Store) {
+            self.store = store
+        }
+    }
+    
+    public struct Tag: Codable {
+        public let id: Int
+        public let name: String
+        public let slug: String
+        public let language: String
+        
+        public init(id: Int, name: String, slug: String, language: String) {
+            self.id = id
+            self.name = name
+            self.slug = slug
+            self.language = language
+        }
+    }
+    
+    public struct ParentPlatform: Codable {
+        public struct Platform: Codable {
+            public let id: Int
+            public let name: String
+            public let slug: String
+            
+            public init(id: Int, name: String, slug: String) {
+                self.id = id
+                self.name = name
+                self.slug = slug
+            }
+        }
+        public let platform: Platform
+        
+        public init(platform: Platform) {
+            self.platform = platform
+        }
+    }
+    
     public let id: Int?
     public let slug: String
     public let name: String?
@@ -107,8 +173,12 @@ public struct Game: Codable {
     public let updated: String?
     public let esrb_rating: ESRBRating?
     public let platforms: [PlatformInfo]?
+    public let genres: [Genre]?
+    public let stores: [StoreInfo]?
+    public let tags: [Tag]?
+    public let parent_platforms: [ParentPlatform]?
     
-    public init(id: Int?, slug: String, name: String, released: String?, tba: Bool, background_image: String?, rating: Double, rating_top: Int?, ratings: [Rating]?, ratings_count: Int?, reviews_text_count: Int?, added: Int?, added_by_status: AddedByStatus?, metacritic: Int?, playtime: Int?, suggestions_count: Int?, updated: String?, esrb_rating: ESRBRating?, platforms: [PlatformInfo]?) {
+    public init(id: Int?, slug: String, name: String?, released: String?, tba: Bool, background_image: String?, rating: Double, rating_top: Int?, ratings: [Rating]?, ratings_count: Int?, reviews_text_count: Int?, added: Int?, added_by_status: AddedByStatus?, metacritic: Int?, playtime: Int?, suggestions_count: Int?, updated: String?, esrb_rating: ESRBRating?, platforms: [PlatformInfo]?, genres: [Genre]?, stores: [StoreInfo]?, tags: [Tag]?, parent_platforms: [ParentPlatform]?) {
         self.id = id
         self.slug = slug
         self.name = name
@@ -128,6 +198,10 @@ public struct Game: Codable {
         self.updated = updated
         self.esrb_rating = esrb_rating
         self.platforms = platforms
+        self.genres = genres
+        self.stores = stores
+        self.tags = tags
+        self.parent_platforms = parent_platforms
     }
 }
 

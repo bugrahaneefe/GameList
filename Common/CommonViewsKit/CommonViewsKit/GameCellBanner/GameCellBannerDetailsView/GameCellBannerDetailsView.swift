@@ -17,11 +17,11 @@ public struct GameCellBannerDetailsView: View {
     }
     
     public var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             ForEach(infos, id: \.value) { info in
                 InformationView(title: info.name, info: info.value)
-                Divider()
             }
+            Spacer()
         }
         .background(Color.InformationViewColor.Background)
     }

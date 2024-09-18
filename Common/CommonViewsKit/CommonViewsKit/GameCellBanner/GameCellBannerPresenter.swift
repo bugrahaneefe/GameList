@@ -69,15 +69,23 @@ public final class GameCellBannerPresenter: Observation {
     }
     
     private func handleDetails() {
-//        todo array
-//        todo gameentity genres?
-        if let releasedDate = argument.game.released,
-           let playtime = argument.game.playtime {
-            view?.setDetails(with: [
-                ("Release Date:", releasedDate),
-                ("Playtime:", "\(playtime)")
-            ])
+        var details: [(name: String, value: String)] = []
+
+        if let releasedDate = argument.game.released {
+            details.append(("Release Date:", "\(releasedDate)"))
         }
+        
+        if let genres = argument.game.genres, !genres.isEmpty {
+            let genreNames = genres.compactMap { $0.name }
+            let genresString = genreNames.joined(separator: ", ")
+            details.append(("Genres:", genresString))
+        }
+        
+        if let playtime = argument.game.playtime {
+            details.append(("Playtime:", "\(playtime) hours"))
+        }
+        
+        view?.setDetails(with: details)
     }
 }
 

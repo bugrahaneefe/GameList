@@ -69,7 +69,7 @@ public final class GameCellBanner: UICollectionViewCell {
             swiftuiView.trailingAnchor.constraint(equalTo: gameDetailsView.trailingAnchor),
             swiftuiView.topAnchor.constraint(equalTo: gameDetailsView.topAnchor),
             swiftuiView.bottomAnchor.constraint(equalTo: gameDetailsView.bottomAnchor),
-            swiftuiView.widthAnchor.constraint(equalTo: gameDetailsView.widthAnchor)
+            swiftuiView.heightAnchor.constraint(equalTo: gameDetailsView.heightAnchor)
         ])
     }
 }

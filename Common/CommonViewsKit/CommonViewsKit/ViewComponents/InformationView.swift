@@ -12,16 +12,14 @@ public struct InformationView: View {
     public var body: some View {
         HStack {
             Text(self.title)
-                .padding()
                 .foregroundColor(Color.InformationViewColor.TitleTint)
                 .font(Font.custom("Lato", size: 10))
             Spacer()
             Text(self.info)
-                .padding()
                 .foregroundColor(Color.InformationViewColor.InfoTint)
                 .font(Font.custom("Lato", size: 10))
         }
-        .frame(height: 18)
+        .frame(height: 19)
         .background(Color.clear)
     }
 }

@@ -48,7 +48,7 @@ public struct PlatformButtonView: View {
                         ),
                         name: platform.name,
                         fontSize: 14,
-                        height: 30,
+                        height: 17,
                         cellRadius: 15,
                         defaultColor: .white
                     ) {

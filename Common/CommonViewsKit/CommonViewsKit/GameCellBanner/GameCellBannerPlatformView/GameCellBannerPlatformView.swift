@@ -23,23 +23,26 @@ public struct GameCellBannerPlatformView: View {
                         PlatformButton(isActive: false,
                                        name: platformName,
                                        fontSize: 8,
-                                       height: 18,
+                                       horizontalPadding: 6,
+                                       height: 10,
                                        cellRadius: 24,
                                        defaultColor: Color.GameCellBannerPlatformColor.Tint,
                                        action: {
                         })
                     }
                 }
-                PlatformButton(isActive: false,
-                               name: "+\(buttonNames.count - 3)",
-                               fontSize: 8,
-                               height: 18,
-                               cellRadius: 16,
-                               defaultColor: Color.GameCellBannerPlatformColor.Tint,
-                               action: {
-                })
+                if buttonNames.count > 3 {
+                    PlatformButton(isActive: false,
+                                   name: "+\(buttonNames.count - 3)",
+                                   fontSize: 8,
+                                   horizontalPadding: 6,
+                                   height: 10,
+                                   cellRadius: 16,
+                                   defaultColor: Color.GameCellBannerPlatformColor.Tint,
+                                   action: {
+                    })
+                }
             }
-            .frame(height: 18)
         }
         .background(Color.GameCellBannerPlatformColor.Background)
     }
