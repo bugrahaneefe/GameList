@@ -34,6 +34,7 @@ final class HomeModuleViewController: BaseViewController {
     @IBOutlet private weak var responseNilLabel: UILabel!
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private var platformSliderView: UIView!
+    @IBOutlet weak var collectionViewTopConstraint: NSLayoutConstraint!
     
     var presenter: HomeModulePresenterInterface!
     private var loadingIndicator: UIActivityIndicatorView?
@@ -224,5 +225,24 @@ extension HomeModuleViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         presenter.filterWith(searchBar)
+    }
+}
+
+// MARK: - UIScrollViewDelegate
+extension HomeModuleViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y > 0 {
+            UIView.animate(withDuration: 0.25) { [weak self] in
+                self?.platformSliderView.alpha = 0.0
+                self?.collectionViewTopConstraint.constant = 0
+                self?.view.layoutIfNeeded()
+            }
+        } else {
+            UIView.animate(withDuration: 0.25) { [weak self] in
+                self?.platformSliderView.alpha = 1.0
+                self?.collectionViewTopConstraint.constant = 60.0
+                self?.view.layoutIfNeeded()
+            }
+        }
     }
 }

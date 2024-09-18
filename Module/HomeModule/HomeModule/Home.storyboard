@@ -65,7 +65,6 @@
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="m7P-bh-ZKs" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="4KN-LJ-qrt"/>
-                            <constraint firstItem="m7P-bh-ZKs" firstAttribute="top" secondItem="utv-sp-1ku" secondAttribute="bottom" id="C0t-7k-oYa"/>
                             <constraint firstItem="m7P-bh-ZKs" firstAttribute="top" secondItem="WRc-ip-7yt" secondAttribute="bottom" constant="60" id="Nrt-bI-GZP"/>
                             <constraint firstItem="utv-sp-1ku" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="QtT-nS-JXX"/>
                             <constraint firstItem="utv-sp-1ku" firstAttribute="top" secondItem="WRc-ip-7yt" secondAttribute="bottom" id="UqG-vP-rqq"/>
@@ -79,6 +78,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="m7P-bh-ZKs" id="rEq-sH-vnB"/>
+                        <outlet property="collectionViewTopConstraint" destination="Nrt-bI-GZP" id="JHk-ZW-cHI"/>
                         <outlet property="platformSliderView" destination="utv-sp-1ku" id="W2c-cD-zMY"/>
                         <outlet property="responseNilLabel" destination="bzh-fj-tEH" id="oGX-eH-ohb"/>
                         <outlet property="searchBar" destination="WRc-ip-7yt" id="Ilz-ZV-hsG"/>
