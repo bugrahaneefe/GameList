@@ -35,7 +35,7 @@ public struct PlatformButtonView: View {
     }
     
     public var body: some View {
-        ScrollView(.horizontal) {
+        ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 10) {
                 ForEach(Constant.gamingPlatforms, id: \.index) { platform in
                     PlatformButton(

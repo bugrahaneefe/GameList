@@ -87,6 +87,7 @@ final class HomeModuleViewController: BaseViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         refreshControl.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
+        refreshControl.tintColor = UIColor.LoadingIndicatorColor.Tint
         collectionView.alwaysBounceVertical = true
         collectionView.refreshControl = refreshControl
     }

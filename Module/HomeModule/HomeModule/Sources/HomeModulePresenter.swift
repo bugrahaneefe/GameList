@@ -67,11 +67,16 @@ final class HomeModulePresenter {
     private func fetchGameList(
         at page: Int = 1,
         contains name: String = "",
-        with platform: String? = nil) {
+        with platform: String? = nil,
+        isPullToRefresh: Bool = false
+    ) {
         guard isFetchingAvailable else { return }
         isFetchingAvailable = false
         
-        view?.showLoading()
+        if !isPullToRefresh {
+            view?.showLoading()
+        }
+        
         let endpoint = HomeEndpointItem.gameListDetails(at: page, contains: name, with: platform)
         guard let url = endpoint.url else {
             view?.hideLoading()
@@ -81,6 +86,7 @@ final class HomeModulePresenter {
     }
     
     private func handleEmptyGameStatus() {
+        view?.hideResponseNilLabel()
         argument.games.removeAll()
         view?.reloadCollectionView()
         view?.hideLoading()
@@ -89,16 +95,17 @@ final class HomeModulePresenter {
     }
     
     private func handleGameSection(with response: GameListDetailsResponse) {
-        view?.hideResponseNilLabel()
         argument.games.append(contentsOf: response.results)
         self.gameSection = GameSection(games: argument.games, delegate: self)
         
         view?.reloadCollectionView()
         view?.hideLoading()
+        view?.hideResponseNilLabel()
         isFetchingAvailable = true
     }
     
     private func handleNetworkErrorStatus(of error: String) {
+        view?.hideResponseNilLabel()
         view?.hideLoading()
         view?.showResponseNilLabel(with: error)
         isFetchingAvailable = true
@@ -141,7 +148,7 @@ extension HomeModulePresenter: HomeModulePresenterInterface {
     
     func pullToRefresh() {
         isFetchingAvailable = true
-        fetchGameList(at: currentPage)
+        fetchGameList(at: currentPage, contains: currentName, isPullToRefresh: true)
     }
     
     func filterWith(_ searchBar: UISearchBar) {
