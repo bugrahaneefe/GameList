@@ -8,6 +8,11 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Game Detail View Controller-->
         <scene sceneID="s0d-6b-0kx">
@@ -29,7 +34,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HXa-pD-F28">
                                         <rect key="frame" x="0.0" y="0.0" width="341" height="22"/>
-                                        <fontDescription key="fontDescription" name="AppleSymbols" family="Apple Symbols" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -61,68 +66,47 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ry4-VU-NH1">
                                 <rect key="frame" x="0.0" y="332" width="393" height="334"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="XSA-3J-eq7">
-                                        <rect key="frame" x="15" y="0.0" width="363" height="321"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="XSA-3J-eq7">
+                                        <rect key="frame" x="15" y="0.0" width="363" height="357"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QKx-AD-x4p">
-                                                <rect key="frame" x="0.0" y="0.0" width="363" height="91"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="363" height="109"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hgm-p1-rRu">
-                                                        <rect key="frame" x="0.0" y="0.0" width="363" height="91"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="363" height="109"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="Hgm-p1-rRu" secondAttribute="trailing" id="Jzq-lV-jAW"/>
-                                                    <constraint firstAttribute="bottom" secondItem="Hgm-p1-rRu" secondAttribute="bottom" id="WLF-Al-wP7"/>
-                                                    <constraint firstItem="Hgm-p1-rRu" firstAttribute="leading" secondItem="QKx-AD-x4p" secondAttribute="leading" id="beS-qL-pGA"/>
-                                                    <constraint firstItem="Hgm-p1-rRu" firstAttribute="top" secondItem="QKx-AD-x4p" secondAttribute="top" id="iO6-Fd-kPO"/>
-                                                    <constraint firstAttribute="height" constant="91" id="tlq-x6-T7I"/>
-                                                </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gkD-2q-MkV">
-                                                <rect key="frame" x="0.0" y="106" width="363" height="109"/>
+                                                <rect key="frame" x="0.0" y="124" width="363" height="109"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="689-sY-6Rq">
                                                         <rect key="frame" x="0.0" y="0.0" width="363" height="109"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="689-sY-6Rq" firstAttribute="top" secondItem="gkD-2q-MkV" secondAttribute="top" id="8Fa-eA-5mi"/>
-                                                    <constraint firstAttribute="trailing" secondItem="689-sY-6Rq" secondAttribute="trailing" id="Iss-iG-X3W"/>
-                                                    <constraint firstItem="689-sY-6Rq" firstAttribute="leading" secondItem="gkD-2q-MkV" secondAttribute="leading" id="OdA-iE-6we"/>
-                                                    <constraint firstAttribute="bottom" secondItem="689-sY-6Rq" secondAttribute="bottom" id="gnj-LZ-VNc"/>
-                                                    <constraint firstAttribute="height" constant="109" id="tBZ-1s-i1G"/>
-                                                </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K2d-aV-Ycp">
-                                                <rect key="frame" x="0.0" y="230" width="363" height="91"/>
+                                                <rect key="frame" x="0.0" y="248" width="363" height="109"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NKF-ge-xuq">
-                                                        <rect key="frame" x="0.0" y="0.0" width="363" height="91"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="363" height="109"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="NKF-ge-xuq" secondAttribute="bottom" id="8id-bZ-Zlu"/>
-                                                    <constraint firstItem="NKF-ge-xuq" firstAttribute="leading" secondItem="K2d-aV-Ycp" secondAttribute="leading" id="ENE-Qf-d46"/>
-                                                    <constraint firstItem="NKF-ge-xuq" firstAttribute="top" secondItem="K2d-aV-Ycp" secondAttribute="top" id="NTP-FY-Rrr"/>
-                                                    <constraint firstAttribute="height" constant="91" id="sg9-gM-7Uy"/>
-                                                    <constraint firstAttribute="trailing" secondItem="NKF-ge-xuq" secondAttribute="trailing" id="wdR-iC-ocB"/>
-                                                </constraints>
                                             </stackView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="XSA-3J-eq7" secondAttribute="trailing" constant="15" id="5bG-an-wMv"/>
-                                    <constraint firstItem="XSA-3J-eq7" firstAttribute="top" secondItem="ry4-VU-NH1" secondAttribute="top" id="D9r-F2-4DQ"/>
-                                    <constraint firstItem="XSA-3J-eq7" firstAttribute="leading" secondItem="ry4-VU-NH1" secondAttribute="leading" constant="15" id="aQF-At-1wZ"/>
-                                    <constraint firstItem="XSA-3J-eq7" firstAttribute="centerX" secondItem="ry4-VU-NH1" secondAttribute="centerX" id="acD-wV-sem"/>
-                                    <constraint firstAttribute="bottom" secondItem="XSA-3J-eq7" secondAttribute="bottom" id="yjQ-xL-rEy"/>
+                                    <constraint firstItem="XSA-3J-eq7" firstAttribute="leading" secondItem="ry4-VU-NH1" secondAttribute="leading" constant="15" id="3xl-sq-vPM"/>
+                                    <constraint firstAttribute="trailing" secondItem="XSA-3J-eq7" secondAttribute="trailing" constant="15" id="Bal-es-aKP"/>
+                                    <constraint firstItem="XSA-3J-eq7" firstAttribute="top" secondItem="ry4-VU-NH1" secondAttribute="top" id="NOD-bO-QKS"/>
+                                    <constraint firstItem="XSA-3J-eq7" firstAttribute="centerX" secondItem="ry4-VU-NH1" secondAttribute="centerX" id="mBI-xo-4au"/>
+                                    <constraint firstAttribute="bottom" secondItem="XSA-3J-eq7" secondAttribute="bottom" id="uKp-6G-0Uc"/>
                                 </constraints>
                             </scrollView>
                         </subviews>

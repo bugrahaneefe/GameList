@@ -24,25 +24,24 @@ final class GameDetailPresenter: Observation {
     private let interactor: GameDetailInteractorInterface
     private let router: GameDetailRouterInterface
     private var view: GameDetailViewInterface?
-    private var game: Game?
+    private let argument: GameCellArgument
     private var gameDetail: GameDetailResponse? = nil
-    @Published private var isFavored: Bool = false
     
     init(interactor: GameDetailInteractorInterface,
          router: GameDetailRouterInterface,
          view: GameDetailViewInterface? = nil,
-         game: Game,
+         argument: GameCellArgument,
          defaults: DefaultsProtocol.Type = Defaults.self) {
         self.interactor = interactor
         self.router = router
         self.view = view
-        self.game = game
+        self.argument = argument
         self.defaults = defaults
     }
     
     override public func setupObservation() {
-        observe($isFavored) { fav in
-            self.view?.setFavoriteButtonImage(isSelected: self.isFavored)
+        observe(argument.$isFavored) { fav in
+            self.view?.setFavoriteButtonImage(isSelected: self.argument.isFavored)
         }
     }
     
@@ -53,19 +52,18 @@ final class GameDetailPresenter: Observation {
     }
     
     private func handleGameName() {
-        guard let name = game?.name else { return }
+        guard let name = argument.game.name else { return }
         view?.setGameName(of: name)
     }
     
     private func handleGameImage() {
-        if let path = game?.background_image {
+        if let path = argument.game.background_image {
             view?.setGameImage(path: path)
         }
     }
     
     private func handleGameRating() {
-        guard let rating = game?.rating else { return }
-        view?.setGameRating(rating: Int(rating*20))
+        view?.setGameRating(rating: Int(argument.game.rating*20))
     }
     
     private func handleGameDescription() {
@@ -74,13 +72,23 @@ final class GameDetailPresenter: Observation {
     }
     
     private func handleGameInformation() {
-        if let releasedDate = game?.released,
-           let playtime = game?.playtime {
-            view?.setGameInformation(with: [
-                ("Release Date:", releasedDate),
-                ("Playtime:", "\(playtime)")
-            ])
+        var details: [(name: String, value: String)] = []
+
+        if let releasedDate = argument.game.released {
+            details.append(("Release Date:", "\(releasedDate)"))
         }
+        
+        if let genres = argument.game.genres, !genres.isEmpty {
+            let genreNames = genres.compactMap { $0.name }
+            let genresString = genreNames.joined(separator: ", ")
+            details.append(("Genres:", genresString))
+        }
+        
+        if let playtime = argument.game.playtime {
+            details.append(("Playtime:", "\(playtime) hours"))
+        }
+        
+        view?.setGameInformation(with: details)
     }
     
     private func handleVisitButtons() {
@@ -104,8 +112,8 @@ final class GameDetailPresenter: Observation {
     }
     
     private func handleFavoriteButton() {
-        guard let gameId = game?.id else { return }
-        self.isFavored = defaults.bool(key: "\(gameId)") ? true : false
+        guard let gameId = argument.game.id else { return }
+        argument.isFavored = defaults.bool(key: "\(gameId)") ? true : false
     }
     
     private func handleGameDetail(with response: GameDetailResponse) {
@@ -128,16 +136,16 @@ extension GameDetailPresenter: GameDetailPresenterInterface {
     }
     
     func viewWillAppear() {
-        guard let gameId = game?.id else { return }
+        guard let gameId = argument.game.id else { return }
         fetchGameDetail(with: gameId)
     }
     
     public func favoriteButtonTapped() {
-        guard let gameId = game?.id else { return }
+        guard let gameId = argument.game.id else { return }
         defaults.save(data: !defaults.bool(key: "\(gameId)"), key: "\(gameId)")
         handleFavoriteButton()
-        guard let name = game?.name else { return }
-        let message = isFavored ?  "is added into wishlist!" : "is removed from wishlist!"
+        guard let name = argument.game.name else { return }
+        let message = argument.isFavored ?  "is added into wishlist!" : "is removed from wishlist!"
         view?.showAlert(title: name, message: message)
     }
 }

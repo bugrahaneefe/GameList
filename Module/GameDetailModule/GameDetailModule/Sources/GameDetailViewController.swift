@@ -104,7 +104,7 @@ final class GameDetailViewController: BaseViewController {
             swiftuiView.trailingAnchor.constraint(equalTo: gameDescriptionView.trailingAnchor),
             swiftuiView.topAnchor.constraint(equalTo: gameDescriptionView.topAnchor),
             swiftuiView.bottomAnchor.constraint(equalTo: gameDescriptionView.bottomAnchor),
-            swiftuiView.widthAnchor.constraint(equalTo: gameDescriptionView.widthAnchor)
+            swiftuiView.heightAnchor.constraint(equalToConstant: 91)
         ])
         vc.didMove(toParent: self)
     }
@@ -120,8 +120,7 @@ final class GameDetailViewController: BaseViewController {
             swiftuiView.leadingAnchor.constraint(equalTo: gameInformationView.leadingAnchor),
             swiftuiView.trailingAnchor.constraint(equalTo: gameInformationView.trailingAnchor),
             swiftuiView.topAnchor.constraint(equalTo: gameInformationView.topAnchor),
-            swiftuiView.bottomAnchor.constraint(equalTo: gameInformationView.bottomAnchor),
-            swiftuiView.widthAnchor.constraint(equalTo: gameDescriptionView.widthAnchor)
+            swiftuiView.bottomAnchor.constraint(equalTo: gameInformationView.bottomAnchor)
         ])
         vc.didMove(toParent: self)
     }
@@ -148,8 +147,7 @@ final class GameDetailViewController: BaseViewController {
                 swiftuiView.leadingAnchor.constraint(equalTo: gameVisitButtonsView.leadingAnchor),
                 swiftuiView.trailingAnchor.constraint(equalTo: gameVisitButtonsView.trailingAnchor),
                 swiftuiView.topAnchor.constraint(equalTo: gameVisitButtonsView.topAnchor),
-                swiftuiView.bottomAnchor.constraint(equalTo: gameVisitButtonsView.bottomAnchor),
-                swiftuiView.widthAnchor.constraint(equalTo: gameVisitButtonsView.widthAnchor)
+                swiftuiView.bottomAnchor.constraint(equalTo: gameVisitButtonsView.bottomAnchor)
             ])
             vc.didMove(toParent: self)
         }

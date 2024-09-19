@@ -12,33 +12,32 @@ public struct GameDetailVisitButtonsView: View {
     private let redditAction: () -> Void
     private let websiteAvailable: Bool
     private let redditAvailable: Bool
-
+    
     public init(
         websiteAction: @escaping () -> Void,
         redditAction: @escaping () -> Void,
         websiteAvailable: Bool,
         redditAvailable: Bool) {
-        self.websiteAction = websiteAction
-        self.redditAction = redditAction
-        self.websiteAvailable = websiteAvailable
-        self.redditAvailable = redditAvailable
-    }
+            self.websiteAction = websiteAction
+            self.redditAction = redditAction
+            self.websiteAvailable = websiteAvailable
+            self.redditAvailable = redditAvailable
+        }
     
     public var body: some View {
         VStack {
-            HStack {
-                if redditAvailable {
+            if redditAvailable {
+                HStack {
                     VisitButton(name: "Visit Reddit", action: redditAction)
                 }
             }
-            HStack{
-                if websiteAvailable {
+            if websiteAvailable {
+                HStack{
                     VisitButton(name: "Visit Website", action: websiteAction)
                 }
             }
             Spacer()
         }
-        .frame(height: 91)
         .background(.black)
     }
 }

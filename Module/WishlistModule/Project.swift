@@ -6,7 +6,7 @@ let frameworkTarget = Target.target(
     destinations: .iOS,
     product: .staticFramework,
     bundleId: "com.gamelist.WishlistModule",
-    deploymentTargets: .iOS("15.0"),
+    deploymentTargets: .iOS("16.0"),
     infoPlist: .default,
     sources: ["WishlistModule/**/*.swift"],
     resources: [

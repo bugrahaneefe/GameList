@@ -31,7 +31,7 @@ public final class GameDetailRouter: GameDetailRouterInterface {
             interactor: interactor,
             router: router,
             view: view,
-            game: game)
+            argument: GameCellArgument(game: game))
         
         view.presenter = presenter
         interactor.output = presenter

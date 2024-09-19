@@ -10,7 +10,7 @@ public extension Project {
       destinations: .iOS,
       product: .staticFramework,
       bundleId: "com.gamelist.\(name)",
-      deploymentTargets: .iOS("15.0"),
+      deploymentTargets: .iOS("16.0"),
       infoPlist: .default,
       sources: ["\(name)/**/*.swift"],
       resources: [

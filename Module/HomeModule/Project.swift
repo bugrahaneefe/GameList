@@ -6,7 +6,7 @@ let frameworkTarget = Target.target(
     destinations: .iOS,
     product: .staticFramework,
     bundleId: "com.gamelist.HomeModule",
-    deploymentTargets: .iOS("15.0"),
+    deploymentTargets: .iOS("16.0"),
     infoPlist: .extendingDefault(with: [
         "UILaunchStoryboardName" : "LaunchScreen"
     ]),

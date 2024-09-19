@@ -6,7 +6,7 @@ let appTarget = Target.target(
     destinations: .iOS,
     product: .app,
     bundleId: "com.gamelist",
-    deploymentTargets: .iOS("15.0"),
+    deploymentTargets: .iOS("16.0"),
     infoPlist: .extendingDefault(with: [
         "UILaunchStoryboardName": "LaunchScreen",
         "UIApplicationSceneManifest": [

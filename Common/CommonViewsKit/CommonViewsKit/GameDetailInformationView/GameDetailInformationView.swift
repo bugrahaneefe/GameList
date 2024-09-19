@@ -17,25 +17,21 @@ public struct GameDetailInformationView: View {
     }
     
     public var body: some View {
-        VStack {
-            VStack(alignment: .center, spacing: 9) {
-                HStack {
-                    Text(self.title)
-                        .foregroundColor(Color.DescriptionViewColor.TitleTint)
-                        .font(Font.custom("Lato", size: 12))
-                    Spacer()
-                }
-                ForEach(infos, id: \.value) { info in
-                    InformationView(title: info.name, info: info.value)
-                    Divider()
-                }
+        VStack(spacing: 6) {
+            HStack {
+                Text(self.title)
+                    .padding(.top, 12)
+                    .foregroundColor(Color.DescriptionViewColor.TitleTint)
+                    .font(Font.custom("Lato", size: 12))
+                Spacer()
             }
-            .padding(.horizontal, 12)
-            .padding(.top, 10)
-            .background(Color.DescriptionViewColor.Background)
-            .cornerRadius(8)
+            ForEach(infos, id: \.value) { info in
+                InformationView(title: info.name, info: info.value)
+            }
+            Spacer()
         }
-        .frame(height: 109)
-        .background(.black)
+        .padding(.horizontal, 15)
+        .background(Color.DescriptionViewColor.Background)
+        .cornerRadius(8)
     }
 }
