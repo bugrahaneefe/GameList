@@ -14,6 +14,7 @@ import UIKit
 
 protocol GameDetailPresenterInterface: PresenterInterface {
     func favoriteButtonTapped()
+    func expandDescription()
 }
 
 private enum Constant {
@@ -26,6 +27,7 @@ final class GameDetailPresenter: Observation {
     private var view: GameDetailViewInterface?
     private let argument: GameCellArgument
     private var gameDetail: GameDetailResponse? = nil
+    private var isDescriptionExpanded = false
     
     init(interactor: GameDetailInteractorInterface,
          router: GameDetailRouterInterface,
@@ -130,6 +132,15 @@ final class GameDetailPresenter: Observation {
 }
 
 extension GameDetailPresenter: GameDetailPresenterInterface {
+    func expandDescription() {
+        isDescriptionExpanded.toggle()
+        if isDescriptionExpanded {
+            view?.updateDescriptionHeight(to: nil)
+        } else {
+            view?.updateDescriptionHeight(to: 91.0)
+        }
+    }
+    
     func viewDidLoad() {
         setupObservation()
         view?.prepareUI()

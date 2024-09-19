@@ -25,6 +25,7 @@ protocol GameDetailViewInterface: AlertPresentable {
                                _ websiteAvailable: Bool,
                                _ redditAvailable: Bool)
     func setFavoriteButtonImage(isSelected: Bool)
+    func updateDescriptionHeight(to height: CGFloat?)
 }
 
 private enum Constant {
@@ -43,6 +44,8 @@ final class GameDetailViewController: BaseViewController {
     @IBOutlet weak var gameInformationView: UIView!
     @IBOutlet weak var gameVisitButtonsView: UIView!
     private var favoriteButtonImage: UIImage!
+    private var gameDescriptionHeightConstraint: NSLayoutConstraint?
+    private var isDescriptionExpanded = false
     
     var presenter: GameDetailPresenterInterface!
     private var loadingIndicator: UIActivityIndicatorView?
@@ -99,12 +102,15 @@ final class GameDetailViewController: BaseViewController {
         swiftuiView.translatesAutoresizingMaskIntoConstraints = false
         addChild(vc)
         gameDescriptionView.addSubview(swiftuiView)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(gameDescriptionViewTapped))
+        swiftuiView.addGestureRecognizer(tapGesture)
+        gameDescriptionHeightConstraint = swiftuiView.heightAnchor.constraint(equalToConstant: 91)
         NSLayoutConstraint.activate([
             swiftuiView.leadingAnchor.constraint(equalTo: gameDescriptionView.leadingAnchor),
             swiftuiView.trailingAnchor.constraint(equalTo: gameDescriptionView.trailingAnchor),
             swiftuiView.topAnchor.constraint(equalTo: gameDescriptionView.topAnchor),
             swiftuiView.bottomAnchor.constraint(equalTo: gameDescriptionView.bottomAnchor),
-            swiftuiView.heightAnchor.constraint(equalToConstant: 91)
+            gameDescriptionHeightConstraint!
         ])
         vc.didMove(toParent: self)
     }
@@ -155,6 +161,11 @@ final class GameDetailViewController: BaseViewController {
     @objc
     private func rightBarButtonItemTapped() {
         presenter.favoriteButtonTapped()
+    }
+    
+    @objc
+    private func gameDescriptionViewTapped() {
+        presenter.expandDescription()
     }
 }
 
@@ -230,5 +241,19 @@ extension GameDetailViewController: GameDetailViewInterface {
             navigationItem.rightBarButtonItem?.tintColor = UIColor.FavoriteButtonColor.White
         }
         navigationItem.rightBarButtonItem?.image = favoriteButtonImage
+    }
+    
+    func updateDescriptionHeight(to height: CGFloat?) {
+        gameDescriptionHeightConstraint?.isActive = false
+        gameDescriptionHeightConstraint = nil
+        
+        if let height = height {
+            gameDescriptionHeightConstraint = gameDescriptionView.heightAnchor.constraint(equalToConstant: height)
+            gameDescriptionHeightConstraint?.isActive = true
+        }
+        
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
     }
 }
