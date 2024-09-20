@@ -61,7 +61,10 @@ public final class GameCellBanner: UICollectionViewCell {
 // MARK: - GameCellBannerViewInterface
 extension GameCellBanner: GameCellBannerViewInterface {
     public func setBannerImage(path: String?) {
-        self.bannerImageView.setImageWith(url: path)
+        guard let urlString = path else { return }
+        if let url = URL(string: urlString) {
+            self.bannerImageView.loadFrom(url: url, placeholder: CommonViewsImages.gamesIcon.uiImage)
+        }
     }
     
     public func setGameNameLabel(name: String?, isAlreadyClicked: Bool) {

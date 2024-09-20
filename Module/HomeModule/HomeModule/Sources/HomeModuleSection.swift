@@ -38,7 +38,11 @@ class GameSection {
         self.delegate = delegate
     }
     
-    func configureCell(for collectionView: UICollectionView, at indexPath: IndexPath, with appearanceType: AppereanceType) -> UICollectionViewCell {
+    func configureCell(
+        for collectionView: UICollectionView,
+        at indexPath: IndexPath,
+        with appearanceType: AppereanceType
+    ) -> UICollectionViewCell {
         guard let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return UICollectionViewCell() }
         layout.sectionInset = UIEdgeInsets(
             top: Constant.CollectionView.topInset,
@@ -64,7 +68,11 @@ class GameSection {
 }
 
 private enum sections {
-    static func bannerSection(games: [Game], _ collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+    static func bannerSection(
+        games: [Game],
+        _ collectionView: UICollectionView,
+        indexPath: IndexPath
+    ) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(with: GameCellBanner.self, for: indexPath)
         let presenter = GameCellBannerPresenter(
             view: cell,
@@ -74,7 +82,11 @@ private enum sections {
         return cell
     }
     
-    static func logoSection(games: [Game], _ collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+    static func logoSection(
+        games: [Game],
+        _ collectionView: UICollectionView,
+        indexPath: IndexPath
+    ) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(with: GameCell.self, for: indexPath)
         let presenter = GameCellPresenter(
             view: cell,

@@ -175,7 +175,10 @@ extension GameDetailViewController: GameDetailViewInterface {
     }
     
     func setGameImage(path: String?) {
-        self.gameImage.setImageWith(url: path)
+        guard let urlString = path else { return }
+        if let url = URL(string: urlString) {
+            self.gameImage.loadFrom(url: url, placeholder: CommonViewsImages.gamesIcon.uiImage)
+        }
     }
     
     func setGameRating(rating: Int) {

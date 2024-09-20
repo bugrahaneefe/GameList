@@ -10,7 +10,17 @@ import Alamofire
 import AlamofireImage
 
 class ImageCache {
-    static let shared = NSCache<NSString, UIImage>()
+    static let shared = ImageCache()
+    private let cache = NSCache<NSString, UIImage>()
+    private init() {}
+    
+    func getImage(forKey key: String) -> UIImage? {
+        return cache.object(forKey: key as NSString)
+    }
+    
+    func setImage(_ image: UIImage, forKey key: String) {
+        cache.setObject(image, forKey: key as NSString)
+    }
 }
 
 extension UIImage {
@@ -27,20 +37,20 @@ extension UIImage {
 }
 
 extension UIImageView {
-    public func setImageWith(url: String?) {
-        guard let url = url, let imageUrl = URL(string: url) else {
-            self.image = nil
-            return
-        }
-        
-        if let cachedImage = ImageCache.shared.object(forKey: NSString(string: url)) {
+    public func loadFrom(url: URL, placeholder: UIImage? = nil) {
+        self.image = placeholder
+        let cacheKey = url.absoluteString
+        if let cachedImage = ImageCache.shared.getImage(forKey: cacheKey) {
             self.image = cachedImage
             return
         }
-                
-        AF.request(imageUrl).responseImage { response in
+        
+        AF.request(url).responseImage { [weak self] response in
+            guard let self = self else { return }
+
             if case .success(let image) = response.result {
-                ImageCache.shared.setObject(image, forKey: NSString(string: url))
+                ImageCache.shared.setImage(image, forKey: cacheKey)
+
                 DispatchQueue.main.async {
                     self.image = image
                 }
