@@ -34,7 +34,11 @@ extension HomeHandler: HomeHandlerInterface {
         with platform: String?,
         completion: @escaping (GameListDetailsResult) -> Void
     ) {
-        interactor.gameListDetails(at: page, contains: name, with: platform) { [weak self] (result: Result<GameListDetailsResponse, Error>) in
+        interactor.gameListDetails(
+            at: page,
+            contains: name,
+            with: platform
+        ) { [weak self] (result: Result<GameListDetailsResponse, Error>) in
             guard self != nil else { return }
             completion(result)
         }        

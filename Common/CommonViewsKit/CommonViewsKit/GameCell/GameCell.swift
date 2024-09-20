@@ -16,6 +16,13 @@ public protocol GameCellViewInterface {
     func setFavoriteButton(selected: Bool)
 }
 
+private enum Constant {
+    enum Thresholds {
+        static let Green = 75
+        static let Orange = 50
+    }
+}
+
 public final class GameCell: UICollectionViewCell {
     @IBOutlet private weak var bannerImageView: UIImageView!
     @IBOutlet private weak var gameNameLabel: UILabel!
@@ -58,10 +65,10 @@ extension GameCell: GameCellViewInterface {
     
     public func setRating(rating: Int) {
         self.ratingLabel.text = "\(rating)"
-        if rating > 75 {
+        if rating > Constant.Thresholds.Green {
             self.ratingView.backgroundColor = UIColor.RatingViewColor.RatingViewGreen
             self.ratingLabel.textColor = UIColor.RatingViewColor.RatingLabelGreen
-        } else if rating > 50 {
+        } else if rating > Constant.Thresholds.Orange {
             self.ratingView.backgroundColor = UIColor.RatingViewColor.RatingViewOrange
             self.ratingLabel.textColor = UIColor.RatingViewColor.RatingLabelOrange
         } else {

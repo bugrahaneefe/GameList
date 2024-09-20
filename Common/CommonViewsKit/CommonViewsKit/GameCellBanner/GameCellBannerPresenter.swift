@@ -7,10 +7,10 @@
 
 import CommonKit
 import Foundation
+import CoreUtils
 
-public protocol GameCellBannerPresenterInterface {
+public protocol GameCellBannerPresenterInterface: PresenterInterface {
     func favoriteButtonTapped(isSelected: Bool)
-    func load()
 }
 
 public final class GameCellBannerPresenter: Observation {
@@ -94,9 +94,8 @@ public final class GameCellBannerPresenter: Observation {
 
 // MARK: - GameCellBannerPresenterInterface
 extension GameCellBannerPresenter: GameCellBannerPresenterInterface {
-    public func load() {
+    public func viewDidLoad() {
         setupObservation()
-        view?.prepareUI()
         handleBannerImage()
         handleGameName()
         handleRating()

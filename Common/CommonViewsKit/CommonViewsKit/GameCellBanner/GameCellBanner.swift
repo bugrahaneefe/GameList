@@ -16,7 +16,13 @@ public protocol GameCellBannerViewInterface {
     func setPlatforms(with platforms: [String])
     func setDetails(with infos: [(name: String, value: String)])
     func setFavoriteButton(selected: Bool)
-    func prepareUI()
+}
+
+private enum Constant {
+    enum Thresholds {
+        static let Green = 75
+        static let Orange = 50
+    }
 }
 
 public final class GameCellBanner: UICollectionViewCell {
@@ -76,10 +82,10 @@ extension GameCellBanner: GameCellBannerViewInterface {
  
     public func setRating(rating: Int) {
         self.ratingLabel.text = "\(rating)"
-        if rating > 75 {
+        if rating > Constant.Thresholds.Green {
             self.ratingView.backgroundColor = UIColor.RatingViewColor.RatingViewGreen
             self.ratingLabel.textColor = UIColor.RatingViewColor.RatingLabelGreen
-        } else if rating > 50 {
+        } else if rating > Constant.Thresholds.Orange {
             self.ratingView.backgroundColor = UIColor.RatingViewColor.RatingViewOrange
             self.ratingLabel.textColor = UIColor.RatingViewColor.RatingLabelOrange
         } else {
@@ -99,9 +105,5 @@ extension GameCellBanner: GameCellBannerViewInterface {
     
     public func setFavoriteButton(selected: Bool) {
         favoriteButton.isSelected = selected
-    }
-    
-    public func prepareUI() {
-        
     }
 }

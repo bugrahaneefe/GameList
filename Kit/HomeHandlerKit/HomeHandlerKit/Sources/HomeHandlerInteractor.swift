@@ -28,7 +28,13 @@ extension HomeHandlerInteractor: HomeHandlerInteractorInterface {
         with platform: String?,
         completion: @escaping (GameListDetailsResult) -> Void
     ) {
-        request(endpoint: .gameListDetails(at: page, contains: name, with: platform)) { (result: Result<GameListDetailsResponse, Error>) in
+        request(
+            endpoint: .gameListDetails(
+                at: page,
+                contains: name,
+                with: platform
+            )
+        ) { (result: Result<GameListDetailsResponse, Error>) in
             switch result {
             case .success(let response):
                 completion(.success(response))
