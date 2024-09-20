@@ -96,31 +96,20 @@ final class GameDetailViewController: BaseViewController {
         self.gameName.text = name
     }
     
-    private func setupGameDescriptionView(title: String, description: String) {
+    private func setupGameDescriptionView(
+        title: String,
+        description: String
+    ) {
         gameDescriptionView.setupWithSwiftUIView(
             with: GameDetailDescriptionView(
                 title: title,
                 description: description),
             parentViewController: self
         )
-//        let vc = UIHostingController(rootView: GameDetailDescriptionView(title: title, description: description))
-//        let swiftuiView = vc.view!
-//        swiftuiView.translatesAutoresizingMaskIntoConstraints = false
-//        addChild(vc)
-//        gameDescriptionView.addSubview(swiftuiView)
-//        
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(gameDescriptionViewTapped))
-//        swiftuiView.addGestureRecognizer(tapGesture)
         
-//        gameDescriptionHeightConstraint = swiftuiView.heightAnchor.constraint(equalToConstant: 91)
-//        NSLayoutConstraint.activate([
-//            swiftuiView.leadingAnchor.constraint(equalTo: gameDescriptionView.leadingAnchor),
-//            swiftuiView.trailingAnchor.constraint(equalTo: gameDescriptionView.trailingAnchor),
-//            swiftuiView.topAnchor.constraint(equalTo: gameDescriptionView.topAnchor),
-//            swiftuiView.bottomAnchor.constraint(equalTo: gameDescriptionView.bottomAnchor),
-//            gameDescriptionHeightConstraint!
-//        ])
-//        vc.didMove(toParent: self)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(gameDescriptionViewTapped))
+        gameDescriptionView.addGestureRecognizer(tapGesture)
+        updateDescriptionHeight(to: 91.0)
     }
     
     private func setupGameInformationView(
@@ -156,6 +145,7 @@ final class GameDetailViewController: BaseViewController {
     @objc
     private func gameDescriptionViewTapped() {
         presenter.expandDescription()
+        print("selen")
     }
 }
 
