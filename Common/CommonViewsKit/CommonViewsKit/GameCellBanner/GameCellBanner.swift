@@ -46,32 +46,15 @@ public final class GameCellBanner: UICollectionViewCell {
     
     //MARK: Private Functions
     private func setGamePlatformView(with platforms: [String]) {
-        let child = UIHostingController(rootView: GameCellBannerPlatformView(buttonNames: platforms))
-        let swiftuiView = child.view!
-        swiftuiView.translatesAutoresizingMaskIntoConstraints = false
-        gamePlatformView.addSubview(swiftuiView)
-
-        NSLayoutConstraint.activate([
-            swiftuiView.leadingAnchor.constraint(equalTo: gamePlatformView.leadingAnchor),
-            swiftuiView.topAnchor.constraint(equalTo: gamePlatformView.topAnchor),
-            swiftuiView.bottomAnchor.constraint(equalTo: gamePlatformView.bottomAnchor),
-            swiftuiView.widthAnchor.constraint(equalTo: gamePlatformView.widthAnchor)
-        ])
+        gamePlatformView.setupWithSwiftUIView(
+            with: GameCellBannerPlatformView(buttonNames: platforms),
+            parentCollectionViewCell: self)
     }
     
     private func setGameDetailsView(with infos: [(name: String, value: String)]) {
-        let child = UIHostingController(rootView: GameCellBannerDetailsView(infos: infos))
-        let swiftuiView = child.view!
-        swiftuiView.translatesAutoresizingMaskIntoConstraints = false
-        gameDetailsView.addSubview(swiftuiView)
-
-        NSLayoutConstraint.activate([
-            swiftuiView.leadingAnchor.constraint(equalTo: gameDetailsView.leadingAnchor),
-            swiftuiView.trailingAnchor.constraint(equalTo: gameDetailsView.trailingAnchor),
-            swiftuiView.topAnchor.constraint(equalTo: gameDetailsView.topAnchor),
-            swiftuiView.bottomAnchor.constraint(equalTo: gameDetailsView.bottomAnchor),
-            swiftuiView.heightAnchor.constraint(equalTo: gameDetailsView.heightAnchor)
-        ])
+        gameDetailsView.setupWithSwiftUIView(
+            with: GameCellBannerDetailsView(infos: infos),
+            parentCollectionViewCell: self)
     }
 }
 

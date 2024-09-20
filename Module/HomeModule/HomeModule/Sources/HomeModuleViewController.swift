@@ -112,21 +112,11 @@ final class HomeModuleViewController: BaseViewController {
     }
     
     private func setupPlatformSliderView() {
-        let vc = UIHostingController(rootView: PlatformButtonView(buttonAction: { [weak self] selectedPlatform in
-            self?.presenter.fetchPlatforms(of: selectedPlatform)
-        }))
-        let swiftuiView = vc.view!
-        swiftuiView.translatesAutoresizingMaskIntoConstraints = false
-        addChild(vc)
-        platformSliderView.addSubview(swiftuiView)
-        NSLayoutConstraint.activate([
-            swiftuiView.leadingAnchor.constraint(equalTo: platformSliderView.leadingAnchor),
-            swiftuiView.trailingAnchor.constraint(equalTo: platformSliderView.trailingAnchor),
-            swiftuiView.topAnchor.constraint(equalTo: platformSliderView.topAnchor),
-            swiftuiView.bottomAnchor.constraint(equalTo: platformSliderView.bottomAnchor),
-            swiftuiView.heightAnchor.constraint(equalTo: platformSliderView.heightAnchor)
-        ])
-        vc.didMove(toParent: self)
+        platformSliderView.setupWithSwiftUIView(
+            with: PlatformButtonView(buttonAction: { [weak self] selectedPlatform in
+                self?.presenter.fetchPlatforms(of: selectedPlatform)
+            }),
+            parentViewController: self)
     }
     
     @objc

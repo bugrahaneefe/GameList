@@ -97,66 +97,56 @@ final class GameDetailViewController: BaseViewController {
     }
     
     private func setupGameDescriptionView(title: String, description: String) {
-        let vc = UIHostingController(rootView: GameDetailDescriptionView(title: title, description: description))
-        let swiftuiView = vc.view!
-        swiftuiView.translatesAutoresizingMaskIntoConstraints = false
-        addChild(vc)
-        gameDescriptionView.addSubview(swiftuiView)
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(gameDescriptionViewTapped))
-        swiftuiView.addGestureRecognizer(tapGesture)
-        gameDescriptionHeightConstraint = swiftuiView.heightAnchor.constraint(equalToConstant: 91)
-        NSLayoutConstraint.activate([
-            swiftuiView.leadingAnchor.constraint(equalTo: gameDescriptionView.leadingAnchor),
-            swiftuiView.trailingAnchor.constraint(equalTo: gameDescriptionView.trailingAnchor),
-            swiftuiView.topAnchor.constraint(equalTo: gameDescriptionView.topAnchor),
-            swiftuiView.bottomAnchor.constraint(equalTo: gameDescriptionView.bottomAnchor),
-            gameDescriptionHeightConstraint!
-        ])
-        vc.didMove(toParent: self)
+        gameDescriptionView.setupWithSwiftUIView(
+            with: GameDetailDescriptionView(
+                title: title,
+                description: description),
+            parentViewController: self
+        )
+//        let vc = UIHostingController(rootView: GameDetailDescriptionView(title: title, description: description))
+//        let swiftuiView = vc.view!
+//        swiftuiView.translatesAutoresizingMaskIntoConstraints = false
+//        addChild(vc)
+//        gameDescriptionView.addSubview(swiftuiView)
+//        
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(gameDescriptionViewTapped))
+//        swiftuiView.addGestureRecognizer(tapGesture)
+        
+//        gameDescriptionHeightConstraint = swiftuiView.heightAnchor.constraint(equalToConstant: 91)
+//        NSLayoutConstraint.activate([
+//            swiftuiView.leadingAnchor.constraint(equalTo: gameDescriptionView.leadingAnchor),
+//            swiftuiView.trailingAnchor.constraint(equalTo: gameDescriptionView.trailingAnchor),
+//            swiftuiView.topAnchor.constraint(equalTo: gameDescriptionView.topAnchor),
+//            swiftuiView.bottomAnchor.constraint(equalTo: gameDescriptionView.bottomAnchor),
+//            gameDescriptionHeightConstraint!
+//        ])
+//        vc.didMove(toParent: self)
     }
     
-    private func setupGameInformationView(title: String = "Informations", with infos: [(name: String, value: String)]) {
-        let vc = UIHostingController(rootView: GameDetailInformationView(title: title, infos: infos))
-        let swiftuiView = vc.view!
-        swiftuiView.translatesAutoresizingMaskIntoConstraints = false
-        addChild(vc)
-        gameInformationView.addSubview(swiftuiView)
-        gameInformationView.backgroundColor = .black
-        NSLayoutConstraint.activate([
-            swiftuiView.leadingAnchor.constraint(equalTo: gameInformationView.leadingAnchor),
-            swiftuiView.trailingAnchor.constraint(equalTo: gameInformationView.trailingAnchor),
-            swiftuiView.topAnchor.constraint(equalTo: gameInformationView.topAnchor),
-            swiftuiView.bottomAnchor.constraint(equalTo: gameInformationView.bottomAnchor)
-        ])
-        vc.didMove(toParent: self)
+    private func setupGameInformationView(
+        title: String = "Informations",
+        with infos: [(name: String, value: String)]
+    ) {
+        gameInformationView.setupWithSwiftUIView(
+            with: GameDetailInformationView(title: title, infos: infos),
+            parentViewController: self)
     }
     
     private func setupGameVisitButtonsView(
         byWeb websiteAction: @escaping () -> Void,
         byReddit redditAction: @escaping () -> Void,
         _ websiteAvailable: Bool,
-        _ redditAvailable: Bool) {
-            let vc = UIHostingController(
-                rootView: GameDetailVisitButtonsView(
-                    websiteAction: websiteAction,
-                    redditAction: redditAction,
-                    websiteAvailable: websiteAvailable,
-                    redditAvailable: redditAvailable
-                )
-            )
-            let swiftuiView = vc.view!
-            swiftuiView.translatesAutoresizingMaskIntoConstraints = false
-            addChild(vc)
-            gameVisitButtonsView.addSubview(swiftuiView)
-            gameVisitButtonsView.backgroundColor = .black
-            NSLayoutConstraint.activate([
-                swiftuiView.leadingAnchor.constraint(equalTo: gameVisitButtonsView.leadingAnchor),
-                swiftuiView.trailingAnchor.constraint(equalTo: gameVisitButtonsView.trailingAnchor),
-                swiftuiView.topAnchor.constraint(equalTo: gameVisitButtonsView.topAnchor),
-                swiftuiView.bottomAnchor.constraint(equalTo: gameVisitButtonsView.bottomAnchor)
-            ])
-            vc.didMove(toParent: self)
-        }
+        _ redditAvailable: Bool
+    ) {
+        gameVisitButtonsView.setupWithSwiftUIView(
+            with: GameDetailVisitButtonsView(
+                websiteAction: websiteAction,
+                redditAction: redditAction,
+                websiteAvailable: websiteAvailable,
+                redditAvailable: redditAvailable
+            ),
+            parentViewController: self)
+    }
     
     @objc
     private func rightBarButtonItemTapped() {
