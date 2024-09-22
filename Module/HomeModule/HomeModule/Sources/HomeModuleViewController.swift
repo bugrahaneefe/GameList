@@ -205,7 +205,6 @@ extension HomeModuleViewController: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegate
 extension HomeModuleViewController: UICollectionViewDelegate {
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         presenter.didSelectGame(at: indexPath)
     }
@@ -217,6 +216,12 @@ extension HomeModuleViewController: UICollectionViewDelegate {
 
 // MARK: - UISearchBarDelegate
 extension HomeModuleViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            presenter.filterWith(searchBar)
+        }
+    }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         presenter.filterWith(searchBar)

@@ -31,7 +31,7 @@ private enum Constant {
     enum Alerts {
         static let NetworkError = "Network error"
     }
-    static let throttleInterval = 0.7
+    static let throttleInterval = 0.4
 }
 
 enum AppereanceType {
