@@ -15,11 +15,9 @@
 		31590D0DE1D8DC56F89E4ABF /* GameDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F084638610951C3790B1C0 /* GameDetailInteractor.swift */; };
 		349E2D65ACCC58F001F707C4 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = B982A36CE6A6535D5817FB8D /* Storyboards.swift */; };
 		629C4855A94ED3108C0C50CB /* GameDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B61242DEA35CE231DBFC0C68 /* GameDetail.storyboard */; };
-		6CB1A937493D435DF63ED535 /* ListingKit.framework in Dependencies */ = {isa = PBXBuildFile; fileRef = FA0F9AB897B856EDABF2D1D2 /* ListingKit.framework */; };
 		7294EE0825D68F6F7D3A1263 /* DependencyEngine.framework in Dependencies */ = {isa = PBXBuildFile; fileRef = 3E76B9A811B41A5A0A9AEDA1 /* DependencyEngine.framework */; };
 		ACBBD58D3E67850B64E97D3B /* CommonKit.framework in Dependencies */ = {isa = PBXBuildFile; fileRef = 8C6D1B1AAF0566B8A2941B64 /* CommonKit.framework */; };
 		AF989F36332F6D7106C3C82E /* AlamofireImage.framework in Dependencies */ = {isa = PBXBuildFile; fileRef = FEE7DB638CA739933F068BF9 /* AlamofireImage.framework */; };
-		B1DD81BEF91BA5A0DE4534E2 /* HomeHandlerKit.framework in Dependencies */ = {isa = PBXBuildFile; fileRef = E30311DDB8C6212440443354 /* HomeHandlerKit.framework */; };
 		BB59B4203023F22F5ECBFB92 /* TuistBundle+GameDetailModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DFE5BEB28A9790F9FBBEC2 /* TuistBundle+GameDetailModule.swift */; };
 		EAB817C36A9536BEE5E7AD5C /* GameDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3B73609F1A9BC6B8A28125 /* GameDetailViewController.swift */; };
 		ED058272BF0B0ACED390D540 /* GameDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF9D5CBAAA76FD4B14233A5 /* GameDetailPresenter.swift */; };
@@ -57,8 +55,6 @@
 				19CB85E874B1F43A421E7319 /* CommonViewsKit.framework in Dependencies */,
 				7294EE0825D68F6F7D3A1263 /* DependencyEngine.framework in Dependencies */,
 				13049DE2857E01D131E2E787 /* GameDetailHandlerKit.framework in Dependencies */,
-				B1DD81BEF91BA5A0DE4534E2 /* HomeHandlerKit.framework in Dependencies */,
-				6CB1A937493D435DF63ED535 /* ListingKit.framework in Dependencies */,
 				02690281E562A36A0E4DC26F /* NetworkKit.framework in Dependencies */,
 			);
 			name = Dependencies;
@@ -94,9 +90,7 @@
 		D7F084638610951C3790B1C0 /* GameDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailInteractor.swift; sourceTree = "<group>"; };
 		E0845AE233DCBF9B1E81D363 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E15B0197B08EF608C4494107 /* GameDetailHandlerKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GameDetailHandlerKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E30311DDB8C6212440443354 /* HomeHandlerKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HomeHandlerKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8DFE5BEB28A9790F9FBBEC2 /* TuistBundle+GameDetailModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistBundle+GameDetailModule.swift"; sourceTree = "<group>"; };
-		FA0F9AB897B856EDABF2D1D2 /* ListingKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ListingKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEE7DB638CA739933F068BF9 /* AlamofireImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AlamofireImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -195,8 +189,6 @@
 				E15B0197B08EF608C4494107 /* GameDetailHandlerKit.framework */,
 				D3FAC688679C83BD55CB1545 /* GameDetailModule_GameDetailModule.bundle */,
 				1BA32D15B87503589A47A063 /* GameDetailModule.framework */,
-				E30311DDB8C6212440443354 /* HomeHandlerKit.framework */,
-				FA0F9AB897B856EDABF2D1D2 /* ListingKit.framework */,
 				5775AB9D781A9B5A49BAC29D /* NetworkKit.framework */,
 			);
 			name = Products;

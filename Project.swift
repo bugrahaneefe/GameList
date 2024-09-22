@@ -41,7 +41,6 @@ let appTarget = Target.target(
         gameDetailModule,
         networkKit,
         alamofire,
-        listingKit,
         dependencyEngine,
         common,
         commonViews,

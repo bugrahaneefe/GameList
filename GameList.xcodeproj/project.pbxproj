@@ -14,7 +14,6 @@
 		1517FCE67B88E2E713738B9B /* TuistAssets+GameList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D4FC01B17591E2C54E40C9 /* TuistAssets+GameList.swift */; };
 		1554D8FBFAED0CDB190E3692 /* WishlistModule_WishlistModule.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 084CDCEB43B8B044FA2FFEFE /* WishlistModule_WishlistModule.bundle */; };
 		16CCE604DBC580FD3CAB8ACE /* HomeModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C9E19290237400A7C5A7575 /* HomeModule.framework */; };
-		1B615F05976FD951DC57A598 /* ListingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCBD109874D2CCCC3591D8C4 /* ListingKit.framework */; };
 		280D2280ADCEE12A9390CC4D /* HomeModule_HomeModule.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 19F933BA9D8E11BFAD2E426B /* HomeModule_HomeModule.bundle */; };
 		35CEB1F087D795DD74F61FE8 /* DependencyEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4A69A6840BB78C4735337D3 /* DependencyEngine.framework */; };
 		3A4EFFEFA378E09164AE5DB3 /* HomeModule_HomeModule.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 19F933BA9D8E11BFAD2E426B /* HomeModule_HomeModule.bundle */; };
@@ -91,7 +90,6 @@
 		D3779E23C4AAEC87FE8D114C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D712EF17253F1C5CC5E52DB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9239F864430B3B57E2D9877 /* TuistBundle+GameList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistBundle+GameList.swift"; sourceTree = "<group>"; };
-		DCBD109874D2CCCC3591D8C4 /* ListingKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ListingKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEB5E536EE15A02AEF88C1A2 /* AlamofireImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AlamofireImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F02AD6206973AF6C1C925800 /* CommonViewsKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonViewsKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3D4FC01B17591E2C54E40C9 /* TuistAssets+GameList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistAssets+GameList.swift"; sourceTree = "<group>"; };
@@ -114,7 +112,6 @@
 				50B2D53A09FA0EE24CADD294 /* GameDetailModule.framework in Frameworks */,
 				60CAB46252E53E1EAE7927DD /* HomeHandlerKit.framework in Frameworks */,
 				16CCE604DBC580FD3CAB8ACE /* HomeModule.framework in Frameworks */,
-				1B615F05976FD951DC57A598 /* ListingKit.framework in Frameworks */,
 				B167561C2AD5915B1F78B0C2 /* NetworkKit.framework in Frameworks */,
 				695B99479D20D90CB913C508 /* WishlistModule.framework in Frameworks */,
 			);
@@ -160,7 +157,6 @@
 				05B13CBC5EEFCEAEE2480251 /* HomeHandlerKit.framework */,
 				19F933BA9D8E11BFAD2E426B /* HomeModule_HomeModule.bundle */,
 				7C9E19290237400A7C5A7575 /* HomeModule.framework */,
-				DCBD109874D2CCCC3591D8C4 /* ListingKit.framework */,
 				B30BE4E257F543F1AE68E9F2 /* NetworkKit.framework */,
 				084CDCEB43B8B044FA2FFEFE /* WishlistModule_WishlistModule.bundle */,
 				7318913AF76310A3364D6489 /* WishlistModule.framework */,

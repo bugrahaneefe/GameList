@@ -196,20 +196,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3A8ADDBC100D756D9EE5A8A0"
-               BuildableName = "ListingKit.framework"
-               BlueprintName = "ListingKit"
-               ReferencedContainer = "container:Tuist/.build/tuist-derived/trendyol-platform-utilities/trendyol-platform-utilities.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "DC93B437E5CFD867C043748F"
                BuildableName = "NetworkKit.framework"
                BlueprintName = "NetworkKit"

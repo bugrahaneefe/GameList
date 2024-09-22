@@ -61,18 +61,21 @@ final class WishlistModulePresenter {
     private func fetchGameList(
         at page: Int? = nil,
         contains name: String = "",
-        with platforms: String? = nil) {
+        with platforms: String? = nil,
+        isPullToRefresh: Bool = false
+    ) {
+        if !isPullToRefresh {
             view?.showLoading()
-            
-            let endpoint = HomeEndpointItem.gameListDetails(at: page, contains: name, with: platforms)
-            
-            guard let url = endpoint.url else {
-                view?.hideLoading()
-                return
-            }
-            
-            interactor.fetchWishlist(with: url, at: page, contains: name, with: platforms)
         }
+        
+        let endpoint = HomeEndpointItem.gameListDetails(at: page, contains: name, with: platforms)
+        guard let url = endpoint.url else {
+            view?.hideLoading()
+            return
+        }
+        
+        interactor.fetchWishlist(with: url, at: page, contains: name, with: platforms)
+    }
     
     private func handleEmptyGameStatus() {
         view?.hideResponseNilLabel()
@@ -134,7 +137,7 @@ extension WishlistModulePresenter: WishlistModulePresenterInterface {
     }
     
     func pullToRefresh() {
-        fetchGameList()
+        fetchGameList(isPullToRefresh: true)
     }
     
     func viewDidLoad() {

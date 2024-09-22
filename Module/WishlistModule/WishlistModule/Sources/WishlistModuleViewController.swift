@@ -30,7 +30,7 @@ private enum Constant {
 final class WishlistModuleViewController: BaseViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var responseNilLabel: UILabel!
-
+    
     var presenter: WishlistModulePresenterInterface!
     private var loadingIndicator: UIActivityIndicatorView?
     private let refreshControl = UIRefreshControl()
@@ -59,7 +59,7 @@ final class WishlistModuleViewController: BaseViewController {
     private func setupNavigationBar() {
         self.title = Constant.NavigationBar.title
         self.navigationController?.navigationBar.tintColor = .white
-
+        
         navigationController?.navigationBar.setTitleTextAttributes(attributes: [
             .foregroundColor: UIColor.white,
             .font: UIFont.systemFont(
@@ -72,6 +72,7 @@ final class WishlistModuleViewController: BaseViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         refreshControl.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
+        refreshControl.tintColor = UIColor.LoadingIndicatorColor.Tint
         collectionView.alwaysBounceVertical = true
         collectionView.refreshControl = refreshControl
     }

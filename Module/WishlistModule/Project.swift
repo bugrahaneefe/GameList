@@ -22,7 +22,6 @@ let frameworkTarget = Target.target(
         gameDetailModule,
         networkKit,
         alamofire,
-        listingKit,
         dependencyEngine,
         common,
         commonViews,

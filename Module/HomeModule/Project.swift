@@ -24,13 +24,11 @@ let frameworkTarget = Target.target(
         gameDetailModule,
         networkKit,
         alamofire,
-        listingKit,
         dependencyEngine,
         common,
         commonViews,
         alamofireImage,
-        homeHandlerKit,
-        gameDetailHandlerKit
+        homeHandlerKit
     ]
 )
 
