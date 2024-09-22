@@ -84,20 +84,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D1846DABF21C9675BDC3F890"
-               BuildableName = "CoreUtils.framework"
-               BlueprintName = "CoreUtils"
-               ReferencedContainer = "container:Tuist/.build/tuist-derived/trendyol-platform-utilities/trendyol-platform-utilities.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "945FC0509581E0F8A12FB430"
                BuildableName = "DependencyEngine.framework"
                BlueprintName = "DependencyEngine"
@@ -158,20 +144,6 @@
                BuildableName = "GameList.app"
                BlueprintName = "GameList"
                ReferencedContainer = "container:GameList.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6DCE0071423C26DF55FD141E"
-               BuildableName = "GlobalWindow.framework"
-               BlueprintName = "GlobalWindow"
-               ReferencedContainer = "container:Tuist/.build/tuist-derived/trendyol-platform-utilities/trendyol-platform-utilities.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry

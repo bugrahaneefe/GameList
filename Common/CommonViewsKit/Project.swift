@@ -5,7 +5,6 @@ let project = Project.module(
     name: "CommonViewsKit",
     dependencies: [
         alamofireImage,
-        coreUtils,
         common
     ]
 )

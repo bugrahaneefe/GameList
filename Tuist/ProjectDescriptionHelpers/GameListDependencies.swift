@@ -3,7 +3,6 @@ import ProjectDescription
 public let alamofire = external("Alamofire")
 public let listingKit = external("ListingKit")
 public let dependencyEngine = external("DependencyEngine")
-public let coreUtils = external("CoreUtils")
 public let alamofireImage = external("AlamofireImage")
 
 

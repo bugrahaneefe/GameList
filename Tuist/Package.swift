@@ -20,10 +20,6 @@ let package = Package(
             exact: "5.9.1"
         ),
         .package(
-            url: "https://gitlab.trendyol.com/mobile/base/ios/trendyol-platform-utilities",
-            exact: "0.5.5"
-        ),
-        .package(
             url: "https://github.com/Alamofire/AlamofireImage.git",
             exact: "4.3.0"
         )

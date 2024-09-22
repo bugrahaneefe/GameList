@@ -26,7 +26,6 @@ let frameworkTarget = Target.target(
         alamofire,
         listingKit,
         dependencyEngine,
-        coreUtils,
         common,
         commonViews,
         alamofireImage,

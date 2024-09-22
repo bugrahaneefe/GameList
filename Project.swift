@@ -43,7 +43,6 @@ let appTarget = Target.target(
         alamofire,
         listingKit,
         dependencyEngine,
-        coreUtils,
         common,
         commonViews,
         alamofireImage,

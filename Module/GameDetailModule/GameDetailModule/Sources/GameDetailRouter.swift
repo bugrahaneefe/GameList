@@ -6,7 +6,6 @@
 //
 
 import CommonKit
-import CoreUtils
 import UIKit
 
 public protocol GameDetailRouterInterface {}

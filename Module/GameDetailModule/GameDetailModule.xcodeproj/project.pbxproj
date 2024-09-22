@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -21,10 +21,8 @@
 		AF989F36332F6D7106C3C82E /* AlamofireImage.framework in Dependencies */ = {isa = PBXBuildFile; fileRef = FEE7DB638CA739933F068BF9 /* AlamofireImage.framework */; };
 		B1DD81BEF91BA5A0DE4534E2 /* HomeHandlerKit.framework in Dependencies */ = {isa = PBXBuildFile; fileRef = E30311DDB8C6212440443354 /* HomeHandlerKit.framework */; };
 		BB59B4203023F22F5ECBFB92 /* TuistBundle+GameDetailModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DFE5BEB28A9790F9FBBEC2 /* TuistBundle+GameDetailModule.swift */; };
-		C00C1DCA0BA81C0A83B387AF /* TuistAssets+GameDetailModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585862259D3D66C10B621047 /* TuistAssets+GameDetailModule.swift */; };
 		EAB817C36A9536BEE5E7AD5C /* GameDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3B73609F1A9BC6B8A28125 /* GameDetailViewController.swift */; };
 		ED058272BF0B0ACED390D540 /* GameDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF9D5CBAAA76FD4B14233A5 /* GameDetailPresenter.swift */; };
-		FC7A0567BC1407560E3AA221 /* CoreUtils.framework in Dependencies */ = {isa = PBXBuildFile; fileRef = 3903704418FF04574D8A350E /* CoreUtils.framework */; };
 		FFF8CBE03269C690DEE5D461 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0845AE233DCBF9B1E81D363 /* Alamofire.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,7 +55,6 @@
 				AF989F36332F6D7106C3C82E /* AlamofireImage.framework in Dependencies */,
 				ACBBD58D3E67850B64E97D3B /* CommonKit.framework in Dependencies */,
 				19CB85E874B1F43A421E7319 /* CommonViewsKit.framework in Dependencies */,
-				FC7A0567BC1407560E3AA221 /* CoreUtils.framework in Dependencies */,
 				7294EE0825D68F6F7D3A1263 /* DependencyEngine.framework in Dependencies */,
 				13049DE2857E01D131E2E787 /* GameDetailHandlerKit.framework in Dependencies */,
 				B1DD81BEF91BA5A0DE4534E2 /* HomeHandlerKit.framework in Dependencies */,
@@ -83,11 +80,9 @@
 		04953BCB8AE97B7509B7D69C /* CommonViewsKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonViewsKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BA32D15B87503589A47A063 /* GameDetailModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GameDetailModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DF9D5CBAAA76FD4B14233A5 /* GameDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailPresenter.swift; sourceTree = "<group>"; };
-		3903704418FF04574D8A350E /* CoreUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoreUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E76B9A811B41A5A0A9AEDA1 /* DependencyEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DependencyEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D3B73609F1A9BC6B8A28125 /* GameDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailViewController.swift; sourceTree = "<group>"; };
 		5775AB9D781A9B5A49BAC29D /* NetworkKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NetworkKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		585862259D3D66C10B621047 /* TuistAssets+GameDetailModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistAssets+GameDetailModule.swift"; sourceTree = "<group>"; };
 		73D8DF71817E6850398E4225 /* GameDetailModule-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GameDetailModule-Info.plist"; sourceTree = "<group>"; };
 		8C6D1B1AAF0566B8A2941B64 /* CommonKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		987BC676332908017B59C8AB /* GameDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailRouter.swift; sourceTree = "<group>"; };
@@ -164,7 +159,6 @@
 		71E77C789849B39E62D3D018 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				585862259D3D66C10B621047 /* TuistAssets+GameDetailModule.swift */,
 				E8DFE5BEB28A9790F9FBBEC2 /* TuistBundle+GameDetailModule.swift */,
 			);
 			path = Sources;
@@ -197,7 +191,6 @@
 				FEE7DB638CA739933F068BF9 /* AlamofireImage.framework */,
 				8C6D1B1AAF0566B8A2941B64 /* CommonKit.framework */,
 				04953BCB8AE97B7509B7D69C /* CommonViewsKit.framework */,
-				3903704418FF04574D8A350E /* CoreUtils.framework */,
 				3E76B9A811B41A5A0A9AEDA1 /* DependencyEngine.framework */,
 				E15B0197B08EF608C4494107 /* GameDetailHandlerKit.framework */,
 				D3FAC688679C83BD55CB1545 /* GameDetailModule_GameDetailModule.bundle */,
@@ -256,6 +249,8 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = 1623407A205A2DDA94C57635 /* Build configuration list for PBXProject "GameDetailModule" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -299,7 +294,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C00C1DCA0BA81C0A83B387AF /* TuistAssets+GameDetailModule.swift in Sources */,
 				BB59B4203023F22F5ECBFB92 /* TuistBundle+GameDetailModule.swift in Sources */,
 				0BF497A13CC7C8BE0E70CA8B /* GameDetailModuleDependencyRegistration.swift in Sources */,
 				31590D0DE1D8DC56F89E4ABF /* GameDetailInteractor.swift in Sources */,
@@ -335,7 +329,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -368,7 +365,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

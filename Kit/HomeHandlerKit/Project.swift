@@ -5,7 +5,6 @@ let project = Project.module(
     name: "HomeHandlerKit",
     dependencies: [
         common,
-        coreUtils,
         networkKit,
         alamofireImage
     ]

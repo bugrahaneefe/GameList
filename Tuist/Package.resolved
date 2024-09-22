@@ -17,42 +17,6 @@
         "revision" : "1eaf3b6c6882bed10f6e7b119665599dd2329aa1",
         "version" : "4.3.0"
       }
-    },
-    {
-      "identity" : "mockingstar-ios",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Trendyol/mockingstar-ios",
-      "state" : {
-        "revision" : "3a3609a492c76c30d3fc46ab42af09c5fada7ca7",
-        "version" : "1.0.2"
-      }
-    },
-    {
-      "identity" : "swift-snapshot-testing",
-      "kind" : "remoteSourceControl",
-      "location" : "https://gitlab.trendyol.com/mobile/base/ios/swift-snapshot-testing",
-      "state" : {
-        "revision" : "b476ab1e6084b4a1add6370b622d368441c1967c",
-        "version" : "0.0.1"
-      }
-    },
-    {
-      "identity" : "swift-syntax",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-syntax.git",
-      "state" : {
-        "revision" : "64889f0c732f210a935a0ad7cda38f77f876262d",
-        "version" : "509.1.1"
-      }
-    },
-    {
-      "identity" : "trendyol-platform-utilities",
-      "kind" : "remoteSourceControl",
-      "location" : "https://gitlab.trendyol.com/mobile/base/ios/trendyol-platform-utilities",
-      "state" : {
-        "revision" : "93206b3f18f6ba3e8ac22d6da572e1efa99cb45a",
-        "version" : "0.5.5"
-      }
     }
   ],
   "version" : 2

@@ -4,7 +4,6 @@ import ProjectDescriptionHelpers
 let project = Project.module(
     name: "CommonKit",
     dependencies: [
-        alamofireImage,
-        coreUtils
+        alamofireImage
     ]
 )

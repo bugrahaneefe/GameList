@@ -8,7 +8,6 @@
 import CommonKit
 import DependencyEngine
 import UIKit
-import CoreUtils
 import GameDetailModule
 
 public protocol HomeModuleRouterInterface {
