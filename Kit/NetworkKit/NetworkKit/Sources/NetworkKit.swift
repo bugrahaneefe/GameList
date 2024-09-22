@@ -19,11 +19,12 @@ public final class NetworkKit<EndpointItem: Endpoint> {
 
 extension NetworkKit: NetworkKitInterface {
     public func request<T: Decodable>(from url: URL, completion: @escaping (Result<T, Error>) -> Void) async {
-        AF.request(url).validate().responseDecodable(of: T.self) { response in
+        AF.request(url).validate(statusCode: 200..<405).responseDecodable(of: T.self) { response in
             switch response.result {
             case .success(let value):
                 completion(.success(value))
             case .failure(let error):
+                print(error)
                 completion(.failure(error))
             }
         }

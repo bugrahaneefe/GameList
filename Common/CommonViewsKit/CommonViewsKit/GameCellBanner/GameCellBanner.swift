@@ -36,7 +36,7 @@ public final class GameCellBanner: UICollectionViewCell {
     
     public var presenter: GameCellBannerPresenterInterface! {
         didSet {
-            presenter?.load()
+            presenter?.viewDidLoad()
         }
     }
     
