@@ -7,18 +7,16 @@
 
 import CommonKit
 import CommonViewsKit
-import CoreUtils
 import UIKit
 import SwiftUI
 
-protocol WishlistViewInterface {
+protocol WishlistViewInterface: AlertPresentable {
     func prepareUI()
     func prepareCollectionView()
     func reloadCollectionView()
     func showLoading()
     func hideLoading()
     func showResponseNilLabel()
-    func showResponseNilLabel(with: String)
     func hideResponseNilLabel()
 }
 
@@ -114,11 +112,6 @@ extension WishlistModuleViewController: WishlistViewInterface {
         responseNilLabel.isHidden = false
     }
     
-    func showResponseNilLabel(with text: String) {
-        responseNilLabel.text = text
-        responseNilLabel.isHidden = false
-    }
-    
     func hideResponseNilLabel() {
         responseNilLabel.isHidden = true
     }
@@ -143,5 +136,12 @@ extension WishlistModuleViewController: UICollectionViewDataSource {
 extension WishlistModuleViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         presenter.didSelectGame(at: indexPath)
+    }
+}
+
+// MARK: - AlertPresentable
+extension WishlistModuleViewController {
+    var navController: UIViewController? {
+        self
     }
 }

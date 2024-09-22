@@ -7,7 +7,6 @@
 
 import CommonKit
 import CommonViewsKit
-import CoreUtils
 import Foundation
 import HomeHandlerKit
 import UIKit
@@ -23,16 +22,18 @@ private enum Constant {
     enum GameCell {
         static let cellCornerRadius = 10.0
     }
-    
     enum CollectionView {
-        static let leftInset: CGFloat = 15
-        static let rightInset: CGFloat = 15
-        static let bottomInset: CGFloat = 15
-        static let topInset: CGFloat = 0
-        static let logoCellWidth: CGFloat = 165
-        static let logoCellHeight: CGFloat = 184
-        static let bannerCellWidth: CGFloat = 345
-        static let bannerCellHeight: CGFloat = 257
+        static let leftInset = 15.0
+        static let rightInset = 15.0
+        static let bottomInset = 15.0
+        static let topInset = 0.0
+        static let logoCellWidth = 165.0
+        static let logoCellHeight = 184.0
+        static let bannerCellWidth = 345.0
+        static let bannerCellHeight = 257.0
+    }
+    enum Alerts {
+        static let NetworkError = "Network error"
     }
 }
 
@@ -74,6 +75,7 @@ final class WishlistModulePresenter {
         }
     
     private func handleEmptyGameStatus() {
+        view?.hideResponseNilLabel()
         argument.games.removeAll()
         view?.reloadCollectionView()
         view?.showResponseNilLabel()
@@ -92,8 +94,10 @@ final class WishlistModulePresenter {
     }
     
     private func handleNetworkErrorStatus(of error: String) {
+        view?.hideResponseNilLabel()
         view?.hideLoading()
-        view?.showResponseNilLabel(with: error)
+        view?.showAlert(title: error, message: "")
+        view?.showResponseNilLabel()
     }
 }
 
@@ -155,7 +159,7 @@ extension WishlistModulePresenter: WishlistInteractorOutput {
             }
             handleGameSection(with: response)
         case .failure(_):
-            handleNetworkErrorStatus(of: "Network error")
+            handleNetworkErrorStatus(of: Constant.Alerts.NetworkError)
         }
     }
     

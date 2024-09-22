@@ -7,7 +7,6 @@
 
 import CommonKit
 import CommonViewsKit
-import CoreUtils
 import UIKit
 import SwiftUI
 
@@ -33,10 +32,25 @@ private enum Constant {
         static let title: String = "Game Detail"
         static let titleFont: CGFloat = 16.0
     }
+    enum RatingThresholds {
+        static let Green = 75
+        static let Orange = 50
+        static let CornerRadius = 3.0
+    }
+    enum FavoriteButton {
+        static let size = CGSize(width: 20, height: 17.5)
+    }
+    enum Description {
+        static let title = "Descriptions"
+        static let height = 91.0
+    }
+    enum Information {
+        static let title = "Informations"
+    }
 }
 
 final class GameDetailViewController: BaseViewController {
-    @IBOutlet weak var gameImage: UIImageView!
+    @IBOutlet private weak var gameImage: UIImageView!
     @IBOutlet weak var gameName: UILabel!
     @IBOutlet weak var gameRatingView: UIView!
     @IBOutlet weak var gameRatingLabel: UILabel!
@@ -46,9 +60,9 @@ final class GameDetailViewController: BaseViewController {
     private var favoriteButtonImage: UIImage!
     private var gameDescriptionHeightConstraint: NSLayoutConstraint?
     private var isDescriptionExpanded = false
+    private var loadingIndicator: UIActivityIndicatorView?
     
     var presenter: GameDetailPresenterInterface!
-    private var loadingIndicator: UIActivityIndicatorView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,11 +123,11 @@ final class GameDetailViewController: BaseViewController {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(gameDescriptionViewTapped))
         gameDescriptionView.addGestureRecognizer(tapGesture)
-        updateDescriptionHeight(to: 91.0)
+        updateDescriptionHeight(to: Constant.Description.height)
     }
     
     private func setupGameInformationView(
-        title: String = "Informations",
+        title: String = Constant.Information.title,
         with infos: [(name: String, value: String)]
     ) {
         gameInformationView.setupWithSwiftUIView(
@@ -145,17 +159,13 @@ final class GameDetailViewController: BaseViewController {
     @objc
     private func gameDescriptionViewTapped() {
         presenter.expandDescription()
-        print("selen")
     }
 }
 
+// MARK: - GameDetailViewInterface
 extension GameDetailViewController: GameDetailViewInterface {
-    var navController: UIViewController? {
-        self
-    }
-    
     func setGameDescription(with text: String) {
-        setupGameDescriptionView(title: "Descriptions", description: text)
+        setupGameDescriptionView(title: Constant.Description.title, description: text)
     }
     
     func setGameInformation(with infos: [(name: String, value: String)]) {
@@ -183,17 +193,17 @@ extension GameDetailViewController: GameDetailViewInterface {
     
     func setGameRating(rating: Int) {
         self.gameRatingLabel.text = "\(rating)"
-        if rating > 80 {
+        if rating > Constant.RatingThresholds.Green {
             self.gameRatingView.backgroundColor = UIColor.RatingViewColor.RatingViewGreen
             self.gameRatingLabel.textColor = UIColor.RatingViewColor.RatingLabelGreen
-        } else if rating > 60 {
+        } else if rating > Constant.RatingThresholds.Orange {
             self.gameRatingView.backgroundColor = UIColor.RatingViewColor.RatingViewOrange
             self.gameRatingLabel.textColor = UIColor.RatingViewColor.RatingLabelOrange
         } else {
             self.gameRatingView.backgroundColor = UIColor.RatingViewColor.RatingViewRed
             self.gameRatingLabel.textColor = UIColor.RatingViewColor.RatingLabelRed
         }
-        gameRatingView.layer.cornerRadius = 3
+        gameRatingView.layer.cornerRadius = Constant.RatingThresholds.CornerRadius
     }
     
     func setGameName(of name: String) {
@@ -217,10 +227,10 @@ extension GameDetailViewController: GameDetailViewInterface {
     
     func setFavoriteButtonImage(isSelected: Bool) {
         if isSelected {
-            favoriteButtonImage = CommonViewsImages.favoriteButtonTapped.uiImage?.resizedImage(Size: CGSize(width: 20, height: 17.5))
+            favoriteButtonImage = CommonViewsImages.favoriteButtonTapped.uiImage?.resizedImage(Size: Constant.FavoriteButton.size)
             navigationItem.rightBarButtonItem?.tintColor = UIColor.FavoriteButtonColor.Green
         } else {
-            favoriteButtonImage = CommonViewsImages.favoriteButton.uiImage?.resizedImage(Size: CGSize(width: 20, height: 17.5))
+            favoriteButtonImage = CommonViewsImages.favoriteButton.uiImage?.resizedImage(Size: Constant.FavoriteButton.size)
             navigationItem.rightBarButtonItem?.tintColor = UIColor.FavoriteButtonColor.White
         }
         navigationItem.rightBarButtonItem?.image = favoriteButtonImage
@@ -238,5 +248,12 @@ extension GameDetailViewController: GameDetailViewInterface {
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
+    }
+}
+
+// MARK: - AlertPresentable
+extension GameDetailViewController {
+    var navController: UIViewController? {
+        self
     }
 }

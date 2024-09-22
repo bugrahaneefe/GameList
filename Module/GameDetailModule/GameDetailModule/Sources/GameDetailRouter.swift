@@ -22,8 +22,7 @@ public final class GameDetailRouter: GameDetailRouterInterface {
     
     static func create(navigationController: UINavigationController?, with game: Game) -> UIViewController {
         let storyboard = StoryboardHelper<Storyboards>.create(storyboard: .gameDetail)
-        let view = storyboard.instantiateViewController(
-            viewClass: GameDetailViewController.self)
+        let view = storyboard.instantiateViewController(viewClass: GameDetailViewController.self)
         let interactor = GameDetailInteractor()
         let router = GameDetailRouter(
             navigationController: navigationController)

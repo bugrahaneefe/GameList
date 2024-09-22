@@ -7,25 +7,28 @@
 
 import CommonKit
 import CommonViewsKit
-import CoreUtils
 import UIKit
 import SwiftUI
 
-protocol HomeViewInterface {
+protocol HomeViewInterface: AlertPresentable {
     func prepareUI()
     func prepareCollectionView()
     func reloadCollectionView()
     func showLoading()
     func hideLoading()
     func showResponseNilLabel()
-    func showResponseNilLabel(with: String)
     func hideResponseNilLabel()
 }
 
 private enum Constant {    
     enum NavigationBar {
-        static let title: String = "Games"
-        static let titleFont: CGFloat = 16.0
+        static let title = "Games"
+        static let titleFont = 16.0
+        static let AppearanceButtonSize = CGSize(width: 24, height: 24)
+    }
+    enum SearchBar {
+        static let Placeholder = "Search"
+        static let Font = UIFont.systemFont(ofSize: 14.0)
     }
 }
 
@@ -35,10 +38,10 @@ final class HomeModuleViewController: BaseViewController {
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private var platformSliderView: UIView!
     @IBOutlet weak var collectionViewTopConstraint: NSLayoutConstraint!
-    
-    var presenter: HomeModulePresenterInterface!
     private var loadingIndicator: UIActivityIndicatorView?
     private let refreshControl = UIRefreshControl()
+    
+    var presenter: HomeModulePresenterInterface!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,7 +77,9 @@ final class HomeModuleViewController: BaseViewController {
         ])
         
         let rightBarButtonItem = UIBarButtonItem(
-            image: CommonViewsImages.bannerCellAppearanceButton.uiImage?.resizedImage(Size: CGSize(width: 24, height: 24)),
+            image: CommonViewsImages.bannerCellAppearanceButton.uiImage?.resizedImage(
+                Size: Constant.NavigationBar.AppearanceButtonSize
+            ),
             style: .plain,
             target: self,
             action: #selector(rightBarButtonItemTapped)
@@ -103,9 +108,9 @@ final class HomeModuleViewController: BaseViewController {
         searchBar.tintColor = UIColor.SearchBarColor.Cursor
         searchBar.searchTextField.backgroundColor = UIColor.SearchBarColor.TextfieldBackground
         searchBar.searchTextField.attributedPlaceholder = NSAttributedString(
-            string: "Search",
+            string: Constant.SearchBar.Placeholder,
             attributes: [
-                .font: UIFont.systemFont(ofSize: 14.0),
+                .font: Constant.SearchBar.Font,
                 .foregroundColor: UIColor.SearchBarColor.Text])
         searchBar.searchTextField.leftView?.tintColor = UIColor.SearchBarColor.Text
         searchBar.searchTextField.textColor = UIColor.SearchBarColor.Text
@@ -122,9 +127,13 @@ final class HomeModuleViewController: BaseViewController {
     @objc
     private func rightBarButtonItemTapped() {
         if presenter.appearanceType == .logo {
-            navigationItem.rightBarButtonItem?.image = CommonViewsImages.logoCellAppearanceButton.uiImage?.resizedImage(Size: CGSize(width: 24, height: 24))
+            navigationItem.rightBarButtonItem?.image = CommonViewsImages.logoCellAppearanceButton.uiImage?.resizedImage(
+                Size: Constant.NavigationBar.AppearanceButtonSize
+            )
         } else if presenter.appearanceType == .banner {
-            navigationItem.rightBarButtonItem?.image = CommonViewsImages.bannerCellAppearanceButton.uiImage?.resizedImage(Size: CGSize(width: 24, height: 24))
+            navigationItem.rightBarButtonItem?.image = CommonViewsImages.bannerCellAppearanceButton.uiImage?.resizedImage(
+                Size: Constant.NavigationBar.AppearanceButtonSize
+            )
         }
         presenter.changeAppearanceTapped()
     }
@@ -171,11 +180,6 @@ extension HomeModuleViewController: HomeViewInterface {
     }
     
     func showResponseNilLabel() {
-        responseNilLabel.isHidden = false
-    }
-    
-    func showResponseNilLabel(with text: String) {
-        responseNilLabel.text = text
         responseNilLabel.isHidden = false
     }
     
@@ -235,5 +239,12 @@ extension HomeModuleViewController: UIScrollViewDelegate {
                 self?.view.layoutIfNeeded()
             }
         }
+    }
+}
+
+// MARK: - AlertPresentable
+extension HomeModuleViewController {
+    var navController: UIViewController? {
+        self
     }
 }

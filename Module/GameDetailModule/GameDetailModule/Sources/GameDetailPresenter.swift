@@ -7,7 +7,6 @@
 
 import CommonKit
 import CommonViewsKit
-import CoreUtils
 import Foundation
 import GameDetailHandlerKit
 import UIKit
@@ -18,6 +17,19 @@ protocol GameDetailPresenterInterface: PresenterInterface {
 }
 
 private enum Constant {
+    enum Details {
+        static let ReleaseDateTitle = "Release Date:"
+        static let GenresTitle = "Genres:"
+        static let PlaytimeTitle = "Playtime:"
+    }
+    enum Description {
+        static let height = 91.0
+    }
+    enum Alerts {
+        static let AddedMessage = "is added into wishlist!"
+        static let RemovedMessage = "is removed from wishlist!"
+        static let NetworkError = "Network error"
+    }
 }
 
 final class GameDetailPresenter: Observation {
@@ -77,17 +89,17 @@ final class GameDetailPresenter: Observation {
         var details: [(name: String, value: String)] = []
 
         if let releasedDate = argument.game.released {
-            details.append(("Release Date:", "\(releasedDate)"))
+            details.append((Constant.Details.ReleaseDateTitle, "\(releasedDate)"))
         }
         
         if let genres = argument.game.genres, !genres.isEmpty {
             let genreNames = genres.compactMap { $0.name }
             let genresString = genreNames.joined(separator: ", ")
-            details.append(("Genres:", genresString))
+            details.append((Constant.Details.GenresTitle, genresString))
         }
         
         if let playtime = argument.game.playtime {
-            details.append(("Playtime:", "\(playtime) hours"))
+            details.append((Constant.Details.PlaytimeTitle, "\(playtime) hours"))
         }
         
         view?.setGameInformation(with: details)
@@ -129,6 +141,11 @@ final class GameDetailPresenter: Observation {
         handleVisitButtons()
         handleFavoriteButton()
     }
+    
+    private func handleNetworkErrorStatus(of error: String) {
+        view?.hideLoading()
+        view?.showAlert(title: error, message: "")
+    }
 }
 
 extension GameDetailPresenter: GameDetailPresenterInterface {
@@ -137,7 +154,7 @@ extension GameDetailPresenter: GameDetailPresenterInterface {
         if isDescriptionExpanded {
             view?.updateDescriptionHeight(to: nil)
         } else {
-            view?.updateDescriptionHeight(to: 91.0)
+            view?.updateDescriptionHeight(to: Constant.Description.height)
         }
     }
     
@@ -156,7 +173,7 @@ extension GameDetailPresenter: GameDetailPresenterInterface {
         defaults.save(data: !defaults.bool(key: "\(gameId)"), key: "\(gameId)")
         handleFavoriteButton()
         guard let name = argument.game.name else { return }
-        let message = argument.isFavored ?  "is added into wishlist!" : "is removed from wishlist!"
+        let message = argument.isFavored ?  Constant.Alerts.AddedMessage: Constant.Alerts.RemovedMessage
         view?.showAlert(title: name, message: message)
     }
 }
@@ -169,8 +186,7 @@ extension GameDetailPresenter: GameDetailInteractorOutput {
         case .success(let response):
             handleGameDetail(with: response)
         case .failure(_):
-            print("error")
-//            handleNetworkErrorStatus(of: "Network error")
+            handleNetworkErrorStatus(of: Constant.Alerts.NetworkError)
         }
     }
 }

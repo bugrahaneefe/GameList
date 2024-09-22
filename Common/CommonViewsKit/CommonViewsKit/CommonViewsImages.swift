@@ -5,7 +5,7 @@
 //  Created by Buğrahan Efe on 17.09.2024.
 //
 
-import CoreUtils
+import CommonKit
 import Foundation
 
 public enum CommonViewsImages: String, ImageSource, Equatable {

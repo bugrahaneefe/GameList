@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import CoreUtils
 import CommonKit
 
 public protocol GameCellViewInterface {
@@ -17,7 +16,7 @@ public protocol GameCellViewInterface {
 }
 
 private enum Constant {
-    enum Thresholds {
+    enum RatingThresholds {
         static let Green = 75
         static let Orange = 50
     }
@@ -65,10 +64,10 @@ extension GameCell: GameCellViewInterface {
     
     public func setRating(rating: Int) {
         self.ratingLabel.text = "\(rating)"
-        if rating > Constant.Thresholds.Green {
+        if rating > Constant.RatingThresholds.Green {
             self.ratingView.backgroundColor = UIColor.RatingViewColor.RatingViewGreen
             self.ratingLabel.textColor = UIColor.RatingViewColor.RatingLabelGreen
-        } else if rating > Constant.Thresholds.Orange {
+        } else if rating > Constant.RatingThresholds.Orange {
             self.ratingView.backgroundColor = UIColor.RatingViewColor.RatingViewOrange
             self.ratingLabel.textColor = UIColor.RatingViewColor.RatingLabelOrange
         } else {

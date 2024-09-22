@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import CoreUtils
 import SwiftUI
 
 public protocol GameCellBannerViewInterface {
@@ -19,9 +18,10 @@ public protocol GameCellBannerViewInterface {
 }
 
 private enum Constant {
-    enum Thresholds {
+    enum RatingThresholds {
         static let Green = 75
         static let Orange = 50
+        static let CornerRadius = 3.0
     }
 }
 
@@ -82,17 +82,17 @@ extension GameCellBanner: GameCellBannerViewInterface {
  
     public func setRating(rating: Int) {
         self.ratingLabel.text = "\(rating)"
-        if rating > Constant.Thresholds.Green {
+        if rating > Constant.RatingThresholds.Green {
             self.ratingView.backgroundColor = UIColor.RatingViewColor.RatingViewGreen
             self.ratingLabel.textColor = UIColor.RatingViewColor.RatingLabelGreen
-        } else if rating > Constant.Thresholds.Orange {
+        } else if rating > Constant.RatingThresholds.Orange {
             self.ratingView.backgroundColor = UIColor.RatingViewColor.RatingViewOrange
             self.ratingLabel.textColor = UIColor.RatingViewColor.RatingLabelOrange
         } else {
             self.ratingView.backgroundColor = UIColor.RatingViewColor.RatingViewRed
             self.ratingLabel.textColor = UIColor.RatingViewColor.RatingLabelRed
         }
-        ratingView.layer.cornerRadius = 3
+        ratingView.layer.cornerRadius = Constant.RatingThresholds.CornerRadius
     }
     
     public func setPlatforms(with platforms: [String]) {

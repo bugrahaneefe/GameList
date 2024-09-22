@@ -7,7 +7,6 @@
 
 import CommonKit
 import Foundation
-import CoreUtils
 
 public protocol GameCellPresenterInterface: PresenterInterface {
     func favoriteButtonTapped(isSelected: Bool)

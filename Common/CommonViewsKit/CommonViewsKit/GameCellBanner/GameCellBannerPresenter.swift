@@ -7,10 +7,17 @@
 
 import CommonKit
 import Foundation
-import CoreUtils
 
 public protocol GameCellBannerPresenterInterface: PresenterInterface {
     func favoriteButtonTapped(isSelected: Bool)
+}
+
+private enum Constant {
+    enum Details {
+        static let ReleaseDateTitle = "Release Date:"
+        static let GenresTitle = "Genres:"
+        static let PlaytimeTitle = "Playtime:"
+    }
 }
 
 public final class GameCellBannerPresenter: Observation {
@@ -75,17 +82,17 @@ public final class GameCellBannerPresenter: Observation {
         var details: [(name: String, value: String)] = []
 
         if let releasedDate = argument.game.released {
-            details.append(("Release Date:", "\(releasedDate)"))
+            details.append((Constant.Details.ReleaseDateTitle, "\(releasedDate)"))
         }
         
         if let genres = argument.game.genres, !genres.isEmpty {
             let genreNames = genres.compactMap { $0.name }
             let genresString = genreNames.joined(separator: ", ")
-            details.append(("Genres:", genresString))
+            details.append((Constant.Details.GenresTitle, genresString))
         }
         
         if let playtime = argument.game.playtime {
-            details.append(("Playtime:", "\(playtime) hours"))
+            details.append((Constant.Details.PlaytimeTitle, "\(playtime) hours"))
         }
         
         view?.setDetails(with: details)

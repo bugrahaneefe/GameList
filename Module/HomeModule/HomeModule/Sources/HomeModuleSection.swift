@@ -7,14 +7,12 @@
 
 import CommonKit
 import CommonViewsKit
-import CoreUtils
 import UIKit
 
 private enum Constant {
     enum GameCell {
         static let cellCornerRadius = 10.0
     }
-    
     enum CollectionView {
         static let leftInset: CGFloat = 15
         static let rightInset: CGFloat = 15

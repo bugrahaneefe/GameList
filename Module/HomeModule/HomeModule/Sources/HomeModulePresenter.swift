@@ -7,7 +7,6 @@
 
 import CommonKit
 import CommonViewsKit
-import CoreUtils
 import Foundation
 import HomeHandlerKit
 import UIKit
@@ -29,7 +28,9 @@ private enum Constant {
     enum Defaults {
         static let isBannerStateActive = "isBannerStateActive"
     }
-    
+    enum Alerts {
+        static let NetworkError = "Network error"
+    }
     static let throttleInterval = 0.7
 }
 
@@ -107,13 +108,14 @@ final class HomeModulePresenter {
     private func handleNetworkErrorStatus(of error: String) {
         view?.hideResponseNilLabel()
         view?.hideLoading()
-        view?.showResponseNilLabel(with: error)
         isFetchingAvailable = true
+        view?.showAlert(title: error, message: "")
+        view?.showResponseNilLabel()
     }
 }
 
 //MARK: - HomeModulePresenterInterface
-extension HomeModulePresenter: HomeModulePresenterInterface {    
+extension HomeModulePresenter: HomeModulePresenterInterface {
     var appearanceType: AppereanceType {
         defaults.bool(key: Constant.Defaults.isBannerStateActive) ? .banner : .logo
     }
@@ -186,7 +188,7 @@ extension HomeModulePresenter: HomeModuleInteractorOutput {
             currentPage += 1
             handleGameSection(with: response)
         case .failure(_):
-            handleNetworkErrorStatus(of: "Network error")
+            handleNetworkErrorStatus(of: Constant.Alerts.NetworkError)
         }
     }
 }
