@@ -24,7 +24,6 @@ extension NetworkKit: NetworkKitInterface {
             case .success(let value):
                 completion(.success(value))
             case .failure(let error):
-                print(error)
                 completion(.failure(error))
             }
         }

@@ -19,7 +19,7 @@ public enum GameDetailEndpointItem: Endpoint {
     }
 
     private func buildGameDetailURL(with id: Int) -> URL? {
-        var components = URLComponents(string: APIConstants.BaseUrl + "\(id)")
+        var components = URLComponents(string: APIConstants.BaseUrl + "/\(id)")
         components?.queryItems = [
             URLQueryItem(name: APIConstants.Queries.Key, value: APIConstants.Key),
         ]

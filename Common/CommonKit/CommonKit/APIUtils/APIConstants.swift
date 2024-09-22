@@ -6,7 +6,7 @@
 //
 
 public enum APIConstants {
-    public static let BaseUrl = "https://api.rawg.io/api/games/"
+    public static let BaseUrl = "https://api.rawg.io/api/games"
     public static let Key = "1e4eab1decbe45b0bbb89cf123e30b17"
     
     public enum Queries {
