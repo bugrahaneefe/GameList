@@ -24,4 +24,3 @@ public let homeHandlerKit = TargetDependency.project(
 public let gameDetailHandlerKit = TargetDependency.project(
   target: "GameDetailHandlerKit",
   path: .relativeToRoot("Kit/GameDetailHandlerKit"))
-

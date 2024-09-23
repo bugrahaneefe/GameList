@@ -54,7 +54,7 @@ final class HomeModulePresenter {
          router: HomeModuleRouterInterface,
          view: HomeViewInterface? = nil,
          defaults: DefaultsProtocol.Type = Defaults.self,
-         throttler: CommonKit.ThrottlerInterface = Throttler(minimumDelay: Constant.throttleInterval),
+         throttler: ThrottlerInterface = Throttler(minimumDelay: Constant.throttleInterval),
          argument: GameListArgument) {
         self.interactor = interactor
         self.router = router

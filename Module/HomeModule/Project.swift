@@ -35,6 +35,34 @@ let frameworkTarget = Target.target(
 let project = Project(
     name: "HomeModule",
     targets: [
-        frameworkTarget
+        frameworkTarget,
+        Target.target(
+            name: "HomeModulePresenterTests",
+            destinations: .iOS,
+            product: .unitTests,
+            bundleId: "com.gamelist.HomeModulePresenterTests",
+            deploymentTargets: .iOS("16.0"),
+            infoPlist: .default,
+            sources: "HomeModulePresenterTests/**/*.swift",
+            resources: [
+                "HomeModulePresenterTests/**/*.json",
+            ],
+            dependencies: [
+                homeModule
+            ])
+    ],
+    schemes: [
+        .scheme(
+            name: "HomeModule",
+            shared: true,
+            buildAction: .buildAction(targets: ["HomeModule"]),
+            testAction: .targets(
+                ["HomeModulePresenterTests"],
+                configuration: .debug
+            ),
+            runAction: .runAction(
+                configuration: .release
+            )
+        )
     ]
 )
