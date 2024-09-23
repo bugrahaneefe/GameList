@@ -25,9 +25,25 @@ private enum Constant {
     }
 }
 
-protocol HomeModuleSectionDelegate: AnyObject {}
+protocol HomeModuleSectionDelegate: AnyObject {
+    func configureCell(
+        for collectionView: UICollectionView,
+        at indexPath: IndexPath,
+        with appearanceType: AppereanceType
+    ) -> UICollectionViewCell
+}
 
-class GameSection {
+extension HomeModuleSectionDelegate {
+    func configureCell(
+        for collectionView: UICollectionView,
+        at indexPath: IndexPath,
+        with appearanceType: AppereanceType
+    ) -> UICollectionViewCell {
+        return UICollectionViewCell()
+    }
+}
+
+class GameSection: HomeModuleSectionDelegate {
     private var games: [Game]
     private weak var delegate: HomeModuleSectionDelegate?
     

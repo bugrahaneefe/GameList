@@ -34,7 +34,7 @@ private enum Constant {
     static let throttleInterval = 0.4
 }
 
-enum AppereanceType {
+public enum AppereanceType {
     case logo, banner
 }
 

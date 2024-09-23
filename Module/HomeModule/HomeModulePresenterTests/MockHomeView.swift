@@ -10,6 +10,8 @@ import UIKit
 @testable import HomeModule
 
 final class MockHomeView: HomeViewInterface {
+    static var storyboardId: String = ""
+    
     var invokedNavControllerGetter = false
     var invokedNavControllerGetterCount = 0
     var stubbedNavController: UIViewController!
