@@ -11,7 +11,15 @@ import CommonKit
 @testable import HomeModule
 
 final class MockHomeModuleRouter: HomeModuleRouterInterface {
-    func navigateToGameDetail(with game: CommonKit.Game) {
-        
+    var invokedNavigateToGameDetail = false
+    var invokedNavigateToGameDetailCount = 0
+    var invokedNavigateToGameDetailParameters: (Game)?
+    var invokedNavigateToGameDetailParametersList = [(Game)]()
+    
+    func navigateToGameDetail(with game: Game) {
+        invokedNavigateToGameDetail = true
+        invokedNavigateToGameDetailCount += 1
+        invokedNavigateToGameDetailParameters = (game)
+        invokedNavigateToGameDetailParametersList.append((game))
     }
 }
