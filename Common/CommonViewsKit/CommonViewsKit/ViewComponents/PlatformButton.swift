@@ -1,8 +1,8 @@
 import SwiftUI
 
 public struct PlatformButton: View {
-    @Binding private var isSelected: Bool
     @State private var isActive: Bool
+    @Binding private var isSelected: Bool
     private let name: String
     private let fontSize: CGFloat
     private let horizontalPadding: CGFloat

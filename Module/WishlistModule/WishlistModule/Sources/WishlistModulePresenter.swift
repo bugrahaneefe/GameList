@@ -58,18 +58,6 @@ final class WishlistModulePresenter {
         self.argument = argument
     }
     
-//    override func setupObservation() {
-////        if let favoredGamesData = defaults.array(key: "favoredGames") as? [Data] {
-////            let favoredGames = favoredGamesData.compactMap { try? JSONDecoder().decode(Game.self, from: $0) }
-////            
-////            observe(favoredGames) { [weak self] updatedFavoredGames in
-////                guard let self = self else { return }
-////                self.argument.games = favoredGames
-////                self.view?.reloadCollectionView()
-////            }
-////        }
-//    }
-    
     // MARK: Private Methods
     private func fetchGameList(
         at page: Int? = nil,
