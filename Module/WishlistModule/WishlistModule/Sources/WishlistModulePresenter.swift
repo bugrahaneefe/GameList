@@ -57,6 +57,18 @@ final class WishlistModulePresenter {
         self.argument = argument
     }
     
+//    override func setupObservation() {
+////        if let favoredGamesData = defaults.array(key: "favoredGames") as? [Data] {
+////            let favoredGames = favoredGamesData.compactMap { try? JSONDecoder().decode(Game.self, from: $0) }
+////            
+////            observe(favoredGames) { [weak self] updatedFavoredGames in
+////                guard let self = self else { return }
+////                self.argument.games = favoredGames
+////                self.view?.reloadCollectionView()
+////            }
+////        }
+//    }
+    
     // MARK: Private Methods
     private func fetchGameList(
         at page: Int? = nil,
@@ -86,12 +98,16 @@ final class WishlistModulePresenter {
     }
     
     private func handleGameSection(with response: GameListDetailsResponse) {
+        if let favoredGamesData = defaults.array(key: "favoredGames") as? [Data] {
+            let favoredGames = favoredGamesData.compactMap { try? JSONDecoder().decode(Game.self, from: $0) }
+            argument.games = favoredGames
+        }
+                
         if argument.games.isEmpty {
             view?.showResponseNilLabel()
         } else {
             view?.hideResponseNilLabel()
         }
-//        argument.games.append(contentsOf: response.results)
         view?.reloadCollectionView()
         view?.hideLoading()
     }
@@ -126,7 +142,8 @@ extension WishlistModulePresenter: WishlistModulePresenterInterface {
         let cell = collectionView.dequeueReusableCell(with: GameCell.self, for: indexPath)
         let presenter = GameCellPresenter(
             view: cell,
-            argument: GameCellArgument(game: argument.games[indexPath.row]))
+            argument: GameCellArgument(game: argument.games[indexPath.row]),
+            delegate: self)
         cell.layer.cornerRadius = Constant.GameCell.cellCornerRadius
         cell.presenter = presenter
         return cell
@@ -165,5 +182,17 @@ extension WishlistModulePresenter: WishlistInteractorOutput {
             handleNetworkErrorStatus(of: Constant.Alerts.NetworkError)
         }
     }
-    
+}
+
+//MARK: - GameCellPresenterDelegate
+extension WishlistModulePresenter: GameCellPresenterDelegate, GameCellBannerPresenterDelegate {
+    func favoriteButtonIsSelected(isSelected: Bool) {
+        if !isSelected {
+            if let favoredGamesData = defaults.array(key: "favoredGames") as? [Data] {
+                let favoredGames = favoredGamesData.compactMap { try? JSONDecoder().decode(Game.self, from: $0) }
+                argument.games = favoredGames
+            }
+            view?.reloadCollectionView()
+        }
+    }
 }
