@@ -8,6 +8,10 @@
 import CommonKit
 import Foundation
 
+public protocol GameCellBannerPresenterDelegate: AnyObject {
+    func favoriteButtonIsSelected(isSelected: Bool)
+}
+
 public protocol GameCellBannerPresenterInterface: PresenterInterface {
     func favoriteButtonTapped(isSelected: Bool)
 }
@@ -24,15 +28,18 @@ public final class GameCellBannerPresenter: Observation {
     private var view: GameCellBannerViewInterface?
     private let argument: GameCellArgument
     private let defaults: DefaultsProtocol.Type
+    private weak var delegate: GameCellBannerPresenterDelegate?
     
     public init(
         view: GameCellBannerViewInterface?,
         argument: GameCellArgument,
-        defaults: DefaultsProtocol.Type = Defaults.self
+        defaults: DefaultsProtocol.Type = Defaults.self,
+        delegate: GameCellBannerPresenterDelegate? = nil
     ) {
         self.view = view
         self.argument = argument
         self.defaults = defaults
+        self.delegate = delegate
     }
     
     override public func setupObservation() {
@@ -76,6 +83,24 @@ public final class GameCellBannerPresenter: Observation {
     private func handleFavoriteButton() {
         guard let gameId = argument.game.id else { return }
         argument.isFavored = defaults.bool(key: "\(gameId)") ? true : false
+        handleFavoriteGames(isSelected: argument.isFavored)
+    }
+    
+    private func handleFavoriteGames(isSelected: Bool) {
+        guard let gameId = argument.game.id else { return }
+        var favoredGamesData = defaults.array(key: "favoredGames") as? [Data] ?? []
+        var favoredGames = favoredGamesData.compactMap { try? JSONDecoder().decode(Game.self, from: $0) }
+        if isSelected {
+            if !favoredGames.contains(where: { $0.id == gameId }) {
+                favoredGames.append(argument.game)
+            }
+        } else {
+            favoredGames.removeAll { $0.id == gameId }
+        }
+        let encodedGames = favoredGames.compactMap { try? JSONEncoder().encode($0) }
+        defaults.save(data: encodedGames, key: "favoredGames")
+        
+        delegate?.favoriteButtonIsSelected(isSelected: isSelected)
     }
     
     private func handleDetails() {
