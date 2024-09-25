@@ -63,7 +63,6 @@ final class GameDetailPresenter: Observation {
     override public func setupObservation() {
         observe(argument.$isFavored) { fav in
             self.view?.setFavoriteButtonImage(isSelected: self.argument.isFavored)
-            self.delegate?.favoriteButtonIsSelected(isSelected: self.argument.isFavored)
         }
     }
     
@@ -136,6 +135,24 @@ final class GameDetailPresenter: Observation {
     private func handleFavoriteButton() {
         guard let gameId = argument.game.id else { return }
         argument.isFavored = defaults.bool(key: "\(gameId)") ? true : false
+        handleFavoriteGames(isSelected: argument.isFavored)
+    }
+    
+    private func handleFavoriteGames(isSelected: Bool) {
+        guard let gameId = argument.game.id else { return }
+        var favoredGamesData = defaults.array(key: "favoredGames") as? [Data] ?? []
+        var favoredGames = favoredGamesData.compactMap { try? JSONDecoder().decode(Game.self, from: $0) }
+        if isSelected {
+            if !favoredGames.contains(where: { $0.id == gameId }) {
+                favoredGames.append(argument.game)
+            }
+        } else {
+            favoredGames.removeAll { $0.id == gameId }
+        }
+        let encodedGames = favoredGames.compactMap { try? JSONEncoder().encode($0) }
+        defaults.save(data: encodedGames, key: "favoredGames")
+        
+        delegate?.favoriteButtonIsSelected(isSelected: isSelected)
     }
     
     private func handleGameDetail(with response: GameDetailResponse) {
