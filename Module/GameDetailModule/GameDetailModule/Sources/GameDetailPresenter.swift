@@ -11,6 +11,10 @@ import Foundation
 import GameDetailHandlerKit
 import UIKit
 
+public protocol GameDetailPresenterDelegate: AnyObject {
+    func favoriteButtonIsSelected(isSelected: Bool)
+}
+
 protocol GameDetailPresenterInterface: PresenterInterface {
     func favoriteButtonTapped()
     func expandDescription()
@@ -40,22 +44,26 @@ final class GameDetailPresenter: Observation {
     private let argument: GameCellArgument
     private var gameDetail: GameDetailResponse? = nil
     private var isDescriptionExpanded = false
+    private weak var delegate: GameDetailPresenterDelegate?
     
     init(interactor: GameDetailInteractorInterface,
          router: GameDetailRouterInterface,
          view: GameDetailViewInterface? = nil,
          argument: GameCellArgument,
-         defaults: DefaultsProtocol.Type = Defaults.self) {
+         defaults: DefaultsProtocol.Type = Defaults.self,
+         delegate: GameDetailPresenterDelegate? = nil) {
         self.interactor = interactor
         self.router = router
         self.view = view
         self.argument = argument
         self.defaults = defaults
+        self.delegate = delegate
     }
     
     override public func setupObservation() {
         observe(argument.$isFavored) { fav in
             self.view?.setFavoriteButtonImage(isSelected: self.argument.isFavored)
+            self.delegate?.favoriteButtonIsSelected(isSelected: self.argument.isFavored)
         }
     }
     

@@ -10,6 +10,7 @@ import CommonViewsKit
 import Foundation
 import HomeHandlerKit
 import UIKit
+import GameDetailModule
 
 protocol WishlistModulePresenterInterface: PresenterInterface {
     func numberOfItemsInGameSection() -> Int
@@ -98,6 +99,7 @@ final class WishlistModulePresenter {
     }
     
     private func handleGameSection(with response: GameListDetailsResponse) {
+        view?.hideResponseNilLabel()
         if let favoredGamesData = defaults.array(key: "favoredGames") as? [Data] {
             let favoredGames = favoredGamesData.compactMap { try? JSONDecoder().decode(Game.self, from: $0) }
             argument.games = favoredGames
@@ -185,7 +187,7 @@ extension WishlistModulePresenter: WishlistInteractorOutput {
 }
 
 //MARK: - GameCellPresenterDelegate
-extension WishlistModulePresenter: GameCellPresenterDelegate, GameCellBannerPresenterDelegate {
+extension WishlistModulePresenter: GameCellPresenterDelegate, GameCellBannerPresenterDelegate, GameDetailPresenterDelegate {
     func favoriteButtonIsSelected(isSelected: Bool) {
         if !isSelected {
             if let favoredGamesData = defaults.array(key: "favoredGames") as? [Data] {
