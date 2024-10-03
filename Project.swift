@@ -48,7 +48,12 @@ let appTarget = Target.target(
         homeHandlerKit,
         gameDetailHandlerKit,
         wishlistModule
-    ]
+    ],
+    settings: .settings(
+        base: [
+            "OTHER_LDFLAGS": "-ObjC"
+        ]
+    )
 )
 
 let project = Project(

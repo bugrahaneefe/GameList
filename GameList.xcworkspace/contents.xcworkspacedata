@@ -50,6 +50,9 @@
          location = "group:Tuist/.build/tuist-derived/AlamofireImage/AlamofireImage.xcodeproj">
       </FileRef>
       <FileRef
+         location = "group:Tuist/.build/tuist-derived/SDWebImage/SDWebImage.xcodeproj">
+      </FileRef>
+      <FileRef
          location = "group:Tuist/.build/tuist-derived/trendyol-platform-utilities/trendyol-platform-utilities.xcodeproj">
       </FileRef>
    </Group>

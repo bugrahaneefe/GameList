@@ -6,37 +6,14 @@
 //
 
 import UIKit
-import Alamofire
-import AlamofireImage
-
-private class ImageCache {
-    static let shared = AutoPurgingImageCache()
-
-    private init() {}
-}
+import SDWebImage
 
 extension UIImageView {
     public func loadFrom(url: URL, placeholder: UIImage? = nil) {
-        let cacheKey = url.absoluteString
-        
-        if let cachedImage = ImageCache.shared.image(withIdentifier: cacheKey) {
-            self.image = cachedImage
-            return
-        } else {
-            self.image = placeholder
-        }
-        
-        af.setImage(
-            withURL: url,
-            placeholderImage: placeholder,
-            imageTransition: .crossDissolve(0.2),
-            runImageTransitionIfCached: true
-        ) { [weak self] response in
-            guard let self = self,
-                  case .success(let image) = response.result else { return }
-            
-            ImageCache.shared.add(image, withIdentifier: cacheKey)
-        }
+        self.sd_setImage(
+            with: url,
+            placeholderImage: placeholder
+        )
     }
 }
 

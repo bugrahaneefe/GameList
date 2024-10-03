@@ -30,8 +30,8 @@ public final class GameCellBanner: UICollectionViewCell {
     @IBOutlet private weak var gameNameLabel: UILabel!
     @IBOutlet private weak var ratingView: UIView!
     @IBOutlet private weak var ratingLabel: UILabel!
-    @IBOutlet weak var gamePlatformView: UIView!
-    @IBOutlet weak var gameDetailsView: UIView!
+    @IBOutlet private weak var gamePlatformView: UIView!
+    @IBOutlet private weak var gameDetailsView: UIView!
     @IBOutlet weak var favoriteButton: FavoriteButton!
     
     public var presenter: GameCellBannerPresenterInterface! {
