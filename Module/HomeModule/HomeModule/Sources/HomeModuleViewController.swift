@@ -165,7 +165,9 @@ extension HomeModuleViewController: HomeViewInterface {
     }
     
     func reloadCollectionView() {
-        collectionView.reloadData()
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
     }
     
     func showLoading() {

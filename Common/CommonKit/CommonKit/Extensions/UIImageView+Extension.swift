@@ -10,16 +10,26 @@ import Alamofire
 import AlamofireImage
 
 class ImageCache {
-    static let shared = ImageCache()
-    private let cache = NSCache<NSString, UIImage>()
+    static let shared = AutoPurgingImageCache()
+
     private init() {}
-    
-    func getImage(forKey key: String) -> UIImage? {
-        return cache.object(forKey: key as NSString)
-    }
-    
-    func setImage(_ image: UIImage, forKey key: String) {
-        cache.setObject(image, forKey: key as NSString)
+}
+
+extension UIImageView {
+    public func loadFrom(url: URL, placeholder: UIImage? = nil) {
+        self.image = placeholder
+        let cacheKey = url.absoluteString
+        
+        if let cachedImage = ImageCache.shared.image(withIdentifier: cacheKey) {
+            self.image = cachedImage
+            return
+        }
+        
+        self.af.setImage(withURL: url, placeholderImage: placeholder, imageTransition: .flipFromTop(0.2), runImageTransitionIfCached: true) { [weak self] response in
+            guard let self = self, case .success(let image) = response.result else { return }
+            
+            ImageCache.shared.add(image, withIdentifier: cacheKey)
+        }
     }
 }
 
@@ -33,28 +43,5 @@ extension UIImage {
         UIGraphicsEndImageContext()
         self.withRenderingMode(.alwaysOriginal)
         return resizedImage
-    }
-}
-
-extension UIImageView {
-    public func loadFrom(url: URL, placeholder: UIImage? = nil) {
-        self.image = placeholder
-        let cacheKey = url.absoluteString
-        if let cachedImage = ImageCache.shared.getImage(forKey: cacheKey) {
-            self.image = cachedImage
-            return
-        }
-        
-        AF.request(url).responseImage { [weak self] response in
-            guard let self = self else { return }
-
-            if case .success(let image) = response.result {
-                ImageCache.shared.setImage(image, forKey: cacheKey)
-
-                DispatchQueue.main.async {
-                    self.image = image
-                }
-            }
-        }
     }
 }

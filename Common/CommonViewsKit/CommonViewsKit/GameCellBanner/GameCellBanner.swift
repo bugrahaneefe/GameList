@@ -42,7 +42,7 @@ public final class GameCellBanner: UICollectionViewCell {
     
     override public func prepareForReuse() {
         super.prepareForReuse()
-        bannerImageView.image = CommonViewsImages.gamesIcon.uiImage
+        bannerImageView.image = nil
         gameNameLabel.textColor = .white
     }
     
