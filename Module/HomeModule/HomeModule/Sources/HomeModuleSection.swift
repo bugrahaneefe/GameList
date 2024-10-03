@@ -87,13 +87,13 @@ private enum sections {
         _ collectionView: UICollectionView,
         indexPath: IndexPath
     ) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(with: GameCellBanner.self, for: indexPath)
+        weak var cell = collectionView.dequeueReusableCell(with: GameCellBanner.self, for: indexPath)
         let presenter = GameCellBannerPresenter(
             view: cell,
             argument: GameCellArgument(game: games[indexPath.row]))
-        cell.layer.cornerRadius = Constant.GameCell.cellCornerRadius
-        cell.presenter = presenter
-        return cell
+        cell?.layer.cornerRadius = Constant.GameCell.cellCornerRadius
+        cell?.presenter = presenter
+        return cell ?? UICollectionViewCell()
     }
     
     static func logoSection(
@@ -101,12 +101,12 @@ private enum sections {
         _ collectionView: UICollectionView,
         indexPath: IndexPath
     ) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(with: GameCell.self, for: indexPath)
+        weak var cell = collectionView.dequeueReusableCell(with: GameCell.self, for: indexPath)
         let presenter = GameCellPresenter(
             view: cell,
             argument: GameCellArgument(game: games[indexPath.row]))
-        cell.layer.cornerRadius = Constant.GameCell.cellCornerRadius
-        cell.presenter = presenter
-        return cell
+        cell?.layer.cornerRadius = Constant.GameCell.cellCornerRadius
+        cell?.presenter = presenter
+        return cell ?? UICollectionViewCell()
     }
 }

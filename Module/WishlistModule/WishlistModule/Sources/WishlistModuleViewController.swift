@@ -95,9 +95,7 @@ extension WishlistModuleViewController: WishlistViewInterface {
     }
     
     func reloadCollectionView() {
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
-        }
+        self.collectionView.reloadData()
     }
     
     func showLoading() {

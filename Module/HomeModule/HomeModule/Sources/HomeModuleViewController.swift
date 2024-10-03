@@ -37,7 +37,7 @@ final class HomeModuleViewController: BaseViewController {
     @IBOutlet private weak var responseNilLabel: UILabel!
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private var platformSliderView: UIView!
-    @IBOutlet weak var collectionViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var collectionViewTopConstraint: NSLayoutConstraint!
     private var loadingIndicator: UIActivityIndicatorView?
     private let refreshControl = UIRefreshControl()
     
@@ -162,9 +162,7 @@ extension HomeModuleViewController: HomeViewInterface {
     }
     
     func reloadCollectionView() {
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
-        }
+        self.collectionView.reloadData()
     }
     
     func showLoading() {

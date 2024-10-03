@@ -35,11 +35,11 @@ public final class GameCellPresenter: Observation {
         }
     
     override public func setupObservation() {
-        observe(argument.$isFavored) { fav in
-            self.view?.setFavoriteButton(selected: self.argument.isFavored)
+        observe(argument.$isFavored) { [weak self] fav in
+            self?.view?.setFavoriteButton(selected: self?.argument.isFavored ?? false)
         }
-        observe(argument.$isAlreadyClicked) { isAlreadyClicked in
-            self.view?.setGameNameLabel(name: self.argument.game.name, isAlreadyClicked: self.argument.isAlreadyClicked)
+        observe(argument.$isAlreadyClicked) { [weak self] isAlreadyClicked in
+            self?.view?.setGameNameLabel(name: self?.argument.game.name, isAlreadyClicked: self?.argument.isAlreadyClicked ?? false)
         }
     }
     

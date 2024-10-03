@@ -25,7 +25,7 @@ private enum Constant {
 }
 
 public final class GameCellBannerPresenter: Observation {
-    private var view: GameCellBannerViewInterface?
+    private let view: GameCellBannerViewInterface?
     private let argument: GameCellArgument
     private let defaults: DefaultsProtocol.Type
     private weak var delegate: GameCellBannerPresenterDelegate?
@@ -43,11 +43,11 @@ public final class GameCellBannerPresenter: Observation {
     }
     
     override public func setupObservation() {
-        observe(argument.$isFavored) { fav in
-            self.view?.setFavoriteButton(selected: self.argument.isFavored)
+        observe(argument.$isFavored) { [weak self] fav in
+            self?.view?.setFavoriteButton(selected: self?.argument.isFavored ?? false)
         }
-        observe(argument.$isAlreadyClicked) { isAlreadyClicked in
-            self.view?.setGameNameLabel(name: self.argument.game.name, isAlreadyClicked: isAlreadyClicked)
+        observe(argument.$isAlreadyClicked) { [weak self] isAlreadyClicked in
+            self?.view?.setGameNameLabel(name: self?.argument.game.name, isAlreadyClicked: isAlreadyClicked)
         }
     }
     

@@ -18,7 +18,6 @@ public protocol Observer {
 }
 
 open class Observation {
-    
     var cancellables = Set<AnyCancellable>()
     
     public init() {}

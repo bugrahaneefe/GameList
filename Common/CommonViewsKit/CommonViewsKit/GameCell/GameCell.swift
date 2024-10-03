@@ -37,8 +37,8 @@ public final class GameCell: UICollectionViewCell {
     
     override public func prepareForReuse() {
         super.prepareForReuse()
-        bannerImageView.image = nil
-        gameNameLabel.textColor = .white
+        self.bannerImageView.image = nil
+        self.gameNameLabel.textColor = .white
     }
     
     @IBAction func favoriteButtonTapped(_ sender: Any) {
