@@ -67,7 +67,6 @@ final class HomeModuleViewController: BaseViewController {
     private func setupNavigationBar() {
         self.title = Constant.NavigationBar.title
         self.navigationController?.navigationBar.tintColor = .white
-
         navigationItem.backButtonTitle = ""
         navigationController?.navigationBar.setTitleTextAttributes(attributes: [
             .foregroundColor: UIColor.white,
@@ -77,9 +76,7 @@ final class HomeModuleViewController: BaseViewController {
         ])
         
         let rightBarButtonItem = UIBarButtonItem(
-            image: CommonViewsImages.bannerCellAppearanceButton.uiImage?.resizedImage(
-                Size: Constant.NavigationBar.AppearanceButtonSize
-            ),
+            image: presenter.appearanceType == .banner ? CommonViewsImages.logoCellAppearanceButton.uiImage?.resizedImage(Size: Constant.NavigationBar.AppearanceButtonSize) : CommonViewsImages.bannerCellAppearanceButton.uiImage?.resizedImage(Size: Constant.NavigationBar.AppearanceButtonSize),
             style: .plain,
             target: self,
             action: #selector(rightBarButtonItemTapped)
