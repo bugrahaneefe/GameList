@@ -154,6 +154,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "25DA0072C46150EE939A193B"
+               BuildableName = "GameListUITests.xctest"
+               BlueprintName = "GameListUITests"
+               ReferencedContainer = "container:GameList.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "61C23C1F923AEF8DBA0DE784"
                BuildableName = "HomeHandlerKit.framework"
                BlueprintName = "HomeHandlerKit"
@@ -280,6 +294,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "25DA0072C46150EE939A193B"
+               BuildableName = "GameListUITests.xctest"
+               BlueprintName = "GameListUITests"
+               ReferencedContainer = "container:GameList.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference

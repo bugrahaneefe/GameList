@@ -57,8 +57,8 @@ final class GameDetailViewController: BaseViewController {
     @IBOutlet weak var gameDescriptionView: UIView!
     @IBOutlet weak var gameInformationView: UIView!
     @IBOutlet weak var gameVisitButtonsView: UIView!
-    private weak var favoriteButtonImage: UIImage!
-    private weak var gameDescriptionHeightConstraint: NSLayoutConstraint?
+    private var favoriteButtonImage: UIImage!
+    private var gameDescriptionHeightConstraint: NSLayoutConstraint?
     private var isDescriptionExpanded = false
     private var loadingIndicator: UIActivityIndicatorView?
     

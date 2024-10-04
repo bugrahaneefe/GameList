@@ -56,9 +56,40 @@ let appTarget = Target.target(
     )
 )
 
+let gameListUITestsTarget = Target.target(
+    name: "GameListUITests",
+    destinations: .iOS,
+    product: .uiTests,
+    bundleId: "com.gamelist.GameListUITests",
+    deploymentTargets: .iOS("16.0"),
+    infoPlist: .default,
+    sources: "GameListUITests/**/*.swift",
+    resources: [
+        "GameListUITests/**/*.json",
+    ],
+    dependencies: [
+        .target(name: "GameList")
+    ]
+)
+
 let project = Project(
     name: "GameList",
     targets: [
-        appTarget
+        appTarget,
+        gameListUITestsTarget
+    ],
+    schemes: [
+        .scheme(
+            name: "GameList",
+            shared: true,
+            buildAction: .buildAction(targets: ["GameList"]),
+            testAction: .targets(
+                ["GameListUITests"],
+                configuration: .debug
+            ),
+            runAction: .runAction(
+                configuration: .release
+            )
+        )
     ]
 )
