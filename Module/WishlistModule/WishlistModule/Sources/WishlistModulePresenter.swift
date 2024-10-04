@@ -65,6 +65,8 @@ final class WishlistModulePresenter {
         with platforms: String? = nil,
         isPullToRefresh: Bool = false
     ) {
+        view?.hideResponseNilLabel()
+
         if !isPullToRefresh {
             view?.showLoading()
         }

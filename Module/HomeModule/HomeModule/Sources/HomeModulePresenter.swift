@@ -71,6 +71,7 @@ final class HomeModulePresenter {
         with platform: String? = nil,
         isPullToRefresh: Bool = false
     ) {
+        view?.hideResponseNilLabel()
         guard isFetchingAvailable else { return }
         isFetchingAvailable = false
         

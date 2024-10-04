@@ -131,7 +131,9 @@ final class GameDetailViewController: BaseViewController {
         with infos: [(name: String, value: String)]
     ) {
         gameInformationView.setupWithSwiftUIView(
-            with: GameDetailInformationView(title: title, infos: infos),
+            with: GameDetailInformationView(
+                title: title,
+                infos: infos),
             parentViewController: self)
     }
     
