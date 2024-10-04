@@ -88,7 +88,8 @@ let project = Project(
                 configuration: .debug
             ),
             runAction: .runAction(
-                configuration: .release
+                configuration: .debug,
+                executable: "GameList"
             )
         )
     ]

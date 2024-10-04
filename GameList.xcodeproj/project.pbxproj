@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -40,7 +40,6 @@
 		E654D9B9E2D4AA06B547E76E /* GameListTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1447EAF6DE983D5AA87462 /* GameListTabBarController.swift */; };
 		E70812B4B9AFB19BBFACFDDE /* CommonViewsKit_CommonViewsKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8654BF1297C30D137D1B42C4 /* CommonViewsKit_CommonViewsKit.bundle */; };
 		EA7971AD24D719C3BD1057BF /* GameDetailHandlerKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAAD75A50126D0BA478D80B /* GameDetailHandlerKit.framework */; };
-		EE6624DEA2821D495C79BEEB /* GameListUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1B210AE8E78C309099AF0F /* GameListUITestsLaunchTests.swift */; };
 		F80506C170DE394657E9B2EC /* GameListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31025DE05140C4D47CA0B7F3 /* GameListUITests.swift */; };
 		F82421F2FC08C49012DCF386 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCD8F4F237428AAAF15636D4 /* SDWebImage.framework */; };
 /* End PBXBuildFile section */
@@ -109,7 +108,6 @@
 		7C8EE3A4137689D26E714408 /* GameListUITests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GameListUITests-Info.plist"; sourceTree = "<group>"; };
 		7C9E19290237400A7C5A7575 /* HomeModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HomeModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8654BF1297C30D137D1B42C4 /* CommonViewsKit_CommonViewsKit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommonViewsKit_CommonViewsKit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		8E1B210AE8E78C309099AF0F /* GameListUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9153235CD3F138CE3029EDEE /* SDWebImage_SDWebImage.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SDWebImage_SDWebImage.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		91B0C573A7D8915F29F2328D /* GameListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FCA5BFEABE001814939A9E7 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -250,7 +248,6 @@
 			isa = PBXGroup;
 			children = (
 				31025DE05140C4D47CA0B7F3 /* GameListUITests.swift */,
-				8E1B210AE8E78C309099AF0F /* GameListUITestsLaunchTests.swift */,
 			);
 			path = GameListUITests;
 			sourceTree = "<group>";
@@ -399,7 +396,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F80506C170DE394657E9B2EC /* GameListUITests.swift in Sources */,
-				EE6624DEA2821D495C79BEEB /* GameListUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,21 +435,14 @@
 					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/SDWebImage/SDWebImage.modulemap",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				OTHER_SWIFT_FLAGS = (
-					"$(inherited)",
-					"-Xcc",
-					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/SDWebImage/SDWebImage.modulemap",
-				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/SDWebImage/SDWebImage.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gamelist;
 				PRODUCT_NAME = GameList;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -483,11 +472,7 @@
 					"$(inherited)",
 					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/SDWebImage/SDWebImage.modulemap",
 				);
-				OTHER_SWIFT_FLAGS = (
-					"$(inherited)",
-					"-Xcc",
-					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/SDWebImage/SDWebImage.modulemap",
-				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/SDWebImage/SDWebImage.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gamelist.GameListUITests;
 				PRODUCT_NAME = GameListUITests;
 				SDKROOT = iphoneos;
@@ -524,21 +509,14 @@
 					"$(inherited)",
 					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/SDWebImage/SDWebImage.modulemap",
 				);
-				OTHER_SWIFT_FLAGS = (
-					"$(inherited)",
-					"-Xcc",
-					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/SDWebImage/SDWebImage.modulemap",
-				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/SDWebImage/SDWebImage.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gamelist.GameListUITests;
 				PRODUCT_NAME = GameListUITests;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -571,11 +549,7 @@
 					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/SDWebImage/SDWebImage.modulemap",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				OTHER_SWIFT_FLAGS = (
-					"$(inherited)",
-					"-Xcc",
-					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/SDWebImage/SDWebImage.modulemap",
-				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/SDWebImage/SDWebImage.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gamelist;
 				PRODUCT_NAME = GameList;
 				SDKROOT = iphoneos;

@@ -32,24 +32,29 @@ let frameworkTarget = Target.target(
     ]
 )
 
+let homeModulePresenterTestsTarget = Target.target(
+    name: "HomeModulePresenterTests",
+    destinations: .iOS,
+    product: .unitTests,
+    bundleId: "com.gamelist.HomeModulePresenterTests",
+    deploymentTargets: .iOS(
+        "16.0"
+    ),
+    infoPlist: .default,
+    sources: "HomeModulePresenterTests/**/*.swift",
+    resources: [
+        "HomeModulePresenterTests/**/*.json",
+    ],
+    dependencies: [
+        homeModule
+    ]
+)
+
 let project = Project(
     name: "HomeModule",
     targets: [
         frameworkTarget,
-        Target.target(
-            name: "HomeModulePresenterTests",
-            destinations: .iOS,
-            product: .unitTests,
-            bundleId: "com.gamelist.HomeModulePresenterTests",
-            deploymentTargets: .iOS("16.0"),
-            infoPlist: .default,
-            sources: "HomeModulePresenterTests/**/*.swift",
-            resources: [
-                "HomeModulePresenterTests/**/*.json",
-            ],
-            dependencies: [
-                homeModule
-            ])
+        homeModulePresenterTestsTarget
     ],
     schemes: [
         .scheme(
